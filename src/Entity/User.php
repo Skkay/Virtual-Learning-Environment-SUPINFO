@@ -37,6 +37,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $password;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Intervenant::class, mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $intervenant;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -124,5 +129,27 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getIntervenant(): ?Intervenant
+    {
+        return $this->intervenant;
+    }
+
+    public function setIntervenant(?Intervenant $intervenant): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($intervenant === null && $this->intervenant !== null) {
+            $this->intervenant->setUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($intervenant !== null && $intervenant->getUser() !== $this) {
+            $intervenant->setUser($this);
+        }
+
+        $this->intervenant = $intervenant;
+
+        return $this;
     }
 }
