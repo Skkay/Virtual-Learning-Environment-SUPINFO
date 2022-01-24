@@ -29,6 +29,11 @@ class Campus
      */
     private $city;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Section::class, mappedBy="campus")
+     */
+    private $sections;
+
     public function __construct()
     {
         $this->sections = new ArrayCollection();
@@ -59,6 +64,36 @@ class Campus
     public function setCity(?string $city): self
     {
         $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Section[]
+     */
+    public function getSections(): Collection
+    {
+        return $this->sections;
+    }
+
+    public function addSection(Section $section): self
+    {
+        if (!$this->sections->contains($section)) {
+            $this->sections[] = $section;
+            $section->setCampus($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSection(Section $section): self
+    {
+        if ($this->sections->removeElement($section)) {
+            // set the owning side to null (unless already changed)
+            if ($section->getCampus() === $this) {
+                $section->setCampus(null);
+            }
+        }
 
         return $this;
     }
