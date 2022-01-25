@@ -42,6 +42,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $intervenant;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Staff::class, mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $staff;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -149,6 +154,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         $this->intervenant = $intervenant;
+
+        return $this;
+    }
+
+    public function getStaff(): ?Staff
+    {
+        return $this->staff;
+    }
+
+    public function setStaff(Staff $staff): self
+    {
+        // set the owning side of the relation if necessary
+        if ($staff->getUser() !== $this) {
+            $staff->setUser($this);
+        }
+
+        $this->staff = $staff;
 
         return $this;
     }
