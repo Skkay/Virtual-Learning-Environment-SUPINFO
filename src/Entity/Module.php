@@ -31,6 +31,11 @@ class Module
      */
     private $intervenants;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $speciality;
+
     public function __construct()
     {
         $this->intervenants = new ArrayCollection();
@@ -76,6 +81,18 @@ class Module
         if ($this->intervenants->removeElement($intervenant)) {
             $intervenant->removeModule($this);
         }
+
+        return $this;
+    }
+
+    public function isSpeciality(): ?bool
+    {
+        return $this->speciality;
+    }
+
+    public function setSpeciality(bool $speciality): self
+    {
+        $this->speciality = $speciality;
 
         return $this;
     }
