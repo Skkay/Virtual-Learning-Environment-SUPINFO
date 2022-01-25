@@ -34,9 +34,15 @@ class Campus
      */
     private $sections;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Staff::class, mappedBy="campus")
+     */
+    private $staff;
+
     public function __construct()
     {
         $this->sections = new ArrayCollection();
+        $this->staff = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -93,6 +99,33 @@ class Campus
             if ($section->getCampus() === $this) {
                 $section->setCampus(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Staff[]
+     */
+    public function getStaff(): Collection
+    {
+        return $this->staff;
+    }
+
+    public function addStaff(Staff $staff): self
+    {
+        if (!$this->staff->contains($staff)) {
+            $this->staff[] = $staff;
+            $staff->addCampus($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStaff(Staff $staff): self
+    {
+        if ($this->staff->removeElement($staff)) {
+            $staff->removeCampus($this);
         }
 
         return $this;
