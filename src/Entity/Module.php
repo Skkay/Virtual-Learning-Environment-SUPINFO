@@ -37,6 +37,11 @@ class Module
     private $speciality;
 
     /**
+     * @ORM\ManyToMany(targetEntity=Etudiant::class, mappedBy="modules")
+     */
+    private $etudiants;
+
+    /**
      * @ORM\OneToMany(targetEntity=Note::class, mappedBy="module")
      */
     private $notes;
@@ -44,6 +49,7 @@ class Module
     public function __construct()
     {
         $this->intervenants = new ArrayCollection();
+        $this->etudiants = new ArrayCollection();
         $this->notes = new ArrayCollection();
     }
 
@@ -102,6 +108,34 @@ class Module
 
         return $this;
     }
+
+    /**
+     * @return Collection|Etudiant[]
+     */
+    public function getEtudiants(): Collection
+    {
+        return $this->etudiants;
+    }
+
+    public function addEtudiant(Etudiant $etudiant): self
+    {
+        if (!$this->etudiants->contains($etudiant)) {
+            $this->etudiants[] = $etudiant;
+            $etudiant->addModule($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEtudiant(Etudiant $etudiant): self
+    {
+        if ($this->etudiants->removeElement($etudiant)) {
+            $etudiant->removeModule($this);
+        }
+
+        return $this;
+    }
+
     /**
      * @return Collection|Note[]
      */
