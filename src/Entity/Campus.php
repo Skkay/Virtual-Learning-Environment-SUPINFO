@@ -39,10 +39,16 @@ class Campus
      */
     private $staff;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Etudiant::class, mappedBy="campus")
+     */
+    private $etudiants;
+
     public function __construct()
     {
         $this->sections = new ArrayCollection();
         $this->staff = new ArrayCollection();
+        $this->etudiants = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -126,6 +132,36 @@ class Campus
     {
         if ($this->staff->removeElement($staff)) {
             $staff->removeCampus($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Etudiant[]
+     */
+    public function getEtudiants(): Collection
+    {
+        return $this->etudiants;
+    }
+
+    public function addEtudiant(Etudiant $etudiant): self
+    {
+        if (!$this->etudiants->contains($etudiant)) {
+            $this->etudiants[] = $etudiant;
+            $etudiant->setCampus($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEtudiant(Etudiant $etudiant): self
+    {
+        if ($this->etudiants->removeElement($etudiant)) {
+            // set the owning side to null (unless already changed)
+            if ($etudiant->getCampus() === $this) {
+                $etudiant->setCampus(null);
+            }
         }
 
         return $this;
