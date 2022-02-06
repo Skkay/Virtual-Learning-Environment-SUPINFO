@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\NoteRepository;
+use App\Repository\GradeRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=NoteRepository::class)
+ * @ORM\Entity(repositoryClass=GradeRepository::class)
  */
-class Note
+class Grade
 {
     /**
      * @ORM\Id
@@ -18,13 +18,13 @@ class Note
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Student::class, inversedBy="notes")
+     * @ORM\ManyToOne(targetEntity=Student::class, inversedBy="grades")
      * @ORM\JoinColumn(nullable=false)
      */
     private $student;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Module::class, inversedBy="notes")
+     * @ORM\ManyToOne(targetEntity=Module::class, inversedBy="grades")
      * @ORM\JoinColumn(nullable=false)
      */
     private $module;
@@ -32,7 +32,7 @@ class Note
     /**
      * @ORM\Column(type="float")
      */
-    private $note;
+    private $grade;
 
     public function getId(): ?int
     {
@@ -63,14 +63,14 @@ class Note
         return $this;
     }
 
-    public function getNote(): ?float
+    public function getGrade(): ?float
     {
-        return $this->note;
+        return $this->grade;
     }
 
-    public function setNote(float $note): self
+    public function setGrade(float $grade): self
     {
-        $this->note = $note;
+        $this->grade = $grade;
 
         return $this;
     }

@@ -42,15 +42,15 @@ class Module
     private $students;
 
     /**
-     * @ORM\OneToMany(targetEntity=Note::class, mappedBy="module")
+     * @ORM\OneToMany(targetEntity=Grade::class, mappedBy="module")
      */
-    private $notes;
+    private $grades;
 
     public function __construct()
     {
         $this->instructors = new ArrayCollection();
         $this->students = new ArrayCollection();
-        $this->notes = new ArrayCollection();
+        $this->grades = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -137,29 +137,29 @@ class Module
     }
 
     /**
-     * @return Collection|Note[]
+     * @return Collection|Grade[]
      */
-    public function getNotes(): Collection
+    public function getGrades(): Collection
     {
-        return $this->notes;
+        return $this->grades;
     }
 
-    public function addNote(Note $note): self
+    public function addGrade(Grade $grade): self
     {
-        if (!$this->notes->contains($note)) {
-            $this->notes[] = $note;
-            $note->setModule($this);
+        if (!$this->grades->contains($grade)) {
+            $this->grades[] = $grade;
+            $grade->setModule($this);
         }
 
         return $this;
     }
 
-    public function removeNote(Note $note): self
+    public function removeGrade(Grade $grade): self
     {
-        if ($this->notes->removeElement($note)) {
+        if ($this->grades->removeElement($grade)) {
             // set the owning side to null (unless already changed)
-            if ($note->getModule() === $this) {
-                $note->setModule(null);
+            if ($grade->getModule() === $this) {
+                $grade->setModule(null);
             }
         }
 
