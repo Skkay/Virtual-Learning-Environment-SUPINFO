@@ -120,6 +120,28 @@ class Etudiant
      */
     private $notes;
 
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $dateOfBirth;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $address;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Gender::class, inversedBy="etudiants")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $gender;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Region::class, inversedBy="etudiants")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $region;
+
     public function __construct()
     {
         $this->modules = new ArrayCollection();
@@ -385,6 +407,54 @@ class Etudiant
                 $note->setEtudiant(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDateOfBirth(): ?\DateTimeInterface
+    {
+        return $this->dateOfBirth;
+    }
+
+    public function setDateOfBirth(\DateTimeInterface $dateOfBirth): self
+    {
+        $this->dateOfBirth = $dateOfBirth;
+
+        return $this;
+    }
+
+    public function getAddress(): ?string
+    {
+        return $this->address;
+    }
+
+    public function setAddress(string $address): self
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    public function getGender(): ?Gender
+    {
+        return $this->gender;
+    }
+
+    public function setGender(?Gender $gender): self
+    {
+        $this->gender = $gender;
+
+        return $this;
+    }
+
+    public function getRegion(): ?Region
+    {
+        return $this->region;
+    }
+
+    public function setRegion(?Region $region): self
+    {
+        $this->region = $region;
 
         return $this;
     }
