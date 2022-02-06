@@ -18,10 +18,10 @@ class Note
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Etudiant::class, inversedBy="notes")
+     * @ORM\ManyToOne(targetEntity=Student::class, inversedBy="notes")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $etudiant;
+    private $student;
 
     /**
      * @ORM\ManyToOne(targetEntity=Module::class, inversedBy="notes")
@@ -39,14 +39,14 @@ class Note
         return $this->id;
     }
 
-    public function getEtudiant(): ?Etudiant
+    public function getStudent(): ?Student
     {
-        return $this->etudiant;
+        return $this->student;
     }
 
-    public function setEtudiant(?Etudiant $etudiant): self
+    public function setStudent(?Student $student): self
     {
-        $this->etudiant = $etudiant;
+        $this->student = $student;
 
         return $this;
     }
