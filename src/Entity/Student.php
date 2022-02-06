@@ -116,9 +116,9 @@ class Student
     private $numberOfAbsences;
 
     /**
-     * @ORM\OneToMany(targetEntity=Note::class, mappedBy="student")
+     * @ORM\OneToMany(targetEntity=Grade::class, mappedBy="student")
      */
-    private $notes;
+    private $grades;
 
     /**
      * @ORM\Column(type="date")
@@ -145,7 +145,7 @@ class Student
     public function __construct()
     {
         $this->modules = new ArrayCollection();
-        $this->notes = new ArrayCollection();
+        $this->grades = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -382,29 +382,29 @@ class Student
     }
 
     /**
-     * @return Collection|Note[]
+     * @return Collection|Grade[]
      */
-    public function getNotes(): Collection
+    public function getGrades(): Collection
     {
-        return $this->notes;
+        return $this->grades;
     }
 
-    public function addNote(Note $note): self
+    public function addGrade(Grade $grade): self
     {
-        if (!$this->notes->contains($note)) {
-            $this->notes[] = $note;
-            $note->setStudent($this);
+        if (!$this->grades->contains($grade)) {
+            $this->grades[] = $grade;
+            $grade->setStudent($this);
         }
 
         return $this;
     }
 
-    public function removeNote(Note $note): self
+    public function removeGrade(Grade $grade): self
     {
-        if ($this->notes->removeElement($note)) {
+        if ($this->grades->removeElement($grade)) {
             // set the owning side to null (unless already changed)
-            if ($note->getStudent() === $this) {
-                $note->setStudent(null);
+            if ($grade->getStudent() === $this) {
+                $grade->setStudent(null);
             }
         }
 
