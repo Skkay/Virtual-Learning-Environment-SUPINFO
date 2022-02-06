@@ -27,9 +27,9 @@ class Module
     private $label;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Intervenant::class, mappedBy="modules")
+     * @ORM\ManyToMany(targetEntity=Instructor::class, mappedBy="modules")
      */
-    private $intervenants;
+    private $instructors;
 
     /**
      * @ORM\Column(type="boolean")
@@ -48,7 +48,7 @@ class Module
 
     public function __construct()
     {
-        $this->intervenants = new ArrayCollection();
+        $this->instructors = new ArrayCollection();
         $this->etudiants = new ArrayCollection();
         $this->notes = new ArrayCollection();
     }
@@ -71,27 +71,27 @@ class Module
     }
 
     /**
-     * @return Collection|Intervenant[]
+     * @return Collection|Instructor[]
      */
-    public function getIntervenants(): Collection
+    public function getInstructors(): Collection
     {
-        return $this->intervenants;
+        return $this->instructors;
     }
 
-    public function addIntervenant(Intervenant $intervenant): self
+    public function addInstructor(Instructor $instructor): self
     {
-        if (!$this->intervenants->contains($intervenant)) {
-            $this->intervenants[] = $intervenant;
-            $intervenant->addModule($this);
+        if (!$this->instructors->contains($instructor)) {
+            $this->instructors[] = $instructor;
+            $instructor->addModule($this);
         }
 
         return $this;
     }
 
-    public function removeIntervenant(Intervenant $intervenant): self
+    public function removeInstructor(Instructor $instructor): self
     {
-        if ($this->intervenants->removeElement($intervenant)) {
-            $intervenant->removeModule($this);
+        if ($this->instructors->removeElement($instructor)) {
+            $instructor->removeModule($this);
         }
 
         return $this;
