@@ -27,6 +27,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $email;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $firstName;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $lastName;
+
+    /**
      * @ORM\Column(type="json")
      */
     private $roles = [];
@@ -36,6 +46,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Instructor::class, mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $instructor;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Staff::class, mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $staff;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Student::class, mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $student;
 
     public function getId(): ?int
     {
@@ -50,6 +75,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+
+    public function setFirstName(string $firstName): self
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
+
+    public function setLastName(string $lastName): self
+    {
+        $this->lastName = $lastName;
 
         return $this;
     }
@@ -124,5 +173,61 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getInstructor(): ?Instructor
+    {
+        return $this->instructor;
+    }
+
+    public function setInstructor(?Instructor $instructor): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($instructor === null && $this->instructor !== null) {
+            $this->instructor->setUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($instructor !== null && $instructor->getUser() !== $this) {
+            $instructor->setUser($this);
+        }
+
+        $this->instructor = $instructor;
+
+        return $this;
+    }
+
+    public function getStaff(): ?Staff
+    {
+        return $this->staff;
+    }
+
+    public function setStaff(Staff $staff): self
+    {
+        // set the owning side of the relation if necessary
+        if ($staff->getUser() !== $this) {
+            $staff->setUser($this);
+        }
+
+        $this->staff = $staff;
+
+        return $this;
+    }
+
+    public function getStudent(): ?Student
+    {
+        return $this->student;
+    }
+
+    public function setStudent(Student $student): self
+    {
+        // set the owning side of the relation if necessary
+        if ($student->getUser() !== $this) {
+            $student->setUser($this);
+        }
+
+        $this->student = $student;
+
+        return $this;
     }
 }
