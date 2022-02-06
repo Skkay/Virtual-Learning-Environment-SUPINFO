@@ -37,9 +37,9 @@ class Module
     private $speciality;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Etudiant::class, mappedBy="modules")
+     * @ORM\ManyToMany(targetEntity=Student::class, mappedBy="modules")
      */
-    private $etudiants;
+    private $students;
 
     /**
      * @ORM\OneToMany(targetEntity=Note::class, mappedBy="module")
@@ -49,7 +49,7 @@ class Module
     public function __construct()
     {
         $this->instructors = new ArrayCollection();
-        $this->etudiants = new ArrayCollection();
+        $this->students = new ArrayCollection();
         $this->notes = new ArrayCollection();
     }
 
@@ -110,27 +110,27 @@ class Module
     }
 
     /**
-     * @return Collection|Etudiant[]
+     * @return Collection|Student[]
      */
-    public function getEtudiants(): Collection
+    public function getStudents(): Collection
     {
-        return $this->etudiants;
+        return $this->students;
     }
 
-    public function addEtudiant(Etudiant $etudiant): self
+    public function addStudent(Student $student): self
     {
-        if (!$this->etudiants->contains($etudiant)) {
-            $this->etudiants[] = $etudiant;
-            $etudiant->addModule($this);
+        if (!$this->students->contains($student)) {
+            $this->students[] = $student;
+            $student->addModule($this);
         }
 
         return $this;
     }
 
-    public function removeEtudiant(Etudiant $etudiant): self
+    public function removeStudent(Student $student): self
     {
-        if ($this->etudiants->removeElement($etudiant)) {
-            $etudiant->removeModule($this);
+        if ($this->students->removeElement($student)) {
+            $student->removeModule($this);
         }
 
         return $this;

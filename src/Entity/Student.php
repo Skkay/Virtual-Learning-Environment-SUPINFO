@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\EtudiantRepository;
+use App\Repository\StudentRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=EtudiantRepository::class)
+ * @ORM\Entity(repositoryClass=StudentRepository::class)
  */
-class Etudiant
+class Student
 {
     /**
      * @ORM\Id
@@ -20,25 +20,25 @@ class Etudiant
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity=User::class, inversedBy="etudiant", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=User::class, inversedBy="student", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Campus::class, inversedBy="etudiants")
+     * @ORM\ManyToOne(targetEntity=Campus::class, inversedBy="students")
      * @ORM\JoinColumn(nullable=false)
      */
     private $campus;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Level::class, inversedBy="etudiants")
+     * @ORM\ManyToOne(targetEntity=Level::class, inversedBy="students")
      * @ORM\JoinColumn(nullable=false)
      */
     private $level;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Module::class, inversedBy="etudiants")
+     * @ORM\ManyToMany(targetEntity=Module::class, inversedBy="students")
      */
     private $modules;
 
@@ -84,13 +84,13 @@ class Etudiant
     private $accountsReminded;
 
     /**
-     * @ORM\ManyToOne(targetEntity=AccountsPaymentType::class, inversedBy="etudiants")
+     * @ORM\ManyToOne(targetEntity=AccountsPaymentType::class, inversedBy="students")
      * @ORM\JoinColumn(nullable=false)
      */
     private $accountsPaymentType;
 
     /**
-     * @ORM\ManyToOne(targetEntity=CompanyTrainingContract::class, inversedBy="etudiants")
+     * @ORM\ManyToOne(targetEntity=CompanyTrainingContract::class, inversedBy="students")
      */
     private $companyTrainingContract;
 
@@ -105,7 +105,7 @@ class Etudiant
     private $employedAs;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Diploma::class, inversedBy="etudiants")
+     * @ORM\ManyToOne(targetEntity=Diploma::class, inversedBy="students")
      * @ORM\JoinColumn(nullable=false)
      */
     private $lastDiploma;
@@ -116,7 +116,7 @@ class Etudiant
     private $numberOfAbsences;
 
     /**
-     * @ORM\OneToMany(targetEntity=Note::class, mappedBy="etudiant")
+     * @ORM\OneToMany(targetEntity=Note::class, mappedBy="student")
      */
     private $notes;
 
@@ -131,13 +131,13 @@ class Etudiant
     private $address;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Gender::class, inversedBy="etudiants")
+     * @ORM\ManyToOne(targetEntity=Gender::class, inversedBy="students")
      * @ORM\JoinColumn(nullable=false)
      */
     private $gender;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Region::class, inversedBy="etudiants")
+     * @ORM\ManyToOne(targetEntity=Region::class, inversedBy="students")
      * @ORM\JoinColumn(nullable=false)
      */
     private $region;
@@ -393,7 +393,7 @@ class Etudiant
     {
         if (!$this->notes->contains($note)) {
             $this->notes[] = $note;
-            $note->setEtudiant($this);
+            $note->setStudent($this);
         }
 
         return $this;
@@ -403,8 +403,8 @@ class Etudiant
     {
         if ($this->notes->removeElement($note)) {
             // set the owning side to null (unless already changed)
-            if ($note->getEtudiant() === $this) {
-                $note->setEtudiant(null);
+            if ($note->getStudent() === $this) {
+                $note->setStudent(null);
             }
         }
 
