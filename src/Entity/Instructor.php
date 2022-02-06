@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\IntervenantRepository;
+use App\Repository\InstructorRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=IntervenantRepository::class)
+ * @ORM\Entity(repositoryClass=InstructorRepository::class)
  */
-class Intervenant
+class Instructor
 {
     /**
      * @ORM\Id
@@ -20,17 +20,17 @@ class Intervenant
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity=User::class, inversedBy="intervenant", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=User::class, inversedBy="instructor", cascade={"persist", "remove"})
      */
     private $user;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Module::class, inversedBy="intervenants")
+     * @ORM\ManyToMany(targetEntity=Module::class, inversedBy="instructors")
      */
     private $modules;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Section::class, inversedBy="intervenants")
+     * @ORM\ManyToMany(targetEntity=Section::class, inversedBy="instructors")
      */
     private $sections;
 

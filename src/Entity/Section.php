@@ -36,13 +36,13 @@ class Section
     private $label;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Intervenant::class, mappedBy="sections")
+     * @ORM\ManyToMany(targetEntity=Instructor::class, mappedBy="sections")
      */
-    private $intervenants;
+    private $instructors;
 
     public function __construct()
     {
-        $this->intervenants = new ArrayCollection();
+        $this->instructors = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -87,27 +87,27 @@ class Section
     }
 
     /**
-     * @return Collection|Intervenant[]
+     * @return Collection|Instructor[]
      */
-    public function getIntervenants(): Collection
+    public function getInstructors(): Collection
     {
-        return $this->intervenants;
+        return $this->instructors;
     }
 
-    public function addIntervenant(Intervenant $intervenant): self
+    public function addInstructor(Instructor $instructor): self
     {
-        if (!$this->intervenants->contains($intervenant)) {
-            $this->intervenants[] = $intervenant;
-            $intervenant->addSection($this);
+        if (!$this->instructors->contains($instructor)) {
+            $this->instructors[] = $instructor;
+            $instructor->addSection($this);
         }
 
         return $this;
     }
 
-    public function removeIntervenant(Intervenant $intervenant): self
+    public function removeInstructor(Instructor $instructor): self
     {
-        if ($this->intervenants->removeElement($intervenant)) {
-            $intervenant->removeSection($this);
+        if ($this->instructors->removeElement($instructor)) {
+            $instructor->removeSection($this);
         }
 
         return $this;
