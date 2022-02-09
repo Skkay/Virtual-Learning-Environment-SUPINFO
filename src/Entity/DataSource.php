@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\FieldEquivalenceRepository;
+use App\Repository\DataSourceRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=FieldEquivalenceRepository::class)
+ * @ORM\Entity(repositoryClass=DataSourceRepository::class)
  */
-class FieldEquivalence
+class DataSource
 {
     /**
      * @ORM\Id
