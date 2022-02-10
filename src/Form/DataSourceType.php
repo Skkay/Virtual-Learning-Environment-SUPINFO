@@ -19,25 +19,12 @@ class DataSourceType extends AbstractType
         ;
 
         $builder->get('equivalence')->addModelTransformer(new CallbackTransformer(
-            // ['source_1' => 'dest_1', 'source_2' => 'data_2'] -> source_1-dest_1 ; source_2-dest_2
             function ($equivalencesAsArray) {
-                $sourceDest = [];
-                foreach ($equivalencesAsArray as $source => $dest) {
-                    $sourceDest[] = $source . '-' . $dest;
-                }
-
-                return implode(' ; ', $sourceDest);
+                return json_encode($equivalencesAsArray);
             },
             
-            // source_1-dest_1 ; source_2-dest_2 -> ['source_1' => 'dest_1', 'source_2' => 'data_2']
             function ($equivalencesAsString) {
-                $equivalencesAsArray = [];
-                foreach (array_map('trim', explode(';', $equivalencesAsString)) as $equivalence) {
-                    $sourceDest = array_map('trim', explode('-', $equivalence));
-                    $equivalencesAsArray[$sourceDest[0]] = $sourceDest[1];
-                }
-
-                return $equivalencesAsArray;
+                return json_decode($equivalencesAsString, true);
             }
         ));
     }
