@@ -115,78 +115,76 @@ class DataLoaderService
                 $mainEntity = $mainEntityRepository->findOneBy($criteria);
                 if ($mainEntity === null) {
                     $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Entity of "' . $mainEntityClass . '" not exists yet. Creating...');
-
                     $mainEntity = new $mainEntityClass;
-                    foreach ($dataEquivalence['fields'] as $field) {
-                        if (is_array($field['type'])) { // => relation
-                            $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Field "' . $field['destination'] . '" is a relation. Getting it from main entity "' . $mainEntityClass . '"...');
+                }
 
-                            // Determine relation type (OneToOne, OneToMany, ManyToOne, ManyToMany)
-                            $entityProperty = (new \ReflectionClass($mainEntityClass))->getProperty($field['destination']);
-                            $annotations = array_map('get_class', $this->annotationsReader->getPropertyAnnotations($entityProperty)); // Stringify all class name
-                            $relationType = array_values(array_intersect(self::MAPPING_RELATIONS, $annotations))[0];
+                foreach ($dataEquivalence['fields'] as $field) {
+                    if (is_array($field['type'])) { // => relation
+                        $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Field "' . $field['destination'] . '" is a relation. Getting it from main entity "' . $mainEntityClass . '"...');
 
-                            $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Relation type: ' . $relationType);
+                        // Determine relation type (OneToOne, OneToMany, ManyToOne, ManyToMany)
+                        $entityProperty = (new \ReflectionClass($mainEntityClass))->getProperty($field['destination']);
+                        $annotations = array_map('get_class', $this->annotationsReader->getPropertyAnnotations($entityProperty)); // Stringify all class name
+                        $relationType = array_values(array_intersect(self::MAPPING_RELATIONS, $annotations))[0];
 
-                            if ($relationType === self::ONE_TO_ONE || $relationType === self::ONE_TO_MANY) {
-                                $subEntity = $mainEntity->__get($field['destination']);
+                        $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Relation type: ' . $relationType);
 
-                                if ($subEntity === null) {
-                                    $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Main entity "' . $mainEntityClass . '" hasn\'t "' . $field['destination'] . '" relation. Getting it from repository...');
+                        if ($relationType === self::ONE_TO_ONE || $relationType === self::ONE_TO_MANY) {
+                            $subEntity = $mainEntity->__get($field['destination']);
 
-                                    $subEntity = $this->em->getRepository($field['type']['entity'])->findOneBy([
-                                        $field['type']['identified_by']['destination'] => $value[$field['type']['identified_by']['source']],
-                                    ]);
-                                    dump($subEntity);
+                            if ($subEntity === null) {
+                                $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Main entity "' . $mainEntityClass . '" hasn\'t "' . $field['destination'] . '" relation. Getting it from repository...');
 
-                                    if ($subEntity === null) {
-                                        throw new \Exception('Sub entity of ' . $field['type']['entity'] . ' not exists yet');
-                                    }
-
-                                    $mainEntity->__set($field['destination'], $subEntity);
-                                }
-
-                                $subEntity->__set($field['type']['destination'], $value[$field['type']['source']]);
-
-                            // } 
-                            // elseif ($relationType === self::ONE_TO_MANY) {
-                            //     throw new \Exception('ONE_TO_MANY relation not handled yet');
-                            //     // on part du principe que l'entity existe pas, on la créé et on test si elle existe dans in_array ?
-
-                            // } 
-                            // elseif ($relationType === self::MANY_TO_ONE) {
-                            //     throw new \Exception('MANY_TO_ONE relation not handled yet');
-
-                            } elseif ($relationType === self::MANY_TO_MANY || $relationType === self::MANY_TO_ONE) { // on la créer et on l'ajoute, normalement y'a pas besoin de la modifier ici
                                 $subEntity = $this->em->getRepository($field['type']['entity'])->findOneBy([
                                     $field['type']['identified_by']['destination'] => $value[$field['type']['identified_by']['source']],
                                 ]);
+                                dump($subEntity);
 
                                 if ($subEntity === null) {
-                                    $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Sub entity of ' . $field['type']['entity'] . ' not exists yet. Creating...');
-
-                                    $subEntity = new $field['type']['entity'];
-                                    $subEntity->__set($field['type']['destination'], $value[$field['type']['source']]);
-
-                                    $this->em->persist($subEntity);
+                                    throw new \Exception('Sub entity of ' . $field['type']['entity'] . ' not exists yet');
                                 }
 
-                                $mainEntity->__add($field['destination'], $subEntity);
+                                $mainEntity->__set($field['destination'], $subEntity);
                             }
 
-                        } else {
-                            throw new \Exception('Non-relation type is not handled yet');
+                            $subEntity->__set($field['type']['destination'], $value[$field['type']['source']]);
+
+                        // } 
+                        // elseif ($relationType === self::ONE_TO_MANY) {
+                        //     throw new \Exception('ONE_TO_MANY relation not handled yet');
+                        //     // on part du principe que l'entity existe pas, on la créé et on test si elle existe dans in_array ?
+
+                        // } 
+                        // elseif ($relationType === self::MANY_TO_ONE) {
+                        //     throw new \Exception('MANY_TO_ONE relation not handled yet');
+
+                        } elseif ($relationType === self::MANY_TO_MANY || $relationType === self::MANY_TO_ONE) { // on la créer et on l'ajoute, normalement y'a pas besoin de la modifier ici
+                            $subEntity = $this->em->getRepository($field['type']['entity'])->findOneBy([
+                                $field['type']['identified_by']['destination'] => $value[$field['type']['identified_by']['source']],
+                            ]);
+
+                            if ($subEntity === null) {
+                                $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Sub entity of ' . $field['type']['entity'] . ' not exists yet. Creating...');
+
+                                $subEntity = new $field['type']['entity'];
+                                $subEntity->__set($field['type']['destination'], $value[$field['type']['source']]);
+
+                                $this->em->persist($subEntity);
+                            }
+
+                            $mainEntity->__add($field['destination'], $subEntity);
                         }
 
-
-                        $this->em->persist($mainEntity); // à déplacer hors du if is_array ?
-                        $this->em->flush();
-
+                    } else {
+                        throw new \Exception('Non-relation type is not handled yet');
                     }
-                } else {
-                    throw new \Exception('Updating an existing entity is not handled yet');
+
+
+                    $this->em->persist($mainEntity); // à déplacer hors du if is_array ?
+                    $this->em->flush();
 
                 }
+                
 
 
             }
