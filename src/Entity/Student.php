@@ -460,7 +460,7 @@ class Student
     }
 
     
-    public function __get($name): mixed
+    public function __get($name)
     {
         return $this->$name;
     }
