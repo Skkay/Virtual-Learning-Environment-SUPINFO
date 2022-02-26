@@ -20,7 +20,7 @@ class Campus
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $label;
 
@@ -163,6 +163,13 @@ class Campus
                 $student->setCampus(null);
             }
         }
+
+        return $this;
+    }
+
+    public function __set($name, $value): self
+    {
+        $this->$name = $value;
 
         return $this;
     }
