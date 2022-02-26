@@ -112,4 +112,36 @@ class Section
 
         return $this;
     }
+
+    
+    public function __get($name): mixed
+    {
+        return $this->$name;
+    }
+
+    public function __set($name, $value): self
+    {
+        $this->$name = $value;
+
+        return $this;
+    }
+
+    public function __add($name, $value): self
+    {
+        if (!$this->$name->contains($value)) {
+            $this->$name[] = $value;
+            $value->addSection($this);
+        }
+
+        return $this;
+    }
+
+    public function __remove($name, $value): self
+    {
+        if ($this->$name->removeElement($value)) {
+            $value->removeSection($this);
+        }
+
+        return $this;
+    }
 }

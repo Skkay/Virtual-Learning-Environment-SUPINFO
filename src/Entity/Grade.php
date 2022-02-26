@@ -74,4 +74,17 @@ class Grade
 
         return $this;
     }
+
+
+    public function __get($name): mixed
+    {
+        return $this->$name;
+    }
+
+    public function __set($name, $value): self
+    {
+        $this->$name = $value;
+
+        return $this;
+    }
 }

@@ -230,4 +230,28 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    
+    public function __get($name)
+    {
+        return $this->$name;
+    }
+
+    public function __set($name, $value): self
+    {
+        $this->$name = $value;
+
+        return $this;
+    }
+
+    public function __setRelation($name, $value): self
+    {
+        if ($value->getUser() !== $this) {
+            $value->setUser($this);
+        }
+
+        $this->$name = $value;
+
+        return $this;
+    }
 }

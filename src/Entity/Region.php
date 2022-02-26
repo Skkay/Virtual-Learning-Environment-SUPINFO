@@ -80,4 +80,39 @@ class Region
 
         return $this;
     }
+
+
+    public function __get($name): mixed
+    {
+        return $this->$name;
+    }
+
+    public function __set($name, $value): self
+    {
+        $this->$name = $value;
+
+        return $this;
+    }
+
+    public function __add($name, $value): self
+    {
+        if (!$this->$name->contains($value)) {
+            $this->$name[] = $value;
+            $value->addRegion($this);
+        }
+
+        return $this;
+    }
+
+    public function __remove($name, $value): self
+    {
+        if ($this->$name->removeElement($value)) {
+            // set the owning side to null (unless already changed)
+            if ($value->getRegion() === $this) {
+                $value->setRegion(null);
+            }
+        }
+
+        return $this;
+    }
 }
