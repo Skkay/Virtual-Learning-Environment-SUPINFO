@@ -118,6 +118,7 @@ class DataLoaderService
                     $mainEntity = new $mainEntityClass;
                 }
 
+                $fieldIsCleared = [];
                 foreach ($dataEquivalence['fields'] as $field) {
                     if (is_array($field['type'])) { // => relation
                         $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Field "' . $field['destination'] . '" is a relation. Getting it from main entity "' . $mainEntityClass . '"...');
@@ -172,6 +173,13 @@ class DataLoaderService
                                 $this->em->persist($subEntity);
                             }
 
+                            if (!isset($fieldIsCleared[$field['destination']]) || $fieldIsCleared[$field['destination']] === false) {
+                                $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - First time we see "' . $field['destination'] . '". Clearing...');
+
+                                $mainEntity->__get($field['destination'])->clear();
+                                $fieldIsCleared[$field['destination']] = true;
+                            }
+
                             $mainEntity->__add($field['destination'], $subEntity);
                         }
 
@@ -183,6 +191,7 @@ class DataLoaderService
                     $this->em->persist($mainEntity); // à déplacer hors du if is_array ?
                     $this->em->flush();
 
+                    $this->logger->debug(' ');
                 }
                 
 
