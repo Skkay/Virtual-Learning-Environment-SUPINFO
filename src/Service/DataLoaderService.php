@@ -129,7 +129,7 @@ class DataLoaderService
 
                         $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Relation type: ' . $relationType);
 
-                        if ($relationType === self::ONE_TO_ONE || $relationType === self::ONE_TO_MANY) {
+                        if ($relationType === self::ONE_TO_ONE || $relationType === self::MANY_TO_ONE) {
                             $subEntity = $mainEntity->__get($field['destination']);
 
                             if ($subEntity === null) {
@@ -158,7 +158,7 @@ class DataLoaderService
                         // elseif ($relationType === self::MANY_TO_ONE) {
                         //     throw new \Exception('MANY_TO_ONE relation not handled yet');
 
-                        } elseif ($relationType === self::MANY_TO_MANY || $relationType === self::MANY_TO_ONE) { // on la créer et on l'ajoute, normalement y'a pas besoin de la modifier ici
+                        } elseif ($relationType === self::MANY_TO_MANY || $relationType === self::ONE_TO_MANY) { // on la créer et on l'ajoute, normalement y'a pas besoin de la modifier ici
                             $subEntity = $this->em->getRepository($field['type']['entity'])->findOneBy([
                                 $field['type']['identified_by']['destination'] => $value[$field['type']['identified_by']['source']],
                             ]);
