@@ -32,7 +32,7 @@ class Module
     private $instructors;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $speciality;
 
@@ -102,7 +102,7 @@ class Module
         return $this->speciality;
     }
 
-    public function setSpeciality(bool $speciality): self
+    public function setSpeciality(?bool $speciality): self
     {
         $this->speciality = $speciality;
 

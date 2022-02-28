@@ -19,18 +19,16 @@ class Grade
 
     /**
      * @ORM\ManyToOne(targetEntity=Student::class, inversedBy="grades")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $student;
 
     /**
      * @ORM\ManyToOne(targetEntity=Module::class, inversedBy="grades")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $module;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      */
     private $grade;
 
@@ -68,7 +66,7 @@ class Grade
         return $this->grade;
     }
 
-    public function setGrade(float $grade): self
+    public function setGrade(?float $grade): self
     {
         $this->grade = $grade;
 

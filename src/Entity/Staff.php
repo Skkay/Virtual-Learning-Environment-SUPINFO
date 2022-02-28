@@ -21,7 +21,6 @@ class Staff
 
     /**
      * @ORM\OneToOne(targetEntity=User::class, inversedBy="staff", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 

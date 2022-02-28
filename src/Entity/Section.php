@@ -21,17 +21,16 @@ class Section
 
     /**
      * @ORM\ManyToOne(targetEntity=Campus::class, inversedBy="sections")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $campus;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $year;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $label;
 
@@ -67,7 +66,7 @@ class Section
         return $this->year;
     }
 
-    public function setYear(int $year): self
+    public function setYear(?int $year): self
     {
         $this->year = $year;
 
