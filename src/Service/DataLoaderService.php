@@ -107,7 +107,7 @@ class DataLoaderService
                     $criteria[$identifierField['destination']] = $subEntity;
 
                 } else {
-                    throw new \Exception('Non-relation identifier not handled yet');
+                    $criteria[$identifierField['destination']] = $value[$identifierField['source']];
                 }
 
                 dump($criteria);
@@ -184,7 +184,9 @@ class DataLoaderService
                         }
 
                     } else {
-                        throw new \Exception('Non-relation type is not handled yet');
+                        $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Field "' . $field['destination'] . '" is not a relation.');
+
+                        $mainEntity->__set($field['destination'], $value[$field['source']]);
                     }
 
 
