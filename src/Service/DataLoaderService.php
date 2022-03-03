@@ -136,10 +136,11 @@ class DataLoaderService
                             if ($subEntity === null) {
                                 $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Main entity "' . $mainEntityClass . '" hasn\'t "' . $field['destination'] . '" relation. Getting it from repository...');
 
-                                $subEntity = $this->em->getRepository($field['type']['entity'])->findOneBy([
-                                    $field['type']['identified_by']['destination'] => $value[$field['type']['identified_by']['source']],
-                                ]);
-                                dump($subEntity);
+                                if ($field['type']['identified_by'] !== null) {
+                                    $subEntity = $this->em->getRepository($field['type']['entity'])->findOneBy([
+                                        $field['type']['identified_by']['destination'] => $value[$field['type']['identified_by']['source']],
+                                    ]);
+                                }
 
                                 if ($subEntity === null) {
                                     throw new \Exception('Sub entity of ' . $field['type']['entity'] . ' not exists yet');
@@ -160,9 +161,13 @@ class DataLoaderService
                         //     throw new \Exception('MANY_TO_ONE relation not handled yet');
 
                         } elseif ($relationType === self::MANY_TO_MANY || $relationType === self::ONE_TO_MANY) { // on la créer et on l'ajoute, normalement y'a pas besoin de la modifier ici
-                            $subEntity = $this->em->getRepository($field['type']['entity'])->findOneBy([
-                                $field['type']['identified_by']['destination'] => $value[$field['type']['identified_by']['source']],
-                            ]);
+                            $subEntity = null;
+
+                            if ($field['type']['identified_by'] !== null) {
+                                $subEntity = $this->em->getRepository($field['type']['entity'])->findOneBy([
+                                    $field['type']['identified_by']['destination'] => $value[$field['type']['identified_by']['source']],
+                                ]);
+                            }
 
                             if ($subEntity === null) {
                                 $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Sub entity of ' . $field['type']['entity'] . ' not exists yet. Creating...');
