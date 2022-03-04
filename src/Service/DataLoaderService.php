@@ -183,6 +183,25 @@ class DataLoaderService
                                 $this->em->persist($subEntity);
                             }
 
+                            if  (isset($field['options']['key_as_value'])) {
+                                $subSubEntity = $this->em->getRepository($field['options']['key_as_value']['type']['entity'])->findOneBy([
+                                    $field['options']['key_as_value']['type']['identified_by'] => $value[$field['options']['key_as_value']['type']['source']]
+                                ]);
+
+                                if ($subSubEntity === null) {
+                                    $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Sub sub entity of ' . $field['options']['key_as_value']['type']['entity'] . ' not exists yet. Creating...');
+
+                                    $subSubEntity = new $field['options']['key_as_value']['type']['entity'];
+                                    $subSubEntity->__set($field['options']['key_as_value']['type']['destination'], $value[$field['options']['key_as_value']['type']['source']]);
+
+                                    $this->em->persist($subSubEntity);
+                                }
+
+                                $subEntity->__set($field['options']['key_as_value']['destination'], $subSubEntity);
+
+                                $this->em->persist($subEntity);
+                            }
+
                             if (!isset($fieldIsCleared[$field['destination']]) || $fieldIsCleared[$field['destination']] === false) {
                                 $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - First time we see "' . $field['destination'] . '". Clearing...');
 
