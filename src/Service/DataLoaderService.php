@@ -78,6 +78,9 @@ class DataLoaderService
             $records = $csv->getRecords();
             foreach ($records as $value) {
                 
+                // Replace empty strings by null
+                $value = array_map(fn($v) => $v === '' ? null : $v, $value); 
+
                 // Find existing entity
                 $criteria = [];
                 $identifierField = $dataEquivalence['main_entity']['identified_by'];
