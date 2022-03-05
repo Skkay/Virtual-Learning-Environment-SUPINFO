@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Service\DataLoaderService;
+use App\Service\TestService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,4 +19,28 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
         ]);
     }
+
+    /**
+     * @Route("/test", name="app_test")
+     */
+    public function test(DataLoaderService $dataLoaderService): Response
+    {
+        $dataLoaderService->loadCsv();
+        // return $this->json(['response' => 200]);
+        return $this->render('home/index.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
+
+    // /**
+    //  * @Route("/test", name="app_test")
+    //  */
+    // public function test(TestService $testService): Response
+    // {
+    //     $testService->testExtractor();
+    //     // return $this->json(['response' => 200]);
+    //     return $this->render('home/index.html.twig', [
+    //         'controller_name' => 'HomeController',
+    //     ]);
+    // }
 }
