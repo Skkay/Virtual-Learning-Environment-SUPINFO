@@ -46,12 +46,12 @@ class DataLoaderService
 
         $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Checking directory' . $this->etlDataDirectory);
         if (!$filesystem->exists($this->etlDataDirectory)) {
-            throw new \Exception('Directory not found'); // TODO: custom exception
+            throw new \Exception('Directory not found');
         }
 
         $finder->files()->name('*.csv')->in($this->etlDataDirectory);
         if (!$finder->hasResults()) {
-            throw new \Exception('No CSV file found'); // TODO: custom exception
+            throw new \Exception('No CSV file found');
         }
 
         foreach ($finder as $file) {
@@ -60,7 +60,7 @@ class DataLoaderService
             // Get dataSource associated to file
             $dataSource = $this->dataSourceRepository->findOneBy(['label' => $file->getFilename()]);
             if ($dataSource === null) {
-                throw new \Exception('File has no associated dataSource'); // TODO: custom exception
+                throw new \Exception('File has no associated dataSource');
             }
             $dataEquivalence = $dataSource->getEquivalence();
 
@@ -72,12 +72,11 @@ class DataLoaderService
             // Reading CSV
             $csv = Reader::createFromPath($file->getPathname(), 'r');
             $csv->setHeaderOffset(0);
-            $csv->setDelimiter(';'); // a définir dans dataSource ?
+            $csv->setDelimiter(';');
 
             $header = $csv->getHeader();
             $records = $csv->getRecords();
             foreach ($records as $value) {
-                
                 // Replace empty strings by null
                 $value = array_map(fn($v) => $v === '' ? null : $v, $value); 
 
@@ -94,7 +93,6 @@ class DataLoaderService
                     $subEntityRepository = $this->em->getRepository($subEntityClass);
 
                     $subCriteria[$subIdentifierField['destination']] = $value[$subIdentifierField['source']];
-                    dump($subCriteria);
 
                     $subEntity = $subEntityRepository->findOneBy($subCriteria);
                     if ($subEntity === null) {
@@ -113,7 +111,6 @@ class DataLoaderService
                     $criteria[$identifierField['destination']] = $value[$identifierField['source']];
                 }
 
-                dump($criteria);
 
                 $mainEntity = $mainEntityRepository->findOneBy($criteria);
                 if ($mainEntity === null) {
@@ -157,18 +154,8 @@ class DataLoaderService
                                 $mainEntity->__set($field['destination'], $subEntity);
                             }
 
-                            $subEntity->__set($field['type']['destination'], $value[$field['type']['source']]);
 
-                        // } 
-                        // elseif ($relationType === self::ONE_TO_MANY) {
-                        //     throw new \Exception('ONE_TO_MANY relation not handled yet');
-                        //     // on part du principe que l'entity existe pas, on la créé et on test si elle existe dans in_array ?
-
-                        // } 
-                        // elseif ($relationType === self::MANY_TO_ONE) {
-                        //     throw new \Exception('MANY_TO_ONE relation not handled yet');
-
-                        } elseif ($relationType === self::MANY_TO_MANY || $relationType === self::ONE_TO_MANY) { // on la créer et on l'ajoute, normalement y'a pas besoin de la modifier ici
+                        } elseif ($relationType === self::MANY_TO_MANY || $relationType === self::ONE_TO_MANY) {
                             $subEntity = null;
 
                             if ($field['type']['identified_by'] !== null) {
@@ -222,7 +209,7 @@ class DataLoaderService
                     }
 
 
-                    $this->em->persist($mainEntity); // à déplacer hors du if is_array ?
+                    $this->em->persist($mainEntity);
                     $this->em->flush();
 
                     $this->logger->debug(' ');
