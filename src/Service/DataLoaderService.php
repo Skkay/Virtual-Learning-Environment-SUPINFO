@@ -142,7 +142,7 @@ class DataLoaderService
                                     ]);
                                 }
 
-                                if ($subEntity === null) {
+                                if ($subEntity === null && $value[$field['type']['source']] !== null) {
                                     $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Sub entity of ' . $field['type']['entity'] . ' not exists yet. Creating...');
 
                                     $subEntity = new $field['type']['entity'];
@@ -152,6 +152,8 @@ class DataLoaderService
                                 }
 
                                 $mainEntity->__set($field['destination'], $subEntity);
+                            } else {
+                                $subEntity->__set($field['type']['destination'], $value[$field['type']['source']]);
                             }
 
 
