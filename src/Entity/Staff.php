@@ -104,11 +104,4 @@ class Staff
 
         return $this;
     }
-
-    public function __remove($name, $value): self
-    {
-        $this->$name->removeElement($value);
-
-        return $this;
-    }
 }

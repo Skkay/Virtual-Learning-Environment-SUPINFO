@@ -144,16 +144,4 @@ class CompanyTrainingContract
 
         return $this;
     }
-
-    public function __remove($name, $value): self
-    {
-        if ($this->$name->removeElement($value)) {
-            // set the owning side to null (unless already changed)
-            if ($value->getCompanyTrainingContract() === $this) {
-                $value->setCompanyTrainingContract(null);
-            }
-        }
-
-        return $this;
-    }
 }

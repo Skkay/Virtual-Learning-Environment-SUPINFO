@@ -141,13 +141,4 @@ class Section
 
         return $this;
     }
-
-    public function __remove($name, $value): self
-    {
-        if ($this->$name->removeElement($value)) {
-            $value->removeSection($this);
-        }
-
-        return $this;
-    }
 }
