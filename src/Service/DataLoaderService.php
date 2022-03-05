@@ -188,14 +188,14 @@ class DataLoaderService
 
                             if  (isset($field['options']['key_as_value'])) {
                                 $subSubEntity = $this->em->getRepository($field['options']['key_as_value']['type']['entity'])->findOneBy([
-                                    $field['options']['key_as_value']['type']['identified_by'] => $value[$field['options']['key_as_value']['type']['source']]
+                                    $field['options']['key_as_value']['type']['identified_by'] => $field['options']['key_as_value']['type']['source']
                                 ]);
 
                                 if ($subSubEntity === null) {
                                     $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Sub sub entity of ' . $field['options']['key_as_value']['type']['entity'] . ' not exists yet. Creating...');
 
                                     $subSubEntity = new $field['options']['key_as_value']['type']['entity'];
-                                    $subSubEntity->__set($field['options']['key_as_value']['type']['destination'], $value[$field['options']['key_as_value']['type']['source']]);
+                                    $subSubEntity->__set($field['options']['key_as_value']['type']['destination'], $field['options']['key_as_value']['type']['source']);
 
                                     $this->em->persist($subSubEntity);
                                 }
