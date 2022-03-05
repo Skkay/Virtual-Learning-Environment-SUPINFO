@@ -183,7 +183,14 @@ class Module
     {
         if (!$this->$name->contains($value)) {
             $this->$name[] = $value;
-            $value->setModule($this);
+
+            if (method_exists($value, 'setModule')) {
+                $value->setModule($this);
+            }
+
+            if (method_exists($value, 'addModule')) {
+                $value->addModule($this);
+            }
         }
 
         return $this;

@@ -184,7 +184,14 @@ class Campus
     {
         if (!$this->$name->contains($value)) {
             $this->$name[] = $value;
-            $value->setCampus($this);
+
+            if (method_exists($value, 'setCampus')) {
+                $value->setCampus($this);
+            }
+
+            if (method_exists($value, 'addCampus')) {
+                $value->addCampus($this);
+            }
         }
 
         return $this;

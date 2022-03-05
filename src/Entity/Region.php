@@ -98,7 +98,14 @@ class Region
     {
         if (!$this->$name->contains($value)) {
             $this->$name[] = $value;
-            $value->addRegion($this);
+
+            if (method_exists($value, 'setRegion')) {
+                $value->setRegion($this);
+            }
+
+            if (method_exists($value, 'addRegion')) {
+                $value->addRegion($this);
+            }
         }
 
         return $this;

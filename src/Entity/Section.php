@@ -129,7 +129,14 @@ class Section
     {
         if (!$this->$name->contains($value)) {
             $this->$name[] = $value;
-            $value->addSection($this);
+
+            if (method_exists($value, 'setSection')) {
+                $value->setSection($this);
+            }
+
+            if (method_exists($value, 'addSection')) {
+                $value->addSection($this);
+            }
         }
 
         return $this;

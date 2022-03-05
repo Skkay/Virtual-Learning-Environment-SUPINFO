@@ -132,7 +132,14 @@ class CompanyTrainingContract
     {
         if (!$this->$name->contains($value)) {
             $this->$name[] = $value;
-            $value->setCompanyTrainingContract($this);
+
+            if (method_exists($value, 'setCompanyTrainingContract')) {
+                $value->setCompanyTrainingContract($this);
+            }
+
+            if (method_exists($value, 'addCompanyTrainingContract')) {
+                $value->addCompanyTrainingContract($this);
+            }
         }
 
         return $this;

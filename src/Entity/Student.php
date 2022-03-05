@@ -468,6 +468,14 @@ class Student
     {
         if (!$this->$name->contains($value)) {
             $this->$name[] = $value;
+
+            if (method_exists($value, 'setStudent')) {
+                $value->setStudent($this);
+            }
+
+            if (method_exists($value, 'addStudent')) {
+                $value->addStudent($this);
+            }
         }
 
         return $this;

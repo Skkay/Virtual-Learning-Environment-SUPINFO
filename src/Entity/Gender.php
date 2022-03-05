@@ -98,7 +98,14 @@ class Gender
     {
         if (!$this->$name->contains($value)) {
             $this->$name[] = $value;
-            $value->setGender($this);
+
+            if (method_exists($value, 'setGender')) {
+                $value->setGender($this);
+            }
+
+            if (method_exists($value, 'addGender')) {
+                $value->addGender($this);
+            }
         }
 
         return $this;

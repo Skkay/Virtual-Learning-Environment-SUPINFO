@@ -122,6 +122,14 @@ class Instructor
     {
         if (!$this->$name->contains($value)) {
             $this->$name[] = $value;
+
+            if (method_exists($value, 'setInstructor')) {
+                $value->setInstructor($this);
+            }
+
+            if (method_exists($value, 'addInstructor')) {
+                $value->addInstructor($this);
+            }
         }
 
         return $this;

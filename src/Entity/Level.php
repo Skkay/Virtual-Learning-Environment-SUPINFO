@@ -98,7 +98,14 @@ class Level
     {
         if (!$this->$name->contains($value)) {
             $this->$name[] = $value;
-            $value->setLevel($this);
+
+            if (method_exists($value, 'setLevel')) {
+                $value->setLevel($this);
+            }
+
+            if (method_exists($value, 'addLevel')) {
+                $value->addLevel($this);
+            }
         }
 
         return $this;

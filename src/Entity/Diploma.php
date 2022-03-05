@@ -98,7 +98,14 @@ class Diploma
     {
         if (!$this->$name->contains($value)) {
             $this->$name[] = $value;
-            $value->setLastDiploma($this);
+
+            if (method_exists($value, 'setLastDiploma')) {
+                $value->setLastDiploma($this);
+            }
+
+            if (method_exists($value, 'addLastDiploma')) {
+                $value->addLastDiploma($this);
+            }
         }
 
         return $this;

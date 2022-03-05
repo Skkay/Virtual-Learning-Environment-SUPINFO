@@ -98,7 +98,14 @@ class AccountsPaymentType
     {
         if (!$this->$name->contains($value)) {
             $this->$name[] = $value;
-            $value->setAccountsPaymentType($this);
+
+            if (method_exists($value, 'setAccountsPaymentType')) {
+                $value->setAccountsPaymentType($this);
+            }
+
+            if (method_exists($value, 'addAccountsPaymentType')) {
+                $value->addAccountsPaymentType($this);
+            }
         }
 
         return $this;

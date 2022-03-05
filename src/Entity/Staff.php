@@ -92,6 +92,14 @@ class Staff
     {
         if (!$this->$name->contains($value)) {
             $this->$name[] = $value;
+
+            if (method_exists($value, 'setStaff')) {
+                $value->setStaff($this);
+            }
+
+            if (method_exists($value, 'addStaff')) {
+                $value->addStaff($this);
+            }
         }
 
         return $this;
