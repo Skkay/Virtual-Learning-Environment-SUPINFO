@@ -29,6 +29,14 @@ class DataLoaderService
     private const MANY_TO_ONE  = 'Doctrine\\ORM\\Mapping\\ManyToOne';
     private const MANY_TO_MANY = 'Doctrine\\ORM\\Mapping\\ManyToMany';
     private const MAPPING_RELATIONS = [self::ONE_TO_ONE, self::ONE_TO_MANY, self::MANY_TO_ONE, self::MANY_TO_MANY];
+    
+    private const RELATION_TYPE = 'relation';
+    private const STRING_TYPE = 'string';
+    private const INT_TYPE = 'int';
+    private const FLOAT_TYPE = 'float';
+    private const BOOL_TYPE = 'bool';
+    private const DATE_TYPE = 'date';
+    private const ROLE_TYPE = 'role';
 
     public function __construct(ParameterBagInterface $params, LoggerInterface $logger, ManagerRegistry $doctrine, AnnotationsReader $annotationsReader)
     {
@@ -86,7 +94,7 @@ class DataLoaderService
                 $identifierField = $dataEquivalence['main_entity']['identified_by'];
 
                 // Entity identified by another entity
-                if ($identifierField['metatype']['type'] === 'relation') {
+                if ($identifierField['metatype']['type'] === self::RELATION_TYPE) {
                     $subCriteria = [];
                     $subIdentifierField = $identifierField['metatype']['relation'];
 
@@ -100,7 +108,7 @@ class DataLoaderService
                         $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Sub entity of ' . $subEntityClass . ' not exists yet. Creating...');
 
                         $subEntity = new $subEntityClass;
-                        $subEntity->__set($subIdentifierField['destination'], $value[$subIdentifierField['source']]);
+                        $subEntity->__set($subIdentifierField['destination'], $this->getTypedValue($value[$subIdentifierField['source']], $identifierField['metatype']));
 
                         $this->em->persist($subEntity);
                         $this->em->flush();
@@ -123,7 +131,7 @@ class DataLoaderService
                 foreach ($dataEquivalence['fields'] as $field) {
                     $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Next field', ['field' => $field]);
 
-                    if ($field['metatype']['type'] === 'relation') {
+                    if ($field['metatype']['type'] === self::RELATION_TYPE) {
                         $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Field "' . $field['destination'] . '" is a relation. Getting it from main entity "' . $mainEntityClass . '"...');
 
                         // Determine relation type (OneToOne, OneToMany, ManyToOne, ManyToMany)
@@ -152,7 +160,7 @@ class DataLoaderService
                                         $subEntity = new $field['metatype']['relation']['entity'];
                                     }
 
-                                    $subEntity->__set($field['metatype']['relation']['destination'], $value[$field['metatype']['relation']['source']]);
+                                    $subEntity->__set($field['metatype']['relation']['destination'], $this->getTypedValue($value[$field['metatype']['relation']['source']], $field['metatype']));
     
                                     $this->em->persist($subEntity);
                                 }
@@ -161,7 +169,7 @@ class DataLoaderService
                             } else {
                                 $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Setting value "' . $field['metatype']['relation']['destination'] . '" with "' . $value[$field['metatype']['relation']['source']] . '"');
                                 
-                                $subEntity->__set($field['metatype']['relation']['destination'], $value[$field['metatype']['relation']['source']]);
+                                $subEntity->__set($field['metatype']['relation']['destination'], $this->getTypedValue($value[$field['metatype']['relation']['source']], $field['metatype']));
                             }
 
 
@@ -178,7 +186,7 @@ class DataLoaderService
                                 $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Sub entity of ' . $field['metatype']['relation']['entity'] . ' not exists yet. Creating...');
 
                                 $subEntity = new $field['metatype']['relation']['entity'];
-                                $subEntity->__set($field['metatype']['relation']['destination'], $value[$field['metatype']['relation']['source']]);
+                                $subEntity->__set($field['metatype']['relation']['destination'], $this->getTypedValue($value[$field['metatype']['relation']['source']], $field['metatype']));
 
                                 $this->em->persist($subEntity);
                             }
@@ -192,7 +200,7 @@ class DataLoaderService
                                     $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Sub sub entity of ' . $field['options']['key_as_value']['metatype']['entity'] . ' not exists yet. Creating...');
 
                                     $subSubEntity = new $field['options']['key_as_value']['metatype']['entity'];
-                                    $subSubEntity->__set($field['options']['key_as_value']['metatype']['destination'], $field['options']['key_as_value']['metatype']['source']);
+                                    $subSubEntity->__set($field['options']['key_as_value']['metatype']['destination'], $this->getTypedValue($field['options']['key_as_value']['metatype']['source'], $field['options']['key_as_value']['metatype']));
 
                                     $this->em->persist($subSubEntity);
                                 }
@@ -215,7 +223,7 @@ class DataLoaderService
                     } else {
                         $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Field "' . $field['destination'] . '" is not a relation.');
 
-                        $mainEntity->__set($field['destination'], $value[$field['source']]);
+                        $mainEntity->__set($field['destination'], $this->getTypedValue($value[$field['source']], $field['metatype']));
                     }
 
 
@@ -228,6 +236,41 @@ class DataLoaderService
 
 
             }
+        }
+    }
+
+    private function getTypedValue(?string $value, array $metatype) {
+        if ($value === null) {
+            return null;
+        }
+
+        switch ($metatype['type']) {
+            case self::RELATION_TYPE:
+                return $this->getTypedValue($value, $metatype['relation']);
+
+            case self::STRING_TYPE:
+                return (string) $value;
+
+            case self::INT_TYPE:
+                return (int) $value;
+
+            case self::FLOAT_TYPE:
+                return (float) $value;
+
+            case self::BOOL_TYPE:
+                return (bool) $value;
+
+            case self::DATE_TYPE:
+                if (!isset($metatype['date_format'])) {
+                    throw new \Exception('Missing date format');
+                }
+                return \DateTime::createFromFormat($metatype['date_format'], $value);
+            
+            case self::ROLE_TYPE:
+                return (string) $value; // TODO
+
+            default:
+                throw new \Exception('Unknown type "' . $metatype['type'] . '"');
         }
     }
 }
