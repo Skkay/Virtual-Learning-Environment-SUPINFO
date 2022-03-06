@@ -79,15 +79,16 @@ class DataLoaderService
             foreach ($records as $value) {
                 // Replace empty strings by null
                 $value = array_map(fn($v) => $v === '' ? null : $v, $value); 
+                $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Next value', ['value' => $value]);
 
                 // Find existing entity
                 $criteria = [];
                 $identifierField = $dataEquivalence['main_entity']['identified_by'];
 
                 // Entity identified by another entity
-                if (is_array($identifierField['type'])) {
+                if ($identifierField['metatype']['type'] === 'relation') {
                     $subCriteria = [];
-                    $subIdentifierField = $identifierField['type'];
+                    $subIdentifierField = $identifierField['metatype']['relation'];
 
                     $subEntityClass = $subIdentifierField['entity'];
                     $subEntityRepository = $this->em->getRepository($subEntityClass);
@@ -108,7 +109,7 @@ class DataLoaderService
                     $criteria[$identifierField['destination']] = $subEntity;
 
                 } else {
-                    $criteria[$identifierField['destination']] = $value[$identifierField['source']];
+                    $criteria[$identifierField['destination']] = $value[$identifierField['metatype']['relation']['source']];
                 }
 
 
@@ -120,7 +121,9 @@ class DataLoaderService
 
                 $fieldIsCleared = [];
                 foreach ($dataEquivalence['fields'] as $field) {
-                    if (is_array($field['type'])) { // => relation
+                    $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Next field', ['field' => $field]);
+
+                    if ($field['metatype']['type'] === 'relation') {
                         $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Field "' . $field['destination'] . '" is a relation. Getting it from main entity "' . $mainEntityClass . '"...');
 
                         // Determine relation type (OneToOne, OneToMany, ManyToOne, ManyToMany)
@@ -136,58 +139,60 @@ class DataLoaderService
                             if ($subEntity === null) {
                                 $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Main entity "' . $mainEntityClass . '" hasn\'t "' . $field['destination'] . '" relation. Getting it from repository...');
 
-                                if ($field['type']['identified_by'] !== null) {
-                                    $subEntity = $this->em->getRepository($field['type']['entity'])->findOneBy([
-                                        $field['type']['identified_by']['destination'] => $value[$field['type']['identified_by']['source']],
+                                if ($field['metatype']['relation']['identified_by'] !== null) {
+                                    $subEntity = $this->em->getRepository($field['metatype']['relation']['entity'])->findOneBy([
+                                        $field['metatype']['relation']['identified_by']['destination'] => $value[$field['metatype']['relation']['identified_by']['source']],
                                     ]);
                                 }
 
-                                if ($value[$field['type']['source']] !== null) {
+                                if ($value[$field['metatype']['relation']['source']] !== null) {
                                     if ($subEntity === null) {
-                                        $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Sub entity of ' . $field['type']['entity'] . ' not exists yet. Creating...');
+                                        $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Sub entity of ' . $field['metatype']['relation']['entity'] . ' not exists yet. Creating...');
     
-                                        $subEntity = new $field['type']['entity'];
+                                        $subEntity = new $field['metatype']['relation']['entity'];
                                     }
 
-                                    $subEntity->__set($field['type']['destination'], $value[$field['type']['source']]);
-
+                                    $subEntity->__set($field['metatype']['relation']['destination'], $value[$field['metatype']['relation']['source']]);
+    
                                     $this->em->persist($subEntity);
                                 }
 
                                 $mainEntity->__set($field['destination'], $subEntity);
                             } else {
-                                $subEntity->__set($field['type']['destination'], $value[$field['type']['source']]);
+                                $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Setting value "' . $field['metatype']['relation']['destination'] . '" with "' . $value[$field['metatype']['relation']['source']] . '"');
+                                
+                                $subEntity->__set($field['metatype']['relation']['destination'], $value[$field['metatype']['relation']['source']]);
                             }
 
 
                         } elseif ($relationType === self::MANY_TO_MANY || $relationType === self::ONE_TO_MANY) {
                             $subEntity = null;
 
-                            if ($field['type']['identified_by'] !== null) {
-                                $subEntity = $this->em->getRepository($field['type']['entity'])->findOneBy([
-                                    $field['type']['identified_by']['destination'] => $value[$field['type']['identified_by']['source']],
+                            if ($field['metatype']['relation']['identified_by'] !== null) {
+                                $subEntity = $this->em->getRepository($field['metatype']['relation']['entity'])->findOneBy([
+                                    $field['metatype']['relation']['identified_by']['destination'] => $value[$field['metatype']['relation']['identified_by']['source']],
                                 ]);
                             }
 
                             if ($subEntity === null) {
-                                $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Sub entity of ' . $field['type']['entity'] . ' not exists yet. Creating...');
+                                $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Sub entity of ' . $field['metatype']['relation']['entity'] . ' not exists yet. Creating...');
 
-                                $subEntity = new $field['type']['entity'];
-                                $subEntity->__set($field['type']['destination'], $value[$field['type']['source']]);
+                                $subEntity = new $field['metatype']['relation']['entity'];
+                                $subEntity->__set($field['metatype']['relation']['destination'], $value[$field['metatype']['relation']['source']]);
 
                                 $this->em->persist($subEntity);
                             }
 
                             if  (isset($field['options']['key_as_value'])) {
-                                $subSubEntity = $this->em->getRepository($field['options']['key_as_value']['type']['entity'])->findOneBy([
-                                    $field['options']['key_as_value']['type']['identified_by'] => $field['options']['key_as_value']['type']['source']
+                                $subSubEntity = $this->em->getRepository($field['options']['key_as_value']['metatype']['entity'])->findOneBy([
+                                    $field['options']['key_as_value']['metatype']['identified_by'] => $field['options']['key_as_value']['metatype']['source']
                                 ]);
 
                                 if ($subSubEntity === null) {
-                                    $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Sub sub entity of ' . $field['options']['key_as_value']['type']['entity'] . ' not exists yet. Creating...');
+                                    $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Sub sub entity of ' . $field['options']['key_as_value']['metatype']['entity'] . ' not exists yet. Creating...');
 
-                                    $subSubEntity = new $field['options']['key_as_value']['type']['entity'];
-                                    $subSubEntity->__set($field['options']['key_as_value']['type']['destination'], $field['options']['key_as_value']['type']['source']);
+                                    $subSubEntity = new $field['options']['key_as_value']['metatype']['entity'];
+                                    $subSubEntity->__set($field['options']['key_as_value']['metatype']['destination'], $field['options']['key_as_value']['metatype']['source']);
 
                                     $this->em->persist($subSubEntity);
                                 }
