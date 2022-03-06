@@ -142,10 +142,13 @@ class DataLoaderService
                                     ]);
                                 }
 
-                                if ($subEntity === null && $value[$field['type']['source']] !== null) {
-                                    $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Sub entity of ' . $field['type']['entity'] . ' not exists yet. Creating...');
+                                if ($value[$field['type']['source']] !== null) {
+                                    if ($subEntity === null) {
+                                        $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Sub entity of ' . $field['type']['entity'] . ' not exists yet. Creating...');
+    
+                                        $subEntity = new $field['type']['entity'];
+                                    }
 
-                                    $subEntity = new $field['type']['entity'];
                                     $subEntity->__set($field['type']['destination'], $value[$field['type']['source']]);
 
                                     $this->em->persist($subEntity);
