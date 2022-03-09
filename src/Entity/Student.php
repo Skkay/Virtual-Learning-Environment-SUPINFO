@@ -85,9 +85,14 @@ class Student
     private $accountsPaymentType;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Company::class, inversedBy="students")
+     * @ORM\ManyToOne(targetEntity=Company::class, inversedBy="studentsTrainingContract")
      */
     private $companyTrainingContract;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Company::class, inversedBy="studentsCompanyHired")
+     */
+    private $companyHired;
 
     /**
      * @ORM\Column(type="date", nullable=true)
@@ -321,6 +326,18 @@ class Student
     public function setCompanyTrainingContract(?Company $companyTrainingContract): self
     {
         $this->companyTrainingContract = $companyTrainingContract;
+
+        return $this;
+    }
+
+    public function getCompanyHired(): ?Company
+    {
+        return $this->companyHired;
+    }
+
+    public function setCompanyHired(?Company $companyHired): self
+    {
+        $this->companyHired = $companyHired;
 
         return $this;
     }

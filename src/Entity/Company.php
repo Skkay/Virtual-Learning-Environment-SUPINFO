@@ -39,9 +39,15 @@ class Company
      */
     private $studentsTrainingContract;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Student::class, mappedBy="companyHired")
+     */
+    private $studentsCompanyHired;
+
     public function __construct()
     {
         $this->studentsTrainingContract = new ArrayCollection();
+        $this->studentsCompanyHired = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -109,6 +115,36 @@ class Company
             // set the owning side to null (unless already changed)
             if ($student->getCompanyTrainingContract() === $this) {
                 $student->setCompanyTrainingContract(null);
+            }
+        }
+
+        return $this;
+    }
+    
+    /**
+     * @return Collection|Student[]
+     */
+    public function getStudentsCompanyHired(): Collection
+    {
+        return $this->studentsCompanyHired;
+    }
+
+    public function addStudentCompanyHired(Student $studentsCompanyHired): self
+    {
+        if (!$this->studentsCompanyHired->contains($studentsCompanyHired)) {
+            $this->studentsCompanyHired[] = $studentsCompanyHired;
+            $studentsCompanyHired->setCompanyHired($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStudentsCompanyHired(Student $studentsCompanyHired): self
+    {
+        if ($this->studentsCompanyHired->removeElement($studentsCompanyHired)) {
+            // set the owning side to null (unless already changed)
+            if ($studentsCompanyHired->getCompanyHired() === $this) {
+                $studentsCompanyHired->setCompanyHired(null);
             }
         }
 
