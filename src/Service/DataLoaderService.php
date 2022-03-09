@@ -4,6 +4,8 @@ namespace App\Service;
 
 use League\Csv\Reader;
 use App\Entity\DataSource;
+use App\Enum\RelationEnum;
+use App\Enum\TypeEnum;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Finder\Finder;
 use App\Repository\DataSourceRepository;
@@ -24,19 +26,8 @@ class DataLoaderService
      */
     private $dataSourceRepository;
 
-    private const ONE_TO_ONE   = 'Doctrine\\ORM\\Mapping\\OneToOne';
-    private const ONE_TO_MANY  = 'Doctrine\\ORM\\Mapping\\OneToMany';
-    private const MANY_TO_ONE  = 'Doctrine\\ORM\\Mapping\\ManyToOne';
-    private const MANY_TO_MANY = 'Doctrine\\ORM\\Mapping\\ManyToMany';
-    private const MAPPING_RELATIONS = [self::ONE_TO_ONE, self::ONE_TO_MANY, self::MANY_TO_ONE, self::MANY_TO_MANY];
+    private const RELATIONS = [RelationEnum::ONE_TO_ONE, RelationEnum::ONE_TO_MANY, RelationEnum::MANY_TO_ONE, RelationEnum::MANY_TO_MANY];
     
-    private const RELATION_TYPE = 'relation';
-    private const STRING_TYPE = 'string';
-    private const INT_TYPE = 'int';
-    private const FLOAT_TYPE = 'float';
-    private const BOOL_TYPE = 'bool';
-    private const DATE_TYPE = 'date';
-    private const ROLE_TYPE = 'role';
 
     public function __construct(ParameterBagInterface $params, LoggerInterface $logger, ManagerRegistry $doctrine, AnnotationsReader $annotationsReader)
     {
@@ -94,7 +85,7 @@ class DataLoaderService
                 $identifierField = $dataEquivalence['main_entity']['identified_by'];
 
                 // Entity identified by another entity
-                if ($identifierField['metatype']['type'] === self::RELATION_TYPE) {
+                if ($identifierField['metatype']['type'] === TypeEnum::RELATION) {
                     $subCriteria = [];
                     $subIdentifierField = $identifierField['metatype']['relation'];
 
@@ -131,17 +122,17 @@ class DataLoaderService
                 foreach ($dataEquivalence['fields'] as $field) {
                     $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Next field', ['field' => $field]);
 
-                    if ($field['metatype']['type'] === self::RELATION_TYPE) {
+                    if ($field['metatype']['type'] === TypeEnum::RELATION) {
                         $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Field "' . $field['destination'] . '" is a relation. Getting it from main entity "' . $mainEntityClass . '"...');
 
                         // Determine relation type (OneToOne, OneToMany, ManyToOne, ManyToMany)
                         $entityProperty = (new \ReflectionClass($mainEntityClass))->getProperty($field['destination']);
                         $annotations = array_map('get_class', $this->annotationsReader->getPropertyAnnotations($entityProperty)); // Stringify all class name
-                        $relationType = array_values(array_intersect(self::MAPPING_RELATIONS, $annotations))[0];
+                        $relationType = array_values(array_intersect(self::RELATIONS, $annotations))[0];
 
                         $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Relation type: ' . $relationType);
 
-                        if ($relationType === self::ONE_TO_ONE || $relationType === self::MANY_TO_ONE) {
+                        if ($relationType === RelationEnum::ONE_TO_ONE || $relationType === RelationEnum::MANY_TO_ONE) {
                             $subEntity = $mainEntity->__get($field['destination']);
 
                             if ($subEntity === null) {
@@ -173,7 +164,7 @@ class DataLoaderService
                             }
 
 
-                        } elseif ($relationType === self::MANY_TO_MANY || $relationType === self::ONE_TO_MANY) {
+                        } elseif ($relationType === RelationEnum::MANY_TO_MANY || $relationType === RelationEnum::ONE_TO_MANY) {
                             $subEntity = null;
 
                             if ($field['metatype']['relation']['identified_by'] !== null) {
@@ -245,28 +236,28 @@ class DataLoaderService
         }
 
         switch ($metatype['type']) {
-            case self::RELATION_TYPE:
+            case TypeEnum::RELATION:
                 return $this->getTypedValue($value, $metatype['relation']);
 
-            case self::STRING_TYPE:
+            case TypeEnum::STRING:
                 return (string) $value;
 
-            case self::INT_TYPE:
+            case TypeEnum::INT:
                 return (int) $value;
 
-            case self::FLOAT_TYPE:
+            case TypeEnum::FLOAT:
                 return (float) $value;
 
-            case self::BOOL_TYPE:
+            case TypeEnum::BOOL:
                 return (bool) $value;
 
-            case self::DATE_TYPE:
+            case TypeEnum::DATE:
                 if (!isset($metatype['date_format'])) {
                     throw new \Exception('Missing date format');
                 }
                 return \DateTime::createFromFormat($metatype['date_format'], $value);
             
-            case self::ROLE_TYPE:
+            case TypeEnum::ROLE:
                 return (string) $value; // TODO
 
             default:
