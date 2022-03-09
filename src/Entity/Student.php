@@ -139,6 +139,11 @@ class Student
      */
     private $region;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Speciality::class, inversedBy="students")
+     */
+    private $speciality;
+
     public function __construct()
     {
         $this->modules = new ArrayCollection();
@@ -467,6 +472,18 @@ class Student
 
         return $this;
     }
+    
+    public function getSpeciality(): ?Speciality
+    {
+        return $this->speciality;
+    }
+
+    public function setSpeciality(?Speciality $speciality): self
+    {
+        $this->speciality = $speciality;
+
+        return $this;
+    }
 
     
     public function __get($name)
@@ -494,13 +511,6 @@ class Student
                 $value->addStudent($this);
             }
         }
-
-        return $this;
-    }
-
-    public function __remove($name, $value): self
-    {
-        $this->$name->removeElement($value);
 
         return $this;
     }
