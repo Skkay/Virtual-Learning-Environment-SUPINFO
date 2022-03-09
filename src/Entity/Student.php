@@ -85,7 +85,7 @@ class Student
     private $accountsPaymentType;
 
     /**
-     * @ORM\ManyToOne(targetEntity=CompanyTrainingContract::class, inversedBy="students")
+     * @ORM\ManyToOne(targetEntity=Company::class, inversedBy="students")
      */
     private $companyTrainingContract;
 
@@ -313,12 +313,12 @@ class Student
         return $this;
     }
 
-    public function getCompanyTrainingContract(): ?CompanyTrainingContract
+    public function getCompanyTrainingContract(): ?Company
     {
         return $this->companyTrainingContract;
     }
 
-    public function setCompanyTrainingContract(?CompanyTrainingContract $companyTrainingContract): self
+    public function setCompanyTrainingContract(?Company $companyTrainingContract): self
     {
         $this->companyTrainingContract = $companyTrainingContract;
 

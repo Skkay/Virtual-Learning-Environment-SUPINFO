@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\CompanyTrainingContractRepository;
+use App\Repository\CompanyRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=CompanyTrainingContractRepository::class)
+ * @ORM\Entity(repositoryClass=CompanyRepository::class)
  */
-class CompanyTrainingContract
+class Company
 {
     /**
      * @ORM\Id
@@ -37,11 +37,11 @@ class CompanyTrainingContract
     /**
      * @ORM\OneToMany(targetEntity=Student::class, mappedBy="companyTrainingContract")
      */
-    private $students;
+    private $studentsTrainingContract;
 
     public function __construct()
     {
-        $this->students = new ArrayCollection();
+        $this->studentsTrainingContract = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -88,15 +88,15 @@ class CompanyTrainingContract
     /**
      * @return Collection|Student[]
      */
-    public function getStudents(): Collection
+    public function getStudentsTrainingContract(): Collection
     {
-        return $this->students;
+        return $this->studentsTrainingContract;
     }
 
-    public function addStudent(Student $student): self
+    public function addStudentTrainingContract(Student $student): self
     {
-        if (!$this->students->contains($student)) {
-            $this->students[] = $student;
+        if (!$this->studentsTrainingContract->contains($student)) {
+            $this->studentsTrainingContract[] = $student;
             $student->setCompanyTrainingContract($this);
         }
 
@@ -105,7 +105,7 @@ class CompanyTrainingContract
 
     public function removeStudent(Student $student): self
     {
-        if ($this->students->removeElement($student)) {
+        if ($this->studentsTrainingContract->removeElement($student)) {
             // set the owning side to null (unless already changed)
             if ($student->getCompanyTrainingContract() === $this) {
                 $student->setCompanyTrainingContract(null);
