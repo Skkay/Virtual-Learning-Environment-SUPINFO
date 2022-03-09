@@ -32,7 +32,7 @@ class Module
     private $instructors;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $speciality;
 
@@ -102,7 +102,7 @@ class Module
         return $this->speciality;
     }
 
-    public function setSpeciality(bool $speciality): self
+    public function setSpeciality(?bool $speciality): self
     {
         $this->speciality = $speciality;
 
@@ -160,6 +160,36 @@ class Module
             // set the owning side to null (unless already changed)
             if ($grade->getModule() === $this) {
                 $grade->setModule(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+    public function __get($name)
+    {
+        return $this->$name;
+    }
+
+    public function __set($name, $value): self
+    {
+        $this->$name = $value;
+
+        return $this;
+    }
+
+    public function __add($name, $value): self
+    {
+        if (!$this->$name->contains($value)) {
+            $this->$name[] = $value;
+
+            if (method_exists($value, 'setModule')) {
+                $value->setModule($this);
+            }
+
+            if (method_exists($value, 'addModule')) {
+                $value->addModule($this);
             }
         }
 

@@ -21,7 +21,6 @@ class Staff
 
     /**
      * @ORM\OneToOne(targetEntity=User::class, inversedBy="staff", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
@@ -72,6 +71,36 @@ class Staff
     public function removeCampus(Campus $campus): self
     {
         $this->campus->removeElement($campus);
+
+        return $this;
+    }
+
+    
+    public function __get($name)
+    {
+        return $this->$name;
+    }
+
+    public function __set($name, $value): self
+    {
+        $this->$name = $value;
+
+        return $this;
+    }
+
+    public function __add($name, $value): self
+    {
+        if (!$this->$name->contains($value)) {
+            $this->$name[] = $value;
+
+            if (method_exists($value, 'setStaff')) {
+                $value->setStaff($this);
+            }
+
+            if (method_exists($value, 'addStaff')) {
+                $value->addStaff($this);
+            }
+        }
 
         return $this;
     }

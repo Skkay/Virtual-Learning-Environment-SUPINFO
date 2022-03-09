@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\RegionRepository;
+use App\Repository\SpecialityRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=RegionRepository::class)
+ * @ORM\Entity(repositoryClass=SpecialityRepository::class)
  */
-class Region
+class Speciality
 {
     /**
      * @ORM\Id
@@ -20,12 +20,12 @@ class Region
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private $label;
 
     /**
-     * @ORM\OneToMany(targetEntity=Student::class, mappedBy="region")
+     * @ORM\OneToMany(targetEntity=Student::class, mappedBy="speciality")
      */
     private $students;
 
@@ -39,14 +39,14 @@ class Region
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getLabel(): ?string
     {
-        return $this->name;
+        return $this->label;
     }
 
-    public function setName(string $name): self
+    public function setLabel(string $label): self
     {
-        $this->name = $name;
+        $this->label = $label;
 
         return $this;
     }
@@ -63,7 +63,7 @@ class Region
     {
         if (!$this->students->contains($student)) {
             $this->students[] = $student;
-            $student->setRegion($this);
+            $student->setSpeciality($this);
         }
 
         return $this;
@@ -73,8 +73,8 @@ class Region
     {
         if ($this->students->removeElement($student)) {
             // set the owning side to null (unless already changed)
-            if ($student->getRegion() === $this) {
-                $student->setRegion(null);
+            if ($student->getSpeciality() === $this) {
+                $student->setSpeciality(null);
             }
         }
 
@@ -99,12 +99,12 @@ class Region
         if (!$this->$name->contains($value)) {
             $this->$name[] = $value;
 
-            if (method_exists($value, 'setRegion')) {
-                $value->setRegion($this);
+            if (method_exists($value, 'setStudent')) {
+                $value->setStudent($this);
             }
 
-            if (method_exists($value, 'addRegion')) {
-                $value->addRegion($this);
+            if (method_exists($value, 'addStudent')) {
+                $value->addStudent($this);
             }
         }
 

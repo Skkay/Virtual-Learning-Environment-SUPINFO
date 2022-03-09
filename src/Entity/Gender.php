@@ -20,7 +20,7 @@ class Gender
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $label;
 
@@ -75,6 +75,36 @@ class Gender
             // set the owning side to null (unless already changed)
             if ($student->getGender() === $this) {
                 $student->setGender(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+    public function __get($name)
+    {
+        return $this->$name;
+    }
+
+    public function __set($name, $value): self
+    {
+        $this->$name = $value;
+
+        return $this;
+    }
+
+    public function __add($name, $value): self
+    {
+        if (!$this->$name->contains($value)) {
+            $this->$name[] = $value;
+
+            if (method_exists($value, 'setGender')) {
+                $value->setGender($this);
+            }
+
+            if (method_exists($value, 'addGender')) {
+                $value->addGender($this);
             }
         }
 

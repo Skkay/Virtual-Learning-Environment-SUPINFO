@@ -20,7 +20,7 @@ class AccountsPaymentType
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $label;
 
@@ -75,6 +75,36 @@ class AccountsPaymentType
             // set the owning side to null (unless already changed)
             if ($student->getAccountsPaymentType() === $this) {
                 $student->setAccountsPaymentType(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+    public function __get($name)
+    {
+        return $this->$name;
+    }
+
+    public function __set($name, $value): self
+    {
+        $this->$name = $value;
+
+        return $this;
+    }
+
+    public function __add($name, $value): self
+    {
+        if (!$this->$name->contains($value)) {
+            $this->$name[] = $value;
+
+            if (method_exists($value, 'setAccountsPaymentType')) {
+                $value->setAccountsPaymentType($this);
+            }
+
+            if (method_exists($value, 'addAccountsPaymentType')) {
+                $value->addAccountsPaymentType($this);
             }
         }
 

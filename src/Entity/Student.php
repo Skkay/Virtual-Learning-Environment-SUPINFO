@@ -21,19 +21,16 @@ class Student
 
     /**
      * @ORM\OneToOne(targetEntity=User::class, inversedBy="student", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
     /**
      * @ORM\ManyToOne(targetEntity=Campus::class, inversedBy="students")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $campus;
 
     /**
      * @ORM\ManyToOne(targetEntity=Level::class, inversedBy="students")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $level;
 
@@ -44,12 +41,11 @@ class Student
 
     /**
      * @ORM\ManyToOne(targetEntity=Level::class)
-     * @ORM\JoinColumn(nullable=false)
      */
     private $entryLevel;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $entryYear;
     
@@ -64,35 +60,39 @@ class Student
     private $exitYear;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $professionalTrainingContract;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $accountsPaid;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      */
     private $accountsPaymentDue;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $accountsReminded;
 
     /**
      * @ORM\ManyToOne(targetEntity=AccountsPaymentType::class, inversedBy="students")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $accountsPaymentType;
 
     /**
-     * @ORM\ManyToOne(targetEntity=CompanyTrainingContract::class, inversedBy="students")
+     * @ORM\ManyToOne(targetEntity=Company::class, inversedBy="studentsTrainingContract")
      */
     private $companyTrainingContract;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Company::class, inversedBy="studentsCompanyHired")
+     */
+    private $companyHired;
 
     /**
      * @ORM\Column(type="date", nullable=true)
@@ -106,12 +106,11 @@ class Student
 
     /**
      * @ORM\ManyToOne(targetEntity=Diploma::class, inversedBy="students")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $lastDiploma;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $numberOfAbsences;
 
@@ -121,26 +120,29 @@ class Student
     private $grades;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      */
     private $dateOfBirth;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $address;
 
     /**
      * @ORM\ManyToOne(targetEntity=Gender::class, inversedBy="students")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $gender;
 
     /**
      * @ORM\ManyToOne(targetEntity=Region::class, inversedBy="students")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $region;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Speciality::class, inversedBy="students")
+     */
+    private $speciality;
 
     public function __construct()
     {
@@ -230,7 +232,7 @@ class Student
         return $this->entryYear;
     }
 
-    public function setEntryYear(int $entryYear): self
+    public function setEntryYear(?int $entryYear): self
     {
         $this->entryYear = $entryYear;
 
@@ -266,7 +268,7 @@ class Student
         return $this->professionalTrainingContract;
     }
 
-    public function setProfessionalTrainingContract(bool $professionalTrainingContract): self
+    public function setProfessionalTrainingContract(?bool $professionalTrainingContract): self
     {
         $this->professionalTrainingContract = $professionalTrainingContract;
 
@@ -278,7 +280,7 @@ class Student
         return $this->accountsPaid;
     }
 
-    public function setAccountsPaid(bool $accountsPaid): self
+    public function setAccountsPaid(?bool $accountsPaid): self
     {
         $this->accountsPaid = $accountsPaid;
 
@@ -290,7 +292,7 @@ class Student
         return $this->accountsPaymentDue;
     }
 
-    public function setAccountsPaymentDue(float $accountsPaymentDue): self
+    public function setAccountsPaymentDue(?float $accountsPaymentDue): self
     {
         $this->accountsPaymentDue = $accountsPaymentDue;
 
@@ -302,7 +304,7 @@ class Student
         return $this->accountsReminded;
     }
 
-    public function setAccountsReminded(bool $accountsReminded): self
+    public function setAccountsReminded(?bool $accountsReminded): self
     {
         $this->accountsReminded = $accountsReminded;
 
@@ -321,14 +323,26 @@ class Student
         return $this;
     }
 
-    public function getCompanyTrainingContract(): ?CompanyTrainingContract
+    public function getCompanyTrainingContract(): ?Company
     {
         return $this->companyTrainingContract;
     }
 
-    public function setCompanyTrainingContract(?CompanyTrainingContract $companyTrainingContract): self
+    public function setCompanyTrainingContract(?Company $companyTrainingContract): self
     {
         $this->companyTrainingContract = $companyTrainingContract;
+
+        return $this;
+    }
+
+    public function getCompanyHired(): ?Company
+    {
+        return $this->companyHired;
+    }
+
+    public function setCompanyHired(?Company $companyHired): self
+    {
+        $this->companyHired = $companyHired;
 
         return $this;
     }
@@ -374,7 +388,7 @@ class Student
         return $this->numberOfAbsences;
     }
 
-    public function setNumberOfAbsences(int $numberOfAbsences): self
+    public function setNumberOfAbsences(?int $numberOfAbsences): self
     {
         $this->numberOfAbsences = $numberOfAbsences;
 
@@ -416,7 +430,7 @@ class Student
         return $this->dateOfBirth;
     }
 
-    public function setDateOfBirth(\DateTimeInterface $dateOfBirth): self
+    public function setDateOfBirth(?\DateTimeInterface $dateOfBirth): self
     {
         $this->dateOfBirth = $dateOfBirth;
 
@@ -428,7 +442,7 @@ class Student
         return $this->address;
     }
 
-    public function setAddress(string $address): self
+    public function setAddress(?string $address): self
     {
         $this->address = $address;
 
@@ -455,6 +469,48 @@ class Student
     public function setRegion(?Region $region): self
     {
         $this->region = $region;
+
+        return $this;
+    }
+    
+    public function getSpeciality(): ?Speciality
+    {
+        return $this->speciality;
+    }
+
+    public function setSpeciality(?Speciality $speciality): self
+    {
+        $this->speciality = $speciality;
+
+        return $this;
+    }
+
+    
+    public function __get($name)
+    {
+        return $this->$name;
+    }
+
+    public function __set($name, $value): self
+    {
+        $this->$name = $value;
+
+        return $this;
+    }
+
+    public function __add($name, $value): self
+    {
+        if (!$this->$name->contains($value)) {
+            $this->$name[] = $value;
+
+            if (method_exists($value, 'setStudent')) {
+                $value->setStudent($this);
+            }
+
+            if (method_exists($value, 'addStudent')) {
+                $value->addStudent($this);
+            }
+        }
 
         return $this;
     }

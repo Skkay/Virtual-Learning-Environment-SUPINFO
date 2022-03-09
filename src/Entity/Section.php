@@ -21,17 +21,16 @@ class Section
 
     /**
      * @ORM\ManyToOne(targetEntity=Campus::class, inversedBy="sections")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $campus;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $year;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $label;
 
@@ -67,7 +66,7 @@ class Section
         return $this->year;
     }
 
-    public function setYear(int $year): self
+    public function setYear(?int $year): self
     {
         $this->year = $year;
 
@@ -108,6 +107,36 @@ class Section
     {
         if ($this->instructors->removeElement($instructor)) {
             $instructor->removeSection($this);
+        }
+
+        return $this;
+    }
+
+    
+    public function __get($name)
+    {
+        return $this->$name;
+    }
+
+    public function __set($name, $value): self
+    {
+        $this->$name = $value;
+
+        return $this;
+    }
+
+    public function __add($name, $value): self
+    {
+        if (!$this->$name->contains($value)) {
+            $this->$name[] = $value;
+
+            if (method_exists($value, 'setSection')) {
+                $value->setSection($this);
+            }
+
+            if (method_exists($value, 'addSection')) {
+                $value->addSection($this);
+            }
         }
 
         return $this;

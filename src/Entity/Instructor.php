@@ -104,4 +104,34 @@ class Instructor
 
         return $this;
     }
+
+
+    public function __get($name)
+    {
+        return $this->$name;
+    }
+
+    public function __set($name, $value): self
+    {
+        $this->$name = $value;
+
+        return $this;
+    }
+
+    public function __add($name, $value): self
+    {
+        if (!$this->$name->contains($value)) {
+            $this->$name[] = $value;
+
+            if (method_exists($value, 'setInstructor')) {
+                $value->setInstructor($this);
+            }
+
+            if (method_exists($value, 'addInstructor')) {
+                $value->addInstructor($this);
+            }
+        }
+
+        return $this;
+    }
 }

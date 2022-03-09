@@ -20,7 +20,7 @@ class Campus
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $label;
 
@@ -161,6 +161,36 @@ class Campus
             // set the owning side to null (unless already changed)
             if ($student->getCampus() === $this) {
                 $student->setCampus(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+    public function __get($name)
+    {
+        return $this->$name;
+    }
+
+    public function __set($name, $value): self
+    {
+        $this->$name = $value;
+
+        return $this;
+    }
+
+    public function __add($name, $value): self
+    {
+        if (!$this->$name->contains($value)) {
+            $this->$name[] = $value;
+
+            if (method_exists($value, 'setCampus')) {
+                $value->setCampus($this);
+            }
+
+            if (method_exists($value, 'addCampus')) {
+                $value->addCampus($this);
             }
         }
 
