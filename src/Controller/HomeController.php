@@ -25,7 +25,7 @@ class HomeController extends AbstractController
      */
     public function test(DataLoaderService $dataLoaderService): Response
     {
-        $dataLoaderService->loadCsv();
+        $dataLoaderService->loadFiles();
         // return $this->json(['response' => 200]);
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
