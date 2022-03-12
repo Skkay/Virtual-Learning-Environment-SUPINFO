@@ -230,9 +230,9 @@ class DataLoaderService
         }
     }
 
-    private function getTypedValue(?string $value, array $metatype) {
-        if ($value === null) {
-            return null;
+    private function getTypedValue($value, array $metatype) {
+        if (is_null($value) || is_object($value)) {
+            return $value;
         }
 
         switch ($metatype['type']) {
