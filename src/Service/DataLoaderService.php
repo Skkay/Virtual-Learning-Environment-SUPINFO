@@ -95,9 +95,7 @@ class DataLoaderService
                         $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Field "' . $field['destination'] . '" is a relation. Getting it from main entity "' . $mainEntityClass . '"...');
 
                         // Determine relation type (OneToOne, OneToMany, ManyToOne, ManyToMany)
-                        $entityProperty = (new \ReflectionClass($mainEntityClass))->getProperty($field['destination']);
-                        $annotations = array_map('get_class', $this->annotationsReader->getPropertyAnnotations($entityProperty)); // Stringify all class name
-                        $relationType = array_values(array_intersect(self::RELATIONS, $annotations))[0];
+                        $relationType = $this->getEntityRelationType($mainEntityClass, $field['destination']);
 
                         $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Relation type: ' . $relationType);
 
@@ -280,5 +278,14 @@ class DataLoaderService
         }
 
         return $entity;
+    }
+
+    private function getEntityRelationType(string $className, string $property)
+    {
+        $entityProperty = (new \ReflectionClass($className))->getProperty($property);
+        $annotations = array_map('get_class', $this->annotationsReader->getPropertyAnnotations($entityProperty)); // Stringify all class name
+        $relationType = array_values(array_intersect(self::RELATIONS, $annotations))[0];
+
+        return $relationType;
     }
 }
