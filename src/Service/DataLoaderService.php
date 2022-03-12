@@ -81,42 +81,11 @@ class DataLoaderService
                 $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Next value', ['value' => $value]);
 
                 // Find existing entity
-                $criteria = [];
-                $identifierField = $dataEquivalence['main_entity']['identified_by'];
-
-                // Entity identified by another entity
-                if ($identifierField['metatype']['type'] === TypeEnum::RELATION) {
-                    $subCriteria = [];
-                    $subIdentifierField = $identifierField['metatype']['relation'];
-
-                    $subEntityClass = $subIdentifierField['entity'];
-                    $subEntityRepository = $this->em->getRepository($subEntityClass);
-
-                    $subCriteria[$subIdentifierField['destination']] = $value[$subIdentifierField['source']];
-
-                    $subEntity = $subEntityRepository->findOneBy($subCriteria);
-                    if ($subEntity === null) {
-                        $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Sub entity of ' . $subEntityClass . ' not exists yet. Creating...');
-
-                        $subEntity = new $subEntityClass;
-                        $subEntity->__set($subIdentifierField['destination'], $this->getTypedValue($value[$subIdentifierField['source']], $identifierField['metatype']));
-
-                        $this->em->persist($subEntity);
-                        $this->em->flush();
-                    }
-
-                    $criteria[$identifierField['destination']] = $subEntity;
-
-                } else {
-                    $criteria[$identifierField['destination']] = $value[$identifierField['metatype']['relation']['source']];
-                }
-
-
-                $mainEntity = $mainEntityRepository->findOneBy($criteria);
-                if ($mainEntity === null) {
-                    $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Entity of "' . $mainEntityClass . '" not exists yet. Creating...');
-                    $mainEntity = new $mainEntityClass;
-                }
+                $mainEntity = $this->findExistingMainEntity(
+                    $dataEquivalence['main_entity']['entity'], 
+                    $dataEquivalence['main_entity']['identified_by'], 
+                    $value
+                );
 
                 $fieldIsCleared = [];
                 foreach ($dataEquivalence['fields'] as $field) {
@@ -263,5 +232,53 @@ class DataLoaderService
             default:
                 throw new \Exception('Unknown type "' . $metatype['type'] . '"');
         }
+    }
+
+    private function findExistingMainEntity(string $className, array $identifierField, array $value)
+    {
+        // Entity identified by another entity
+        if ($identifierField['metatype']['type'] === TypeEnum::RELATION) {
+
+            $subEntity = $this->findExistingEntity(
+                $identifierField['metatype']['relation']['entity'], 
+                $identifierField['metatype'],
+                $identifierField['metatype']['relation']['destination'], 
+                $value[$identifierField['metatype']['relation']['source']], 
+            );
+
+            $entity = $this->findExistingEntity(
+                $className, 
+                $identifierField['metatype'],
+                $identifierField['destination'], 
+                $subEntity, 
+            );
+        } else {
+
+            $entity = $this->findExistingEntity(
+                $className, 
+                $identifierField['metatype'],
+                $identifierField['destination'], 
+                $value[$identifierField['metatype']['relation']['source']], 
+            );
+        }
+
+        return $entity;
+    }
+
+    private function findExistingEntity(string $className, array $metatype, string $field, $value)
+    {
+        $repository = $this->em->getRepository($className);
+
+        $entity = $repository->findOneBy([$field => $value]);
+
+        if ($entity === null) {
+            $entity = new $className;
+            $entity->__set($field, $this->getTypedValue($value, $metatype));
+
+            $this->em->persist($entity);
+            $this->em->flush();
+        }
+
+        return $entity;
     }
 }
