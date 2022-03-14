@@ -85,10 +85,8 @@ class DataLoaderService
         $this->logger->debug('src\Service\DataLoaderService.php::processRecord - Processing record', ['record' => $record]);
 
         $dataEquivalence = $dataSource->getEquivalence();
-
-        // Get main entity class and repository
+    
         $mainEntityClass = $dataEquivalence['main_entity']['entity'];
-        $mainEntityRepository = $this->em->getRepository($mainEntityClass);
 
         // Replace empty strings by null
         $record = array_map(fn($v) => $v === '' ? null : $v, $record); 
