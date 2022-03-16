@@ -12,12 +12,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/data-source")
+ * @Route("/data-source", name="app.data_source.")
  */
 class DataSourceController extends AbstractController
 {
     /**
-     * @Route("/", name="data_source_index", methods={"GET"})
+     * @Route("/", name="index", methods={"GET"})
      */
     public function index(DataSourceRepository $dataSourceRepository): Response
     {
@@ -27,7 +27,7 @@ class DataSourceController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="data_source_new", methods={"GET", "POST"})
+     * @Route("/new", name="new", methods={"GET", "POST"})
      */
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -49,7 +49,7 @@ class DataSourceController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="data_source_show", methods={"GET"})
+     * @Route("/{id}", name="show", methods={"GET"})
      */
     public function show(DataSource $dataSource): Response
     {
@@ -59,7 +59,7 @@ class DataSourceController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="data_source_edit", methods={"GET", "POST"})
+     * @Route("/{id}/edit", name="edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, DataSource $dataSource, EntityManagerInterface $entityManager): Response
     {
@@ -79,7 +79,7 @@ class DataSourceController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="data_source_delete", methods={"POST"})
+     * @Route("/{id}", name="delete", methods={"POST"})
      */
     public function delete(Request $request, DataSource $dataSource, EntityManagerInterface $entityManager): Response
     {
