@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Student;
 use App\Repository\StudentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,6 +28,16 @@ class StudentController extends AbstractController
 
         return $this->render('student/index.html.twig', [
             'students' => $students,
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="show")
+     */
+    public function show(Student $student): Response
+    {
+        return $this->render('student/show.html.twig', [
+            'student' => $student,
         ]);
     }
 }
