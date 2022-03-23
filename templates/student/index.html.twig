@@ -19,9 +19,9 @@
         {% for student in students %}
         <tr>
             <td><a href="{{ path('app.student.show', {'id': student.id} ) }}">{{ student.id }}</a></td>
-            <td>{{ student.user.firstName }}</td>
-            <td>{{ student.user.lastName }}</td>
-            <td>{{ student.campus.label }}</td>
+            <td>{{ student.user.firstName ?? '-' }}</td>
+            <td>{{ student.user.lastName ?? '-' }}</td>
+            <td>{{ student.campus.label ?? '-' }}</td>
             <td>{{ student.level.label ?? '-' }}</td>
         </tr>
         {% endfor %}

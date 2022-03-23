@@ -17,8 +17,8 @@
         {% for staff in staffs %}
         <tr>
             <td><a href="{{ path('app.staff.show', {'id': staff.id} ) }}">{{ staff.id }}</a></td>
-            <td>{{ staff.user.firstName }}</td>
-            <td>{{ staff.user.lastName }}</td>
+            <td>{{ staff.user.firstName ?? '-' }}</td>
+            <td>{{ staff.user.lastName ?? '-' }}</td>
         </tr>
         {% endfor %}
     </tbody>
