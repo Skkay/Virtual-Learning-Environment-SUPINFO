@@ -33,13 +33,13 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a class="dropdown-item {{ route == 'app.data_source.index' ? 'active' }}" href="{{ path('app.data_source.index') }}">Data-source</a>
+                                    <a class="dropdown-item {{ route starts with 'app.data_source' ? 'active' }}" href="{{ path('app.data_source.index') }}">Data-source</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item {{ route == 'app.student.index' ? 'active' }}" href="{{ path('app.student.index') }}">Students</a>
+                                    <a class="dropdown-item {{ route starts with 'app.student' ? 'active' }}" href="{{ path('app.student.index') }}">Students</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item {{ route == 'app.staff.index' ? 'active' }}" href="{{ path('app.staff.index') }}">Staffs</a>
+                                    <a class="dropdown-item {{ route starts with 'app.staff' ? 'active' }}" href="{{ path('app.staff.index') }}">Staffs</a>
                                 </li>
                             </ul>
                         </li>
