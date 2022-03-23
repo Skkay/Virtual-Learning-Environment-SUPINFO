@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CampusController!{% endblock %}
+
+{% block body %}
+<h1>Campus</h1>
+
+<table class="table table-sm table-hover">
+    <thead>
+        <tr>
+            <th scope="col">campus.id</th>
+            <th scope="col">campus.label</th>
+            <th scope="col">campus.city</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for campus in campus %}
+        <tr>
+            <td>{{ campus.id }}</td>
+            <td>{{ campus.label }}</td>
+            <td>{{ campus.city ?? '-' }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
