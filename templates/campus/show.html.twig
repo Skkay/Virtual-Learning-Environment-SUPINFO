@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CampusController!{% endblock %}
+
+{% block body %}
+<ul>
+    <li><b>campus.id:</b> {{ campus.id }}</li>
+    <li><b>campus.label:</b> {{ campus.label }}</li>
+    <li><b>campus.city:</b> {{ campus.city ?? '-' }}</li>
+    <li><b>campus.sections:</b>
+        <ul>
+        {% if campus.sections is empty %}
+            <li>-</li>
+        {% else %}
+            {% for section in campus.sections %}
+                <li>{{ section.label }}</li>
+            {% endfor %}
+        {% endif %}
+        </ul>
+    </li>
+    <li><b>campus.staff:</b>
+        <ul>
+        {% if campus.staff is empty %}
+            <li>-</li>
+        {% else %}
+            {% for staff in campus.staff %}
+                <li>{{ staff.user.email }}</li>
+            {% endfor %}
+        {% endif %}
+        </ul>
+    </li>
+    <li><b>campus.students:</b>
+        <ul>
+        {% if campus.students is empty %}
+            <li>-</li>
+        {% else %}
+            {% for student in campus.students %}
+                <li>{{ student.user.email }}</li>
+            {% endfor %}
+        {% endif %}
+        </ul>
+    </li>
+</ul>
+{% endblock %}
