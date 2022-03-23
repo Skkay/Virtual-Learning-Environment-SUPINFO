@@ -16,7 +16,7 @@
     <tbody>
         {% for staff in staffs %}
         <tr>
-            <td>{{ staff.id }}</td>
+            <td><a href="{{ path('app.staff.show', {'id': staff.id} ) }}">{{ staff.id }}</a></td>
             <td>{{ staff.user.firstName }}</td>
             <td>{{ staff.user.lastName }}</td>
         </tr>

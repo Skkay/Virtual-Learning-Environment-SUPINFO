@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Staff;
 use App\Repository\StaffRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,6 +28,16 @@ class StaffController extends AbstractController
 
         return $this->render('staff/index.html.twig', [
             'staffs' => $staffs,
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="show")
+     */
+    public function show(Staff $staff): Response
+    {
+        return $this->render('staff/show.html.twig', [
+            'staff' => $staff,
         ]);
     }
 }
