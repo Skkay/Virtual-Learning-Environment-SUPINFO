@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DiplomaController!{% endblock %}
+
+{% block body %}
+<h1>Diploma</h1>
+
+<table class="table table-sm table-hover">
+    <thead>
+        <tr>
+            <th scope="col">diploma.id</th>
+            <th scope="col">diploma.label</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for diploma in diplomas %}
+        <tr>
+            <td>{{ diploma.id }}</td>
+            <td>{{ diploma.label }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
