@@ -15,7 +15,7 @@
     <tbody>
         {% for diploma in diplomas %}
         <tr>
-            <td>{{ diploma.id }}</td>
+            <td><a href="{{ path('app.diploma.show', {'id': diploma.id} ) }}">{{ diploma.id }}</a></td>
             <td>{{ diploma.label }}</td>
         </tr>
         {% endfor %}

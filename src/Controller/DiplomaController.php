@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Diploma;
 use App\Repository\DiplomaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,6 +29,16 @@ class DiplomaController extends AbstractController
 
         return $this->render('diploma/index.html.twig', [
             'diplomas' => $diplomas,
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="show")
+     */
+    public function show(Diploma $diploma): Response
+    {
+        return $this->render('diploma/show.html.twig', [
+            'diploma' => $diploma,
         ]);
     }
 }

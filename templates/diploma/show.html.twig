@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DiplomaController!{% endblock %}
+
+{% block body %}
+<ul>
+    <li><b>diploma.id:</b> {{ diploma.id }}</li>
+    <li><b>diploma.label:</b> {{ diploma.label }}</li>
+    <li><b>diploma.students:</b>
+        <ul>
+        {% if diploma.students is empty %}
+            <li>-</li>
+        {% else %}
+            {% for student in diploma.students %}
+                <li>{{ student.user.email }}</li>
+            {% endfor %}
+        {% endif %}
+        </ul>
+    </li>
+</ul>
+{% endblock %}
