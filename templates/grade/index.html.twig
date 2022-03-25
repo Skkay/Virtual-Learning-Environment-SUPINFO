@@ -17,7 +17,7 @@
     <tbody>
         {% for grade in grades %}
         <tr>
-            <td>{{ grade.id }}</td>
+            <td><a href="{{ path('app.grade.show', {'id': grade.id} ) }}">{{ grade.id }}</a></td>
             <td>{{ grade.student.user.email }}</td>
             <td>{{ grade.module.label }}</td>
             <td>{{ grade.grade }}</td>
