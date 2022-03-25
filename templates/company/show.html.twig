@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CompanyController!{% endblock %}
+
+{% block body %}
+<ul>
+    <li><b>company.id:</b> {{ company.id }}</li>
+    <li><b>company.name:</b> {{ company.name }}</li>
+    <li><b>company.address:</b> {{ company.address ?? '-' }}</li>
+    <li><b>company.sector:</b> {{ company.sector ?? '-' }}</li>
+    <li><b>company.studentsTrainingContract:</b>
+        <ul>
+        {% if company.studentsTrainingContract is empty %}
+            <li>-</li>
+        {% else %}
+            {% for studentTrainingContract in company.studentsTrainingContract %}
+                <li>{{ studentTrainingContract.user.email }}</li>
+            {% endfor %}
+        {% endif %}
+        </ul>
+    </li>
+    <li><b>company.studentsCompanyHired:</b>
+        <ul>
+        {% if company.studentsCompanyHired is empty %}
+            <li>-</li>
+        {% else %}
+            {% for studentCompanyHired in company.studentsCompanyHired %}
+                <li>{{ studentCompanyHired.user.email }}</li>
+            {% endfor %}
+        {% endif %}
+        </ul>
+    </li>
+</ul>
+{% endblock %}
