@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Gender;
 use App\Repository\GenderRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,6 +29,16 @@ class GenderController extends AbstractController
 
         return $this->render('gender/index.html.twig', [
             'genders' => $genders,
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="show")
+     */
+    public function show(Gender $gender): Response
+    {
+        return $this->render('gender/show.html.twig', [
+            'gender' => $gender,
         ]);
     }
 }

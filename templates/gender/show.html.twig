@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello GenderController!{% endblock %}
+
+{% block body %}
+<ul>
+    <li><b>gender.id:</b> {{ gender.id }}</li>
+    <li><b>gender.label:</b> {{ gender.label }}</li>
+    <li><b>gender.students:</b>
+        <ul>
+        {% if gender.students is empty %}
+            <li>-</li>
+        {% else %}
+            {% for student in gender.students %}
+                <li>{{ student.user.email }}</li>
+            {% endfor %}
+        {% endif %}
+        </ul>
+    </li>
+</ul>
+{% endblock %}

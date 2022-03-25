@@ -15,7 +15,7 @@
     <tbody>
         {% for gender in genders %}
         <tr>
-            <td>{{ gender.id }}</td>
+            <td><a href="{{ path('app.gender.show', {'id': gender.id} ) }}">{{ gender.id }}</a></td>
             <td>{{ gender.label }}</td>
         </tr>
         {% endfor %}
