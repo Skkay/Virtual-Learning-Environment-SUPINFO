@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SpecialityController!{% endblock %}
+
+{% block body %}
+<h1>Speciality</h1>
+
+<table class="table table-sm table-hover">
+    <thead>
+        <tr>
+            <th scope="col">speciality.id</th>
+            <th scope="col">speciality.label</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for speciality in specialities %}
+        <tr>
+            <td>{{ speciality.id }}</td>
+            <td>{{ speciality.label }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
