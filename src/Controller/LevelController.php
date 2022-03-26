@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Level;
 use App\Repository\LevelRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,6 +29,16 @@ class LevelController extends AbstractController
 
         return $this->render('level/index.html.twig', [
             'levels' => $levels,
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="show")
+     */
+    public function show(Level $level): Response
+    {
+        return $this->render('level/show.html.twig', [
+            'level' => $level,
         ]);
     }
 }

@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LevelController!{% endblock %}
+
+{% block body %}
+<ul>
+    <li><b>level.id:</b> {{ level.id }}</li>
+    <li><b>level.label:</b> {{ level.label }}</li>
+    <li><b>level.students:</b>
+        <ul>
+        {% if level.students is empty %}
+            <li>-</li>
+        {% else %}
+            {% for student in level.students %}
+                <li>{{ student.user.email }}</li>
+            {% endfor %}
+        {% endif %}
+        </ul>
+    </li>
+</ul>
+{% endblock %}
