@@ -15,7 +15,7 @@
     <tbody>
         {% for instructor in instructors %}
         <tr>
-            <td>{{ instructor.id }}</td>
+            <td><a href="{{ path('app.instructor.show', {'id': instructor.id} ) }}">{{ instructor.id }}</a></td>
             <td>{{ instructor.user.email }}</td>
         </tr>
         {% endfor %}

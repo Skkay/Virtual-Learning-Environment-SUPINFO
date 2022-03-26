@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Instructor;
 use App\Repository\InstructorRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,6 +29,16 @@ class InstructorController extends AbstractController
 
         return $this->render('instructor/index.html.twig', [
             'instructors' => $instructors,
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="show")
+     */
+    public function show(Instructor $instructor): Response
+    {
+        return $this->render('instructor/show.html.twig', [
+            'instructor' => $instructor,
         ]);
     }
 }
