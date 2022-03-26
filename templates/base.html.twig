@@ -29,13 +29,9 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                ~Dev
+                                Entities
                             </a>
                             <ul class="dropdown-menu">
-                                <li>
-                                    <a class="dropdown-item {{ route starts with 'app.data_source' ? 'active' }}" href="{{ path('app.data_source.index') }}">Data-sources</a>
-                                </li>
-                                <li><hr class="dropdown-divider"></li>
                                 <li>
                                     <a class="dropdown-item {{ route starts with 'app.campus' ? 'active' }}" href="{{ path('app.campus.index') }}">Campus</a>
                                 </li>
@@ -77,6 +73,16 @@
                                 </li>
                                 <li>
                                     <a class="dropdown-item {{ route starts with 'app.user' ? 'active' }}" href="{{ path('app.user.index') }}">Users</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                ~Dev
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item {{ route starts with 'app.data_source' ? 'active' }}" href="{{ path('app.data_source.index') }}">Data-sources</a>
                                 </li>
                             </ul>
                         </li>
