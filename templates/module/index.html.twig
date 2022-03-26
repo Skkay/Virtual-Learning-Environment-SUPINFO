@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ModuleController!{% endblock %}
+
+{% block body %}
+<h1>Module</h1>
+
+<table class="table table-sm table-hover">
+    <thead>
+        <tr>
+            <th scope="col">module.id</th>
+            <th scope="col">module.label</th>
+            <th scope="col">module.speciality</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for module in modules %}
+        <tr>
+            <td>{{ module.id }}</td>
+            <td>{{ module.label }}</td>
+            <td>{{ module.speciality ?? '-' }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
