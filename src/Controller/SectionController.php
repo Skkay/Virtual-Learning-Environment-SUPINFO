@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Section;
 use App\Repository\SectionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,6 +29,16 @@ class SectionController extends AbstractController
 
         return $this->render('section/index.html.twig', [
             'sections' => $sections,
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="show")
+     */
+    public function show(Section $section): Response
+    {
+        return $this->render('section/show.html.twig', [
+            'section' => $section,
         ]);
     }
 }

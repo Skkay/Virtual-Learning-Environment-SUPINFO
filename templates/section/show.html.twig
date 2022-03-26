@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SectionController!{% endblock %}
+
+{% block body %}
+<ul>
+    <li><b>section.id:</b> {{ section.id }}</li>
+    <li><b>section.label:</b> {{ section.label }}</li>
+    <li><b>section.campus.label:</b> {{ section.campus.label ?? '-' }}</li>
+    <li><b>section.year:</b> {{ section.year ?? '-' }}</li>
+    <li><b>section.instructors:</b>
+        <ul>
+        {% if section.instructors is empty %}
+            <li>-</li>
+        {% else %}
+            {% for instructor in section.instructors %}
+                <li>{{ instructor.user.email }}</li>
+            {% endfor %}
+        {% endif %}
+        </ul>
+    </li>
+</ul>
+{% endblock %}
