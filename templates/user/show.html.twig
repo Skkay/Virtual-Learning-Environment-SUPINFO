@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserController!{% endblock %}
+
+{% block body %}
+<ul>
+    <li><b>user.id:</b> {{ user.id }}</li>
+    <li><b>user.email:</b> {{ user.email }}</li>
+    <li><b>user.firstName:</b> {{ user.firstName ?? '-' }}</li>
+    <li><b>user.lastName:</b> {{ user.lastName ?? '-' }}</li>
+    <li><b>user.roles:</b> <i>TODO</i></li>
+    <li>
+        <b>user.instructor:</b> 
+        {% if user.instructor %}
+            <a href="{{ path('app.instructor.show', {'id': user.instructor.id}) }}">{{ user.instructor.id }}</a>
+        {% else %}
+            -
+        {% endif %}
+    </li>
+    <li>
+        <b>user.staff:</b> 
+        {% if user.staff %}
+            <a href="{{ path('app.staff.show', {'id': user.staff.id}) }}">{{ user.staff.id }}</a>
+        {% else %}
+            -
+        {% endif %}
+    </li>
+    <li>
+        <b>user.student:</b> 
+        {% if user.student %}
+            <a href="{{ path('app.student.show', {'id': user.student.id}) }}">{{ user.student.id }}</a>
+        {% else %}
+            -
+        {% endif %}
+    </li>
+</ul>
+{% endblock %}
