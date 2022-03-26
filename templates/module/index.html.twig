@@ -16,7 +16,7 @@
     <tbody>
         {% for module in modules %}
         <tr>
-            <td>{{ module.id }}</td>
+            <td><a href="{{ path('app.module.show', {'id': module.id} ) }}">{{ module.id }}</a></td>
             <td>{{ module.label }}</td>
             <td>{{ module.speciality ?? '-' }}</td>
         </tr>

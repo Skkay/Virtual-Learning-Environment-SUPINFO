@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Module;
 use App\Repository\ModuleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,6 +29,16 @@ class ModuleController extends AbstractController
 
         return $this->render('module/index.html.twig', [
             'modules' => $modules,
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="show")
+     */
+    public function show(Module $module): Response
+    {
+        return $this->render('module/show.html.twig', [
+            'module' => $module,
         ]);
     }
 }
