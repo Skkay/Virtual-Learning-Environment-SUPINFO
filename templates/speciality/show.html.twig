@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SpecialityController!{% endblock %}
+
+{% block body %}
+<ul>
+    <li><b>speciality.id:</b> {{ speciality.id }}</li>
+    <li><b>speciality.label:</b> {{ speciality.label }}</li>
+    <li><b>speciality.students:</b>
+        <ul>
+        {% if speciality.students is empty %}
+            <li>-</li>
+        {% else %}
+            {% for student in speciality.students %}
+                <li>{{ student.user.email }}</li>
+            {% endfor %}
+        {% endif %}
+        </ul>
+    </li>
+</ul>
+{% endblock %}

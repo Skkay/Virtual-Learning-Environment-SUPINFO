@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello StaffController!{% endblock %}
+
+{% block body %}
+<ul>
+    <li><b>staff.id:</b> {{ staff.id }}</li>
+    <li><b>staff.user.email:</b> {{ staff.user.email }}</li>
+    <li><b>staff.user.firstname:</b> {{ staff.user.firstname ?? '-' }}</li>
+    <li><b>staff.user.lastname:</b> {{ staff.user.lastname ?? '-' }}</li>
+    <li><b>staff.campus:</b>
+        <ul>
+        {% if staff.campus is empty %}
+            <li>-</li>
+        {% else %}
+            {% for campus in staff.campus %}
+                <li>{{ campus.label }}</li>
+            {% endfor %}
+        {% endif %}
+        </ul>
+    </li>
+</ul>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RegionController!{% endblock %}
+
+{% block body %}
+<ul>
+    <li><b>region.id:</b> {{ region.id }}</li>
+    <li><b>region.name:</b> {{ region.name }}</li>
+    <li><b>region.students:</b>
+        <ul>
+        {% if region.students is empty %}
+            <li>-</li>
+        {% else %}
+            {% for student in region.students %}
+                <li>{{ student.user.email }}</li>
+            {% endfor %}
+        {% endif %}
+        </ul>
+    </li>
+</ul>
+{% endblock %}

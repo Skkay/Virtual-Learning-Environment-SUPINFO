@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ModuleController!{% endblock %}
+
+{% block body %}
+<ul>
+    <li><b>module.id:</b> {{ module.id }}</li>
+    <li><b>module.label:</b> {{ module.label }}</li>
+    <li><b>module.speciality:</b> {{ module.speciality ?? '-' }}</li>
+    <li><b>module.instructors:</b>
+        <ul>
+        {% if module.instructors is empty %}
+            <li>-</li>
+        {% else %}
+            {% for instructor in module.instructors %}
+                <li>{{ instructor.user.email }}</li>
+            {% endfor %}
+        {% endif %}
+        </ul>
+    </li>
+    <li><b>module.students:</b>
+        <ul>
+        {% if module.students is empty %}
+            <li>-</li>
+        {% else %}
+            {% for student in module.students %}
+                <li>{{ student.user.email }}</li>
+            {% endfor %}
+        {% endif %}
+        </ul>
+    </li>
+    <li><b>module.grades:</b>
+        <ul>
+        {% if module.grades is empty %}
+            <li>-</li>
+        {% else %}
+            {% for grade in module.grades %}
+                <li>{{ grade.grade ?? '-' }} ({{ grade.student.user.email }})</li>
+            {% endfor %}
+        {% endif %}
+        </ul>
+    </li>
+</ul>
+{% endblock %}

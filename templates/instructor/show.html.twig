@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello InstructorController!{% endblock %}
+
+{% block body %}
+<ul>
+    <li><b>instructor.id:</b> {{ instructor.id }}</li>
+    <li><b>instructor.user.email:</b> {{ instructor.user.email }}</li>
+    <li><b>instructor.modules:</b>
+        <ul>
+        {% if instructor.modules is empty %}
+            <li>-</li>
+        {% else %}
+            {% for module in instructor.modules %}
+                <li>{{ module.label }}</li>
+            {% endfor %}
+        {% endif %}
+        </ul>
+    </li>
+    <li><b>instructor.sections:</b>
+        <ul>
+        {% if instructor.sections is empty %}
+            <li>-</li>
+        {% else %}
+            {% for section in instructor.sections %}
+                <li>{{ section.label }}</li>
+            {% endfor %}
+        {% endif %}
+        </ul>
+    </li>
+</ul>
+{% endblock %}

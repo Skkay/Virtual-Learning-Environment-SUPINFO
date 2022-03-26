@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/", name="app_home")
+     * @Route("/", name="app.home")
      */
     public function index(): Response
     {
@@ -21,7 +21,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/test", name="app_test")
+     * @Route("/test", name="app.test")
      */
     public function test(DataLoaderService $dataLoaderService): Response
     {
@@ -33,7 +33,7 @@ class HomeController extends AbstractController
     }
 
     // /**
-    //  * @Route("/test", name="app_test")
+    //  * @Route("/test", name="app.test")
     //  */
     // public function test(TestService $testService): Response
     // {

@@ -21,8 +21,8 @@
                 <td>{{ data_source.label }}</td>
                 <td>{{ data_source.equivalence ? data_source.equivalence|json_encode : '' }}</td>
                 <td>
-                    <a href="{{ path('data_source_show', {'id': data_source.id}) }}">show</a>
-                    <a href="{{ path('data_source_edit', {'id': data_source.id}) }}">edit</a>
+                    <a href="{{ path('app.data_source.show', {'id': data_source.id}) }}">show</a>
+                    <a href="{{ path('app.data_source.edit', {'id': data_source.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -33,5 +33,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('data_source_new') }}">Create new</a>
+    <a href="{{ path('app.data_source.new') }}">Create new</a>
 {% endblock %}

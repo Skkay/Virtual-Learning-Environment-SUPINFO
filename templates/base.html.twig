@@ -1,11 +1,12 @@
+{% set route = app.request.get('_route') %}
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -15,7 +16,80 @@
         {% endblock %}
     </head>
     <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+            <div class="container">
+                <a class="navbar-brand" href="#">4PROJ</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link {{ route == 'app.home' ? 'active' }}" href="{{ path('app.home') }}">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                Entities
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item {{ route starts with 'app.campus' ? 'active' }}" href="{{ path('app.campus.index') }}">Campus</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item {{ route starts with 'app.company' ? 'active' }}" href="{{ path('app.company.index') }}">Companies</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item {{ route starts with 'app.diploma' ? 'active' }}" href="{{ path('app.diploma.index') }}">Diplomas</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item {{ route starts with 'app.gender' ? 'active' }}" href="{{ path('app.gender.index') }}">Genders</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item {{ route starts with 'app.grade' ? 'active' }}" href="{{ path('app.grade.index') }}">Grades</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item {{ route starts with 'app.instructor' ? 'active' }}" href="{{ path('app.instructor.index') }}">Instructors</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item {{ route starts with 'app.level' ? 'active' }}" href="{{ path('app.level.index') }}">Levels</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item {{ route starts with 'app.module' ? 'active' }}" href="{{ path('app.module.index') }}">Modules</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item {{ route starts with 'app.region' ? 'active' }}" href="{{ path('app.region.index') }}">Regions</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item {{ route starts with 'app.section' ? 'active' }}" href="{{ path('app.section.index') }}">Sections</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item {{ route starts with 'app.speciality' ? 'active' }}" href="{{ path('app.speciality.index') }}">Specialities</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item {{ route starts with 'app.staff' ? 'active' }}" href="{{ path('app.staff.index') }}">Staffs</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item {{ route starts with 'app.student' ? 'active' }}" href="{{ path('app.student.index') }}">Students</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item {{ route starts with 'app.user' ? 'active' }}" href="{{ path('app.user.index') }}">Users</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                ~Dev
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item {{ route starts with 'app.data_source' ? 'active' }}" href="{{ path('app.data_source.index') }}">Data-sources</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
         {% block body %}{% endblock %}
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     </body>
 </html>
