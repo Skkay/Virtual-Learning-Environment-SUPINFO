@@ -15,7 +15,7 @@
     <tbody>
         {% for region in regions %}
         <tr>
-            <td>{{ region.id }}</td>
+            <td><a href="{{ path('app.region.show', {'id': region.id} ) }}">{{ region.id }}</a></td>
             <td>{{ region.name }}</td>
         </tr>
         {% endfor %}
