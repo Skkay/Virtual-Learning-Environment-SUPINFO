@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Speciality;
 use App\Repository\SpecialityRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,6 +29,16 @@ class SpecialityController extends AbstractController
 
         return $this->render('speciality/index.html.twig', [
             'specialities' => $specialities,
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="show")
+     */
+    public function show(Speciality $speciality): Response
+    {
+        return $this->render('speciality/show.html.twig', [
+            'speciality' => $speciality,
         ]);
     }
 }
