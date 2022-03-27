@@ -239,7 +239,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __set($name, $value): self
     {
-        $this->$name = $value;
+        if ($name === 'roles') {
+            $this->roles[] = $value;
+        } else {   
+            $this->$name = $value;
+        }
 
         return $this;
     }

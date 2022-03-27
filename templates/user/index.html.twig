@@ -25,7 +25,7 @@
             <td>{{ user.email }}</td>
             <td>{{ user.firstName ?? '-' }}</td>
             <td>{{ user.lastName ?? '-' }}</td>
-            <td><i>TODO</i></td>
+            <td>{{ user.roles|json_encode(constant('JSON_PRETTY_PRINT')) }}</td>
             <td>
                 {% if user.instructor %}
                     <a href="{{ path('app.instructor.show', {'id': user.instructor.id}) }}">{{ user.instructor.id }}</a>
