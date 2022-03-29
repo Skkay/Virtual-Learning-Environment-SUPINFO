@@ -78,7 +78,7 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                ~Dev
+                                Dev
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
@@ -86,6 +86,28 @@
                                 </li>
                             </ul>
                         </li>
+                    </ul>
+
+                    <ul class="navbar-nav ms-auto">
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                {{ app.user.userIdentifier }}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <a class="dropdown-item" href="#">Mon compte</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ path('app.logout') }}">Déconnexion</a>
+                                </li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link {{ route == 'app.login' ? 'active' }}" aria-current="page" href="{{ path('app.login') }}">Connexion</a>
+                        </li>
+                    {% endif %}
                     </ul>
                 </div>
             </div>
