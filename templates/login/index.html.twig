@@ -5,6 +5,7 @@
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
+    <h1>Login form</h1>
     <form action="{{ path('app.login') }}" method="post">
         <label for="username" class="form-label">Email:</label>
         <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control"/>
@@ -16,5 +17,12 @@
         <input type="hidden" name="_target_path" value="/account"/> #}
 
         <button type="submit" class="btn btn-primary">login</button>
+    </form>
+
+    <h1>Login link</h1>
+    <form action="{{ path('app.login_link') }}" method="POST">
+        <label class="form-label" for="email">Email:</label>
+        <input id="email" class="form-control" type="email" name="email">
+        <button class="btn btn-primary" type="submit">Get Login Link</button>
     </form>
 {% endblock %}

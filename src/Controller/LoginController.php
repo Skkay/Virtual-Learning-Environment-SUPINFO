@@ -2,10 +2,13 @@
 
 namespace App\Controller;
 
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\Security\Http\LoginLink\LoginLinkHandlerInterface;
 
 class LoginController extends AbstractController
 {
@@ -21,6 +24,25 @@ class LoginController extends AbstractController
             'last_username' => $lastUsername,
             'error'         => $error,
         ]);
+    }
+
+    /**
+     * @Route("/login_link", name="app.login_link")
+     */
+    public function requestLoginLink(LoginLinkHandlerInterface $loginLinkHandler, UserRepository $userRepository, Request $request): Response
+    {
+        if ($request->isMethod('POST')) {
+            $email = $request->request->get('email');
+            $user = $userRepository->findOneBy(['email' => $email]);
+
+            $loginLinkDetails = $loginLinkHandler->createLoginLink($user);
+            $loginLink = $loginLinkDetails->getUrl();
+
+            // TODO: send the link and return a response
+            return $this->json(['login_link' => $loginLink]);
+        }
+
+        return $this->render('security/login.html.twig');
     }
 
     /**
