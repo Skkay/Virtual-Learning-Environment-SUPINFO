@@ -27,28 +27,24 @@ class LoginController extends AbstractController
     }
 
     /**
-     * @Route("/login_link", name="app.login_link")
+     * @Route("/login_link", name="app.login_link", methods={"POST"})
      */
     public function requestLoginLink(LoginLinkHandlerInterface $loginLinkHandler, UserRepository $userRepository, Request $request): Response
     {
-        if ($request->isMethod('POST')) {
-            $email = $request->request->get('email');
-            $user = $userRepository->findOneBy(['email' => $email]);
+        $email = $request->request->get('email');
+        $user = $userRepository->findOneBy(['email' => $email]);
 
-            if ($user === null) {
-                $this->addFlash('invalid-email', 'Email inconnu');
+        if ($user === null) {
+            $this->addFlash('invalid-email', 'Email inconnu');
 
-                return $this->redirectToRoute('app.login');
-            }
-
-            $loginLinkDetails = $loginLinkHandler->createLoginLink($user);
-            $loginLink = $loginLinkDetails->getUrl();
-
-            // TODO: send the link and return a response
-            return $this->json(['login_link' => $loginLink]);
+            return $this->redirectToRoute('app.login');
         }
 
-        return $this->render('security/login.html.twig');
+        $loginLinkDetails = $loginLinkHandler->createLoginLink($user);
+        $loginLink = $loginLinkDetails->getUrl();
+
+        // TODO: send the link and return a response
+        return $this->json(['login_link' => $loginLink]);
     }
 
     /**
