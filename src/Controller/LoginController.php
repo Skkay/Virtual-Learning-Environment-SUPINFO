@@ -35,6 +35,12 @@ class LoginController extends AbstractController
             $email = $request->request->get('email');
             $user = $userRepository->findOneBy(['email' => $email]);
 
+            if ($user === null) {
+                $this->addFlash('invalid-email', 'Email inconnu');
+
+                return $this->redirectToRoute('app.login');
+            }
+
             $loginLinkDetails = $loginLinkHandler->createLoginLink($user);
             $loginLink = $loginLinkDetails->getUrl();
 

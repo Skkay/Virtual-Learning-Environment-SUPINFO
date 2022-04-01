@@ -24,12 +24,18 @@
             </div>
         </div>
 
+        {% if app.session.flashBag.has('invalid-email') %}
+            {% set invalidEmailFlash = app.flashes('invalid-email')[0] %}
+        {% endif %}
         <div class="card mt-5">
             <h5 class="card-header">Login link</h5>
             <div class="card-body">
                 <form action="{{ path('app.login_link') }}" method="POST">
                     <label class="form-label" for="email">Email:</label>
-                    <input id="email" class="form-control" type="email" name="email">
+                    <input id="email" class="form-control {{ invalidEmailFlash is defined ? 'is-invalid' }}" type="email" name="email">
+                        <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                            {{ invalidEmailFlash is defined ? invalidEmailFlash }}
+                        </div>
                     <button class="btn btn-primary mt-3" type="submit">Get Login Link</button>
                 </form>
             </div>
