@@ -25,7 +25,7 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link {{ route == 'app.home' ? 'active' }}" href="{{ path('app.home') }}">Home</a>
+                            <a class="nav-link {{ route == 'app.home' ? 'active' }}" href="{{ path('app.home') }}">{{ 'navbar.home'|trans }}</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
@@ -33,46 +33,46 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a class="dropdown-item {{ route starts with 'app.campus' ? 'active' }}" href="{{ path('app.campus.index') }}">Campus</a>
+                                    <a class="dropdown-item {{ route starts with 'app.campus' ? 'active' }}" href="{{ path('app.campus.index') }}">{{ 'navbar.campus'|trans }}</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item {{ route starts with 'app.company' ? 'active' }}" href="{{ path('app.company.index') }}">Companies</a>
+                                    <a class="dropdown-item {{ route starts with 'app.company' ? 'active' }}" href="{{ path('app.company.index') }}">{{ 'navbar.companies'|trans }}</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item {{ route starts with 'app.diploma' ? 'active' }}" href="{{ path('app.diploma.index') }}">Diplomas</a>
+                                    <a class="dropdown-item {{ route starts with 'app.diploma' ? 'active' }}" href="{{ path('app.diploma.index') }}">{{ 'navbar.diplomas'|trans }}</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item {{ route starts with 'app.gender' ? 'active' }}" href="{{ path('app.gender.index') }}">Genders</a>
+                                    <a class="dropdown-item {{ route starts with 'app.gender' ? 'active' }}" href="{{ path('app.gender.index') }}">{{ 'navbar.genders'|trans }}</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item {{ route starts with 'app.grade' ? 'active' }}" href="{{ path('app.grade.index') }}">Grades</a>
+                                    <a class="dropdown-item {{ route starts with 'app.grade' ? 'active' }}" href="{{ path('app.grade.index') }}">{{ 'navbar.grades'|trans }}</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item {{ route starts with 'app.instructor' ? 'active' }}" href="{{ path('app.instructor.index') }}">Instructors</a>
+                                    <a class="dropdown-item {{ route starts with 'app.instructor' ? 'active' }}" href="{{ path('app.instructor.index') }}">{{ 'navbar.instructors'|trans }}</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item {{ route starts with 'app.level' ? 'active' }}" href="{{ path('app.level.index') }}">Levels</a>
+                                    <a class="dropdown-item {{ route starts with 'app.level' ? 'active' }}" href="{{ path('app.level.index') }}">{{ 'navbar.levels'|trans }}</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item {{ route starts with 'app.module' ? 'active' }}" href="{{ path('app.module.index') }}">Modules</a>
+                                    <a class="dropdown-item {{ route starts with 'app.module' ? 'active' }}" href="{{ path('app.module.index') }}">{{ 'navbar.modules'|trans }}</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item {{ route starts with 'app.region' ? 'active' }}" href="{{ path('app.region.index') }}">Regions</a>
+                                    <a class="dropdown-item {{ route starts with 'app.region' ? 'active' }}" href="{{ path('app.region.index') }}">{{ 'navbar.regions'|trans }}</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item {{ route starts with 'app.section' ? 'active' }}" href="{{ path('app.section.index') }}">Sections</a>
+                                    <a class="dropdown-item {{ route starts with 'app.section' ? 'active' }}" href="{{ path('app.section.index') }}">{{ 'navbar.sections'|trans }}</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item {{ route starts with 'app.speciality' ? 'active' }}" href="{{ path('app.speciality.index') }}">Specialities</a>
+                                    <a class="dropdown-item {{ route starts with 'app.speciality' ? 'active' }}" href="{{ path('app.speciality.index') }}">{{ 'navbar.specialities'|trans }}</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item {{ route starts with 'app.staff' ? 'active' }}" href="{{ path('app.staff.index') }}">Staffs</a>
+                                    <a class="dropdown-item {{ route starts with 'app.staff' ? 'active' }}" href="{{ path('app.staff.index') }}">{{ 'navbar.staffs'|trans }}</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item {{ route starts with 'app.student' ? 'active' }}" href="{{ path('app.student.index') }}">Students</a>
+                                    <a class="dropdown-item {{ route starts with 'app.student' ? 'active' }}" href="{{ path('app.student.index') }}">{{ 'navbar.students'|trans }}</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item {{ route starts with 'app.user' ? 'active' }}" href="{{ path('app.user.index') }}">Users</a>
+                                    <a class="dropdown-item {{ route starts with 'app.user' ? 'active' }}" href="{{ path('app.user.index') }}">{{ 'navbar.users'|trans }}</a>
                                 </li>
                             </ul>
                         </li>
@@ -96,16 +96,16 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li>
-                                    <a class="dropdown-item" href="#">Mon compte</a>
+                                    <a class="dropdown-item" href="#">{{ 'navbar.my_profile'|trans }}</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="{{ path('app.logout') }}">Déconnexion</a>
+                                    <a class="dropdown-item" href="{{ path('app.logout') }}">{{ 'navbar.logout'|trans }}</a>
                                 </li>
                             </ul>
                         </li>
                     {% else %}
                         <li class="nav-item">
-                            <a class="nav-link {{ route == 'app.login' ? 'active' }}" aria-current="page" href="{{ path('app.login') }}">Connexion</a>
+                            <a class="nav-link {{ route == 'app.login' ? 'active' }}" aria-current="page" href="{{ path('app.login') }}">{{ 'navbar.login'|trans }}</a>
                         </li>
                     {% endif %}
                     </ul>
