@@ -1,0 +1,19 @@
+navbar:
+  home: Accueil
+  companies: Entreprises
+  campus: Campus
+  diplomas: Diplômes
+  genders: Genres
+  grades: Notes
+  instructors: Intervenants
+  levels: Niveaux
+  modules: Modules
+  regions: Régions
+  sections: Séctions
+  specialities: Spécilités
+  staffs: Staffs
+  students: Etudiants
+  users: Utilisateurs
+  login: Connexion
+  logout: Déconnexion
+  my_profile: Mon compte
