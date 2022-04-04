@@ -9,6 +9,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -36,6 +37,10 @@ class ModuleController extends AbstractController
         /** @var \App\Entity\User $user */
         $user = $this->getUser();
         $student = $user->getStudent();
+
+        if ($student === null) {
+            throw new NotFoundHttpException('Current logged user is not a student');
+        }
 
         $modules = $this->moduleRepository->findAll();
         $grades = $this->gradeRepository->findBy(['student' => $student->getId()]);
