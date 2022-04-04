@@ -32,3 +32,6 @@ report_card:
 dashboard:
   title:
     home: Tableau de bord
+  misc:
+    module_list: Liste des cours
+    report_card_list: Bulletins de notes
