@@ -17,6 +17,7 @@ navbar:
   login: Connexion
   logout: Déconnexion
   my_profile: Mon compte
+  dashboard: Tableau de bord
 
 report_card:
   title: 
@@ -27,3 +28,7 @@ report_card:
     credits_per_course: Crédits/cours
     grades: Notes
     validated_credits: Crédits validés
+
+dashboard:
+  title:
+    home: Tableau de bord
