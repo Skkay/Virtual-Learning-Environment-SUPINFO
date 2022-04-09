@@ -12,6 +12,7 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Mime\MimeTypes;
@@ -85,7 +86,7 @@ class StudentController extends AbstractController
     /**
      * @Route("/{id}/documents/{filename}", name="open_document")
      */
-    public function openDocument(Student $student, string $filename): Response
+    public function openDocument(Student $student, string $filename, Request $request): Response
     {
         $finder = new Finder();
         $mimeTypes = new MimeTypes();
@@ -99,6 +100,10 @@ class StudentController extends AbstractController
 
         $documentPath = iterator_to_array($documentFinder, false)[0]->getRealPath();
         $mimeType = $mimeTypes->guessMimeType($documentPath);
+
+        if ($request->query->has('download')) {
+            return $this->file($documentPath);
+        }
 
         $response = new BinaryFileResponse($documentPath);
         $response->headers->set('Content-Type', $mimeType);

@@ -45,3 +45,5 @@ accounts:
         extension: Type
         filename: Nom du fichier
         ctime: Date de modification
+      misc:
+        download: Télécharger
