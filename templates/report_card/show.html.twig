@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ReportCardController!{% endblock %}
+
+{% block body %}
+<h1>{{ 'report_card.title.home'|trans }}</h1>
+<h4>{{ student.user.firstName|capitalize  }} {{ student.user.lastName|upper }}</h4>
+
+<table class="table table-sm table-hover">
+    <thead>
+        <tr>
+            <th scope="col">{{ 'report_card.misc.course_code'|trans }}</th>
+            <th scope="col">{{ 'report_card.misc.course_name'|trans }}</th>
+            <th scope="col">{{ 'report_card.misc.credits_per_course'|trans }}</th>
+            <th scope="col">{{ 'report_card.misc.grades'|trans }}</th>
+            <th scope="col">{{ 'report_card.misc.validated_credits'|trans }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for grade in student.grades %}
+            {% if grade.module.label starts with moduleStartsWith %}
+                <tr>
+                    <td>{{ grade.module.label }}</td>
+                    <td>?</td>
+                    <td>?</td>
+                    <td>{{ grade.grade ?? '-' }}</td>
+                    <td>{{ grade.grade < 10 ? '0' : '?' }}</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

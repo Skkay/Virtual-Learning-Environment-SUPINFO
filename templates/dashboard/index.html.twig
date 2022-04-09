@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DashboardController!{% endblock %}
+
+{% block body %}
+<h1>{{ 'dashboard.title.home'|trans }}</h1>
+<h4>{{ student.user.firstName|capitalize  }} {{ student.user.lastName|upper }}</h4>
+
+<ul>
+    <li><a href="{{ path('app.module.index') }}">{{ 'dashboard.misc.module_list'|trans }}</a></li>
+    <li>{{ 'dashboard.misc.report_card_list'|trans }}:
+        <ul>
+        {% for level in levels %}
+            <li><a href="{{ path('app.report_card.show', {'level': level.id}) }}">{{ level.label }}</a></li>
+        {% endfor %}
+        </ul>
+    </li>
+</ul>
+
+{% endblock %}
