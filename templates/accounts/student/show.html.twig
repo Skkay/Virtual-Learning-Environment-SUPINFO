@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AccountsController!{% endblock %}
+
+{% block body %}
+<ul>
+    <li><b>student.id:</b> {{ student.id }}</li>
+    <li><b>student.user.email:</b> {{ student.user.email }}</li>
+    <li><b>student.user.firstname:</b> {{ student.user.firstname ?? '-' }}</li>
+    <li><b>student.user.lastname:</b> {{ student.user.lastname ?? '-' }}</li>
+    <li><b>student.campus.label:</b> {{ student.campus.label ?? '-' }}</li>
+    <li><b>student.level.label:</b> {{ student.level.label ?? '-' }}</li>
+    <li><b>student.entryLevel.label:</b> {{ student.entryLevel.label ?? '-' }}</li>
+    <li><b>student.exitLevel.label:</b> {{ student.exitLevel.label ?? '-' }}</li>
+    <li><b>student.entryYear:</b> {{ student.entryYear ?? '-' }}</li>
+    <li><b>student.exitYear:</b> {{ student.exitYear ?? '-' }}</li>
+    <li><b>student.professionalTrainingContract:</b> {{ student.professionalTrainingContract ?? '-' }}</li>
+    <li><b>student.accountsPaid:</b> {{ student.accountsPaid ?? '-' }}</li>
+    <li><b>student.accountsPaymentDue:</b> {{ student.accountsPaymentDue ?? '-' }}</li>
+    <li><b>student.accountsReminded:</b> {{ student.accountsReminded ?? '-' }}</li>
+    <li><b>student.accountsPaymentType.label:</b> {{ student.accountsPaymentType.label ?? '-' }}</li>
+    <li><b>student.companyTrainingContract.name:</b> {{ student.companyTrainingContract.name ?? '-' }}</li>
+    <li><b>student.dateStartContract:</b> {{ student.dateStartContract is empty ? '-' : student.dateStartContract|date('d-m-Y') }}</li>
+    <li><b>student.lastDiploma.label:</b> {{ student.lastDiploma.label ?? '-' }}</li>
+    <li><b>student.dateOfBirth:</b> {{ student.dateOfBirth is empty ? '-' : student.dateOfBirth|date('d-m-Y') }}</li>
+    <li><b>student.address:</b> {{ student.address ?? '-' }}</li>
+    <li><b>student.gender.label:</b> {{ student.gender.label ?? '-' }}</li>
+    <li><b>student.region.name:</b> {{ student.region.name ?? '-' }}</li>
+</ul>
+{% endblock %}

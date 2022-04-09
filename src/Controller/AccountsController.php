@@ -40,12 +40,22 @@ class AccountsController extends AbstractController
     /**
      * @Route("/students", name="student.index")
      */
-    public function getStudentList(): Response
+    public function indexStudent(): Response
     {
         $students = $this->studentRepository->findAll();
 
         return $this->render('accounts/student/index.html.twig', [
             'students' => $students,
+        ]);
+    }
+
+    /**
+     * @Route("/students/{id}", name="student.show")
+     */
+    public function showStudent(Student $student): Response
+    {
+        return $this->render('accounts/student/show.html.twig', [
+            'student' => $student,
         ]);
     }
 }

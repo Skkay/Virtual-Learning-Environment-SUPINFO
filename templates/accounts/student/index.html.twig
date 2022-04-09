@@ -17,7 +17,7 @@
     <tbody>
         {% for student in students %}
         <tr>
-            <td>{{ student.id }}</td>
+            <td><a href="{{ path('app.accounts.student.show', {'id': student.id} ) }}">{{ student.id }}</a></td>
             <td>{{ student.user.firstName ?? '-' }}</td>
             <td>{{ student.user.lastName ?? '-' }}</td>
             <td>{{ student.campus.label ?? '-' }}</td>
