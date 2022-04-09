@@ -35,3 +35,13 @@ dashboard:
   misc:
     module_list: Liste des cours
     report_card_list: Bulletins de notes
+
+accounts:
+  student:
+    document:
+      title:
+        documents_of: Documents de {firstname} {lastname}
+      table:
+        extension: Type
+        filename: Nom du fichier
+        ctime: Date de modification

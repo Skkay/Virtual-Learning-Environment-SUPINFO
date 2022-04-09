@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AccountsController!{% endblock %}
+
+{% block body %}
+<h1>{{ 'accounts.student.document.title.documents_of'|trans({'firstname': student.user.firstName|capitalize, 'lastname': student.user.lastName|upper}) }}</h1>
+
+<table class="table table-sm table-hover">
+    <thead>
+        <tr>
+            <th scope="col">{{ 'accounts.student.document.table.extension'|trans }}</th>
+            <th scope="col">{{ 'accounts.student.document.table.filename'|trans }}</th>
+            <th scope="col">{{ 'accounts.student.document.table.ctime'|trans }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for document in documents %}
+        <tr>
+            <td>{{ document.extension }}</td>
+            <td>{{ document.filename }}</td>
+            <td>{{ document.ctime|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
