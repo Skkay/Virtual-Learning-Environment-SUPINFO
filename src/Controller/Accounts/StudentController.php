@@ -15,7 +15,6 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\Mime\MimeTypes;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -89,7 +88,6 @@ class StudentController extends AbstractController
     public function openDocument(Student $student, string $filename, Request $request): Response
     {
         $finder = new Finder();
-        $mimeTypes = new MimeTypes();
 
         $documentsDirectory = $this->studentDocumentsDirectories . $student->getId() . '/';
         $documentFinder = $finder->files()->in($documentsDirectory)->name($filename);
@@ -99,15 +97,11 @@ class StudentController extends AbstractController
         }
 
         $documentPath = iterator_to_array($documentFinder, false)[0]->getRealPath();
-        $mimeType = $mimeTypes->guessMimeType($documentPath);
 
         if ($request->query->has('download')) {
             return $this->file($documentPath);
         }
 
-        $response = new BinaryFileResponse($documentPath);
-        $response->headers->set('Content-Type', $mimeType);
-
-        return $response;
+        return new BinaryFileResponse($documentPath);
     }
 }
