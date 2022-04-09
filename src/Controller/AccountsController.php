@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Student;
+use App\Repository\StudentRepository;
+use Doctrine\Persistence\ManagerRegistry;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,6 +16,17 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class AccountsController extends AbstractController
 {
+    private $em;
+
+    /** @var StudentRepository */
+    private $studentRepository;
+
+    public function __construct(ManagerRegistry $doctrine)
+    {
+        $this->em = $doctrine->getManager();
+        $this->studentRepository = $this->em->getRepository(Student::class);
+    }
+
     /**
      * @Route("/", name="index")
      */
@@ -20,6 +34,18 @@ class AccountsController extends AbstractController
     {
         return $this->render('accounts/index.html.twig', [
             'controller_name' => 'AccountsController',
+        ]);
+    }
+
+    /**
+     * @Route("/students", name="student.index")
+     */
+    public function getStudentList(): Response
+    {
+        $students = $this->studentRepository->findAll();
+
+        return $this->render('accounts/student/index.html.twig', [
+            'students' => $students,
         ]);
     }
 }
