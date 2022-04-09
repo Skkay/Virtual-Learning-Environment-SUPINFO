@@ -17,7 +17,7 @@
         {% for document in documents %}
         <tr>
             <td>{{ document.extension }}</td>
-            <td>{{ document.filename }}</td>
+            <td><a href="{{ path('app.accounts.student.open_document', {'id': student.id, 'filename': document.filename}) }}">{{ document.filename }}</a></td>
             <td>{{ document.ctime|date('Y-m-d H:i:s') }}</td>
         </tr>
         {% endfor %}

@@ -11,7 +11,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Mime\MimeTypes;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -77,5 +80,29 @@ class StudentController extends AbstractController
             'student' => $student,
             'documents' => iterator_to_array($studentDocuments),
         ]);
+    }
+
+    /**
+     * @Route("/{id}/documents/{filename}", name="open_document")
+     */
+    public function openDocument(Student $student, string $filename): Response
+    {
+        $finder = new Finder();
+        $mimeTypes = new MimeTypes();
+
+        $documentsDirectory = $this->studentDocumentsDirectories . $student->getId() . '/';
+        $documentFinder = $finder->files()->in($documentsDirectory)->name($filename);
+
+        if (!$documentFinder->hasResults()) {
+            throw new NotFoundHttpException('Requested file "' . $documentsDirectory . $filename . '" not found');
+        }
+
+        $documentPath = iterator_to_array($documentFinder, false)[0]->getRealPath();
+        $mimeType = $mimeTypes->guessMimeType($documentPath);
+
+        $response = new BinaryFileResponse($documentPath);
+        $response->headers->set('Content-Type', $mimeType);
+
+        return $response;
     }
 }
