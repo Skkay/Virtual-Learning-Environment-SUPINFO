@@ -8,5 +8,16 @@
     <li><b>module.label:</b> {{ module.label }}</li>
     <li><b>module.speciality:</b> {{ module.speciality ?? '-' }}</li>
     <li><b>grade:</b> {{ grade.grade ?? '-' }}</li>
+    <li><b>module.instructors:</b>
+        <ul>
+        {% if module.instructors is empty %}
+            <li>-</li>
+        {% else %}
+            {% for instructor in module.instructors %}
+                <li>{{ instructor.user.email }}</li>
+            {% endfor %}
+        {% endif %}
+        </ul>
+    </li>
 </ul>
 {% endblock %}
