@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Accounts;
 
 use App\Entity\Student;
 use App\Repository\StudentRepository;
@@ -11,10 +11,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/accounts", name="app.accounts.")
+ * @Route("/accounts/students", name="app.accounts.student.")
  * @Security("is_granted('ROLE_ADMINISTRATION')")
  */
-class AccountsController extends AbstractController
+class StudentController extends AbstractController
 {
     private $em;
 
@@ -32,16 +32,6 @@ class AccountsController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('accounts/index.html.twig', [
-            'controller_name' => 'AccountsController',
-        ]);
-    }
-
-    /**
-     * @Route("/students", name="student.index")
-     */
-    public function indexStudent(): Response
-    {
         $students = $this->studentRepository->findAll();
 
         return $this->render('accounts/student/index.html.twig', [
@@ -50,9 +40,9 @@ class AccountsController extends AbstractController
     }
 
     /**
-     * @Route("/students/{id}", name="student.show")
+     * @Route("/{id}", name="show")
      */
-    public function showStudent(Student $student): Response
+    public function show(Student $student): Response
     {
         return $this->render('accounts/student/show.html.twig', [
             'student' => $student,
