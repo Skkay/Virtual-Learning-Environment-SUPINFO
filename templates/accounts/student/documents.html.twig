@@ -5,6 +5,17 @@
 {% block body %}
 <h1>{{ 'accounts.student.document.title.documents_of'|trans({'firstname': student.user.firstName|capitalize, 'lastname': student.user.lastName|upper}) }}</h1>
 
+{{ form_start(documentUploadForm) }}
+    <div class="d-flex">
+        <div class="flex-grow-1">
+            {{ form_widget(documentUploadForm.file) }}
+        </div>
+
+        <button type="submit" class="ms-2 btn btn-primary">Envoyer</button>
+    </div>
+    {{ form_errors(documentUploadForm.file) }}
+{{ form_end(documentUploadForm) }}
+
 <table class="table table-sm table-hover">
     <thead>
         <tr>

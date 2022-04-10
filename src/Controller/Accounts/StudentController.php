@@ -3,6 +3,7 @@
 namespace App\Controller\Accounts;
 
 use App\Entity\Student;
+use App\Form\DocumentUploadType;
 use App\Repository\StudentRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Psr\Log\LoggerInterface;
@@ -63,7 +64,7 @@ class StudentController extends AbstractController
     /**
      * @Route("/{id}/documents", name="document")
      */
-    public function getStudentDocuments(Student $student): Response
+    public function getStudentDocuments(Student $student, Request $request): Response
     {
         $filesystem = new Filesystem();
         $finder = new Finder();
@@ -75,10 +76,23 @@ class StudentController extends AbstractController
             $this->logger->debug('Directory ' . $studentDocumentsDirectory . 'created');
         }
 
+        $documentUploadForm = $this->createForm(DocumentUploadType::class);
+        $documentUploadForm->handleRequest($request);
+
+        if ($documentUploadForm->isSubmitted() && $documentUploadForm->isValid()) {
+            $files = $documentUploadForm->get('file')->getData();
+
+            foreach ($files as $file) {
+                $file->move($studentDocumentsDirectory, $file->getClientOriginalName());
+            }
+        }
+
         $studentDocuments = $finder->files()->in($studentDocumentsDirectory)->sortByName(true);
+
         return $this->render('accounts/student/documents.html.twig', [
             'student' => $student,
             'documents' => iterator_to_array($studentDocuments),
+            'documentUploadForm' => $documentUploadForm->createView(),
         ]);
     }
 
