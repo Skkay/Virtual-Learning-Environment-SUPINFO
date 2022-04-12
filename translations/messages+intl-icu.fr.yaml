@@ -47,3 +47,9 @@ accounts:
         ctime: Date de modification
       misc:
         download: Télécharger
+
+form:
+  student_comment_type:
+    label: Ajouter un commentaire
+  misc:
+    save: Enregistrer

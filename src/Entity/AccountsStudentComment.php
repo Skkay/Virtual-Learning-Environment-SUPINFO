@@ -52,6 +52,11 @@ class AccountsStudentComment
         }
     }
 
+    public function __construct(string $comment)
+    {
+        $this->setComment($comment);
+    }
+
     public function getId(): ?int
     {
         return $this->id;

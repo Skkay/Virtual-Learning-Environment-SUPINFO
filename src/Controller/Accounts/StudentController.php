@@ -2,8 +2,10 @@
 
 namespace App\Controller\Accounts;
 
+use App\Entity\AccountsStudentComment;
 use App\Entity\Student;
 use App\Form\DocumentUploadType;
+use App\Form\StudentCommentType;
 use App\Repository\StudentRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Psr\Log\LoggerInterface;
@@ -54,10 +56,26 @@ class StudentController extends AbstractController
     /**
      * @Route("/{id}", name="show")
      */
-    public function show(Student $student): Response
+    public function show(Student $student, Request $request): Response
     {
+        $commentForm = $this->createForm(StudentCommentType::class);
+        $commentForm->handleRequest($request);
+
+        if ($commentForm->isSubmitted() && $commentForm->isValid()) {
+            $comment = $commentForm->get('comment')->getData();
+
+            $student->addAccountsComment(new AccountsStudentComment($comment));
+            $this->em->persist($student);
+            $this->em->flush();
+
+            return $this->redirectToRoute('app.accounts.student.show', [
+                'id' => $student->getId(),
+            ]);
+        }
+
         return $this->render('accounts/student/show.html.twig', [
             'student' => $student,
+            'commentForm' => $commentForm->createView(),
         ]);
     }
 

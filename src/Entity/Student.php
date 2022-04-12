@@ -145,7 +145,7 @@ class Student
     private $speciality;
 
     /**
-     * @ORM\OneToMany(targetEntity=AccountsStudentComment::class, mappedBy="student", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=AccountsStudentComment::class, mappedBy="student", orphanRemoval=true, cascade={"persist"})
      */
     private $accountsComments;
 
