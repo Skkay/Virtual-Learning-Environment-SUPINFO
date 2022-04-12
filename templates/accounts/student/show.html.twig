@@ -33,4 +33,10 @@
 
     <button type="submit" class="btn btn-primary">{{ 'form.misc.save'|trans }}</button>
 {{ form_end(commentForm)}}
+
+<ul>
+    {% for comment in comments %}
+    <li><i>{{ comment.createdAt|date('Y-m-d H:i:s') }}</i> - {{ comment.comment }}</li>
+    {% endfor %}
+</ul>
 {% endblock %}

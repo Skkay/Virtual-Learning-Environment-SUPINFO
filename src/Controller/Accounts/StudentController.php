@@ -6,6 +6,7 @@ use App\Entity\AccountsStudentComment;
 use App\Entity\Student;
 use App\Form\DocumentUploadType;
 use App\Form\StudentCommentType;
+use App\Repository\AccountsStudentCommentRepository;
 use App\Repository\StudentRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Psr\Log\LoggerInterface;
@@ -33,12 +34,16 @@ class StudentController extends AbstractController
     /** @var StudentRepository */
     private $studentRepository;
 
+    /** @var AccountsStudentCommentRepository */
+    private $accountsStudentCommentRepository;
+
     public function __construct(ParameterBagInterface $params, LoggerInterface $logger, ManagerRegistry $doctrine)
     {
         $this->studentDocumentsDirectories = $params->get('app.accounts.student_documents_directories');
         $this->logger = $logger;
         $this->em = $doctrine->getManager();
         $this->studentRepository = $this->em->getRepository(Student::class);
+        $this->accountsStudentCommentRepository = $this->em->getRepository(AccountsStudentComment::class);
     }
 
     /**
@@ -73,9 +78,12 @@ class StudentController extends AbstractController
             ]);
         }
 
+        $comments = $this->accountsStudentCommentRepository->findBy(['student' => $student->getId()], ['createdAt' => 'DESC']);
+
         return $this->render('accounts/student/show.html.twig', [
             'student' => $student,
             'commentForm' => $commentForm->createView(),
+            'comments' => $comments,
         ]);
     }
 
