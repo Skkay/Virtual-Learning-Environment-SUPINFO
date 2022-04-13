@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\AccountsStudentCommentRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * @ORM\Entity(repositoryClass=AccountsStudentCommentRepository::class)
@@ -37,6 +38,7 @@ class AccountsStudentComment
     /**
      * @ORM\ManyToOne(targetEntity=Student::class, inversedBy="accountsComments")
      * @ORM\JoinColumn(nullable=false)
+     * @JMS\Exclude
      */
     private $student;
 
