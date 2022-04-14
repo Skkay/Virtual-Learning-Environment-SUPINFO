@@ -266,7 +266,7 @@ class DataLoaderService
                 $className, 
                 $identifierField['metatype'],
                 $identifierField['destination'], 
-                $value[$identifierField['metatype']['relation']['source']], 
+                $value[$identifierField['source']], 
             );
         }
 
