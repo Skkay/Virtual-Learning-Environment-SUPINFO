@@ -43,4 +43,15 @@ class AccountsStudentCommentController extends AbstractController
 
         return $this->json($this->serializer->serialize($accountsStudentComment, 'json'));
     }
+
+    /**
+     * @Route("/delete/{id}", methods={"DELETE"})
+     */
+    public function delete(AccountsStudentComment $accountsStudentComment): Response
+    {
+        $this->em->remove($accountsStudentComment);
+        $this->em->flush();
+
+        return new Response(null, Response::HTTP_NO_CONTENT);
+    }
 }
