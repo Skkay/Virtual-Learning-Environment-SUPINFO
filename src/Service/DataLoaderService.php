@@ -49,7 +49,7 @@ class DataLoaderService
             throw new \Exception('Directory not found');
         }
 
-        $finder->files()->in($this->etlDataDirectory);
+        $finder->files()->in($this->etlDataDirectory)->notName('*.skip');
         if (!$finder->hasResults()) {
             throw new \Exception('No file found');
         }
