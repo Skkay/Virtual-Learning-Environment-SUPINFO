@@ -144,10 +144,16 @@ class Student
      */
     private $speciality;
 
+    /**
+     * @ORM\OneToMany(targetEntity=AccountsStudentComment::class, mappedBy="student", orphanRemoval=true, cascade={"persist"})
+     */
+    private $accountsComments;
+
     public function __construct()
     {
         $this->modules = new ArrayCollection();
         $this->grades = new ArrayCollection();
+        $this->accountsComments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -509,6 +515,36 @@ class Student
 
             if (method_exists($value, 'addStudent')) {
                 $value->addStudent($this);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|AccountsStudentComment[]
+     */
+    public function getAccountsComments(): Collection
+    {
+        return $this->accountsComments;
+    }
+
+    public function addAccountsComment(AccountsStudentComment $accountsComment): self
+    {
+        if (!$this->accountsComments->contains($accountsComment)) {
+            $this->accountsComments[] = $accountsComment;
+            $accountsComment->setStudent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAccountsComment(AccountsStudentComment $accountsComment): self
+    {
+        if ($this->accountsComments->removeElement($accountsComment)) {
+            // set the owning side to null (unless already changed)
+            if ($accountsComment->getStudent() === $this) {
+                $accountsComment->setStudent(null);
             }
         }
 
