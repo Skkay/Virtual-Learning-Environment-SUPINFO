@@ -31,7 +31,7 @@ class AccountsStudentCommentController extends AbstractController
      * @Route("/update/{id}", methods={"POST"})
      * @ParamConverter("post", class="array", converter="fos_rest.request_body")
      */
-    public function index(array $post, AccountsStudentComment $accountsStudentComment): Response
+    public function update(array $post, AccountsStudentComment $accountsStudentComment): Response
     {
         if (!isset($post['comment'])) {
             throw new BadRequestHttpException('Missing "comment" field');
