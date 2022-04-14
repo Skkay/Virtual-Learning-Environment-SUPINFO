@@ -226,7 +226,7 @@ class DataLoaderService
                 return (float) $value;
 
             case TypeEnum::BOOL:
-                return (bool) $value;
+                return filter_var($value, FILTER_VALIDATE_BOOL);
 
             case TypeEnum::DATE:
                 if (!isset($metatype['date_format'])) {
