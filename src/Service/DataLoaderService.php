@@ -57,7 +57,7 @@ class DataLoaderService
         foreach ($finder as $file) {
             $dataSource = $this->dataSourceRepository->findOneBy(['label' => $file->getFilename()]);
             if ($dataSource === null) {
-                throw new \Exception('File has no associated dataSource');
+                throw new \Exception('File "' . $file->getFilename() . '" has no associated dataSource');
             }
 
             if ($file->getExtension() === 'csv') {
