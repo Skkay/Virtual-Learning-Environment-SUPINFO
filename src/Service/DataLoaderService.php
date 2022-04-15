@@ -49,15 +49,18 @@ class DataLoaderService
             throw new \Exception('Directory not found');
         }
 
-        $finder->files()->in($this->etlDataDirectory)->notName('*.skip');
+        $finder->files()->in($this->etlDataDirectory)->notName('*.skip')->sortByName(true);
         if (!$finder->hasResults()) {
             throw new \Exception('No file found');
         }
 
         foreach ($finder as $file) {
-            $dataSource = $this->dataSourceRepository->findOneBy(['label' => $file->getFilename()]);
+            $splittedFilename = explode('~', $file->getFilename(), 2); // Character before "~" is only designed for priority
+            $usedFilename = end($splittedFilename); // Filename is always at the last position (0 if no "~" character, 1 otherwise)
+
+            $dataSource = $this->dataSourceRepository->findOneBy(['label' => $usedFilename]);
             if ($dataSource === null) {
-                throw new \Exception('File "' . $file->getFilename() . '" has no associated dataSource');
+                throw new \Exception('File "' . $file->getFilename() . '" has no associated dataSource (labeled "' . $usedFilename . '")');
             }
 
             if ($file->getExtension() === 'csv') {
