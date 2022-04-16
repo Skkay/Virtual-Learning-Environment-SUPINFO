@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\Entity\DataSource;
+use App\Entity\Role;
 use App\Enum\RelationEnum;
 use App\Enum\TypeEnum;
 use App\Repository\DataSourceRepository;
@@ -238,7 +239,8 @@ class DataLoaderService
                 return \DateTime::createFromFormat($metatype['date_format'], $value);
             
             case TypeEnum::ROLE:
-                return (string) $value; // TODO
+                $role = $this->em->getRepository(Role::class)->findOneBy(['from' => $value]);
+                return $role === null ? '' : $role->getTo();
 
             default:
                 throw new \Exception('Unknown type "' . $metatype['type'] . '"');
