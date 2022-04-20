@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\Entity\DataSource;
+use App\Entity\Role;
 use App\Enum\RelationEnum;
 use App\Enum\TypeEnum;
 use App\Repository\DataSourceRepository;
@@ -49,15 +50,18 @@ class DataLoaderService
             throw new \Exception('Directory not found');
         }
 
-        $finder->files()->in($this->etlDataDirectory);
+        $finder->files()->in($this->etlDataDirectory)->notName('*.skip')->sortByName(true);
         if (!$finder->hasResults()) {
             throw new \Exception('No file found');
         }
 
         foreach ($finder as $file) {
-            $dataSource = $this->dataSourceRepository->findOneBy(['label' => $file->getFilename()]);
+            $splittedFilename = explode('~', $file->getFilename(), 2); // Character before "~" is only designed for priority
+            $usedFilename = end($splittedFilename); // Filename is always at the last position (0 if no "~" character, 1 otherwise)
+
+            $dataSource = $this->dataSourceRepository->findOneBy(['label' => $usedFilename]);
             if ($dataSource === null) {
-                throw new \Exception('File has no associated dataSource');
+                throw new \Exception('File "' . $file->getFilename() . '" has no associated dataSource (labeled "' . $usedFilename . '")');
             }
 
             if ($file->getExtension() === 'csv') {
@@ -226,7 +230,7 @@ class DataLoaderService
                 return (float) $value;
 
             case TypeEnum::BOOL:
-                return (bool) $value;
+                return filter_var($value, FILTER_VALIDATE_BOOL);
 
             case TypeEnum::DATE:
                 if (!isset($metatype['date_format'])) {
@@ -235,7 +239,8 @@ class DataLoaderService
                 return \DateTime::createFromFormat($metatype['date_format'], $value);
             
             case TypeEnum::ROLE:
-                return (string) $value; // TODO
+                $role = $this->em->getRepository(Role::class)->findOneBy(['from' => $value]);
+                return $role === null ? '' : $role->getTo();
 
             default:
                 throw new \Exception('Unknown type "' . $metatype['type'] . '"');
@@ -266,7 +271,7 @@ class DataLoaderService
                 $className, 
                 $identifierField['metatype'],
                 $identifierField['destination'], 
-                $value[$identifierField['metatype']['relation']['source']], 
+                $value[$identifierField['source']], 
             );
         }
 
