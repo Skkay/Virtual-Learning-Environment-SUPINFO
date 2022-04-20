@@ -39,7 +39,7 @@ class DataSourceController extends AbstractController
             $entityManager->persist($dataSource);
             $entityManager->flush();
 
-            return $this->redirectToRoute('data_source_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app.data_source.index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('data_source/new.html.twig', [
@@ -69,7 +69,7 @@ class DataSourceController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('data_source_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app.data_source.index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('data_source/edit.html.twig', [
@@ -88,6 +88,6 @@ class DataSourceController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('data_source_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app.data_source.index', [], Response::HTTP_SEE_OTHER);
     }
 }

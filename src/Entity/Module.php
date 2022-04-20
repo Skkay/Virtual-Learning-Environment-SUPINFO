@@ -46,6 +46,11 @@ class Module
      */
     private $grades;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $ects;
+
     public function __construct()
     {
         $this->instructors = new ArrayCollection();
@@ -192,6 +197,18 @@ class Module
                 $value->addModule($this);
             }
         }
+
+        return $this;
+    }
+
+    public function getEcts(): ?int
+    {
+        return $this->ects;
+    }
+
+    public function setEcts(?int $ects): self
+    {
+        $this->ects = $ects;
 
         return $this;
     }
