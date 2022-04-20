@@ -22,9 +22,9 @@
                 <tr>
                     <td>{{ grade.module.label }}</td>
                     <td>?</td>
-                    <td>?</td>
+                    <td>{{ grade.module.ects }}</td>
                     <td>{{ grade.grade ?? '-' }}</td>
-                    <td>{{ grade.grade < 10 ? '0' : '?' }}</td>
+                    <td>{{ grade.grade < 10 ? '0' : grade.module.ects }}</td>
                 </tr>
             {% endif %}
         {% endfor %}

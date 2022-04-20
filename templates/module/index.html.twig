@@ -12,6 +12,7 @@
             <th scope="col">module.label</th>
             <th scope="col">module.speciality</th>
             <th scope="col">grade</th>
+            <th scope="col">module.ects</th>
         </tr>
     </thead>
     <tbody>
@@ -21,6 +22,7 @@
             <td>{{ module.label }}</td>
             <td>{{ module.speciality ?? '-' }}</td>
             <td>{{ grades[module.label].grade ?? '-' }}</td>
+            <td>{{ module.ects ?? '-' }}</td>
         </tr>
         {% endfor %}
     </tbody>
