@@ -51,7 +51,7 @@ class ModuleController extends AbstractController
             unset($grades[$key]);
         }
 
-        return $this->render('module/index.html.twig', [
+        return $this->render('student/module/index.html.twig', [
             'modules' => $modules,
             'grades' => $grades,
         ]);
@@ -71,7 +71,7 @@ class ModuleController extends AbstractController
             $grade = $gradeRepository->findOneBy(['module' => $module->getId(), 'student' => $student->getId()]);
         }
 
-        return $this->render('module/show.html.twig', [
+        return $this->render('student/module/show.html.twig', [
             'module' => $module,
             'grade' => isset($grade) ? $grade : null,
         ]);

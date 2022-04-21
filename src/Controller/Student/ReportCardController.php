@@ -43,7 +43,7 @@ class ReportCardController extends AbstractController
                 throw new \Exception(); break;
         }
 
-        return $this->render('report_card/show.html.twig', [
+        return $this->render('student/report_card/show.html.twig', [
             'student' => $student,
             'level' => $level,
             'moduleStartsWith' => $moduleStartsWith,

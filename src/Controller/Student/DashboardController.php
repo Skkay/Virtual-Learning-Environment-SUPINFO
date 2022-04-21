@@ -40,7 +40,7 @@ class DashboardController extends AbstractController
 
         $levels = $this->levelRepository->findAll();
 
-        return $this->render('dashboard/index.html.twig', [
+        return $this->render('student/dashboard/index.html.twig', [
             'student' => $student,
             'levels' => $levels,
         ]);
