@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Student;
 
 use App\Entity\Grade;
 use App\Entity\Module;

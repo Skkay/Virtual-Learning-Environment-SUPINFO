@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Student;
 
 use App\Entity\Level;
 use App\Entity\Student;
