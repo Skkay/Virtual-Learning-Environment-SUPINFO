@@ -1,15 +1,13 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Student;
 
 use App\Entity\Level;
-use App\Entity\Student;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * @Route("/report_card", name="app.report_card.")
@@ -20,7 +18,7 @@ class ReportCardController extends AbstractController
     /**
      * @Route("/{level}", name="show")
      */
-    public function show(Level $level)
+    public function show(Level $level): Response
     {
         /** @var \App\Entity\User $user */
         $user = $this->getUser();
@@ -45,7 +43,7 @@ class ReportCardController extends AbstractController
                 throw new \Exception(); break;
         }
 
-        return $this->render('report_card/show.html.twig', [
+        return $this->render('student/report_card/show.html.twig', [
             'student' => $student,
             'level' => $level,
             'moduleStartsWith' => $moduleStartsWith,

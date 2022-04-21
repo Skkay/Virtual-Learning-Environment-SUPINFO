@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Student;
 
 use App\Entity\Level;
 use Doctrine\Persistence\ManagerRegistry;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/dashboard", name="app.dashboard.")
- * @IsGranted("ROLE_USER")
+ * @Security("is_granted('ROLE_USER')")
  */
 class DashboardController extends AbstractController
 {
@@ -40,7 +40,7 @@ class DashboardController extends AbstractController
 
         $levels = $this->levelRepository->findAll();
 
-        return $this->render('dashboard/index.html.twig', [
+        return $this->render('student/dashboard/index.html.twig', [
             'student' => $student,
             'levels' => $levels,
         ]);

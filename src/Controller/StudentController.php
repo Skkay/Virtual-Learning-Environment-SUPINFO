@@ -26,7 +26,7 @@ class StudentController extends AbstractController
     {
         $students = $this->studentRepository->findAll();
 
-        return $this->render('student/index.html.twig', [
+        return $this->render('student_entity/index.html.twig', [
             'students' => $students,
         ]);
     }
@@ -36,7 +36,7 @@ class StudentController extends AbstractController
      */
     public function show(Student $student): Response
     {
-        return $this->render('student/show.html.twig', [
+        return $this->render('student_entity/show.html.twig', [
             'student' => $student,
         ]);
     }
