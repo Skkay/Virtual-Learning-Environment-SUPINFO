@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EducationalCoordinatorController!{% endblock %}
+
+{% block body %}
+<h1>{{ 'educational_coordinator.student.title.home'|trans }}</h1>
+
+<table class="table table-sm table-hover">
+    <thead>
+        <tr>
+            <th scope="col">{{ 'educational_coordinator.student.table.id'|trans }}</th>
+            <th scope="col">{{ 'educational_coordinator.student.table.first_name'|trans }}</th>
+            <th scope="col">{{ 'educational_coordinator.student.table.last_name'|trans }}</th>
+            <th scope="col">{{ 'educational_coordinator.student.table.campus'|trans }}</th>
+            <th scope="col">{{ 'educational_coordinator.student.table.level'|trans }}</th>
+            <th scope="col">{{ 'educational_coordinator.student.table.company'|trans }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in students %}
+        <tr>
+            <td>{{ student.id }}</td>
+            <td>{{ student.user.firstName ?? '-' }}</td>
+            <td>{{ student.user.lastName ?? '-' }}</td>
+            <td>{{ student.campus.label ?? '-' }}</td>
+            <td>{{ student.level.label ?? '-' }}</td>
+            <td>{{ student.companyTrainingContract.name ?? '-' }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

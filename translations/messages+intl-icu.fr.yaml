@@ -48,6 +48,18 @@ accounts:
       misc:
         download: Télécharger
 
+educational_coordinator:
+  student:
+    title:
+      home: Liste des étudiants
+    table:
+      id: ID
+      first_name: Prénom
+      last_name: Nom
+      campus: Campus
+      level: Niveau
+      company: Entreprise
+
 form:
   student_comment_type:
     label: Ajouter un commentaire
