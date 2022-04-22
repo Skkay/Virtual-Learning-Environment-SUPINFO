@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -33,7 +34,19 @@ class StudentController extends AbstractController
      */
     public function index(): Response
     {
-        $students = $this->studentRepository->findAll();
+        /** @var \App\Entity\User $user */
+        $user = $this->getUser();
+        $staff = $user->getStaff();
+
+        if ($staff === null) {
+            throw new NotFoundHttpException('Current logged user is not a staff');
+        }
+
+        $campusIds = $staff->getCampus()->map(function ($value) {
+            return $value->getId();
+        });
+
+        $students = $this->studentRepository->findBy(['campus' => $campusIds->toArray()]);
 
         return $this->render('educational_coordinator/student/index.html.twig', [
             'students' => $students,
