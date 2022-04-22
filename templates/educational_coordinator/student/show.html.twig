@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EducationalCoordinatorController!{% endblock %}
+
+{% block body %}
+<ul>
+    <li><b>student.id:</b> {{ student.id }}</li>
+    <li><b>student.user.email:</b> {{ student.user.email }}</li>
+    <li><b>student.user.firstname:</b> {{ student.user.firstname ?? '-' }}</li>
+    <li><b>student.user.lastname:</b> {{ student.user.lastname ?? '-' }}</li>
+    <li><b>student.campus.label:</b> {{ student.campus.label ?? '-' }}</li>
+    <li><b>student.level.label:</b> {{ student.level.label ?? '-' }}</li>
+    <li><b>student.professionalTrainingContract:</b> {{ student.professionalTrainingContract ?? '-' }}</li>
+    <li><b>student.companyTrainingContract.name:</b> {{ student.companyTrainingContract.name ?? '-' }}</li>
+    <li><b>student.dateStartContract:</b> {{ student.dateStartContract is empty ? '-' : student.dateStartContract|date('d-m-Y') }}</li>
+    <li><b>student.dateOfBirth:</b> {{ student.dateOfBirth is empty ? '-' : student.dateOfBirth|date('d-m-Y') }}</li>
+    <li><b>student.gender.label:</b> {{ student.gender.label ?? '-' }}</li>
+    <li><b>student.region.name:</b> {{ student.region.name ?? '-' }}</li>
+    <li><b>student.numberOfAbsences:</b> {{ student.numberOfAbsences ?? '-' }}</li>
+    <li><b>student.grades:</b>
+        <ul>
+            {% for grade in student.grades %}
+                <li><u>{{ grade.module.label }}:</u> {{ grade.grade ?? '-' }}</li>
+            {% endfor %}
+        </ul>
+    </li>
+    <li><b>student.speciality.label:</b> {{ student.speciality.label ?? '-' }}</li>
+</ul>
+{% endblock %}

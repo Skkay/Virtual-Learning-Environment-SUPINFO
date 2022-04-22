@@ -39,4 +39,14 @@ class StudentController extends AbstractController
             'students' => $students,
         ]);
     }
+
+    /**
+     * @Route("/{id}", name="show")
+     */
+    public function show(Student $student): Response
+    {
+        return $this->render('educational_coordinator/student/show.html.twig', [
+            'student' => $student,
+        ]);
+    }
 }
