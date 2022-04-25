@@ -49,6 +49,12 @@ accounts:
         download: Télécharger
 
 educational_coordinator:
+  dashboard:
+    title:
+      home: Tableau de bord
+    misc:
+      student_list: Liste des étudiants
+      module_list: Liste des modules
   student:
     title:
       home: Liste des étudiants

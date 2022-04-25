@@ -18,8 +18,6 @@ class EducationalCoordinatorController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('educational_coordinator/index.html.twig', [
-            'controller_name' => 'EducationalCoordinatorController',
-        ]);
+        return $this->render('educational_coordinator/index.html.twig');
     }
 }
