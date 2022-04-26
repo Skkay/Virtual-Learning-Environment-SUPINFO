@@ -65,6 +65,9 @@ educational_coordinator:
       campus: Campus
       level: Niveau
       company: Entreprise
+  module:
+    title:
+      home: Liste des modules
   instructor:
     title:
       home: Liste des intervenants
