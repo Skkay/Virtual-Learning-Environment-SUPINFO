@@ -35,7 +35,7 @@ class Campus
     private $sections;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Staff::class, mappedBy="campus")
+     * @ORM\OneToMany(targetEntity=Staff::class, mappedBy="campus")
      */
     private $staff;
 
@@ -122,7 +122,7 @@ class Campus
     {
         if (!$this->staff->contains($staff)) {
             $this->staff[] = $staff;
-            $staff->addCampus($this);
+            $staff->setCampus($this);
         }
 
         return $this;
@@ -131,7 +131,10 @@ class Campus
     public function removeStaff(Staff $staff): self
     {
         if ($this->staff->removeElement($staff)) {
-            $staff->removeCampus($this);
+            // set the owning side to null (unless already changed)
+            if ($staff->getCampus() === $this) {
+                $staff->setCampus(null);
+            }
         }
 
         return $this;

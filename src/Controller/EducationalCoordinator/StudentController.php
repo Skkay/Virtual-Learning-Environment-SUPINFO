@@ -42,11 +42,7 @@ class StudentController extends AbstractController
             throw new NotFoundHttpException('Current logged user is not a staff');
         }
 
-        $campusIds = $staff->getCampus()->map(function ($value) {
-            return $value->getId();
-        });
-
-        $students = $this->studentRepository->findBy(['campus' => $campusIds->toArray()]);
+        $students = $this->studentRepository->findBy(['campus' => $staff->getCampus()]);
 
         return $this->render('educational_coordinator/student/index.html.twig', [
             'students' => $students,
