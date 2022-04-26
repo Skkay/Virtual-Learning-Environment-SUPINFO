@@ -65,6 +65,9 @@ educational_coordinator:
       campus: Campus
       level: Niveau
       company: Entreprise
+  instructor:
+    title:
+      home: Liste des intervenants
 
 form:
   student_comment_type:

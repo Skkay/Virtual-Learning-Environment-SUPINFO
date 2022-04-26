@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello InstructorController!{% endblock %}
+
+{% block body %}
+<h1>{{ 'educational_coordinator.instructor.title.home'|trans }}</h1>
+
+<ul>
+    {% for instructor in instructors %}
+        <li>{{ instructor.user.firstName }} {{ instructor.user.lastName }} ({{ instructor.user.email }}):
+            <ul>
+                {% for module in instructor.modules %}
+                    <li>{{ module.label }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
