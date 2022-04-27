@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ModuleController!{% endblock %}
+
+{% block body %}
+<ul>
+    <li><b>module.id:</b> {{ module.id }}</li>
+    <li><b>module.label:</b> {{ module.label }}</li>
+    <li><b>module.speciality:</b> {{ module.speciality }}</li>
+    <li><b>module.ects:</b> {{ module.ects }}</li>
+    <li><b>instructors:</b>
+        <ul>
+            {% for instructor in instructors %}
+                <li>{{ instructor.user.email }}</li>
+            {% endfor %}
+        </ul>
+    </li>
+    <li><b>module.student:</b>
+        <ul>
+            {% for student in students %}
+                <li>{{ student.user.firstName }} {{ student.user.lastName }}: {{ grades[student.user.userIdentifier].grade ?? '-' }}</li>
+            {% endfor %}
+        </ul>
+    </li>
+</ul>
+{% endblock %}
