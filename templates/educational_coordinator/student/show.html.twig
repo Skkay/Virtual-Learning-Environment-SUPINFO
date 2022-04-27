@@ -20,7 +20,13 @@
     <li><b>student.grades:</b>
         <ul>
             {% for grade in student.grades %}
-                <li><u>{{ grade.module.label }}:</u> {{ grade.grade ?? '-' }}</li>
+                <li><u>{{ grade.module.label }}:</u>
+                    {% if grade.grade %}
+                        {{ grade.grade }} - {{ grade.grade > 10 ? 'educational_coordinator.student.misc.accepted'|trans : 'educational_coordinator.student.misc.fail'|trans }}
+                    {% else %}
+                        -
+                    {% endif %}
+                </li>
             {% endfor %}
         </ul>
     </li>

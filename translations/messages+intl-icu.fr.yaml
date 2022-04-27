@@ -65,9 +65,15 @@ educational_coordinator:
       campus: Campus
       level: Niveau
       company: Entreprise
+    misc:
+      accepted: Admis
+      fail: Recalé
   module:
     title:
       home: Liste des modules
+    misc:
+      accepted: Admis
+      fail: Recalé
   instructor:
     title:
       home: Liste des intervenants
