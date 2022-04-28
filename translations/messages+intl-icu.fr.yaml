@@ -55,6 +55,7 @@ educational_coordinator:
     misc:
       student_list: Liste des étudiants
       module_list: Liste des modules
+      company_list: Liste des entreprises
   student:
     title:
       home: Liste des étudiants
@@ -77,6 +78,15 @@ educational_coordinator:
   instructor:
     title:
       home: Liste des intervenants
+  company:
+    title:
+      home: Liste des entreprises
+    table:
+      id: ID
+      name: Nom
+      sector: Secteur d'activité
+      nb_student_training_contract: Nombre d'étudiant en alternance
+      nb_student_hired: Nombre d'étudiant embauché
 
 form:
   student_comment_type:

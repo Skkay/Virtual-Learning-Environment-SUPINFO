@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CompanyController!{% endblock %}
+
+{% block body %}
+<h1>{{ 'educational_coordinator.company.title.home'|trans }}</h1>
+
+<table class="table table-sm table-hover">
+    <thead>
+        <tr>
+            <th scope="col">{{ 'educational_coordinator.company.table.id'|trans }}</th>
+            <th scope="col">{{ 'educational_coordinator.company.table.name'|trans }}</th>
+            <th scope="col">{{ 'educational_coordinator.company.table.sector'|trans }}</th>
+            <th scope="col">{{ 'educational_coordinator.company.table.nb_student_training_contract'|trans }}</th>
+            <th scope="col">{{ 'educational_coordinator.company.table.nb_student_hired'|trans }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for company in companies %}
+        <tr>
+            <td>{{ company.id }}</td>
+            <td>{{ company.name }}</td>
+            <td>{{ company.sector }}</td>
+            <td>{{ '0' }}</td>
+            <td>{{ '0' }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
