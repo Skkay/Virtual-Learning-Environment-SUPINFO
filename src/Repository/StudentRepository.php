@@ -18,4 +18,32 @@ class StudentRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Student::class);
     }
+
+    public function findNbOfStudentsInTrainingContract()
+    {
+        $qb = $this->createQueryBuilder('s')
+            ->select('COUNT(s.id) AS count')
+            ->addSelect('c.name AS company_name')
+            ->leftJoin('s.companyTrainingContract', 'c')
+            ->groupBy('c.id')
+        ;
+
+        $result = $qb->getQuery()->getResult();
+
+        return $result;
+    }
+
+    public function findNbOfStudentsHired()
+    {
+        $qb = $this->createQueryBuilder('s')
+            ->select('COUNT(s.id) AS count')
+            ->addSelect('c.name AS company_name')
+            ->leftJoin('s.companyHired', 'c')
+            ->groupBy('c.id')
+        ;
+
+        $result = $qb->getQuery()->getResult();
+
+        return $result;
+    }
 }

@@ -3,7 +3,9 @@
 namespace App\Controller\EducationalCoordinator;
 
 use App\Entity\Company;
+use App\Entity\Student;
 use App\Repository\CompanyRepository;
+use App\Repository\StudentRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,10 +23,14 @@ class CompanyController extends AbstractController
     /** @var CompanyRepository */
     private $companyRepository;
 
+    /** @var StudentRepository */
+    private $studentRepository;
+
     public function __construct(ManagerRegistry $doctrine)
     {
         $this->em = $doctrine->getManager();
         $this->companyRepository = $this->em->getRepository(Company::class);
+        $this->studentRepository = $this->em->getRepository(Student::class);
     }
 
     /**
@@ -34,8 +40,22 @@ class CompanyController extends AbstractController
     {
         $companies = $this->companyRepository->findAll();
 
+        $nbStudentsInTrainingContract = $this->studentRepository->findNbOfStudentsInTrainingContract();
+        foreach ($nbStudentsInTrainingContract as $key => $value) {
+            $nbStudentsInTrainingContract[$value['company_name']] = $value['count'];
+            unset($nbStudentsInTrainingContract[$key]);
+        }
+
+        $nbStudentsHired = $this->studentRepository->findNbOfStudentsHired();
+        foreach ($nbStudentsHired as $key => $value) {
+            $nbStudentsHired[$value['company_name']] = $value['count'];
+            unset($nbStudentsHired[$key]);
+        }
+
         return $this->render('educational_coordinator/company/index.html.twig', [
             'companies' => $companies,
+            'nbStudentsInTrainingContract' => $nbStudentsInTrainingContract,
+            'nbStudentsHired' => $nbStudentsHired,
         ]);
     }
 }
