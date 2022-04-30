@@ -149,11 +149,17 @@ class Student
      */
     private $accountsComments;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Absence::class, mappedBy="student")
+     */
+    private $absences;
+
     public function __construct()
     {
         $this->modules = new ArrayCollection();
         $this->grades = new ArrayCollection();
         $this->accountsComments = new ArrayCollection();
+        $this->absences = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -491,36 +497,6 @@ class Student
         return $this;
     }
 
-    
-    public function __get($name)
-    {
-        return $this->$name;
-    }
-
-    public function __set($name, $value): self
-    {
-        $this->$name = $value;
-
-        return $this;
-    }
-
-    public function __add($name, $value): self
-    {
-        if (!$this->$name->contains($value)) {
-            $this->$name[] = $value;
-
-            if (method_exists($value, 'setStudent')) {
-                $value->setStudent($this);
-            }
-
-            if (method_exists($value, 'addStudent')) {
-                $value->addStudent($this);
-            }
-        }
-
-        return $this;
-    }
-
     /**
      * @return Collection|AccountsStudentComment[]
      */
@@ -545,6 +521,66 @@ class Student
             // set the owning side to null (unless already changed)
             if ($accountsComment->getStudent() === $this) {
                 $accountsComment->setStudent(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Absence[]
+     */
+    public function getAbsences(): Collection
+    {
+        return $this->absences;
+    }
+
+    public function addAbsence(Absence $absence): self
+    {
+        if (!$this->absences->contains($absence)) {
+            $this->absences[] = $absence;
+            $absence->setStudent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAbsence(Absence $absence): self
+    {
+        if ($this->absences->removeElement($absence)) {
+            // set the owning side to null (unless already changed)
+            if ($absence->getStudent() === $this) {
+                $absence->setStudent(null);
+            }
+        }
+
+        return $this;
+    }
+
+    
+    public function __get($name)
+    {
+        return $this->$name;
+    }
+
+    public function __set($name, $value): self
+    {
+        $this->$name = $value;
+
+        return $this;
+    }
+
+    public function __add($name, $value): self
+    {
+        if (!$this->$name->contains($value)) {
+            $this->$name[] = $value;
+
+            if (method_exists($value, 'setStudent')) {
+                $value->setStudent($this);
+            }
+
+            if (method_exists($value, 'addStudent')) {
+                $value->addStudent($this);
             }
         }
 
