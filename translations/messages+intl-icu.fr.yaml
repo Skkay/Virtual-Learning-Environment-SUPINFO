@@ -66,6 +66,7 @@ educational_coordinator:
       campus: Campus
       level: Niveau
       company: Entreprise
+      email: Email
     misc:
       accepted: Admis
       fail: Recalé

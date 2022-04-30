@@ -14,6 +14,7 @@
             <th scope="col">{{ 'educational_coordinator.student.table.campus'|trans }}</th>
             <th scope="col">{{ 'educational_coordinator.student.table.level'|trans }}</th>
             <th scope="col">{{ 'educational_coordinator.student.table.company'|trans }}</th>
+            <th scope="col">{{ 'educational_coordinator.student.table.email'|trans }}</th>
         </tr>
     </thead>
     <tbody>
@@ -25,6 +26,7 @@
             <td>{{ student.campus.label ?? '-' }}</td>
             <td>{{ student.level.label ?? '-' }}</td>
             <td>{{ student.companyTrainingContract.name ?? '-' }}</td>
+            <td><a href="mailto:{{ student.user.email }}" target="_blank">{{ student.user.email }}</a></td>
         </tr>
         {% endfor %}
     </tbody>
