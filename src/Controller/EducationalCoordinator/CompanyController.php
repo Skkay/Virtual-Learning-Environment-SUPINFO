@@ -10,6 +10,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -56,6 +57,29 @@ class CompanyController extends AbstractController
             'companies' => $companies,
             'nbStudentsInTrainingContract' => $nbStudentsInTrainingContract,
             'nbStudentsHired' => $nbStudentsHired,
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="show")
+     */
+    public function show(Company $company): Response
+    {
+        /** @var \App\Entity\User $user */
+        $user = $this->getUser();
+        $staff = $user->getStaff();
+
+        if ($staff === null) {
+            throw new NotFoundHttpException('Current logged user is not a staff');
+        }
+
+        $studentsInTrainingContract = $this->studentRepository->findByCampusAndCompany($staff->getCampus(), $company, false);
+        $studentsHired = $this->studentRepository->findByCampusAndCompany($staff->getCampus(), $company, true);
+
+        return $this->render('educational_coordinator/company/show.html.twig', [
+            'company' => $company,
+            'studentsInTrainingContract' => $studentsInTrainingContract,
+            'studentsHired' => $studentsHired,
         ]);
     }
 }

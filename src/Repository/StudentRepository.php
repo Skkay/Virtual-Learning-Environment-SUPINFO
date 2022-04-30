@@ -2,6 +2,8 @@
 
 namespace App\Repository;
 
+use App\Entity\Campus;
+use App\Entity\Company;
 use App\Entity\Student;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -41,6 +43,31 @@ class StudentRepository extends ServiceEntityRepository
             ->leftJoin('s.companyHired', 'c')
             ->groupBy('c.id')
         ;
+
+        $result = $qb->getQuery()->getResult();
+
+        return $result;
+    }
+
+    /**
+     * Returns students list hired if $hired == true or in training contract otherwise, by campus and company.
+     */
+    public function findByCampusAndCompany(Campus $campus, Company $company, bool $hired)
+    {
+        $qb = $this->createQueryBuilder('s')
+            ->andWhere('c.id = :company_id')
+            ->andWhere('s.campus = :campus_id')
+            ->setParameters([
+                'company_id' => $company->getId(),
+                'campus_id' => $campus->getId()
+            ])
+        ;
+
+        if ($hired) {
+            $qb->leftJoin('s.companyHired', 'c');
+        } else {
+            $qb->leftJoin('s.companyTrainingContract', 'c');
+        }
 
         $result = $qb->getQuery()->getResult();
 
