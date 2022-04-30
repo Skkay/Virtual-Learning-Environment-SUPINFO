@@ -41,13 +41,13 @@ class CompanyController extends AbstractController
     {
         $companies = $this->companyRepository->findAll();
 
-        $nbStudentsInTrainingContract = $this->studentRepository->findNbOfStudentsInTrainingContract();
+        $nbStudentsInTrainingContract = $this->studentRepository->countNbOfStudentsInCompany(false);
         foreach ($nbStudentsInTrainingContract as $key => $value) {
             $nbStudentsInTrainingContract[$value['company_name']] = $value['count'];
             unset($nbStudentsInTrainingContract[$key]);
         }
 
-        $nbStudentsHired = $this->studentRepository->findNbOfStudentsHired();
+        $nbStudentsHired = $this->studentRepository->countNbOfStudentsInCompany(true);
         foreach ($nbStudentsHired as $key => $value) {
             $nbStudentsHired[$value['company_name']] = $value['count'];
             unset($nbStudentsHired[$key]);

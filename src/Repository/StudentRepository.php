@@ -21,28 +21,22 @@ class StudentRepository extends ServiceEntityRepository
         parent::__construct($registry, Student::class);
     }
 
-    public function findNbOfStudentsInTrainingContract()
+    /**
+     * Returns number of student hired per company if $hired == true or in training contract per company otherwise
+     */
+    public function countNbOfStudentsInCompany(bool $hired)
     {
         $qb = $this->createQueryBuilder('s')
             ->select('COUNT(s.id) AS count')
             ->addSelect('c.name AS company_name')
-            ->leftJoin('s.companyTrainingContract', 'c')
             ->groupBy('c.id')
         ;
 
-        $result = $qb->getQuery()->getResult();
-
-        return $result;
-    }
-
-    public function findNbOfStudentsHired()
-    {
-        $qb = $this->createQueryBuilder('s')
-            ->select('COUNT(s.id) AS count')
-            ->addSelect('c.name AS company_name')
-            ->leftJoin('s.companyHired', 'c')
-            ->groupBy('c.id')
-        ;
+        if ($hired) {
+            $qb->leftJoin('s.companyHired', 'c');
+        } else {
+            $qb->leftJoin('s.companyTrainingContract', 'c');
+        }
 
         $result = $qb->getQuery()->getResult();
 
