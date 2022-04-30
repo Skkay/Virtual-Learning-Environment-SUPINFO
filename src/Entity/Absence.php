@@ -18,7 +18,7 @@ class Absence
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Student::class, inversedBy="absences")
+     * @ORM\ManyToOne(targetEntity=Student::class, inversedBy="absences", cascade={"persist"})
      */
     private $student;
 

@@ -150,7 +150,7 @@ class Student
     private $accountsComments;
 
     /**
-     * @ORM\OneToMany(targetEntity=Absence::class, mappedBy="student")
+     * @ORM\OneToMany(targetEntity=Absence::class, mappedBy="student", cascade={"persist"})
      */
     private $absences;
 
