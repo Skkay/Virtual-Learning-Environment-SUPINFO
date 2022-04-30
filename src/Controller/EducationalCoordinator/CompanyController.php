@@ -39,15 +39,23 @@ class CompanyController extends AbstractController
      */
     public function index(): Response
     {
+        /** @var \App\Entity\User $user */
+        $user = $this->getUser();
+        $staff = $user->getStaff();
+
+        if ($staff === null) {
+            throw new NotFoundHttpException('Current logged user is not a staff');
+        }
+
         $companies = $this->companyRepository->findAll();
 
-        $nbStudentsInTrainingContract = $this->studentRepository->countNbOfStudentsInCompany(false);
+        $nbStudentsInTrainingContract = $this->studentRepository->countNbOfStudentsInCompanyByCampus($staff->getCampus(), false);
         foreach ($nbStudentsInTrainingContract as $key => $value) {
             $nbStudentsInTrainingContract[$value['company_name']] = $value['count'];
             unset($nbStudentsInTrainingContract[$key]);
         }
 
-        $nbStudentsHired = $this->studentRepository->countNbOfStudentsInCompany(true);
+        $nbStudentsHired = $this->studentRepository->countNbOfStudentsInCompanyByCampus($staff->getCampus(), true);
         foreach ($nbStudentsHired as $key => $value) {
             $nbStudentsHired[$value['company_name']] = $value['count'];
             unset($nbStudentsHired[$key]);

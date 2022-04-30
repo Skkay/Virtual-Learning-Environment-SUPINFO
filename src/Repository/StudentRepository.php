@@ -24,11 +24,13 @@ class StudentRepository extends ServiceEntityRepository
     /**
      * Returns number of student hired per company if $hired == true or in training contract per company otherwise
      */
-    public function countNbOfStudentsInCompany(bool $hired)
+    public function countNbOfStudentsInCompanyByCampus(Campus $campus, bool $hired)
     {
         $qb = $this->createQueryBuilder('s')
             ->select('COUNT(s.id) AS count')
             ->addSelect('c.name AS company_name')
+            ->andWhere('s.campus = :campus_id')
+            ->setParameters(['campus_id' => $campus->getId()])
             ->groupBy('c.id')
         ;
 
