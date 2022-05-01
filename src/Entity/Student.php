@@ -149,6 +149,11 @@ class Student
      */
     private $absences;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isSCT;
+
     public function __construct()
     {
         $this->modules = new ArrayCollection();
@@ -566,6 +571,18 @@ class Student
                 $value->addStudent($this);
             }
         }
+
+        return $this;
+    }
+
+    public function getIsSCT(): ?bool
+    {
+        return $this->isSCT;
+    }
+
+    public function setIsSCT(?bool $isSCT): self
+    {
+        $this->isSCT = $isSCT;
 
         return $this;
     }
