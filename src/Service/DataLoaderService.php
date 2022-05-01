@@ -1,4 +1,5 @@
 <?php
+// TODO: Needs to be highly reworked...
 
 namespace App\Service;
 
@@ -116,37 +117,66 @@ class DataLoaderService
                 $this->logger->debug('src\Service\DataLoaderService.php::processRecord - Relation type: ' . $relationType);
 
                 if ($relationType === RelationEnum::ONE_TO_ONE || $relationType === RelationEnum::MANY_TO_ONE) {
-                    $subEntity = $mainEntity->__get($field['destination']);
 
-                    if ($subEntity === null) {
-                        $this->logger->debug('src\Service\DataLoaderService.php::processRecord - Main entity "' . $mainEntityClass . '" hasn\'t "' . $field['destination'] . '" relation. Getting it from repository...');
+                    // Nested relation
+                    if (array_key_exists('relation', $field['metatype']['relation']['identified_by'])) {
+                        $this->logger->debug('src\Service\DataLoaderService.php::processRecord - Nested relation: ' . 'Main entity (' . get_class($mainEntity) . ') has relation with ' . $field['metatype']['relation']['entity'] . ' whom has a relation with ' . $field['metatype']['relation']['identified_by']['relation']['entity']);
 
-                        if ($field['metatype']['relation']['identified_by'] !== null) {
-                            $subEntity = $this->em->getRepository($field['metatype']['relation']['entity'])->findOneBy([
-                                $field['metatype']['relation']['identified_by']['destination'] => $record[$field['metatype']['relation']['identified_by']['source']],
-                            ]);
+                        $topEntity = $this->em->getRepository($field['metatype']['relation']['identified_by']['relation']['entity'])->findOneBy([
+                            $field['metatype']['relation']['identified_by']['relation']['destination'] => $record[$field['metatype']['relation']['identified_by']['relation']['source']],
+                        ]);
+
+                        if ($topEntity === null) {
+                            $this->logger->debug('src\Service\DataLoaderService.php::processRecord - Nested relation: ' . 'Top entity of "' . $field['metatype']['relation']['identified_by']['relation']['entity'] . '" doesn\'t exist yet. Creating...');
+
+                            $topEntity = new $field['metatype']['relation']['identified_by']['relation']['entity'];
+                            $topEntity->__set($field['metatype']['relation']['identified_by']['relation']['destination'], $record[$field['metatype']['relation']['identified_by']['relation']['source']]);
                         }
 
-                        if ($record[$field['metatype']['relation']['source']] !== null) {
-                            if ($subEntity === null) {
-                                $this->logger->debug('src\Service\DataLoaderService.php::processRecord - Sub entity of ' . $field['metatype']['relation']['entity'] . ' not exists yet. Creating...');
+                        $midEntity = $topEntity->__get($field['metatype']['relation']['destination']);
 
-                                $subEntity = new $field['metatype']['relation']['entity'];
-                            }
+                        if ($midEntity === null) {
+                            $this->logger->debug('src\Service\DataLoaderService.php::processRecord - Nested relation: ' . 'Mid entity of "' . $field['metatype']['relation']['entity'] . '" doesn\'t exist yet. Creating...');
 
-                            $subEntity->__set($field['metatype']['relation']['destination'], $this->getTypedValue($record[$field['metatype']['relation']['source']], $field['metatype']));
-
-                            $this->em->persist($subEntity);
+                            $midEntity = new $field['metatype']['relation']['entity'];
+                            $topEntity->__setRelation($field['metatype']['relation']['destination'], $midEntity);
                         }
 
-                        $mainEntity->__set($field['destination'], $subEntity);
-
-
+                        $mainEntity->__set($field['metatype']['relation']['destination'], $midEntity);
 
                     } else {
-                        $this->logger->debug('src\Service\DataLoaderService.php::processRecord - Setting value "' . $field['metatype']['relation']['destination'] . '" with "' . $record[$field['metatype']['relation']['source']] . '"');
-                        
-                        $subEntity->__set($field['metatype']['relation']['destination'], $this->getTypedValue($record[$field['metatype']['relation']['source']], $field['metatype']));
+                        $subEntity = $mainEntity->__get($field['destination']);
+    
+                        if ($subEntity === null) {
+                            $this->logger->debug('src\Service\DataLoaderService.php::processRecord - Main entity "' . $mainEntityClass . '" hasn\'t "' . $field['destination'] . '" relation. Getting it from repository...');
+    
+                            if ($field['metatype']['relation']['identified_by'] !== null) {
+                                $subEntity = $this->em->getRepository($field['metatype']['relation']['entity'])->findOneBy([
+                                    $field['metatype']['relation']['identified_by']['destination'] => $record[$field['metatype']['relation']['identified_by']['source']],
+                                ]);
+                            }
+    
+                            if ($record[$field['metatype']['relation']['source']] !== null) {
+                                if ($subEntity === null) {
+                                    $this->logger->debug('src\Service\DataLoaderService.php::processRecord - Sub entity of ' . $field['metatype']['relation']['entity'] . ' not exists yet. Creating...');
+    
+                                    $subEntity = new $field['metatype']['relation']['entity'];
+                                }
+    
+                                $subEntity->__set($field['metatype']['relation']['destination'], $this->getTypedValue($record[$field['metatype']['relation']['source']], $field['metatype']));
+    
+                                $this->em->persist($subEntity);
+                            }
+    
+                            $mainEntity->__set($field['destination'], $subEntity);
+    
+    
+    
+                        } else {
+                            $this->logger->debug('src\Service\DataLoaderService.php::processRecord - Setting value "' . $field['metatype']['relation']['destination'] . '" with "' . $record[$field['metatype']['relation']['source']] . '"');
+                            
+                            $subEntity->__set($field['metatype']['relation']['destination'], $this->getTypedValue($record[$field['metatype']['relation']['source']], $field['metatype']));
+                        }
                     }
 
 
