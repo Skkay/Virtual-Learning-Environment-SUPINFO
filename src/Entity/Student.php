@@ -110,11 +110,6 @@ class Student
     private $lastDiploma;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $numberOfAbsences;
-
-    /**
      * @ORM\OneToMany(targetEntity=Grade::class, mappedBy="student")
      */
     private $grades;
@@ -149,11 +144,22 @@ class Student
      */
     private $accountsComments;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Absence::class, mappedBy="student", cascade={"persist"})
+     */
+    private $absences;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isSCT;
+
     public function __construct()
     {
         $this->modules = new ArrayCollection();
         $this->grades = new ArrayCollection();
         $this->accountsComments = new ArrayCollection();
+        $this->absences = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -389,18 +395,6 @@ class Student
         return $this;
     }
 
-    public function getNumberOfAbsences(): ?int
-    {
-        return $this->numberOfAbsences;
-    }
-
-    public function setNumberOfAbsences(?int $numberOfAbsences): self
-    {
-        $this->numberOfAbsences = $numberOfAbsences;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Grade[]
      */
@@ -491,6 +485,66 @@ class Student
         return $this;
     }
 
+    /**
+     * @return Collection|AccountsStudentComment[]
+     */
+    public function getAccountsComments(): Collection
+    {
+        return $this->accountsComments;
+    }
+
+    public function addAccountsComment(AccountsStudentComment $accountsComment): self
+    {
+        if (!$this->accountsComments->contains($accountsComment)) {
+            $this->accountsComments[] = $accountsComment;
+            $accountsComment->setStudent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAccountsComment(AccountsStudentComment $accountsComment): self
+    {
+        if ($this->accountsComments->removeElement($accountsComment)) {
+            // set the owning side to null (unless already changed)
+            if ($accountsComment->getStudent() === $this) {
+                $accountsComment->setStudent(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Absence[]
+     */
+    public function getAbsences(): Collection
+    {
+        return $this->absences;
+    }
+
+    public function addAbsence(Absence $absence): self
+    {
+        if (!$this->absences->contains($absence)) {
+            $this->absences[] = $absence;
+            $absence->setStudent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAbsence(Absence $absence): self
+    {
+        if ($this->absences->removeElement($absence)) {
+            // set the owning side to null (unless already changed)
+            if ($absence->getStudent() === $this) {
+                $absence->setStudent(null);
+            }
+        }
+
+        return $this;
+    }
+
     
     public function __get($name)
     {
@@ -521,32 +575,14 @@ class Student
         return $this;
     }
 
-    /**
-     * @return Collection|AccountsStudentComment[]
-     */
-    public function getAccountsComments(): Collection
+    public function getIsSCT(): ?bool
     {
-        return $this->accountsComments;
+        return $this->isSCT;
     }
 
-    public function addAccountsComment(AccountsStudentComment $accountsComment): self
+    public function setIsSCT(?bool $isSCT): self
     {
-        if (!$this->accountsComments->contains($accountsComment)) {
-            $this->accountsComments[] = $accountsComment;
-            $accountsComment->setStudent($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAccountsComment(AccountsStudentComment $accountsComment): self
-    {
-        if ($this->accountsComments->removeElement($accountsComment)) {
-            // set the owning side to null (unless already changed)
-            if ($accountsComment->getStudent() === $this) {
-                $accountsComment->setStudent(null);
-            }
-        }
+        $this->isSCT = $isSCT;
 
         return $this;
     }

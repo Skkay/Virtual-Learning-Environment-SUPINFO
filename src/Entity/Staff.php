@@ -25,14 +25,9 @@ class Staff
     private $user;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Campus::class, inversedBy="staff")
+     * @ORM\ManyToOne(targetEntity=Campus::class, inversedBy="staff")
      */
     private $campus;
-
-    public function __construct()
-    {
-        $this->campus = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -51,26 +46,14 @@ class Staff
         return $this;
     }
 
-    /**
-     * @return Collection|Campus[]
-     */
-    public function getCampus(): Collection
+    public function getCampus(): ?Campus
     {
         return $this->campus;
     }
 
-    public function addCampus(Campus $campus): self
+    public function setCampus(?Campus $campus): self
     {
-        if (!$this->campus->contains($campus)) {
-            $this->campus[] = $campus;
-        }
-
-        return $this;
-    }
-
-    public function removeCampus(Campus $campus): self
-    {
-        $this->campus->removeElement($campus);
+        $this->campus = $campus;
 
         return $this;
     }

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EducationalCoordinatorController!{% endblock %}
+
+{% block body %}
+<h1>{{ 'educational_coordinator.dashboard.title.home'|trans }}</h1>
+<h4 class="text-muted">{{ 'educational_coordinator.dashboard.title.role'|trans }}</h4>
+
+<ul>
+    <li><a href="{{ path('app.educational_coordinator.student.index') }}">{{ 'educational_coordinator.dashboard.misc.student_list'|trans }}</a></li>
+    <li><a href="{{ path('app.educational_coordinator.module.index') }}">{{ 'educational_coordinator.dashboard.misc.module_list'|trans }}</a></li>
+    <li><a href="{{ path('app.educational_coordinator.company.index') }}">{{ 'educational_coordinator.dashboard.misc.company_list'|trans }}</a></li>
+</ul>
+
+{% endblock %}

@@ -48,6 +48,51 @@ accounts:
       misc:
         download: Télécharger
 
+educational_coordinator:
+  dashboard:
+    title:
+      home: Tableau de bord
+      role: Coordinateur pédagogique
+    misc:
+      student_list: Liste des étudiants
+      module_list: Liste des modules
+      company_list: Liste des entreprises
+  student:
+    title:
+      home: Liste des étudiants
+    table:
+      id: ID
+      first_name: Prénom
+      last_name: Nom
+      campus: Campus
+      level: Niveau
+      company: Entreprise
+      email: Email
+      sct: SCT
+    misc:
+      accepted: Admis
+      fail: Recalé
+      yes: Oui
+      no: Non
+  module:
+    title:
+      home: Liste des modules
+    misc:
+      accepted: Admis
+      fail: Recalé
+  instructor:
+    title:
+      home: Liste des intervenants
+  company:
+    title:
+      home: Liste des entreprises
+    table:
+      id: ID
+      name: Nom
+      sector: Secteur d'activité
+      nb_student_training_contract: Nombre d'étudiant en alternance
+      nb_student_hired: Nombre d'étudiant embauché
+
 form:
   student_comment_type:
     label: Ajouter un commentaire

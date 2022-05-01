@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CompanyController!{% endblock %}
+
+{% block body %}
+<ul>
+    <li><b>company.id:</b> {{ company.id }}</li>
+    <li><b>company.name:</b> {{ company.name }}</li>
+    <li><b>company.address:</b> {{ company.address }}</li>
+    <li><b>company.sector:</b> {{ company.sector }}</li>
+    <li><b>studentsInTrainingContract:</b>
+        <ul>
+            {% for student in studentsInTrainingContract %}
+                <li>{{ student.user.firstName }} {{ student.user.lastName }}</li>
+            {% endfor %}
+        </ul>
+    </li>
+    <li><b>studentsHired:</b>
+        <ul>
+            {% for student in studentsHired %}
+                <li>{{ student.user.firstName }} {{ student.user.lastName }}</li>
+            {% endfor %}
+        </ul>
+    </li>
+</ul>
+{% endblock %}
