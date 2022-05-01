@@ -27,9 +27,15 @@
                         <li class="nav-item">
                             <a class="nav-link {{ route == 'app.home' ? 'active' }}" href="{{ path('app.home') }}">{{ 'navbar.home'|trans }}</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ route == 'app.dashboard' ? 'active' }}" href="{{ path('app.dashboard.index') }}">{{ 'navbar.dashboard'|trans }}</a>
-                        </li>
+                        {% if is_granted('ROLE_EDUCATIONAL_COORDINATOR') %}
+                            <li class="nav-item">
+                                <a class="nav-link {{ route == 'app.educational_coordinator.index' ? 'active' }}" href="{{ path('app.educational_coordinator.index') }}">{{ 'navbar.dashboard'|trans }}</a>
+                            </li>
+                        {% else %} {# Student #}
+                            <li class="nav-item">
+                                <a class="nav-link {{ route == 'app.dashboard' ? 'active' }}" href="{{ path('app.dashboard.index') }}">{{ 'navbar.dashboard'|trans }}</a>
+                            </li>
+                        {% endif %}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                 Entities
