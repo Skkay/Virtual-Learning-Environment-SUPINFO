@@ -30,5 +30,13 @@
         </ul>
     </li>
     <li><b>student.speciality.label:</b> {{ student.speciality.label ?? '-' }}</li>
+    <li>
+        <b>student.absences:</b> {{ student.absences|length }}
+        <ul>
+            {% for absence in student.absences %}
+                <li>{{ absence.date|date('d/m/Y') }} {{ absence.period }} : {{ absence.excuse ?? '-' }}</li>
+            {% endfor %}
+        </ul>
+    </li>
 </ul>
 {% endblock %}
