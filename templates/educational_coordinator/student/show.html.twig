@@ -16,7 +16,6 @@
     <li><b>student.dateOfBirth:</b> {{ student.dateOfBirth is empty ? '-' : student.dateOfBirth|date('d-m-Y') }}</li>
     <li><b>student.gender.label:</b> {{ student.gender.label ?? '-' }}</li>
     <li><b>student.region.name:</b> {{ student.region.name ?? '-' }}</li>
-    <li><b>student.numberOfAbsences:</b> {{ student.numberOfAbsences ?? '-' }}</li>
     <li><b>student.grades:</b>
         <ul>
             {% for grade in student.grades %}

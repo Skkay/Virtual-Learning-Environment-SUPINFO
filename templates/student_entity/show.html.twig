@@ -35,7 +35,6 @@
     <li><b>student.dateStartContract:</b> {{ student.dateStartContract is empty ? '-' : student.dateStartContract|date('d-m-Y') }}</li>
     <li><b>student.employedAs:</b> {{ student.employedAs ?? '-' }}</li>
     <li><b>student.lastDiploma.label:</b> {{ student.lastDiploma.label ?? '-' }}</li>
-    <li><b>student.numberOfAbsences:</b> {{ student.numberOfAbsences ?? '-' }}</li>
     <li><b>student.grades:</b>
         <ul>
             {% for grade in student.grades %}

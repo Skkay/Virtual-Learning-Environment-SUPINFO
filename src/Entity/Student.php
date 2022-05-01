@@ -110,11 +110,6 @@ class Student
     private $lastDiploma;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $numberOfAbsences;
-
-    /**
      * @ORM\OneToMany(targetEntity=Grade::class, mappedBy="student")
      */
     private $grades;
@@ -391,18 +386,6 @@ class Student
     public function setLastDiploma(?Diploma $lastDiploma): self
     {
         $this->lastDiploma = $lastDiploma;
-
-        return $this;
-    }
-
-    public function getNumberOfAbsences(): ?int
-    {
-        return $this->numberOfAbsences;
-    }
-
-    public function setNumberOfAbsences(?int $numberOfAbsences): self
-    {
-        $this->numberOfAbsences = $numberOfAbsences;
 
         return $this;
     }
