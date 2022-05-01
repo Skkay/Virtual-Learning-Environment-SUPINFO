@@ -20,7 +20,7 @@
             {% for student in students %}
                 <li>
                     {{ student.user.firstName }} {{ student.user.lastName }}: 
-                    {% if grades[student.user.userIdentifier].grade is defined %}
+                    {% if grades[student.user.userIdentifier].grade is defined and grades[student.user.userIdentifier].grade is not null %}
                         {{ grades[student.user.userIdentifier].grade }} {{ grades[student.user.userIdentifier].grade > 10 ? 'educational_coordinator.module.misc.accepted'|trans : 'educational_coordinator.module.misc.fail'|trans }}
                     {% else %}    
                         -
