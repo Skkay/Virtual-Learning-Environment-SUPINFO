@@ -67,9 +67,12 @@ educational_coordinator:
       level: Niveau
       company: Entreprise
       email: Email
+      sct: SCT
     misc:
       accepted: Admis
       fail: Recalé
+      yes: Oui
+      no: Non
   module:
     title:
       home: Liste des modules
