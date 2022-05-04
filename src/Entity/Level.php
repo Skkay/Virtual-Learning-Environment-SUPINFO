@@ -29,9 +29,15 @@ class Level
      */
     private $students;
 
+    /**
+     * @ORM\OneToMany(targetEntity=PlanningEvent::class, mappedBy="level")
+     */
+    private $planningEvents;
+
     public function __construct()
     {
         $this->students = new ArrayCollection();
+        $this->planningEvents = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -75,6 +81,36 @@ class Level
             // set the owning side to null (unless already changed)
             if ($student->getLevel() === $this) {
                 $student->setLevel(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|PlanningEvent[]
+     */
+    public function getPlanningEvents(): Collection
+    {
+        return $this->planningEvents;
+    }
+
+    public function addPlanningEvent(PlanningEvent $planningEvent): self
+    {
+        if (!$this->planningEvents->contains($planningEvent)) {
+            $this->planningEvents[] = $planningEvent;
+            $planningEvent->setLevel($this);
+        }
+
+        return $this;
+    }
+
+    public function removePlanningEvent(PlanningEvent $planningEvent): self
+    {
+        if ($this->planningEvents->removeElement($planningEvent)) {
+            // set the owning side to null (unless already changed)
+            if ($planningEvent->getLevel() === $this) {
+                $planningEvent->setLevel(null);
             }
         }
 
