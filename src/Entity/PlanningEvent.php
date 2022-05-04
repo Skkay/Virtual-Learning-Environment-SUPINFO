@@ -52,6 +52,26 @@ class PlanningEvent
      */
     private $level;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $backgroundColor;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $borderColor;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $textColor;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $allDay;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -167,6 +187,54 @@ class PlanningEvent
                 $value->addPlanningEvent($this);
             }
         }
+
+        return $this;
+    }
+
+    public function getBackgroundColor(): ?string
+    {
+        return $this->backgroundColor;
+    }
+
+    public function setBackgroundColor(?string $backgroundColor): self
+    {
+        $this->backgroundColor = $backgroundColor;
+
+        return $this;
+    }
+
+    public function getBorderColor(): ?string
+    {
+        return $this->borderColor;
+    }
+
+    public function setBorderColor(?string $borderColor): self
+    {
+        $this->borderColor = $borderColor;
+
+        return $this;
+    }
+
+    public function getTextColor(): ?string
+    {
+        return $this->textColor;
+    }
+
+    public function setTextColor(?string $textColor): self
+    {
+        $this->textColor = $textColor;
+
+        return $this;
+    }
+
+    public function getAllDay(): ?bool
+    {
+        return $this->allDay;
+    }
+
+    public function setAllDay(?bool $allDay): self
+    {
+        $this->allDay = $allDay;
 
         return $this;
     }
