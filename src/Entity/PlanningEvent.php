@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\PlanningEventRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation as Serializer;
 
 /**
  * @ORM\Entity(repositoryClass=PlanningEventRepository::class)
@@ -44,11 +45,13 @@ class PlanningEvent
 
     /**
      * @ORM\ManyToOne(targetEntity=Campus::class, inversedBy="planningEvents")
+     * @Serializer\Ignore()
      */
     private $campus;
 
     /**
      * @ORM\ManyToOne(targetEntity=Level::class, inversedBy="planningEvents")
+     * @Serializer\Ignore()
      */
     private $level;
 
