@@ -39,11 +39,6 @@ class PlanningEvent
     private $end;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $url;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Campus::class, inversedBy="planningEvents")
      * @Serializer\Ignore()
      */
@@ -124,18 +119,6 @@ class PlanningEvent
     public function setEnd(?\DateTimeInterface $end): self
     {
         $this->end = $end;
-
-        return $this;
-    }
-
-    public function getUrl(): ?string
-    {
-        return $this->url;
-    }
-
-    public function setUrl(?string $url): self
-    {
-        $this->url = $url;
 
         return $this;
     }
