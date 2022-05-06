@@ -21,13 +21,19 @@ class PlanningEventRepository extends ServiceEntityRepository
         parent::__construct($registry, PlanningEvent::class);
     }
 
-    public function findByCampusAndLevel(Campus $campus, Level $level, ?\DateTime $start = null, ?\DateTime $end = null)
+    public function findByCampusAndLevel(Campus $campus, ?Level $level = null, ?\DateTime $start = null, ?\DateTime $end = null)
     {
         $qb = $this->createQueryBuilder('pe')
             ->andWhere('pe.campus = :campus_id')
-            ->andWhere('pe.level = :level_id')
-            ->setParameters(['campus_id' => $campus->getId(), 'level_id' => $level->getId()])
+            ->setParameters(['campus_id' => $campus->getId()])
         ;
+
+        if ($level !== null) {
+            $qb
+                ->andWhere('pe.level = :level_id')
+                ->setParameter('level_id', $level->getId())
+            ;
+        }
 
         if ($start !== null) {
             $qb
