@@ -2,6 +2,17 @@
 
 {% block title %}Hello DashboardController!{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('full_calendar') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('full_calendar') }}
+{% endblock %}
+
+
 {% block body %}
 <h1>{{ 'dashboard.title.home'|trans }}</h1>
 <h4>{{ student.user.firstName|capitalize  }} {{ student.user.lastName|upper }}</h4>
@@ -16,5 +27,7 @@
         </ul>
     </li>
 </ul>
+
+{{ include('_planning.html.twig', { url: path('app.planning_events.index') }) }}
 
 {% endblock %}

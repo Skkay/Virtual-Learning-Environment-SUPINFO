@@ -44,11 +44,17 @@ class Campus
      */
     private $students;
 
+    /**
+     * @ORM\OneToMany(targetEntity=PlanningEvent::class, mappedBy="campus")
+     */
+    private $planningEvents;
+
     public function __construct()
     {
         $this->sections = new ArrayCollection();
         $this->staff = new ArrayCollection();
         $this->students = new ArrayCollection();
+        $this->planningEvents = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -164,6 +170,36 @@ class Campus
             // set the owning side to null (unless already changed)
             if ($student->getCampus() === $this) {
                 $student->setCampus(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|PlanningEvent[]
+     */
+    public function getPlanningEvents(): Collection
+    {
+        return $this->planningEvents;
+    }
+
+    public function addPlanningEvent(PlanningEvent $planningEvent): self
+    {
+        if (!$this->planningEvents->contains($planningEvent)) {
+            $this->planningEvents[] = $planningEvent;
+            $planningEvent->setCampus($this);
+        }
+
+        return $this;
+    }
+
+    public function removePlanningEvent(PlanningEvent $planningEvent): self
+    {
+        if ($this->planningEvents->removeElement($planningEvent)) {
+            // set the owning side to null (unless already changed)
+            if ($planningEvent->getCampus() === $this) {
+                $planningEvent->setCampus(null);
             }
         }
 
