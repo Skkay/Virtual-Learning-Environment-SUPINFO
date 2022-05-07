@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ModuleController!{% endblock %}
+
+{% block body %}
+<ul>
+    <li><b>module.id:</b> {{ module.id }}</li>
+    <li><b>module.label:</b> {{ module.label }}</li>
+    <li><b>module.speciality:</b> {{ module.speciality }}</li>
+    <li><b>module.ects:</b> {{ module.ects }}</li>
+    <li><b>instructors:</b>
+        <ul>
+            {% for instructor in instructors %}
+                <li>{{ instructor.user.email }}
+                    <ul>
+                        {% for section in instructor.sections %}
+                            <li>{{ section.campus.label }}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    </li>
+    <li><b>module.student:</b>
+        <ul>
+            {% for student in students %}
+                <li>
+                    [{{ student.campus.label }}] {{ student.user.firstName }} {{ student.user.lastName }}: 
+                    {% if grades[student.user.userIdentifier].grade is defined and grades[student.user.userIdentifier].grade is not null %}
+                        {{ grades[student.user.userIdentifier].grade }} {{ grades[student.user.userIdentifier].grade > 10 ? 'educational_coordinator.module.misc.accepted'|trans : 'educational_coordinator.module.misc.fail'|trans }}
+                    {% else %}    
+                        -
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </li>
+</ul>
+{% endblock %}

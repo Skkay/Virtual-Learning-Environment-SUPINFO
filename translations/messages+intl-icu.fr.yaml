@@ -100,6 +100,7 @@ academic_director:
       role: Directeur académique
     misc:
       student_list: Liste des étudiants
+      module_list: Liste des modules
   student:
     title:
       home: Liste des étudiants
@@ -117,6 +118,12 @@ academic_director:
       fail: Recalé
       yes: Oui
       no: Non
+  module:
+    title:
+      home: Liste des modules
+    misc:
+      accepted: Admis
+      fail: Recalé
 
 form:
   student_comment_type:
