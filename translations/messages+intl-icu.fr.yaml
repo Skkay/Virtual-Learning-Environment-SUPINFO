@@ -56,6 +56,7 @@ educational_coordinator:
     misc:
       student_list: Liste des étudiants
       module_list: Liste des modules
+      instructor_list: Liste des intervenants
       company_list: Liste des entreprises
   student:
     title:
