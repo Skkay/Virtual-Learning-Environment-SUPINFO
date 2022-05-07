@@ -129,6 +129,14 @@ academic_director:
   instructor:
     title:
       home: Liste des intervenants
+  campus:
+    title:
+      home: Liste des campus
+    table:
+      id: ID
+      label: Label
+      city: Ville
+      nb_active_student: Nombre d'étudiant actifs
 
 form:
   student_comment_type:
