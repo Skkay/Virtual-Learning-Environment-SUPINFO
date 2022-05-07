@@ -92,6 +92,12 @@ educational_coordinator:
       sector: Secteur d'activité
       nb_student_training_contract: Nombre d'étudiant en alternance
       nb_student_hired: Nombre d'étudiant embauché
+  
+academic_director:
+  dashboard:
+    title:
+      home: Tableau de bord
+      role: Directeur académique
 
 form:
   student_comment_type:
