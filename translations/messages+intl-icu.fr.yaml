@@ -98,6 +98,25 @@ academic_director:
     title:
       home: Tableau de bord
       role: Directeur académique
+    misc:
+      student_list: Liste des étudiants
+  student:
+    title:
+      home: Liste des étudiants
+    table:
+      id: ID
+      first_name: Prénom
+      last_name: Nom
+      campus: Campus
+      level: Niveau
+      company: Entreprise
+      email: Email
+      sct: SCT
+    misc:
+      accepted: Admis
+      fail: Recalé
+      yes: Oui
+      no: Non
 
 form:
   student_comment_type:
