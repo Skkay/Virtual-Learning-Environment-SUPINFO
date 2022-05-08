@@ -137,6 +137,8 @@ academic_director:
       label: Label
       city: Ville
       nb_active_student: Nombre d'étudiant actifs
+    misc:
+      other: Autre
 
 form:
   student_comment_type:

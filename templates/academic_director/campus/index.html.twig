@@ -17,7 +17,7 @@
     <tbody>
         {% for campus in campus %}
         <tr>
-            <td>{{ campus.id }}</td>
+            <td><a href="{{ path('app.academic_director.campus.show', {'id': campus.id} ) }}">{{ campus.id }}</a></td>
             <td>{{ campus.label }}</td>
             <td>{{ campus.city ?? '-' }}</td>
             <td>{{ nbActiveStudents[campus.label] ?? '0' }}</td>
