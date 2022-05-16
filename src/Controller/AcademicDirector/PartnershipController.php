@@ -38,4 +38,14 @@ class PartnershipController extends AbstractController
             'partnerships' => $partnerships,
         ]);
     }
+
+    /**
+     * @Route("/{id}", name="show")
+     */
+    public function show(Partnership $partnership): Response
+    {
+        return $this->render('academic_director/partnership/show.html.twig', [
+            'partnership' => $partnership,
+        ]);
+    }
 }

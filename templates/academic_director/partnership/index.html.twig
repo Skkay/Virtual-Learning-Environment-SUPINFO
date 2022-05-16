@@ -18,7 +18,7 @@
         {% for partnership in partnerships %}
         <tr>
             <td><img src="{{ partnership.imageUrl }}" alt="{{ partnership.label }}" width="150px"></td>
-            <td class="align-middle">{{ partnership.id }}</td>
+            <td class="align-middle"><a href="{{ path('app.academic_director.partnership.show', {'id': partnership.id}) }}">{{ partnership.id }}</a></td>
             <td class="align-middle">{{ partnership.label }}</td>
             <td class="align-middle">{{ partnership.description|u.truncate(130, '...') }}</td>
         </tr>

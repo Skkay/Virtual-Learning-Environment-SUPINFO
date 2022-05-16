@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CampusController!{% endblock %}
+
+{% block body %}
+<img src="{{ partnership.imageUrl }}" alt="">
+<ul>
+    <li><b>partnership.id:</b> {{ partnership.id }}</li>
+    <li><b>partnership.label:</b> {{ partnership.label ?? '-' }}</li>
+    <li><b>partnership.city:</b> {{ partnership.description ?? '-' }}</li>
+</ul>
+{% endblock %}
