@@ -39,5 +39,12 @@
         </ul>
     </li>
     <li><b>student.isSCT:</b> {{ student.isSCT ? 'educational_coordinator.student.misc.yes'|trans : 'educational_coordinator.student.misc.no'|trans }}</li>
+    <li><b>{{ 'academic_director.student.misc.report_card_list'|trans }}:</b>
+        <ul>
+        {% for level in levels %}
+            <li><a href="{{ path('app.academic_director.report_card.show', {'student': student.id, 'level': level.id}) }}">{{ level.label }}</a></li>
+        {% endfor %}
+        </ul>
+    </li>
 </ul>
 {% endblock %}

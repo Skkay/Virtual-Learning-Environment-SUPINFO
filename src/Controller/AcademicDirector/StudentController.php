@@ -2,7 +2,9 @@
 
 namespace App\Controller\AcademicDirector;
 
+use App\Entity\Level;
 use App\Entity\Student;
+use App\Repository\LevelRepository;
 use App\Repository\StudentRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -22,10 +24,14 @@ class StudentController extends AbstractController
     /** @var StudentRepository */
     private $studentRepository;
 
+    /** @var LevelRepository */
+    private $levelRepository;
+
     public function __construct(ManagerRegistry $doctrine)
     {
         $this->em = $doctrine->getManager();
         $this->studentRepository = $this->em->getRepository(Student::class);
+        $this->levelRepository = $this->em->getRepository(Level::class);
     }
 
     /**
@@ -53,8 +59,11 @@ class StudentController extends AbstractController
      */
     public function show(Student $student): Response
     {
+        $levels = $this->levelRepository->findAll();
+
         return $this->render('academic_director/student/show.html.twig', [
             'student' => $student,
+            'levels' => $levels,
         ]);
     }
 }

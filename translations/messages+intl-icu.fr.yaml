@@ -120,6 +120,7 @@ academic_director:
       fail: Recalé
       yes: Oui
       no: Non
+      report_card_list: Bulletins de notes
   module:
     title:
       home: Liste des modules
