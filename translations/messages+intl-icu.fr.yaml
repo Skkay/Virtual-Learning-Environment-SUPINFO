@@ -103,6 +103,7 @@ academic_director:
       student_list: Liste des étudiants
       module_list: Liste des modules
       instructor_list: Liste des intervenants
+      partnership_list: Liste des partenariats
   student:
     title:
       home: Liste des étudiants
@@ -140,6 +141,13 @@ academic_director:
       nb_active_student: Nombre d'étudiant actifs
     misc:
       other: Autre
+  partnership:
+    title:
+      home: Liste des partenariats
+    table:
+      id: ID
+      label: Label
+      description: Description
 
 form:
   student_comment_type:
