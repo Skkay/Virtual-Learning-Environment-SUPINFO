@@ -34,6 +34,11 @@ class Level
      */
     private $planningEvents;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $numericLevel;
+
     public function __construct()
     {
         $this->students = new ArrayCollection();
@@ -143,6 +148,18 @@ class Level
                 $value->addLevel($this);
             }
         }
+
+        return $this;
+    }
+
+    public function getNumericLevel(): ?int
+    {
+        return $this->numericLevel;
+    }
+
+    public function setNumericLevel(?int $numericLevel): self
+    {
+        $this->numericLevel = $numericLevel;
 
         return $this;
     }
