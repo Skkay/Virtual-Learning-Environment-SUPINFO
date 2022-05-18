@@ -122,6 +122,11 @@ academic_director:
       yes: Oui
       no: Non
       report_card_list: Bulletins de notes
+      ects: ECTS
+      current_ects: Crédits actuels
+      current_needed_ects: Crédits requis pour cette année
+      max_ects: Crédits maximum obtenables
+      max_needed_ects: Crédits maximum requis
   module:
     title:
       home: Liste des modules

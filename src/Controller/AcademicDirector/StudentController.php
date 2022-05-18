@@ -6,6 +6,7 @@ use App\Entity\Level;
 use App\Entity\Student;
 use App\Repository\LevelRepository;
 use App\Repository\StudentRepository;
+use App\Service\StudentService;
 use Doctrine\Persistence\ManagerRegistry;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,6 +21,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class StudentController extends AbstractController
 {
     private $em;
+    private $studentService;
 
     /** @var StudentRepository */
     private $studentRepository;
@@ -27,9 +29,10 @@ class StudentController extends AbstractController
     /** @var LevelRepository */
     private $levelRepository;
 
-    public function __construct(ManagerRegistry $doctrine)
+    public function __construct(ManagerRegistry $doctrine, StudentService $studentService)
     {
         $this->em = $doctrine->getManager();
+        $this->studentService = $studentService;
         $this->studentRepository = $this->em->getRepository(Student::class);
         $this->levelRepository = $this->em->getRepository(Level::class);
     }
@@ -60,10 +63,12 @@ class StudentController extends AbstractController
     public function show(Student $student): Response
     {
         $levels = $this->levelRepository->findAll();
+        $ects = $this->studentService->getTotalEcts($student);
 
         return $this->render('academic_director/student/show.html.twig', [
             'student' => $student,
             'levels' => $levels,
+            'studentEcts' => $ects,
         ]);
     }
 }

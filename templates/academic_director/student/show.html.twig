@@ -46,5 +46,13 @@
         {% endfor %}
         </ul>
     </li>
+    <li><b>{{ 'academic_director.student.misc.ects'|trans }}:</b>
+        <ul>
+            <li><u>{{ 'academic_director.student.misc.current_ects'|trans }}:</u> {{ studentEcts.currentEcts }}</li>
+            <li><u>{{ 'academic_director.student.misc.current_needed_ects'|trans }}:</u> {{ studentEcts.currentNeededEcts }}</li>
+            <li><u>{{ 'academic_director.student.misc.max_ects'|trans }}:</u> {{ studentEcts.maxEcts }}</li>
+            <li><u>{{ 'academic_director.student.misc.max_needed_ects'|trans }}:</u> {{ studentEcts.maxNeededEcts }}</li>
+        </ul>
+    </li>
 </ul>
 {% endblock %}
