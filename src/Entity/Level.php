@@ -39,10 +39,16 @@ class Level
      */
     private $numericLevel;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Module::class, mappedBy="level")
+     */
+    private $modules;
+
     public function __construct()
     {
         $this->students = new ArrayCollection();
         $this->planningEvents = new ArrayCollection();
+        $this->modules = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -160,6 +166,36 @@ class Level
     public function setNumericLevel(?int $numericLevel): self
     {
         $this->numericLevel = $numericLevel;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Module[]
+     */
+    public function getModules(): Collection
+    {
+        return $this->modules;
+    }
+
+    public function addModule(Module $module): self
+    {
+        if (!$this->modules->contains($module)) {
+            $this->modules[] = $module;
+            $module->setLevel($this);
+        }
+
+        return $this;
+    }
+
+    public function removeModule(Module $module): self
+    {
+        if ($this->modules->removeElement($module)) {
+            // set the owning side to null (unless already changed)
+            if ($module->getLevel() === $this) {
+                $module->setLevel(null);
+            }
+        }
 
         return $this;
     }
