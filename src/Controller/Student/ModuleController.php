@@ -42,7 +42,7 @@ class ModuleController extends AbstractController
             throw new NotFoundHttpException('Current logged user is not a student');
         }
 
-        $modules = $this->moduleRepository->findAll();
+        $modules = $this->moduleRepository->findAllOrderedByLevel();
         $grades = $this->gradeRepository->findBy(['student' => $student->getId()]);
 
         // Set module label as grade key
