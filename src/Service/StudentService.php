@@ -33,7 +33,7 @@ class StudentService
 
         return [
             'currentEcts' => $ects,
-            'currentNeededEcts' => $student->getLevel()->getNumericLevel() * 60,
+            'currentNeededEcts' => $student->getLevel() ? $student->getLevel()->getNumericLevel() * 60 : $student->getExitLevel()->getNumericLevel() * 60,
             'maxEcts' => count($this->levelRepository->findAll()) * 60,
             'maxNeededEcts' => 60 * 5,
         ];
