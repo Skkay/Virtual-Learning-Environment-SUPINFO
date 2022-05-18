@@ -2,7 +2,11 @@
 
 namespace App\Controller\EducationalCoordinator;
 
+use App\Entity\Grade;
+use App\Entity\Module;
 use App\Entity\Student;
+use App\Repository\GradeRepository;
+use App\Repository\ModuleRepository;
 use App\Repository\StudentRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -23,10 +27,18 @@ class StudentController extends AbstractController
     /** @var StudentRepository */
     private $studentRepository;
 
+    /** @var ModuleRepository */
+    private $moduleRepository;
+
+    /** @var GradeRepository */
+    private $gradeRepository;
+
     public function __construct(ManagerRegistry $doctrine)
     {
         $this->em = $doctrine->getManager();
         $this->studentRepository = $this->em->getRepository(Student::class);
+        $this->moduleRepository = $this->em->getRepository(Module::class);
+        $this->gradeRepository = $this->em->getRepository(Grade::class);
     }
 
     /**
@@ -54,8 +66,19 @@ class StudentController extends AbstractController
      */
     public function show(Student $student): Response
     {
+        $modules = $this->moduleRepository->findAllOrderedByLevel();
+
+        $grades = $this->gradeRepository->findBy(['student' => $student]);
+        foreach ($grades as $grade) {
+            if ($grade->getGrade() !== null) {
+                $grades[$grade->getModule()->getLabel()] = $grade->getGrade();
+            }
+        }
+
         return $this->render('educational_coordinator/student/show.html.twig', [
             'student' => $student,
+            'modules' => $modules,
+            'grades' => $grades,
         ]);
     }
 }

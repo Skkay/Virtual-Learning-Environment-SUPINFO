@@ -18,4 +18,17 @@ class ModuleRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Module::class);
     }
+
+    public function findAllOrderedByLevel()
+    {
+        $qb = $this->createQueryBuilder('m')
+            ->leftJoin('m.level', 'l')
+            ->orderBy('l.numericLevel', 'ASC')
+            ->addOrderBy('l.label', 'ASC')
+        ;
+
+        $result = $qb->getQuery()->getResult();
+
+        return $result;
+    }
 }

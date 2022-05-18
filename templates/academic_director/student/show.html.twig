@@ -18,10 +18,10 @@
     <li><b>student.region.name:</b> {{ student.region.name ?? '-' }}</li>
     <li><b>student.grades:</b>
         <ul>
-            {% for grade in student.grades %}
-                <li><u>{{ grade.module.label }}:</u>
-                    {% if grade.grade %}
-                        {{ grade.grade }} - {{ grade.grade > 10 ? 'educational_coordinator.student.misc.accepted'|trans : 'educational_coordinator.student.misc.fail'|trans }}
+            {% for module in modules %}
+                <li>{{ module.label }}:</u>
+                    {% if grades[module.label] is defined %}
+                        {{ grades[module.label] }} - {{ grades[module.label] > 10 ? 'educational_coordinator.student.misc.accepted'|trans : 'educational_coordinator.student.misc.fail'|trans }}
                     {% else %}
                         -
                     {% endif %}

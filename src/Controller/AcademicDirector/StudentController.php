@@ -2,9 +2,13 @@
 
 namespace App\Controller\AcademicDirector;
 
+use App\Entity\Grade;
 use App\Entity\Level;
+use App\Entity\Module;
 use App\Entity\Student;
+use App\Repository\GradeRepository;
 use App\Repository\LevelRepository;
+use App\Repository\ModuleRepository;
 use App\Repository\StudentRepository;
 use App\Service\StudentService;
 use Doctrine\Persistence\ManagerRegistry;
@@ -29,12 +33,20 @@ class StudentController extends AbstractController
     /** @var LevelRepository */
     private $levelRepository;
 
+    /** @var ModuleRepository */
+    private $moduleRepository;
+
+    /** @var GradeRepository */
+    private $gradeRepository;
+
     public function __construct(ManagerRegistry $doctrine, StudentService $studentService)
     {
         $this->em = $doctrine->getManager();
         $this->studentService = $studentService;
         $this->studentRepository = $this->em->getRepository(Student::class);
         $this->levelRepository = $this->em->getRepository(Level::class);
+        $this->moduleRepository = $this->em->getRepository(Module::class);
+        $this->gradeRepository = $this->em->getRepository(Grade::class);
     }
 
     /**
@@ -64,11 +76,21 @@ class StudentController extends AbstractController
     {
         $levels = $this->levelRepository->findAll();
         $ects = $this->studentService->getTotalEcts($student);
+        $modules = $this->moduleRepository->findAllOrderedByLevel();
+
+        $grades = $this->gradeRepository->findBy(['student' => $student]);
+        foreach ($grades as $grade) {
+            if ($grade->getGrade() !== null) {
+                $grades[$grade->getModule()->getLabel()] = $grade->getGrade();
+            }
+        }
 
         return $this->render('academic_director/student/show.html.twig', [
             'student' => $student,
             'levels' => $levels,
             'studentEcts' => $ects,
+            'modules' => $modules,
+            'grades' => $grades,
         ]);
     }
 }
