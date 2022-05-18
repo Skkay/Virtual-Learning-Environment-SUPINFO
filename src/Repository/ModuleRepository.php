@@ -25,7 +25,7 @@ class ModuleRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('m')
             ->leftJoin('m.level', 'l')
             ->orderBy('l.numericLevel', 'ASC')
-            ->addOrderBy('l.label', 'ASC')
+            ->addOrderBy('m.label', 'ASC')
         ;
 
         $result = $qb->getQuery()->getResult();
