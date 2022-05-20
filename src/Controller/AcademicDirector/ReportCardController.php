@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Controller\Student;
+namespace App\Controller\AcademicDirector;
 
 use App\Entity\Grade;
 use App\Entity\Level;
 use App\Entity\Module;
+use App\Entity\Student;
 use App\Repository\GradeRepository;
 use App\Repository\ModuleRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -15,8 +16,8 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/report_card", name="app.report_card.")
- * @Security("is_granted('ROLE_USER')")
+ * @Route("/academic_director/report_card", name="app.academic_director.report_card.")
+ * @Security("is_granted('ROLE_ACADEMIC_DIRECTOR')")
  */
 class ReportCardController extends AbstractController
 {
@@ -36,14 +37,10 @@ class ReportCardController extends AbstractController
     }
 
     /**
-     * @Route("/{level}", name="show")
+     * @Route("/{student}/{level}", name="show")
      */
-    public function show(Level $level): Response
+    public function show(Student $student, Level $level): Response
     {
-        /** @var \App\Entity\User $user */
-        $user = $this->getUser();
-        $student = $user->getStudent();
-
         if ($student === null) {
             throw new NotFoundHttpException('Current logged user is not a student');
         }
@@ -57,7 +54,7 @@ class ReportCardController extends AbstractController
             }
         }
 
-        return $this->render('report_card.html.twig', [
+        return $this->render('report_card.html.twig', [ // todo: changer path
             'student' => $student,
             'level' => $level,
             'modules' => $modules,

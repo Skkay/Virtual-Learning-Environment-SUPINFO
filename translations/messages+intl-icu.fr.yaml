@@ -56,6 +56,7 @@ educational_coordinator:
     misc:
       student_list: Liste des étudiants
       module_list: Liste des modules
+      instructor_list: Liste des intervenants
       company_list: Liste des entreprises
   student:
     title:
@@ -92,6 +93,79 @@ educational_coordinator:
       sector: Secteur d'activité
       nb_student_training_contract: Nombre d'étudiant en alternance
       nb_student_hired: Nombre d'étudiant embauché
+  
+academic_director:
+  dashboard:
+    title:
+      home: Tableau de bord
+      role: Directeur académique
+    misc:
+      student_list: Liste des étudiants
+      module_list: Liste des modules
+      instructor_list: Liste des intervenants
+      partnership_list: Liste des partenariats
+      thesis_list: Liste des mémoires
+  student:
+    title:
+      home: Liste des étudiants
+    table:
+      id: ID
+      first_name: Prénom
+      last_name: Nom
+      campus: Campus
+      level: Niveau
+      company: Entreprise
+      email: Email
+      sct: SCT
+    misc:
+      accepted: Admis
+      fail: Recalé
+      yes: Oui
+      no: Non
+      report_card_list: Bulletins de notes
+      ects: ECTS
+      current_ects: Crédits actuels
+      current_needed_ects: Crédits requis pour cette année
+      max_ects: Crédits maximum obtenables
+      max_needed_ects: Crédits maximum requis
+  module:
+    title:
+      home: Liste des modules
+    misc:
+      accepted: Admis
+      fail: Recalé
+  instructor:
+    title:
+      home: Liste des intervenants
+  campus:
+    title:
+      home: Liste des campus
+    table:
+      id: ID
+      label: Label
+      city: Ville
+      nb_active_student: Nombre d'étudiant actifs
+    misc:
+      other: Autre
+  partnership:
+    title:
+      home: Liste des partenariats
+    table:
+      id: ID
+      label: Label
+      description: Description
+  thesis:
+    title:
+      home: Liste des mémoires
+    table:
+      id: ID
+      student: Étudiant
+      subject: Sujet
+      delivered: Rendu
+      remark: Commentaire
+    misc:
+      yes: Oui
+      no: Non
 
 form:
   student_comment_type:

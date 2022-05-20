@@ -154,12 +154,18 @@ class Student
      */
     private $isSCT;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Thesis::class, mappedBy="student")
+     */
+    private $theses;
+
     public function __construct()
     {
         $this->modules = new ArrayCollection();
         $this->grades = new ArrayCollection();
         $this->accountsComments = new ArrayCollection();
         $this->absences = new ArrayCollection();
+        $this->theses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -583,6 +589,36 @@ class Student
     public function setIsSCT(?bool $isSCT): self
     {
         $this->isSCT = $isSCT;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Thesis[]
+     */
+    public function getTheses(): Collection
+    {
+        return $this->theses;
+    }
+
+    public function addThesis(Thesis $thesis): self
+    {
+        if (!$this->theses->contains($thesis)) {
+            $this->theses[] = $thesis;
+            $thesis->setStudent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeThesis(Thesis $thesis): self
+    {
+        if ($this->theses->removeElement($thesis)) {
+            // set the owning side to null (unless already changed)
+            if ($thesis->getStudent() === $this) {
+                $thesis->setStudent(null);
+            }
+        }
 
         return $this;
     }

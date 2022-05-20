@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CampusController!{% endblock %}
+
+{% block body %}
+<h1>{{ 'academic_director.campus.title.home'|trans }}</h1>
+
+<table class="table table-sm table-hover">
+    <thead>
+        <tr>
+            <th scope="col">{{ 'academic_director.campus.table.id'|trans }}</th>
+            <th scope="col">{{ 'academic_director.campus.table.label'|trans }}</th>
+            <th scope="col">{{ 'academic_director.campus.table.city'|trans }}</th>
+            <th scope="col">{{ 'academic_director.campus.table.nb_active_student'|trans }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for campus in campus %}
+        <tr>
+            <td><a href="{{ path('app.academic_director.campus.show', {'id': campus.id} ) }}">{{ campus.id }}</a></td>
+            <td>{{ campus.label }}</td>
+            <td>{{ campus.city ?? '-' }}</td>
+            <td>{{ nbActiveStudents[campus.label] ?? '0' }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

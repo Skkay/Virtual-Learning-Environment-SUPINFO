@@ -49,6 +49,7 @@
         "symfony/yaml": "5.4.*",
         "symfonycasts/verify-email-bundle": "^1.7",
         "twig/extra-bundle": "^2.12|^3.0",
+        "twig/string-extra": "^3.4",
         "twig/twig": "^2.12|^3.0"
     },
     "require-dev": {

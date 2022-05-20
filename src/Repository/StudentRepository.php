@@ -69,4 +69,36 @@ class StudentRepository extends ServiceEntityRepository
 
         return $result;
     }
+
+    public function countActiveStudentsInCampus()
+    {
+        $qb = $this->createQueryBuilder('s')
+            ->select('COUNT(s.id) AS count')
+            ->addSelect('c.label AS campus_label')
+            ->andWhere('s.level IS NOT NULL')
+            ->leftJoin('s.campus', 'c')
+            ->groupBy('c.id')
+        ;
+
+        $result = $qb->getQuery()->getResult();
+
+        return $result;
+    }
+
+    public function countStudentsByCampus(Campus $campus)
+    {
+        $qb = $this->createQueryBuilder('s')
+            ->select('COUNT(s.id) AS count')
+            ->addSelect('l.label AS level_label')
+            ->andWhere('c.id = :campus_id')
+            ->setParameter('campus_id', $campus->getId())
+            ->leftJoin('s.campus', 'c')
+            ->leftJoin('s.level', 'l')
+            ->groupBy('s.level')
+        ;
+
+        $result = $qb->getQuery()->getResult();
+
+        return $result;
+    }
 }

@@ -52,4 +52,19 @@ class InstructorRepository extends ServiceEntityRepository
 
         return $query->execute();
     }
+
+    public function findByModule(Module $module)
+    {
+        $qb = $this->createQueryBuilder('i')
+            ->leftJoin('i.modules', 'm')
+            ->andWhere('m.id = :module_id')
+            ->setParameters([
+                'module_id' => $module->getId()
+            ])
+        ;
+
+        $query = $qb->getQuery();
+
+        return $query->execute();
+    }
 }

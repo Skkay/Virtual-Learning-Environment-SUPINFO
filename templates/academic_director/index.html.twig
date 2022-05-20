@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AcademicDirectorController!{% endblock %}
+
+{% block body %}
+<h1>{{ 'academic_director.dashboard.title.home'|trans }}</h1>
+<h4 class="text-muted">{{ 'academic_director.dashboard.title.role'|trans }}</h4>
+
+<ul>
+    <li><a href="{{ path('app.academic_director.student.index') }}">{{ 'academic_director.dashboard.misc.student_list'|trans }}</a></li>
+    <li><a href="{{ path('app.academic_director.module.index') }}">{{ 'academic_director.dashboard.misc.module_list'|trans }}</a></li>
+    <li><a href="{{ path('app.academic_director.instructor.index') }}">{{ 'academic_director.dashboard.misc.instructor_list'|trans }}</a></li>
+    <li><a href="{{ path('app.academic_director.partnership.index') }}">{{ 'academic_director.dashboard.misc.partnership_list'|trans }}</a></li>
+    <li><a href="{{ path('app.academic_director.thesis.index') }}">{{ 'academic_director.dashboard.misc.thesis_list'|trans }}</a></li>
+</ul>
+{% endblock %}

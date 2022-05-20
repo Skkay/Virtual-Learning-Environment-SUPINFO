@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ThesisController!{% endblock %}
+
+{% block body %}
+<ul>
+    <li><b>thesis.id:</b> {{ thesis.id }}</li>
+    <li><b>thesis.student:</b> {{ thesis.student.user.firstName }} {{ thesis.student.user.lastName|upper }} ({{ thesis.student.user.email }})</li>
+    <li><b>thesis.delivered:</b> {{ thesis.delivered ? 'academic_director.thesis.misc.yes'|trans : 'academic_director.thesis.misc.no'|trans }}</li>
+    <li><b>thesis.subject:</b> {{ thesis.subject }}</li>
+    <li><b>thesis.remark:</b> {{ thesis.remark }}</li>
+</ul>
+{% endblock %}

@@ -3,7 +3,7 @@
 {% block title %}Hello ReportCardController!{% endblock %}
 
 {% block body %}
-<h1>{{ 'report_card.title.home'|trans }}</h1>
+<h1>{{ 'report_card.title.home'|trans }} - {{ level.label }}</h1>
 <h4>{{ student.user.firstName|capitalize  }} {{ student.user.lastName|upper }}</h4>
 
 <table class="table table-sm table-hover">
@@ -17,16 +17,15 @@
         </tr>
     </thead>
     <tbody>
-        {% for grade in student.grades %}
-            {% if grade.module.label starts with moduleStartsWith %}
-                <tr>
-                    <td>{{ grade.module.label }}</td>
-                    <td>?</td>
-                    <td>{{ grade.module.ects }}</td>
-                    <td>{{ grade.grade ?? '-' }}</td>
-                    <td>{{ grade.grade < 10 ? '0' : grade.module.ects }}</td>
-                </tr>
-            {% endif %}
+        {% for module in modules %}
+
+            <tr>
+                <td>{{ module.label }}</td>
+                <td>{{ module.name ?? '-' }}</td>
+                <td>{{ module.ects }}</td>
+                <td>{{ grades[module.label] ?? '-' }}</td>
+                <td>{{ grades[module.label] is not defined or grades[module.label] < 10 ? '0' : module.ects }}</td>
+            </tr>
         {% endfor %}
     </tbody>
 </table>
