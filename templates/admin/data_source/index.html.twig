@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DataSource index{% endblock %}
+
+{% block body %}
+    <h1>DataSource index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Label</th>
+                <th>Equivalence</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for data_source in data_sources %}
+            <tr>
+                <td>{{ data_source.id }}</td>
+                <td>{{ data_source.label }}</td>
+                <td>{{ data_source.equivalence ? data_source.equivalence|json_encode : '' }}</td>
+                <td>
+                    <a href="{{ path('app.admin.data_source.show', {'id': data_source.id}) }}">show</a>
+                    <a href="{{ path('app.admin.data_source.edit', {'id': data_source.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app.admin.data_source.new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LevelController!{% endblock %}
+
+{% block body %}
+<h1>Levels</h1>
+
+<table class="table table-sm table-hover">
+    <thead>
+        <tr>
+            <th scope="col">level.id</th>
+            <th scope="col">level.label</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for level in levels %}
+        <tr>
+            <td><a href="{{ path('app.admin.level.show', {'id': level.id} ) }}">{{ level.id }}</a></td>
+            <td>{{ level.label }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
