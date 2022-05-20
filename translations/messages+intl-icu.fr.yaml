@@ -104,6 +104,7 @@ academic_director:
       module_list: Liste des modules
       instructor_list: Liste des intervenants
       partnership_list: Liste des partenariats
+      thesis_list: Liste des mémoires
   student:
     title:
       home: Liste des étudiants
@@ -153,6 +154,18 @@ academic_director:
       id: ID
       label: Label
       description: Description
+  thesis:
+    title:
+      home: Liste des mémoires
+    table:
+      id: ID
+      student: Étudiant
+      subject: Sujet
+      delivered: Rendu
+      remark: Commentaire
+    misc:
+      yes: Oui
+      no: Non
 
 form:
   student_comment_type:

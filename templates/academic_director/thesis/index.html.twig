@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CampusController!{% endblock %}
+
+{% block body %}
+<h1>{{ 'academic_director.thesis.title.home'|trans }}</h1>
+
+<table class="table table-sm table-hover">
+    <thead>
+        <tr>
+            <th scope="col">{{ 'academic_director.thesis.table.id'|trans }}</th>
+            <th scope="col">{{ 'academic_director.thesis.table.student'|trans }}</th>
+            <th scope="col">{{ 'academic_director.thesis.table.subject'|trans }}</th>
+            <th scope="col">{{ 'academic_director.thesis.table.delivered'|trans }}</th>
+            <th scope="col">{{ 'academic_director.thesis.table.remark'|trans }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for thesis in theses %}
+        <tr>
+            <td>{{ thesis.id }}</td>
+            <td>{{ thesis.student.user.firstName }} {{ thesis.student.user.lastName|upper }}</td>
+            <td>{{ thesis.subject ?? '-' }}</td>
+            <td>{{ thesis.delivered ? 'academic_director.thesis.misc.yes'|trans : 'academic_director.thesis.misc.no'|trans }}</td>
+            <td>{{ thesis.remark|u.truncate(130, '...') ?? '-' }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
