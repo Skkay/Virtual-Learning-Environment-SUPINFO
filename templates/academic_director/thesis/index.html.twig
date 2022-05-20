@@ -18,7 +18,7 @@
     <tbody>
         {% for thesis in theses %}
         <tr>
-            <td>{{ thesis.id }}</td>
+            <td><a href="{{ path('app.academic_director.thesis.show', {'id': thesis.id} ) }}">{{ thesis.id }}</a></td>
             <td>{{ thesis.student.user.firstName }} {{ thesis.student.user.lastName|upper }}</td>
             <td>{{ thesis.subject ?? '-' }}</td>
             <td>{{ thesis.delivered ? 'academic_director.thesis.misc.yes'|trans : 'academic_director.thesis.misc.no'|trans }}</td>

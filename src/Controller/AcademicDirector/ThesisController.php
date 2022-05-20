@@ -38,4 +38,14 @@ class ThesisController extends AbstractController
             'theses' => $theses,
         ]);
     }
+
+    /**
+     * @Route("/{id}", name="show")
+     */
+    public function show(Thesis $thesis): Response
+    {
+        return $this->render('academic_director/thesis/show.html.twig', [
+            'thesis' => $thesis,
+        ]);
+    }
 }
