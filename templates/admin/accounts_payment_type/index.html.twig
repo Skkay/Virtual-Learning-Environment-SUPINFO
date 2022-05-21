@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AccountsPaymentTypeController!{% endblock %}
+
+{% block body %}
+<h1>AccountsPaymentType</h1>
+
+<table class="table table-sm table-hover">
+    <thead>
+        <tr>
+            <th scope="col">accountsPaymentType.id</th>
+            <th scope="col">accountsPaymentType.label</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for accountsPaymentType in accountsPaymentTypes %}
+        <tr>
+            <td><a href="{{ path('app.admin.accountsPaymentType.show', {'id': accountsPaymentType.id} ) }}">{{ accountsPaymentType.id }}</a></td>
+            <td>{{ accountsPaymentType.label }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

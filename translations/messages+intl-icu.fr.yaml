@@ -19,6 +19,7 @@ navbar:
   my_profile: Mon compte
   dashboard: Tableau de bord
   absences: Absences
+  accountsPaymentTypes: Moyen de paiements
 
 report_card:
   title: 
@@ -167,6 +168,7 @@ academic_director:
     misc:
       yes: Oui
       no: Non
+
 admin:
   module:
     misc:
