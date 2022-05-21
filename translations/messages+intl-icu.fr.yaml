@@ -167,6 +167,11 @@ academic_director:
     misc:
       yes: Oui
       no: Non
+admin:
+  module:
+    misc:
+      yes: Oui
+      no: Non
 
 form:
   student_comment_type:

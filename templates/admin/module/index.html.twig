@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ModuleController!{% endblock %}
+
+{% block body %}
+<h1>Module</h1>
+
+<table class="table table-sm table-hover">
+    <thead>
+        <tr>
+            <th scope="col">module.id</th>
+            <th scope="col">module.label</th>
+            <th scope="col">module.speciality</th>
+            <th scope="col">module.ects</th>
+            <th scope="col">module.description</th>
+            <th scope="col">module.level.label</th>
+            <th scope="col">module.name</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for module in modules %}
+        <tr>
+            <td><a href="{{ path('app.admin.module.show', {'id': module.id} ) }}">{{ module.id }}</a></td>
+            <td>{{ module.label ?? '-' }}</td>
+            <td>{{ module.speciality ? 'admin.module.misc.yes'|trans : 'admin.module.misc.no'|trans }}</td>
+            <td>{{ module.ects ?? '-' }}</td>
+            <td>{{ module.description ?? '-' }}</td>
+            <td>{{ module.level.label ?? '-' }}</td>
+            <td>{{ module.name ?? '-' }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
