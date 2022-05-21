@@ -24,6 +24,7 @@ navbar:
   partnerships: Partenariats
   planning_events: Evènement des plannings
   roles: Rôles
+  theses: Mémoires
 
 report_card:
   title: 
@@ -179,6 +180,10 @@ admin:
       yes: Oui
       no: Non
   planning_event:
+    misc:
+      yes: Oui
+      no: Non
+  thesis:
     misc:
       yes: Oui
       no: Non
