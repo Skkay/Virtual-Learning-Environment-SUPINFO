@@ -18,6 +18,7 @@ navbar:
   logout: Déconnexion
   my_profile: Mon compte
   dashboard: Tableau de bord
+  absences: Absences
 
 report_card:
   title: 

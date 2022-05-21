@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AbsenceController!{% endblock %}
+
+{% block body %}
+<h1>Absences</h1>
+
+<table class="table table-sm table-hover">
+    <thead>
+        <tr>
+            <th scope="col">absence.id</th>
+            <th scope="col">absence.student.user.email</th>
+            <th scope="col">absence.date</th>
+            <th scope="col">absence.period</th>
+            <th scope="col">absence.excuse</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for absence in absences %}
+        <tr>
+            <td><a href="{{ path('app.admin.absence.show', {'id': absence.id} ) }}">{{ absence.id }}</a></td>
+            <td>{{ absence.student.user.email }}</td>
+            <td>{{ absence.date|date('d-m-Y') }}</td>
+            <td>{{ absence.period }}</td>
+            <td>{{ absence.excuse }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
