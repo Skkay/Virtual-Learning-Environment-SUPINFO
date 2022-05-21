@@ -20,6 +20,7 @@ navbar:
   dashboard: Tableau de bord
   absences: Absences
   accountsPaymentTypes: Moyen de paiements
+  accountsStudentComments: Commentaires administratif des étudiants
 
 report_card:
   title: 
