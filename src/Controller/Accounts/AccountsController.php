@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/accounts", name="app.accounts.")
- * @Security("is_granted('ROLE_ADMINISTRATION')")
+ * @Security("is_granted('ROLE_ACCOUNTS')")
  */
 class AccountsController extends AbstractController
 {

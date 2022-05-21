@@ -23,7 +23,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/accounts/students", name="app.accounts.student.")
- * @Security("is_granted('ROLE_ADMINISTRATION')")
+ * @Security("is_granted('ROLE_ACCOUNTS')")
  */
 class StudentController extends AbstractController
 {

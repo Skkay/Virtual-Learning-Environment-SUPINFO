@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/accounts_comment", name="app.accounts_student_comment.")
- * @Security("is_granted('ROLE_ADMINISTRATION')")
+ * @Security("is_granted('ROLE_ACCOUNTS')")
  */
 class AccountsStudentCommentController extends AbstractController
 {
