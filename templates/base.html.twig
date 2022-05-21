@@ -44,22 +44,22 @@
 
                         {% if is_granted('ROLE_ADMIN') %}
                             {% set entities = [
-                                ['company', 'companies'], 
-                                ['campus', 'campus'],
-                                ['diploma', 'diplomas'],
-                                ['gender', 'genders'],
-                                ['grade', 'grades'],
-                                ['instructor', 'instructors'],
-                                ['level', 'levels'],
-                                ['region', 'regions'],
-                                ['section', 'sections'],
-                                ['speciality', 'specialities'],
-                                ['staff', 'staffs'],
-                                ['student', 'students'],
-                                ['user', 'users'],
-                                ['absence', 'absences'],
-                                ['module', 'modules'],
-                                ['accountsPaymentType', 'accountsPaymentTypes'],
+                                ['company', 'navbar.companies'|trans],
+                                ['campus', 'navbar.campus'|trans],
+                                ['diploma', 'navbar.diplomas'|trans],
+                                ['gender', 'navbar.genders'|trans],
+                                ['grade', 'navbar.grades'|trans],
+                                ['instructor', 'navbar.instructors'|trans],
+                                ['level', 'navbar.levels'|trans],
+                                ['region', 'navbar.regions'|trans],
+                                ['section', 'navbar.sections'|trans],
+                                ['speciality', 'navbar.specialities'|trans],
+                                ['staff', 'navbar.staffs'|trans],
+                                ['student', 'navbar.students'|trans],
+                                ['user', 'navbar.users'|trans],
+                                ['absence', 'navbar.absences'|trans],
+                                ['module', 'navbar.modules'|trans],
+                                ['accountsPaymentType', 'navbar.accountsPaymentTypes'|trans],
                             ] %}
                             
                             <li class="nav-item dropdown">
@@ -70,7 +70,7 @@
                                 <ul class="dropdown-menu">
                                 {% for entity in entities|sort((a, b) => a[1] <=> b[1]) %}
                                     <li>
-                                        <a class="dropdown-item {{ route starts with 'app.admin.' ~ entity[0] ? 'active' }}" href="{{ path('app.admin.' ~ entity[0] ~ '.index') }}">{{ ('navbar.' ~ entity[1])|trans }}</a>
+                                        <a class="dropdown-item {{ route starts with 'app.admin.' ~ entity[0] ? 'active' }}" href="{{ path('app.admin.' ~ entity[0] ~ '.index') }}">{{ entity[1] }}</a>
                                     </li>
                                 {% endfor %}
                                 </ul> 
