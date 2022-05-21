@@ -1,0 +1,40 @@
+{% set entities = [
+    ['company', 'admin.dashboard.entity.companies'|trans],
+    ['campus', 'admin.dashboard.entity.campus'|trans],
+    ['diploma', 'admin.dashboard.entity.diplomas'|trans],
+    ['gender', 'admin.dashboard.entity.genders'|trans],
+    ['grade', 'admin.dashboard.entity.grades'|trans],
+    ['instructor', 'admin.dashboard.entity.instructors'|trans],
+    ['level', 'admin.dashboard.entity.levels'|trans],
+    ['region', 'admin.dashboard.entity.regions'|trans],
+    ['section', 'admin.dashboard.entity.sections'|trans],
+    ['speciality', 'admin.dashboard.entity.specialities'|trans],
+    ['staff', 'admin.dashboard.entity.staffs'|trans],
+    ['student', 'admin.dashboard.entity.students'|trans],
+    ['user', 'admin.dashboard.entity.users'|trans],
+    ['absence', 'admin.dashboard.entity.absences'|trans],
+    ['module', 'admin.dashboard.entity.modules'|trans],
+    ['accountsPaymentType', 'admin.dashboard.entity.accountsPaymentTypes'|trans],
+    ['accountsStudentComment', 'admin.dashboard.entity.accountsStudentComments'|trans],
+    ['partnership', 'admin.dashboard.entity.partnerships'|trans],
+    ['planningEvent', 'admin.dashboard.entity.planning_events'|trans],
+    ['role', 'admin.dashboard.entity.roles'|trans],
+    ['thesis', 'admin.dashboard.entity.theses'|trans],
+] %}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+<h1>{{ 'admin.dashboard.title.home'|trans }}</h1>
+<h4 class="text-muted">{{ 'admin.dashboard.title.role'|trans }}</h4>
+
+<ul>
+    {% for entity in entities|sort((a, b) => a[1] <=> b[1]) %}
+        <li>
+            <a href="{{ path('app.admin.' ~ entity[0] ~ '.index') }}">{{ entity[1] }}</a>
+        </li>
+    {% endfor %}
+</ul> 
+{% endblock %}

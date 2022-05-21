@@ -36,51 +36,16 @@
                             <li class="nav-item">
                                 <a class="nav-link {{ route == 'app.academic_director.index' ? 'active' }}" href="{{ path('app.academic_director.index') }}">{{ 'navbar.dashboard'|trans }}</a>
                             </li>
+                        {% elseif is_granted('ROLE_ADMIN') %}
+                            <li class="nav-item">
+                                <a class="nav-link {{ route == 'app.admin.index' ? 'active' }}" href="{{ path('app.admin.index') }}">{{ 'navbar.dashboard'|trans }}</a>
+                            </li>
                         {% else %} {# Student #}
                             <li class="nav-item">
                                 <a class="nav-link {{ route == 'app.dashboard' ? 'active' }}" href="{{ path('app.dashboard.index') }}">{{ 'navbar.dashboard'|trans }}</a>
                             </li>
                         {% endif %}
 
-                        {% if is_granted('ROLE_ADMIN') %}
-                            {% set entities = [
-                                ['company', 'navbar.companies'|trans],
-                                ['campus', 'navbar.campus'|trans],
-                                ['diploma', 'navbar.diplomas'|trans],
-                                ['gender', 'navbar.genders'|trans],
-                                ['grade', 'navbar.grades'|trans],
-                                ['instructor', 'navbar.instructors'|trans],
-                                ['level', 'navbar.levels'|trans],
-                                ['region', 'navbar.regions'|trans],
-                                ['section', 'navbar.sections'|trans],
-                                ['speciality', 'navbar.specialities'|trans],
-                                ['staff', 'navbar.staffs'|trans],
-                                ['student', 'navbar.students'|trans],
-                                ['user', 'navbar.users'|trans],
-                                ['absence', 'navbar.absences'|trans],
-                                ['module', 'navbar.modules'|trans],
-                                ['accountsPaymentType', 'navbar.accountsPaymentTypes'|trans],
-                                ['accountsStudentComment', 'navbar.accountsStudentComments'|trans],
-                                ['partnership', 'navbar.partnerships'|trans],
-                                ['planningEvent', 'navbar.planning_events'|trans],
-                                ['role', 'navbar.roles'|trans],
-                                ['thesis', 'navbar.theses'|trans],
-                            ] %}
-                            
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                    Entities
-                                </a>
-                                
-                                <ul class="dropdown-menu">
-                                {% for entity in entities|sort((a, b) => a[1] <=> b[1]) %}
-                                    <li>
-                                        <a class="dropdown-item {{ route starts with 'app.admin.' ~ entity[0] ? 'active' }}" href="{{ path('app.admin.' ~ entity[0] ~ '.index') }}">{{ entity[1] }}</a>
-                                    </li>
-                                {% endfor %}
-                                </ul> 
-                            </li>
-                        {% endif %}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                 Dev
