@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin/accountsStudentComment", name="app.admin.accountsStudentComment.")
+ * @Route("/admin/accounts_student_comment", name="app.admin.accountsStudentComment.")
  * @Security("is_granted('ROLE_ADMIN')")
  */
 class AccountsStudentCommentController extends AbstractController

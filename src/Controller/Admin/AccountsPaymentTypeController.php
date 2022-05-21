@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin/accountsPaymentType", name="app.admin.accountsPaymentType.")
+ * @Route("/admin/accounts_payment_type", name="app.admin.accountsPaymentType.")
  * @Security("is_granted('ROLE_ADMIN')")
  */
 class AccountsPaymentTypeController extends AbstractController

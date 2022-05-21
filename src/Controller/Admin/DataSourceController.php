@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin/data-source", name="app.admin.data_source.")
+ * @Route("/admin/data_source", name="app.admin.data_source.")
  * @Security("is_granted('ROLE_ADMIN')")
  */
 class DataSourceController extends AbstractController
