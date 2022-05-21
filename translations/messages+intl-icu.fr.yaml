@@ -21,6 +21,7 @@ navbar:
   absences: Absences
   accountsPaymentTypes: Moyen de paiements
   accountsStudentComments: Commentaires administratif des étudiants
+  partnerships: Partenariats
 
 report_card:
   title: 
