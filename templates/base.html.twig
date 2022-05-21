@@ -43,51 +43,34 @@
                         {% endif %}
 
                         {% if is_granted('ROLE_ADMIN') %}
+                            {% set entities = [
+                                ['company', 'companies'], 
+                                ['campus', 'campus'],
+                                ['diploma', 'diplomas'],
+                                ['gender', 'genders'],
+                                ['grade', 'grades'],
+                                ['instructor', 'instructors'],
+                                ['level', 'levels'],
+                                ['region', 'regions'],
+                                ['section', 'sections'],
+                                ['speciality', 'specialities'],
+                                ['staff', 'staffs'],
+                                ['student', 'students'],
+                                ['user', 'users'],
+                            ] %}
+                            
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                     Entities
                                 </a>
+                                
                                 <ul class="dropdown-menu">
+                                {% for entity in entities|sort((a, b) => a[1] <=> b[1]) %}
                                     <li>
-                                        <a class="dropdown-item {{ route starts with 'app.admin.campus' ? 'active' }}" href="{{ path('app.admin.campus.index') }}">{{ 'navbar.campus'|trans }}</a>
+                                        <a class="dropdown-item {{ route starts with 'app.admin.' ~ entity[0] ? 'active' }}" href="{{ path('app.admin.' ~ entity[0] ~ '.index') }}">{{ ('navbar.' ~ entity[1])|trans }}</a>
                                     </li>
-                                    <li>
-                                        <a class="dropdown-item {{ route starts with 'app.admin.company' ? 'active' }}" href="{{ path('app.admin.company.index') }}">{{ 'navbar.companies'|trans }}</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item {{ route starts with 'app.admin.diploma' ? 'active' }}" href="{{ path('app.admin.diploma.index') }}">{{ 'navbar.diplomas'|trans }}</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item {{ route starts with 'app.admin.gender' ? 'active' }}" href="{{ path('app.admin.gender.index') }}">{{ 'navbar.genders'|trans }}</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item {{ route starts with 'app.admin.grade' ? 'active' }}" href="{{ path('app.admin.grade.index') }}">{{ 'navbar.grades'|trans }}</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item {{ route starts with 'app.admin.instructor' ? 'active' }}" href="{{ path('app.admin.instructor.index') }}">{{ 'navbar.instructors'|trans }}</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item {{ route starts with 'app.admin.level' ? 'active' }}" href="{{ path('app.admin.level.index') }}">{{ 'navbar.levels'|trans }}</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item {{ route starts with 'app.admin.region' ? 'active' }}" href="{{ path('app.admin.region.index') }}">{{ 'navbar.regions'|trans }}</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item {{ route starts with 'app.admin.section' ? 'active' }}" href="{{ path('app.admin.section.index') }}">{{ 'navbar.sections'|trans }}</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item {{ route starts with 'app.admin.speciality' ? 'active' }}" href="{{ path('app.admin.speciality.index') }}">{{ 'navbar.specialities'|trans }}</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item {{ route starts with 'app.admin.staff' ? 'active' }}" href="{{ path('app.admin.staff.index') }}">{{ 'navbar.staffs'|trans }}</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item {{ route starts with 'app.admin.student' ? 'active' }}" href="{{ path('app.admin.student.index') }}">{{ 'navbar.students'|trans }}</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item {{ route starts with 'app.admin.user' ? 'active' }}" href="{{ path('app.admin.user.index') }}">{{ 'navbar.users'|trans }}</a>
-                                    </li>
-                                </ul>
+                                {% endfor %}
+                                </ul> 
                             </li>
                         {% endif %}
                         <li class="nav-item dropdown">
