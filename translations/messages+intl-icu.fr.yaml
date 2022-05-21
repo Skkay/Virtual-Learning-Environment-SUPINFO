@@ -155,6 +155,8 @@ admin:
     title:
       home: Tableau de bord
       role: Administration
+      entities: Entités
+      etl: ETL
     entity:
       companies: Entreprises
       campus: Campus
@@ -180,6 +182,8 @@ admin:
       planning_events: Evènement des plannings
       roles: Rôles
       theses: Mémoires
+    misc:
+      data_sources: Schémas des sources de données
     
   module:
     misc:

@@ -30,6 +30,7 @@
 <h1>{{ 'admin.dashboard.title.home'|trans }}</h1>
 <h4 class="text-muted">{{ 'admin.dashboard.title.role'|trans }}</h4>
 
+<h5>{{ 'admin.dashboard.title.entities'|trans }}</h5>
 <ul>
     {% for entity in entities|sort((a, b) => a[1] <=> b[1]) %}
         <li>
@@ -37,4 +38,9 @@
         </li>
     {% endfor %}
 </ul> 
+
+<h5>{{ 'admin.dashboard.title.etl'|trans }}</h5>
+<ul>
+    <li><a href="{{ path('app.admin.data_source.index') }}">{{ 'admin.dashboard.misc.data_sources'|trans }}</a></li>
+</ul>
 {% endblock %}
