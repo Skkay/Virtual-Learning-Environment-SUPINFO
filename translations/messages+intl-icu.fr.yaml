@@ -196,18 +196,19 @@ admin:
     misc:
       yes: Oui
       no: Non
-  data_source:
-    title:
-      home: Liste des schémas des sources de données
-      data_source: Schéma de source de données
-      edit: Modifier un schéma de source de données
-      create: Créer un schéma de source de données
-    table:
-      id: ID
-      label: Label
-      schema: Schema
-      actions: Actions
-      no_records: Aucun schéma  
+  etl:
+    data_source:
+      title:
+        home: Liste des schémas des sources de données
+        data_source: Schéma de source de données
+        edit: Modifier un schéma de source de données
+        create: Créer un schéma de source de données
+      table:
+        id: ID
+        label: Label
+        schema: Schema
+        actions: Actions
+        no_records: Aucun schéma  
 
 form:
   student_comment_type:

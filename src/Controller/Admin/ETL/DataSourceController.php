@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\Admin\ETL;
 
 use App\Entity\DataSource;
 use App\Form\DataSourceType;
@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin/data_source", name="app.admin.data_source.")
+ * @Route("/admin/etl/data_sources", name="app.admin.etl.data_source.")
  * @Security("is_granted('ROLE_ADMIN')")
  */
 class DataSourceController extends AbstractController
@@ -23,7 +23,7 @@ class DataSourceController extends AbstractController
      */
     public function index(DataSourceRepository $dataSourceRepository): Response
     {
-        return $this->render('admin/data_source/index.html.twig', [
+        return $this->render('admin/etl/data_source/index.html.twig', [
             'data_sources' => $dataSourceRepository->findAll(),
         ]);
     }
@@ -41,10 +41,10 @@ class DataSourceController extends AbstractController
             $entityManager->persist($dataSource);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app.admin.data_source.index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app.admin.etl.data_source.index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin/data_source/new.html.twig', [
+        return $this->renderForm('admin/etl/data_source/new.html.twig', [
             'data_source' => $dataSource,
             'form' => $form,
         ]);
@@ -55,7 +55,7 @@ class DataSourceController extends AbstractController
      */
     public function show(DataSource $dataSource): Response
     {
-        return $this->render('admin/data_source/show.html.twig', [
+        return $this->render('admin/etl/data_source/show.html.twig', [
             'data_source' => $dataSource,
         ]);
     }
@@ -71,10 +71,10 @@ class DataSourceController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app.admin.data_source.index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app.admin.etl.data_source.index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin/data_source/edit.html.twig', [
+        return $this->renderForm('admin/etl/data_source/edit.html.twig', [
             'data_source' => $dataSource,
             'form' => $form,
         ]);
@@ -90,6 +90,6 @@ class DataSourceController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app.admin.data_source.index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app.admin.etl.data_source.index', [], Response::HTTP_SEE_OTHER);
     }
 }
