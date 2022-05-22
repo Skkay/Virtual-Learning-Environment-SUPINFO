@@ -1,0 +1,233 @@
+navbar:
+  home: Home
+  dashboard: Dashboard
+  login: Login
+  logout: Logout
+  my_profile: My profile
+  language: Language
+
+report_card:
+  title: 
+    index: Report cards
+  misc:
+    course_code: Course code
+    course_name: Course name
+    credits_per_course: Credits/course
+    grades: Grades
+    validated_credits: Validated credits
+
+dashboard:
+  title:
+    index: Dashboard
+  misc:
+    module_list: Course list
+    report_card_list: Report cards
+
+accounts:
+  dashboard:
+    title:
+      index: Dashboard
+      role: Accounts
+    misc:
+      student_list: Student list
+  student:
+    document:
+      title:
+        documents_of: Documents of {firstname} {lastname}
+      table:
+        extension: Type
+        filename: File name
+        ctime: Mmodification date
+      misc:
+        download: Download
+
+educational_coordinator:
+  dashboard:
+    title:
+      index: Dashboard
+      role: Educational coordinator
+    misc:
+      student_list: Student list
+      module_list: Course list
+      instructor_list: Instructor list
+      company_list: Company list
+  student:
+    title:
+      index: Student list
+    table:
+      id: ID
+      first_name: Firstname
+      last_name: Lastname
+      campus: Campus
+      level: Level
+      company: Company
+      email: Email
+      sct: SCT
+    misc:
+      accepted: Accepted
+      fail: Fail
+      yes: Yes
+      no: No
+  module:
+    title:
+      index: Course list
+    misc:
+      accepted: Accepted
+      fail: Fail
+  instructor:
+    title:
+      index: Instructor list
+  company:
+    title:
+      index: Company list
+    table:
+      id: ID
+      name: Name
+      sector: Activity sector
+      nb_student_training_contract: Number of student in training contract
+      nb_student_hired: Number of student hired
+  
+academic_director:
+  dashboard:
+    title:
+      index: Dashboard
+      role: Academic director
+    misc:
+      student_list: Student list
+      module_list: Course list
+      instructor_list: Instructor list
+      partnership_list: Partnership list
+      thesis_list: Thesis list
+  student:
+    title:
+      index: Student list
+    table:
+      id: ID
+      first_name: Firstname
+      last_name: Lastname
+      campus: Campus
+      level: Level
+      company: Company
+      email: Email
+      sct: SCT
+    misc:
+      accepted: Accepted
+      fail: Fail
+      yes: Yes
+      no: No
+      report_card_list: Report cards
+      ects: ECTS
+      current_ects: Current ECTS
+      current_needed_ects: ECTS needed for this year
+      max_ects: Maximum ECTS available
+      max_needed_ects: Maximum ECTS needed
+  module:
+    title:
+      index: Course list
+    misc:
+      accepted: Accepted
+      fail: Fail
+  instructor:
+    title:
+      index: Instructor list
+  campus:
+    title:
+      index: Campus list
+    table:
+      id: ID
+      label: Label
+      city: City
+      nb_active_student: Number of active student
+    misc:
+      other: Other
+  partnership:
+    title:
+      index: Partnership list
+    table:
+      id: ID
+      label: Label
+      description: Description
+  thesis:
+    title:
+      index: Thesis list
+    table:
+      id: ID
+      student: Student
+      subject: Subject
+      delivered: Delivered
+      remark: Remark
+    misc:
+      yes: Yes
+      no: No
+
+admin:
+  dashboard:
+    title:
+      index: Dashboard
+      role: Administration
+      entities: Entities
+      etl: ETL
+    entity:
+      companies: Companies
+      campus: Campus
+      diplomas: Diplomas
+      genders: Genders
+      grades: Grades
+      instructors: Instructors
+      levels: Levels
+      modules: Modules
+      regions: Regions
+      sections: Sections
+      specialities: Specialities
+      staffs: Staffs
+      students: Students
+      users: Users
+      absences: Absences
+      accounts_payment_types: Payment types
+      accounts_student_comments: Accounts' student comments
+      partnerships: Partnerships
+      planning_events: Planning events
+      roles: Roles
+      theses: Theses
+    misc:
+      data_sources: Data source schemas
+  module:
+    misc:
+      yes: Yes
+      no: No
+  planning_event:
+    misc:
+      yes: Yes
+      no: No
+  thesis:
+    misc:
+      yes: Yes
+      no: No
+  etl:
+    data_source:
+      title:
+        index: Data source schema list
+        data_source: Data source schema
+        edit: Edit a datasource schema
+        create: Create a datasource schema
+      table:
+        id: ID
+        label: Label
+        schema: Schema
+        actions: Actions
+        no_records: No schema found  
+
+form:
+  student_comment_type:
+    label: Add a comment
+  data_source_type:
+    label: Label
+    equivalence: Schema
+  misc:
+    save: Save
+    back_to_list: Back to list
+    edit: Edit
+    create: Create
+    show: Show
+    delete: Delete
+    update: Update
