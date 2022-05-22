@@ -18,8 +18,6 @@ class AcademicDirectorController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('academic_director/index.html.twig', [
-            'controller_name' => 'AcademicDirectorController',
-        ]);
+        return $this->render('academic_director/index.html.twig');
     }
 }
