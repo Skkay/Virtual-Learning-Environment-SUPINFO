@@ -22,7 +22,7 @@ class StaffController extends AbstractController
         $this->staffRepository = $staffRepository;
     }
     /**
-     * @Route("/", name="index")
+     * @Route("", name="index")
      */
     public function index(): Response
     {

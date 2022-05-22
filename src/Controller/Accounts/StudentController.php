@@ -47,7 +47,7 @@ class StudentController extends AbstractController
     }
 
     /**
-     * @Route("/", name="index")
+     * @Route("", name="index")
      */
     public function index(): Response
     {

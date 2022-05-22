@@ -19,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class DataSourceController extends AbstractController
 {
     /**
-     * @Route("/", name="index", methods={"GET"})
+     * @Route("", name="index", methods={"GET"})
      */
     public function index(DataSourceRepository $dataSourceRepository): Response
     {

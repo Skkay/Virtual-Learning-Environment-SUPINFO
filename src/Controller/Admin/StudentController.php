@@ -22,7 +22,7 @@ class StudentController extends AbstractController
         $this->studentRepository = $studentRepository;        
     }
     /**
-     * @Route("/", name="index")
+     * @Route("", name="index")
      */
     public function index(): Response
     {
