@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}DataSource index{% endblock %}
+{% block title %}{{ 'admin.data_source.title.home'|trans }}{% endblock %}
 
 {% block body %}
-    <h1>DataSource index</h1>
+    <h1>{{ 'admin.data_source.title.home'|trans }}</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Label</th>
-                <th>Equivalence</th>
-                <th>actions</th>
+                <th>{{ 'admin.data_source.table.id'|trans }}</th>
+                <th>{{ 'admin.data_source.table.label'|trans }}</th>
+                <th>{{ 'admin.data_source.table.schema'|trans }}</th>
+                <th>{{ 'admin.data_source.table.actions'|trans }}</th>
             </tr>
         </thead>
         <tbody>
@@ -21,17 +21,17 @@
                 <td>{{ data_source.label }}</td>
                 <td>{{ data_source.equivalence ? data_source.equivalence|json_encode : '' }}</td>
                 <td>
-                    <a href="{{ path('app.admin.data_source.show', {'id': data_source.id}) }}">show</a>
-                    <a href="{{ path('app.admin.data_source.edit', {'id': data_source.id}) }}">edit</a>
+                    <a href="{{ path('app.admin.data_source.show', {'id': data_source.id}) }}">{{ 'form.misc.show'|trans }}</a>
+                    <a href="{{ path('app.admin.data_source.edit', {'id': data_source.id}) }}">{{ 'form.misc.edit'|trans }}</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">{{ 'admin.data_source.table.no_records'|trans }}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app.admin.data_source.new') }}">Create new</a>
+    <a href="{{ path('app.admin.data_source.new') }}">{{ 'form.misc.create'|trans }}</a>
 {% endblock %}

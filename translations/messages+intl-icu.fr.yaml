@@ -184,7 +184,6 @@ admin:
       theses: Mémoires
     misc:
       data_sources: Schémas des sources de données
-    
   module:
     misc:
       yes: Oui
@@ -197,9 +196,30 @@ admin:
     misc:
       yes: Oui
       no: Non
+  data_source:
+    title:
+      home: Liste des schémas des sources de données
+      data_source: Schéma de source de données
+      edit: Modifier un schéma de source de données
+      create: Créer un schéma de source de données
+    table:
+      id: ID
+      label: Label
+      schema: Schema
+      actions: Actions
+      no_records: Aucun schéma  
 
 form:
   student_comment_type:
     label: Ajouter un commentaire
+  data_source_type:
+    label: Label
+    equivalence: Schéma
   misc:
     save: Enregistrer
+    back_to_list: Retour à la liste
+    edit: Modifier
+    create: Créer
+    show: Afficher
+    delete: Supprimer
+    update: Mettre à jour
