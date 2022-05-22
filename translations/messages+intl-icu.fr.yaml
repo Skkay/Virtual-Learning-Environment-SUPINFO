@@ -176,8 +176,8 @@ admin:
       students: Etudiants
       users: Utilisateurs
       absences: Absences
-      accountsPaymentTypes: Moyen de paiements
-      accountsStudentComments: Commentaires administratif des étudiants
+      accounts_payment_types: Moyen de paiements
+      accounts_student_comments: Commentaires administratif des étudiants
       partnerships: Partenariats
       planning_events: Evènement des plannings
       roles: Rôles
