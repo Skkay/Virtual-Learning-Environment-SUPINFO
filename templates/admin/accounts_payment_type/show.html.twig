@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AccountsPaymentTypeController!{% endblock %}
+
+{% block body %}
+<ul>
+    <li><b>accountsPaymentType.id:</b> {{ accountsPaymentType.id }}</li>
+    <li><b>accountsPaymentType.label:</b> {{ accountsPaymentType.label }}</li>
+    <li><b>accountsPaymentType.students:</b>
+        <ul>
+        {% if accountsPaymentType.students is empty %}
+            <li>-</li>
+        {% else %}
+            {% for student in accountsPaymentType.students %}
+                <li>{{ student.user.email }}</li>
+            {% endfor %}
+        {% endif %}
+        </ul>
+    </li>
+</ul>
+{% endblock %}

@@ -1,23 +1,9 @@
 navbar:
   home: Accueil
-  companies: Entreprises
-  campus: Campus
-  diplomas: Diplômes
-  genders: Genres
-  grades: Notes
-  instructors: Intervenants
-  levels: Niveaux
-  modules: Modules
-  regions: Régions
-  sections: Séctions
-  specialities: Spécilités
-  staffs: Staffs
-  students: Etudiants
-  users: Utilisateurs
+  dashboard: Tableau de bord
   login: Connexion
   logout: Déconnexion
   my_profile: Mon compte
-  dashboard: Tableau de bord
 
 report_card:
   title: 
@@ -167,8 +153,74 @@ academic_director:
       yes: Oui
       no: Non
 
+admin:
+  dashboard:
+    title:
+      home: Tableau de bord
+      role: Administration
+      entities: Entités
+      etl: ETL
+    entity:
+      companies: Entreprises
+      campus: Campus
+      diplomas: Diplômes
+      genders: Genres
+      grades: Notes
+      instructors: Intervenants
+      levels: Niveaux
+      modules: Modules
+      regions: Régions
+      sections: Séctions
+      specialities: Spécilités
+      staffs: Staffs
+      students: Etudiants
+      users: Utilisateurs
+      absences: Absences
+      accounts_payment_types: Moyen de paiements
+      accounts_student_comments: Commentaires administratif des étudiants
+      partnerships: Partenariats
+      planning_events: Evènement des plannings
+      roles: Rôles
+      theses: Mémoires
+    misc:
+      data_sources: Schémas des sources de données
+  module:
+    misc:
+      yes: Oui
+      no: Non
+  planning_event:
+    misc:
+      yes: Oui
+      no: Non
+  thesis:
+    misc:
+      yes: Oui
+      no: Non
+  etl:
+    data_source:
+      title:
+        home: Liste des schémas des sources de données
+        data_source: Schéma de source de données
+        edit: Modifier un schéma de source de données
+        create: Créer un schéma de source de données
+      table:
+        id: ID
+        label: Label
+        schema: Schema
+        actions: Actions
+        no_records: Aucun schéma  
+
 form:
   student_comment_type:
     label: Ajouter un commentaire
+  data_source_type:
+    label: Label
+    equivalence: Schéma
   misc:
     save: Enregistrer
+    back_to_list: Retour à la liste
+    edit: Modifier
+    create: Créer
+    show: Afficher
+    delete: Supprimer
+    update: Mettre à jour

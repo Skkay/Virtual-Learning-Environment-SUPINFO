@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AbsenceController!{% endblock %}
+
+{% block body %}
+<ul>
+    <li><b>absence.id:</b> {{ absence.id }}</li>
+    <li><b>absence.student.user.email:</b> {{ absence.student.user.email }}</li>
+    <li><b>absence.date:</b> {{ absence.date|date('d-m-Y') }}</li>
+    <li><b>absence.period:</b> {{ absence.period }}</li>
+    <li><b>absence.excuse:</b> {{ absence.excuse }}</li>
+</ul>
+{% endblock %}

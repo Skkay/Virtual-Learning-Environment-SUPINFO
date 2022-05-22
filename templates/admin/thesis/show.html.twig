@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RoleController!{% endblock %}
+
+{% block body %}
+<ul>
+    <li><b>thesis.id:</b> {{ thesis.id }}</li>
+    <li><b>thesis.student.user.email:</b> {{ thesis.student.user.email ?? '-' }}</li>
+    <li><b>thesis.subject:</b> {{ thesis.subject ?? '-' }}</li>
+    <li><b>thesis.delivered:</b> {{ thesis.delivered ? 'admin.thesis.misc.yes'|trans : 'admin.thesis.misc.no'|trans }}</li>
+    <li><b>thesis.remark:</b> {{ thesis.remark ?? '-' }}</li>
+</ul>
+{% endblock %}

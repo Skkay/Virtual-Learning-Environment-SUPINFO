@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PartnershipController!{% endblock %}
+
+{% block body %}
+<ul>
+    <li><b>partnership.id:</b> {{ partnership.id }}</li>
+    <li><b>partnership.label:</b> {{ partnership.label ?? '-' }}</li>
+    <li><b>partnership.imageUrl:</b> {{ partnership.imageUrl ?? '-' }}</li>
+    <li><b>partnership.description:</b> {{ partnership.description ?? '-' }}</li>
+</ul>
+{% endblock %}

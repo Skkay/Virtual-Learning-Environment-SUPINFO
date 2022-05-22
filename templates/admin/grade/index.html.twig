@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello GradeController!{% endblock %}
+
+{% block body %}
+<h1>Grades</h1>
+
+<table class="table table-sm table-hover">
+    <thead>
+        <tr>
+            <th scope="col">grade.id</th>
+            <th scope="col">grade.student.user.email</th>
+            <th scope="col">grade.module.label</th>
+            <th scope="col">grade.grade</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for grade in grades %}
+        <tr>
+            <td><a href="{{ path('app.admin.grade.show', {'id': grade.id} ) }}">{{ grade.id }}</a></td>
+            <td>{{ grade.student.user.email }}</td>
+            <td>{{ grade.module.label }}</td>
+            <td>{{ grade.grade }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

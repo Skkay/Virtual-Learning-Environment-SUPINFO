@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserController!{% endblock %}
+
+{% block body %}
+<h1>Users</h1>
+
+<table class="table table-sm table-hover">
+    <thead>
+        <tr>
+            <th scope="col">user.id</th>
+            <th scope="col">user.email</th>
+            <th scope="col">user.firstName</th>
+            <th scope="col">user.lastName</th>
+            <th scope="col">user.roles</th>
+            <th scope="col">user.instructor</th>
+            <th scope="col">user.staff</th>
+            <th scope="col">user.student</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td><a href="{{ path('app.admin.user.show', {'id': user.id} ) }}">{{ user.id }}</a></td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.firstName ?? '-' }}</td>
+            <td>{{ user.lastName ?? '-' }}</td>
+            <td>{{ user.roles|json_encode(constant('JSON_PRETTY_PRINT')) }}</td>
+            <td>
+                {% if user.instructor %}
+                    <a href="{{ path('app.admin.instructor.show', {'id': user.instructor.id}) }}">{{ user.instructor.id }}</a>
+                {% else %}
+                    -
+                {% endif %}
+            </td>
+            <td>
+                {% if user.staff %}
+                    <a href="{{ path('app.admin.staff.show', {'id': user.staff.id}) }}">{{ user.staff.id }}</a>
+                {% else %}
+                    -
+                {% endif %}
+            </td>
+            <td>
+                {% if user.student %}
+                    <a href="{{ path('app.admin.student.show', {'id': user.student.id}) }}">{{ user.student.id }}</a>
+                {% else %}
+                    -
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

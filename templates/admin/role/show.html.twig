@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RoleController!{% endblock %}
+
+{% block body %}
+<ul>
+    <li><b>role.id:</b> {{ role.id }}</li>
+    <li><b>role.from:</b> {{ role.from ?? '-' }}</li>
+    <li><b>role.to:</b> {{ role.to ?? '-' }}</li>
+</ul>
+{% endblock %}

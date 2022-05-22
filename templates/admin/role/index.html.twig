@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RoleController!{% endblock %}
+
+{% block body %}
+<h1>Role</h1>
+
+<table class="table table-sm table-hover">
+    <thead>
+        <tr>
+            <th scope="col">role.id</th>
+            <th scope="col">role.from</th>
+            <th scope="col">role.to</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for role in roles %}
+        <tr>
+            <td><a href="{{ path('app.admin.role.show', {'id': role.id} ) }}">{{ role.id }}</a></td>
+            <td>{{ role.from ?? '-' }}</td>
+            <td>{{ role.to ?? '-' }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

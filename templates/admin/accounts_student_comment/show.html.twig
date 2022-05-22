@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AccountsStudentCommentController!{% endblock %}
+
+{% block body %}
+<ul>
+    <li><b>accountsStudentComment.id:</b> {{ accountsStudentComment.id }}</li>
+    <li><b>accountsStudentComment.createdAt:</b> {{ accountsStudentComment.createdAt|date('d-m-Y') }}</li>
+    <li><b>accountsStudentComment.updatedAt:</b> {{ accountsStudentComment.updatedAt|date('d-m-Y') }}</li>
+    <li><b>accountsStudentComment.student.user.email:</b> {{ accountsStudentComment.student.user.email }}</li>
+    <li><b>accountsStudentComment.comment:</b> {{ accountsStudentComment.comment }}</li>
+</ul>
+{% endblock %}
