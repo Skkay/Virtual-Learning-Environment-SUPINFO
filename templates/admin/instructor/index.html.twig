@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello InstructorController!{% endblock %}
+
+{% block body %}
+<h1>Instructors</h1>
+
+<table class="table table-sm table-hover">
+    <thead>
+        <tr>
+            <th scope="col">instructor.id</th>
+            <th scope="col">instructor.user.email</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for instructor in instructors %}
+        <tr>
+            <td><a href="{{ path('app.admin.instructor.show', {'id': instructor.id} ) }}">{{ instructor.id }}</a></td>
+            <td>{{ instructor.user.email }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

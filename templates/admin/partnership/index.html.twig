@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PartnershipController!{% endblock %}
+
+{% block body %}
+<h1>Partnership</h1>
+
+<table class="table table-sm table-hover">
+    <thead>
+        <tr>
+            <th scope="col">partnership.id</th>
+            <th scope="col">partnership.label</th>
+            <th scope="col">partnership.imageUrl</th>
+            <th scope="col">partnership.description</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for partnership in partnerships %}
+        <tr>
+            <td><a href="{{ path('app.admin.partnership.show', {'id': partnership.id} ) }}">{{ partnership.id }}</a></td>
+            <td>{{ partnership.label ?? '-' }}</td>
+            <td>{{ partnership.imageUrl ?? '-' }}</td>
+            <td>{{ partnership.description ?? '-' }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

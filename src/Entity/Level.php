@@ -29,9 +29,26 @@ class Level
      */
     private $students;
 
+    /**
+     * @ORM\OneToMany(targetEntity=PlanningEvent::class, mappedBy="level")
+     */
+    private $planningEvents;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $numericLevel;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Module::class, mappedBy="level")
+     */
+    private $modules;
+
     public function __construct()
     {
         $this->students = new ArrayCollection();
+        $this->planningEvents = new ArrayCollection();
+        $this->modules = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -81,6 +98,36 @@ class Level
         return $this;
     }
 
+    /**
+     * @return Collection|PlanningEvent[]
+     */
+    public function getPlanningEvents(): Collection
+    {
+        return $this->planningEvents;
+    }
+
+    public function addPlanningEvent(PlanningEvent $planningEvent): self
+    {
+        if (!$this->planningEvents->contains($planningEvent)) {
+            $this->planningEvents[] = $planningEvent;
+            $planningEvent->setLevel($this);
+        }
+
+        return $this;
+    }
+
+    public function removePlanningEvent(PlanningEvent $planningEvent): self
+    {
+        if ($this->planningEvents->removeElement($planningEvent)) {
+            // set the owning side to null (unless already changed)
+            if ($planningEvent->getLevel() === $this) {
+                $planningEvent->setLevel(null);
+            }
+        }
+
+        return $this;
+    }
+
 
     public function __get($name)
     {
@@ -105,6 +152,48 @@ class Level
 
             if (method_exists($value, 'addLevel')) {
                 $value->addLevel($this);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getNumericLevel(): ?int
+    {
+        return $this->numericLevel;
+    }
+
+    public function setNumericLevel(?int $numericLevel): self
+    {
+        $this->numericLevel = $numericLevel;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Module[]
+     */
+    public function getModules(): Collection
+    {
+        return $this->modules;
+    }
+
+    public function addModule(Module $module): self
+    {
+        if (!$this->modules->contains($module)) {
+            $this->modules[] = $module;
+            $module->setLevel($this);
+        }
+
+        return $this;
+    }
+
+    public function removeModule(Module $module): self
+    {
+        if ($this->modules->removeElement($module)) {
+            // set the owning side to null (unless already changed)
+            if ($module->getLevel() === $this) {
+                $module->setLevel(null);
             }
         }
 

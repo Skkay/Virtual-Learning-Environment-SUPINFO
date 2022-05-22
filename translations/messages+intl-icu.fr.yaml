@@ -1,19 +1,226 @@
 navbar:
   home: Accueil
-  companies: Entreprises
-  campus: Campus
-  diplomas: Diplômes
-  genders: Genres
-  grades: Notes
-  instructors: Intervenants
-  levels: Niveaux
-  modules: Modules
-  regions: Régions
-  sections: Séctions
-  specialities: Spécilités
-  staffs: Staffs
-  students: Etudiants
-  users: Utilisateurs
+  dashboard: Tableau de bord
   login: Connexion
   logout: Déconnexion
   my_profile: Mon compte
+
+report_card:
+  title: 
+    home: Bulletin de notes
+  misc:
+    course_code: Code du cours
+    course_name: Nom du cours
+    credits_per_course: Crédits/cours
+    grades: Notes
+    validated_credits: Crédits validés
+
+dashboard:
+  title:
+    home: Tableau de bord
+  misc:
+    module_list: Liste des cours
+    report_card_list: Bulletins de notes
+
+accounts:
+  student:
+    document:
+      title:
+        documents_of: Documents de {firstname} {lastname}
+      table:
+        extension: Type
+        filename: Nom du fichier
+        ctime: Date de modification
+      misc:
+        download: Télécharger
+
+educational_coordinator:
+  dashboard:
+    title:
+      home: Tableau de bord
+      role: Coordinateur pédagogique
+    misc:
+      student_list: Liste des étudiants
+      module_list: Liste des modules
+      instructor_list: Liste des intervenants
+      company_list: Liste des entreprises
+  student:
+    title:
+      home: Liste des étudiants
+    table:
+      id: ID
+      first_name: Prénom
+      last_name: Nom
+      campus: Campus
+      level: Niveau
+      company: Entreprise
+      email: Email
+      sct: SCT
+    misc:
+      accepted: Admis
+      fail: Recalé
+      yes: Oui
+      no: Non
+  module:
+    title:
+      home: Liste des modules
+    misc:
+      accepted: Admis
+      fail: Recalé
+  instructor:
+    title:
+      home: Liste des intervenants
+  company:
+    title:
+      home: Liste des entreprises
+    table:
+      id: ID
+      name: Nom
+      sector: Secteur d'activité
+      nb_student_training_contract: Nombre d'étudiant en alternance
+      nb_student_hired: Nombre d'étudiant embauché
+  
+academic_director:
+  dashboard:
+    title:
+      home: Tableau de bord
+      role: Directeur académique
+    misc:
+      student_list: Liste des étudiants
+      module_list: Liste des modules
+      instructor_list: Liste des intervenants
+      partnership_list: Liste des partenariats
+      thesis_list: Liste des mémoires
+  student:
+    title:
+      home: Liste des étudiants
+    table:
+      id: ID
+      first_name: Prénom
+      last_name: Nom
+      campus: Campus
+      level: Niveau
+      company: Entreprise
+      email: Email
+      sct: SCT
+    misc:
+      accepted: Admis
+      fail: Recalé
+      yes: Oui
+      no: Non
+      report_card_list: Bulletins de notes
+      ects: ECTS
+      current_ects: Crédits actuels
+      current_needed_ects: Crédits requis pour cette année
+      max_ects: Crédits maximum obtenables
+      max_needed_ects: Crédits maximum requis
+  module:
+    title:
+      home: Liste des modules
+    misc:
+      accepted: Admis
+      fail: Recalé
+  instructor:
+    title:
+      home: Liste des intervenants
+  campus:
+    title:
+      home: Liste des campus
+    table:
+      id: ID
+      label: Label
+      city: Ville
+      nb_active_student: Nombre d'étudiant actifs
+    misc:
+      other: Autre
+  partnership:
+    title:
+      home: Liste des partenariats
+    table:
+      id: ID
+      label: Label
+      description: Description
+  thesis:
+    title:
+      home: Liste des mémoires
+    table:
+      id: ID
+      student: Étudiant
+      subject: Sujet
+      delivered: Rendu
+      remark: Commentaire
+    misc:
+      yes: Oui
+      no: Non
+
+admin:
+  dashboard:
+    title:
+      home: Tableau de bord
+      role: Administration
+      entities: Entités
+      etl: ETL
+    entity:
+      companies: Entreprises
+      campus: Campus
+      diplomas: Diplômes
+      genders: Genres
+      grades: Notes
+      instructors: Intervenants
+      levels: Niveaux
+      modules: Modules
+      regions: Régions
+      sections: Séctions
+      specialities: Spécilités
+      staffs: Staffs
+      students: Etudiants
+      users: Utilisateurs
+      absences: Absences
+      accounts_payment_types: Moyen de paiements
+      accounts_student_comments: Commentaires administratif des étudiants
+      partnerships: Partenariats
+      planning_events: Evènement des plannings
+      roles: Rôles
+      theses: Mémoires
+    misc:
+      data_sources: Schémas des sources de données
+  module:
+    misc:
+      yes: Oui
+      no: Non
+  planning_event:
+    misc:
+      yes: Oui
+      no: Non
+  thesis:
+    misc:
+      yes: Oui
+      no: Non
+  etl:
+    data_source:
+      title:
+        home: Liste des schémas des sources de données
+        data_source: Schéma de source de données
+        edit: Modifier un schéma de source de données
+        create: Créer un schéma de source de données
+      table:
+        id: ID
+        label: Label
+        schema: Schema
+        actions: Actions
+        no_records: Aucun schéma  
+
+form:
+  student_comment_type:
+    label: Ajouter un commentaire
+  data_source_type:
+    label: Label
+    equivalence: Schéma
+  misc:
+    save: Enregistrer
+    back_to_list: Retour à la liste
+    edit: Modifier
+    create: Créer
+    show: Afficher
+    delete: Supprimer
+    update: Mettre à jour

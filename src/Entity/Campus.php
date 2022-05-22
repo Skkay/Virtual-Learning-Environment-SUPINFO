@@ -35,7 +35,7 @@ class Campus
     private $sections;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Staff::class, mappedBy="campus")
+     * @ORM\OneToMany(targetEntity=Staff::class, mappedBy="campus")
      */
     private $staff;
 
@@ -44,11 +44,17 @@ class Campus
      */
     private $students;
 
+    /**
+     * @ORM\OneToMany(targetEntity=PlanningEvent::class, mappedBy="campus")
+     */
+    private $planningEvents;
+
     public function __construct()
     {
         $this->sections = new ArrayCollection();
         $this->staff = new ArrayCollection();
         $this->students = new ArrayCollection();
+        $this->planningEvents = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -122,7 +128,7 @@ class Campus
     {
         if (!$this->staff->contains($staff)) {
             $this->staff[] = $staff;
-            $staff->addCampus($this);
+            $staff->setCampus($this);
         }
 
         return $this;
@@ -131,7 +137,10 @@ class Campus
     public function removeStaff(Staff $staff): self
     {
         if ($this->staff->removeElement($staff)) {
-            $staff->removeCampus($this);
+            // set the owning side to null (unless already changed)
+            if ($staff->getCampus() === $this) {
+                $staff->setCampus(null);
+            }
         }
 
         return $this;
@@ -161,6 +170,36 @@ class Campus
             // set the owning side to null (unless already changed)
             if ($student->getCampus() === $this) {
                 $student->setCampus(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|PlanningEvent[]
+     */
+    public function getPlanningEvents(): Collection
+    {
+        return $this->planningEvents;
+    }
+
+    public function addPlanningEvent(PlanningEvent $planningEvent): self
+    {
+        if (!$this->planningEvents->contains($planningEvent)) {
+            $this->planningEvents[] = $planningEvent;
+            $planningEvent->setCampus($this);
+        }
+
+        return $this;
+    }
+
+    public function removePlanningEvent(PlanningEvent $planningEvent): self
+    {
+        if ($this->planningEvents->removeElement($planningEvent)) {
+            // set the owning side to null (unless already changed)
+            if ($planningEvent->getCampus() === $this) {
+                $planningEvent->setCampus(null);
             }
         }
 

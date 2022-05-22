@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AccountsStudentCommentController!{% endblock %}
+
+{% block body %}
+<h1>AccountsStudentComment</h1>
+
+<table class="table table-sm table-hover">
+    <thead>
+        <tr>
+            <th scope="col">accountsStudentComment.id</th>
+            <th scope="col">accountsStudentComment.comment</th>
+            <th scope="col">accountsStudentComment.createdAt</th>
+            <th scope="col">accountsStudentComment.updatedAt</th>
+            <th scope="col">accountsStudentComment.student.user.email</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for accountsStudentComment in accountsStudentComments %}
+        <tr>
+            <td><a href="{{ path('app.admin.accountsStudentComment.show', {'id': accountsStudentComment.id} ) }}">{{ accountsStudentComment.id }}</a></td>
+            <td>{{ accountsStudentComment.comment }}</td>
+            <td>{{ accountsStudentComment.createdAt|date('d-m-Y') }}</td>
+            <td>{{ accountsStudentComment.updatedAt|date('d-m-Y') }}</td>
+            <td>{{ accountsStudentComment.student.user.email }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

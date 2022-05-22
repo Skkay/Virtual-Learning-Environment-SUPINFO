@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PlanningEventController!{% endblock %}
+
+{% block body %}
+<h1>PlanningEvent</h1>
+
+<table class="table table-sm table-hover">
+    <thead>
+        <tr>
+            <th scope="col">planningEvent.id</th>
+            <th scope="col">planningEvent.title</th>
+            <th scope="col">planningEvent.description</th>
+            <th scope="col">planningEvent.start</th>
+            <th scope="col">planningEvent.end</th>
+            <th scope="col">planningEvent.allDay</th>
+            <th scope="col">planningEvent.campus.label</th>
+            <th scope="col">planningEvent.level.label</th>
+            <th scope="col">planningEvent.backgroundColor</th>
+            <th scope="col">planningEvent.borderColor</th>
+            <th scope="col">planningEvent.textColor</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for planningEvent in planningEvents %}
+        <tr>
+            <td><a href="{{ path('app.admin.planningEvent.show', {'id': planningEvent.id} ) }}">{{ planningEvent.id }}</a></td>
+            <td>{{ planningEvent.title ?? '-' }}</td>
+            <td>{{ planningEvent.description ?? '-' }}</td>
+            <td>{{ planningEvent.start ? planningEvent.start|date('d-m-Y') : '-' }}</td>
+            <td>{{ planningEvent.end ? planningEvent.end|date('d-m-Y') : '-' }}</td>
+            <td>{{ planningEvent.allDay ? 'admin.planning_event.misc.yes'|trans : 'admin.planning_event.misc.no'|trans }}</td>
+            <td>{{ planningEvent.campus.label ?? '-' }}</td>
+            <td>{{ planningEvent.level.label ?? '-' }}</td>
+            <td>{{ planningEvent.backgroundColor ? planningEvent.backgroundColor|upper : '-' }}</td>
+            <td>{{ planningEvent.borderColor ? planningEvent.borderColor|upper : '-' }}</td>
+            <td>{{ planningEvent.textColor ? planningEvent.textColor|upper : '-' }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

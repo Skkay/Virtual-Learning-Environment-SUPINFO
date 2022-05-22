@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CampusController!{% endblock %}
+
+{% block body %}
+<ul>
+    <li><b>campus.id:</b> {{ campus.id }}</li>
+    <li><b>campus.label:</b> {{ campus.label }}</li>
+    <li><b>campus.city:</b> {{ campus.city ?? '-' }}</li>
+    <li><b>nbStudent:</b>
+        <ul>
+            {% for level in levels %}
+                <li>{{ level.label }}: {{ nbStudents[level.label] ?? '0' }}</li>
+            {% endfor %}
+            <li>{{ 'academic_director.campus.misc.other'|trans }}: {{ nbStudents[''] ?? '0' }}</li>
+        </ul>
+    </li>
+    <li><b>campus.sections:</b>
+        <ul>
+            {% for section in campus.sections %}
+                <li>{{ section.label }}:
+                    <ul><b>section.instructors:</b>
+                        {% for instructor in section.instructors %}
+                           <li>{{ instructor.user.email }}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    </li>
+    <li><b>campus.students:</b>
+        <ul>
+            {% for student in campus.students %}
+                <li>{{ student.user.email }}</li>
+            {% endfor %}
+        </ul>
+    </li>
+</ul>
+{% endblock %}

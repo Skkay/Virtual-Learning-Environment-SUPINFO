@@ -110,11 +110,6 @@ class Student
     private $lastDiploma;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $numberOfAbsences;
-
-    /**
      * @ORM\OneToMany(targetEntity=Grade::class, mappedBy="student")
      */
     private $grades;
@@ -144,10 +139,33 @@ class Student
      */
     private $speciality;
 
+    /**
+     * @ORM\OneToMany(targetEntity=AccountsStudentComment::class, mappedBy="student", orphanRemoval=true, cascade={"persist"})
+     */
+    private $accountsComments;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Absence::class, mappedBy="student", cascade={"persist"})
+     */
+    private $absences;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isSCT;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Thesis::class, mappedBy="student")
+     */
+    private $theses;
+
     public function __construct()
     {
         $this->modules = new ArrayCollection();
         $this->grades = new ArrayCollection();
+        $this->accountsComments = new ArrayCollection();
+        $this->absences = new ArrayCollection();
+        $this->theses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -383,18 +401,6 @@ class Student
         return $this;
     }
 
-    public function getNumberOfAbsences(): ?int
-    {
-        return $this->numberOfAbsences;
-    }
-
-    public function setNumberOfAbsences(?int $numberOfAbsences): self
-    {
-        $this->numberOfAbsences = $numberOfAbsences;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Grade[]
      */
@@ -485,6 +491,66 @@ class Student
         return $this;
     }
 
+    /**
+     * @return Collection|AccountsStudentComment[]
+     */
+    public function getAccountsComments(): Collection
+    {
+        return $this->accountsComments;
+    }
+
+    public function addAccountsComment(AccountsStudentComment $accountsComment): self
+    {
+        if (!$this->accountsComments->contains($accountsComment)) {
+            $this->accountsComments[] = $accountsComment;
+            $accountsComment->setStudent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAccountsComment(AccountsStudentComment $accountsComment): self
+    {
+        if ($this->accountsComments->removeElement($accountsComment)) {
+            // set the owning side to null (unless already changed)
+            if ($accountsComment->getStudent() === $this) {
+                $accountsComment->setStudent(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Absence[]
+     */
+    public function getAbsences(): Collection
+    {
+        return $this->absences;
+    }
+
+    public function addAbsence(Absence $absence): self
+    {
+        if (!$this->absences->contains($absence)) {
+            $this->absences[] = $absence;
+            $absence->setStudent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAbsence(Absence $absence): self
+    {
+        if ($this->absences->removeElement($absence)) {
+            // set the owning side to null (unless already changed)
+            if ($absence->getStudent() === $this) {
+                $absence->setStudent(null);
+            }
+        }
+
+        return $this;
+    }
+
     
     public function __get($name)
     {
@@ -509,6 +575,48 @@ class Student
 
             if (method_exists($value, 'addStudent')) {
                 $value->addStudent($this);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getIsSCT(): ?bool
+    {
+        return $this->isSCT;
+    }
+
+    public function setIsSCT(?bool $isSCT): self
+    {
+        $this->isSCT = $isSCT;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Thesis[]
+     */
+    public function getTheses(): Collection
+    {
+        return $this->theses;
+    }
+
+    public function addThesis(Thesis $thesis): self
+    {
+        if (!$this->theses->contains($thesis)) {
+            $this->theses[] = $thesis;
+            $thesis->setStudent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeThesis(Thesis $thesis): self
+    {
+        if ($this->theses->removeElement($thesis)) {
+            // set the owning side to null (unless already changed)
+            if ($thesis->getStudent() === $this) {
+                $thesis->setStudent(null);
             }
         }
 

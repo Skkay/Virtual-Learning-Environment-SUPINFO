@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'admin.etl.data_source.title.create'|trans }}{% endblock %}
+
+{% block body %}
+    <h1>{{ 'admin.etl.data_source.title.create'|trans }}</h1>
+
+    {{ include('admin/etl/data_source/_form.html.twig') }}
+
+    <a href="{{ path('app.admin.etl.data_source.index') }}">{{ 'form.misc.back_to_list'|trans }}</a>
+{% endblock %}

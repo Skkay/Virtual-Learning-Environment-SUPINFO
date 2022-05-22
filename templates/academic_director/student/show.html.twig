@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AcademicDirectorController!{% endblock %}
+
+{% block body %}
+<ul>
+    <li><b>student.id:</b> {{ student.id }}</li>
+    <li><b>student.user.email:</b> {{ student.user.email }}</li>
+    <li><b>student.user.firstname:</b> {{ student.user.firstname ?? '-' }}</li>
+    <li><b>student.user.lastname:</b> {{ student.user.lastname ?? '-' }}</li>
+    <li><b>student.campus.label:</b> {{ student.campus.label ?? '-' }}</li>
+    <li><b>student.level.label:</b> {{ student.level.label ?? '-' }}</li>
+    <li><b>student.professionalTrainingContract:</b> {{ student.professionalTrainingContract ?? '-' }}</li>
+    <li><b>student.companyTrainingContract.name:</b> {{ student.companyTrainingContract.name ?? '-' }}</li>
+    <li><b>student.dateStartContract:</b> {{ student.dateStartContract is empty ? '-' : student.dateStartContract|date('d-m-Y') }}</li>
+    <li><b>student.dateOfBirth:</b> {{ student.dateOfBirth is empty ? '-' : student.dateOfBirth|date('d-m-Y') }}</li>
+    <li><b>student.gender.label:</b> {{ student.gender.label ?? '-' }}</li>
+    <li><b>student.region.name:</b> {{ student.region.name ?? '-' }}</li>
+    <li><b>student.grades:</b>
+        <ul>
+            {% for module in modules %}
+                <li>{{ module.label }}:</u>
+                    {% if grades[module.label] is defined %}
+                        {{ grades[module.label] }} - {{ grades[module.label] > 10 ? 'educational_coordinator.student.misc.accepted'|trans : 'educational_coordinator.student.misc.fail'|trans }}
+                    {% else %}
+                        -
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </li>
+    <li><b>student.speciality.label:</b> {{ student.speciality.label ?? '-' }}</li>
+    <li>
+        <b>student.absences:</b> {{ student.absences|length }}
+        <ul>
+            {% for absence in student.absences %}
+                <li>{{ absence.date|date('d/m/Y') }} {{ absence.period }} : {{ absence.excuse ?? '-' }}</li>
+            {% endfor %}
+        </ul>
+    </li>
+    <li><b>student.isSCT:</b> {{ student.isSCT ? 'educational_coordinator.student.misc.yes'|trans : 'educational_coordinator.student.misc.no'|trans }}</li>
+    <li><b>{{ 'academic_director.student.misc.report_card_list'|trans }}:</b>
+        <ul>
+        {% for level in levels %}
+            <li><a href="{{ path('app.academic_director.report_card.show', {'student': student.id, 'level': level.id}) }}">{{ level.label }}</a></li>
+        {% endfor %}
+        </ul>
+    </li>
+    <li><b>{{ 'academic_director.student.misc.ects'|trans }}:</b>
+        <ul>
+            <li><u>{{ 'academic_director.student.misc.current_ects'|trans }}:</u> {{ studentEcts.currentEcts }}</li>
+            <li><u>{{ 'academic_director.student.misc.current_needed_ects'|trans }}:</u> {{ studentEcts.currentNeededEcts }}</li>
+            <li><u>{{ 'academic_director.student.misc.max_ects'|trans }}:</u> {{ studentEcts.maxEcts }}</li>
+            <li><u>{{ 'academic_director.student.misc.max_needed_ects'|trans }}:</u> {{ studentEcts.maxNeededEcts }}</li>
+        </ul>
+    </li>
+</ul>
+{% endblock %}

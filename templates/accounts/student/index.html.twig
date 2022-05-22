@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AccountsController!{% endblock %}
+
+{% block body %}
+<h1>Students</h1>
+
+<table class="table table-sm table-hover">
+    <thead>
+        <tr>
+            <th scope="col">student.id</th>
+            <th scope="col">student.user.firstName</th>
+            <th scope="col">student.user.lastName</th>
+            <th scope="col">student.campus.label</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in students %}
+        <tr>
+            <td><a href="{{ path('app.accounts.student.show', {'id': student.id} ) }}">{{ student.id }}</a></td>
+            <td>{{ student.user.firstName ?? '-' }}</td>
+            <td>{{ student.user.lastName ?? '-' }}</td>
+            <td>{{ student.campus.label ?? '-' }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

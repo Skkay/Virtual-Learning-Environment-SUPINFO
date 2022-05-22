@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PartnershipController!{% endblock %}
+
+{% block body %}
+<h1>{{ 'academic_director.partnership.title.home'|trans }}</h1>
+
+<table class="table table-sm table-hover">
+    <thead>
+        <tr>
+            <th scope="col">(img)</th>
+            <th scope="col">{{ 'academic_director.partnership.table.id'|trans }}</th>
+            <th scope="col">{{ 'academic_director.partnership.table.label'|trans }}</th>
+            <th scope="col">{{ 'academic_director.partnership.table.description'|trans }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for partnership in partnerships %}
+        <tr>
+            <td><img src="{{ partnership.imageUrl }}" alt="{{ partnership.label }}" width="150px"></td>
+            <td class="align-middle"><a href="{{ path('app.academic_director.partnership.show', {'id': partnership.id}) }}">{{ partnership.id }}</a></td>
+            <td class="align-middle">{{ partnership.label }}</td>
+            <td class="align-middle">{{ partnership.description|u.truncate(130, '...') }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

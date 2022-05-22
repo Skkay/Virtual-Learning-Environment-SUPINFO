@@ -13,6 +13,7 @@
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
+            {{ encore_entry_script_tags('konami') }}
         {% endblock %}
     </head>
     <body>
@@ -27,62 +28,31 @@
                         <li class="nav-item">
                             <a class="nav-link {{ route == 'app.home' ? 'active' }}" href="{{ path('app.home') }}">{{ 'navbar.home'|trans }}</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                Entities
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a class="dropdown-item {{ route starts with 'app.campus' ? 'active' }}" href="{{ path('app.campus.index') }}">{{ 'navbar.campus'|trans }}</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item {{ route starts with 'app.company' ? 'active' }}" href="{{ path('app.company.index') }}">{{ 'navbar.companies'|trans }}</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item {{ route starts with 'app.diploma' ? 'active' }}" href="{{ path('app.diploma.index') }}">{{ 'navbar.diplomas'|trans }}</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item {{ route starts with 'app.gender' ? 'active' }}" href="{{ path('app.gender.index') }}">{{ 'navbar.genders'|trans }}</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item {{ route starts with 'app.grade' ? 'active' }}" href="{{ path('app.grade.index') }}">{{ 'navbar.grades'|trans }}</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item {{ route starts with 'app.instructor' ? 'active' }}" href="{{ path('app.instructor.index') }}">{{ 'navbar.instructors'|trans }}</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item {{ route starts with 'app.level' ? 'active' }}" href="{{ path('app.level.index') }}">{{ 'navbar.levels'|trans }}</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item {{ route starts with 'app.module' ? 'active' }}" href="{{ path('app.module.index') }}">{{ 'navbar.modules'|trans }}</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item {{ route starts with 'app.region' ? 'active' }}" href="{{ path('app.region.index') }}">{{ 'navbar.regions'|trans }}</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item {{ route starts with 'app.section' ? 'active' }}" href="{{ path('app.section.index') }}">{{ 'navbar.sections'|trans }}</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item {{ route starts with 'app.speciality' ? 'active' }}" href="{{ path('app.speciality.index') }}">{{ 'navbar.specialities'|trans }}</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item {{ route starts with 'app.staff' ? 'active' }}" href="{{ path('app.staff.index') }}">{{ 'navbar.staffs'|trans }}</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item {{ route starts with 'app.student' ? 'active' }}" href="{{ path('app.student.index') }}">{{ 'navbar.students'|trans }}</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item {{ route starts with 'app.user' ? 'active' }}" href="{{ path('app.user.index') }}">{{ 'navbar.users'|trans }}</a>
-                                </li>
-                            </ul>
-                        </li>
+                        {% if is_granted('ROLE_EDUCATIONAL_COORDINATOR') %}
+                            <li class="nav-item">
+                                <a class="nav-link {{ route == 'app.educational_coordinator.index' ? 'active' }}" href="{{ path('app.educational_coordinator.index') }}">{{ 'navbar.dashboard'|trans }}</a>
+                            </li>
+                        {% elseif is_granted('ROLE_ACADEMIC_DIRECTOR') %}
+                            <li class="nav-item">
+                                <a class="nav-link {{ route == 'app.academic_director.index' ? 'active' }}" href="{{ path('app.academic_director.index') }}">{{ 'navbar.dashboard'|trans }}</a>
+                            </li>
+                        {% elseif is_granted('ROLE_ADMIN') %}
+                            <li class="nav-item">
+                                <a class="nav-link {{ route == 'app.admin.index' ? 'active' }}" href="{{ path('app.admin.index') }}">{{ 'navbar.dashboard'|trans }}</a>
+                            </li>
+                        {% else %} {# Student #}
+                            <li class="nav-item">
+                                <a class="nav-link {{ route == 'app.dashboard' ? 'active' }}" href="{{ path('app.dashboard.index') }}">{{ 'navbar.dashboard'|trans }}</a>
+                            </li>
+                        {% endif %}
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                 Dev
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a class="dropdown-item {{ route starts with 'app.data_source' ? 'active' }}" href="{{ path('app.data_source.index') }}">Data-sources</a>
+                                    <a class="dropdown-item {{ route starts with 'app.admin/data_source' ? 'active' }}" href="{{ path('app.admin.etl.data_source.index') }}">Data-sources</a>
                                 </li>
                             </ul>
                         </li>

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RoleController!{% endblock %}
+
+{% block body %}
+<h1>Role</h1>
+
+<table class="table table-sm table-hover">
+    <thead>
+        <tr>
+            <th scope="col">thesis.id</th>
+            <th scope="col">thesis.student.user.email</th>
+            <th scope="col">thesis.subject</th>
+            <th scope="col">thesis.delivered</th>
+            <th scope="col">thesis.remark</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for thesis in theses %}
+        <tr>
+            <td><a href="{{ path('app.admin.thesis.show', {'id': thesis.id} ) }}">{{ thesis.id }}</a></td>
+            <td>{{ thesis.student.user.email ?? '-' }}</td>
+            <td>{{ thesis.subject ?? '-' }}</td>
+            <td>{{ thesis.delivered ? 'admin.thesis.misc.yes'|trans : 'admin.thesis.misc.no'|trans }}</td>
+            <td>{{ thesis.remark ?? '-' }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
