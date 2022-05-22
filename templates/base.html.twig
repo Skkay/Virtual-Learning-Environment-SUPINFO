@@ -37,6 +37,10 @@
                             <li class="nav-item">
                                 <a class="nav-link {{ route == 'app.academic_director.index' ? 'active' }}" href="{{ path('app.academic_director.index') }}">{{ 'navbar.dashboard'|trans }}</a>
                             </li>
+                        {% elseif is_granted('ROLE_ACCOUNTS') %}
+                            <li class="nav-item">
+                                <a class="nav-link {{ route == 'app.accounts.index' ? 'active' }}" href="{{ path('app.accounts.index') }}">{{ 'navbar.dashboard'|trans }}</a>
+                            </li>
                         {% elseif is_granted('ROLE_ADMIN') %}
                             <li class="nav-item">
                                 <a class="nav-link {{ route == 'app.admin.index' ? 'active' }}" href="{{ path('app.admin.index') }}">{{ 'navbar.dashboard'|trans }}</a>

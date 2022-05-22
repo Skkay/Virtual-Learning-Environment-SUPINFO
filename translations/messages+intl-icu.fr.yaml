@@ -23,6 +23,12 @@ dashboard:
     report_card_list: Bulletins de notes
 
 accounts:
+  dashboard:
+    title:
+      index: Tableau de bord
+      role: Administratif
+    misc:
+      student_list: Liste des étudiants
   student:
     document:
       title:
