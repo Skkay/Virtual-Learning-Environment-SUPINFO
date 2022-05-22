@@ -7,7 +7,7 @@ navbar:
 
 report_card:
   title: 
-    home: Bulletin de notes
+    index: Bulletin de notes
   misc:
     course_code: Code du cours
     course_name: Nom du cours
@@ -17,7 +17,7 @@ report_card:
 
 dashboard:
   title:
-    home: Tableau de bord
+    index: Tableau de bord
   misc:
     module_list: Liste des cours
     report_card_list: Bulletins de notes
@@ -37,7 +37,7 @@ accounts:
 educational_coordinator:
   dashboard:
     title:
-      home: Tableau de bord
+      index: Tableau de bord
       role: Coordinateur pédagogique
     misc:
       student_list: Liste des étudiants
@@ -46,7 +46,7 @@ educational_coordinator:
       company_list: Liste des entreprises
   student:
     title:
-      home: Liste des étudiants
+      index: Liste des étudiants
     table:
       id: ID
       first_name: Prénom
@@ -63,16 +63,16 @@ educational_coordinator:
       no: Non
   module:
     title:
-      home: Liste des modules
+      index: Liste des modules
     misc:
       accepted: Admis
       fail: Recalé
   instructor:
     title:
-      home: Liste des intervenants
+      index: Liste des intervenants
   company:
     title:
-      home: Liste des entreprises
+      index: Liste des entreprises
     table:
       id: ID
       name: Nom
@@ -83,7 +83,7 @@ educational_coordinator:
 academic_director:
   dashboard:
     title:
-      home: Tableau de bord
+      index: Tableau de bord
       role: Directeur académique
     misc:
       student_list: Liste des étudiants
@@ -93,7 +93,7 @@ academic_director:
       thesis_list: Liste des mémoires
   student:
     title:
-      home: Liste des étudiants
+      index: Liste des étudiants
     table:
       id: ID
       first_name: Prénom
@@ -116,16 +116,16 @@ academic_director:
       max_needed_ects: Crédits maximum requis
   module:
     title:
-      home: Liste des modules
+      index: Liste des modules
     misc:
       accepted: Admis
       fail: Recalé
   instructor:
     title:
-      home: Liste des intervenants
+      index: Liste des intervenants
   campus:
     title:
-      home: Liste des campus
+      index: Liste des campus
     table:
       id: ID
       label: Label
@@ -135,14 +135,14 @@ academic_director:
       other: Autre
   partnership:
     title:
-      home: Liste des partenariats
+      index: Liste des partenariats
     table:
       id: ID
       label: Label
       description: Description
   thesis:
     title:
-      home: Liste des mémoires
+      index: Liste des mémoires
     table:
       id: ID
       student: Étudiant
@@ -156,7 +156,7 @@ academic_director:
 admin:
   dashboard:
     title:
-      home: Tableau de bord
+      index: Tableau de bord
       role: Administration
       entities: Entités
       etl: ETL
@@ -199,7 +199,7 @@ admin:
   etl:
     data_source:
       title:
-        home: Liste des schémas des sources de données
+        index: Liste des schémas des sources de données
         data_source: Schéma de source de données
         edit: Modifier un schéma de source de données
         create: Créer un schéma de source de données
