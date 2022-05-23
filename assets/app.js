@@ -13,3 +13,9 @@ import './bootstrap';
 
 import { Tooltip, Toast, Popover } from 'bootstrap/dist/js/bootstrap.esm';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+// require jQuery normally
+const $ = require('jquery');
+
+// create global $ and jQuery variables
+global.$ = global.jQuery = $;

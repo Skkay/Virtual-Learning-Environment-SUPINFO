@@ -9,6 +9,7 @@
         "eslint-config-prettier": "^8.5.0",
         "eslint-plugin-import": "^2.26.0",
         "prettier": "^2.6.2",
+        "file-loader": "^6.0.0",
         "regenerator-runtime": "^0.13.2",
         "webpack-notifier": "^1.6.0"
     },
@@ -28,6 +29,7 @@
         "@fullcalendar/timegrid": "^5.11.0",
         "@popperjs/core": "^2.11.4",
         "bootstrap": "^5.1.3",
-        "canvas-confetti": "^1.5.1"
+        "canvas-confetti": "^1.5.1",
+        "jquery": "^3.6.0"
     }
 }

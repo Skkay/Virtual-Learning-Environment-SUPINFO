@@ -15,12 +15,37 @@
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
             {{ encore_entry_script_tags('konami') }}
+            {{ encore_entry_script_tags('agency') }}
         {% endblock %}
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+         
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="#">4PROJ</a>
+              <a class="navbar-brand js-scroll-trigger" href="index.html" style="color:#007bff;font-size:40px;">G<span style="font-size:35px">o</span>st&upsilon;d&Sigma;nt</a>
+              <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav text-uppercase ml-auto">
+                  <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="/">ACCUEIL</a>
+                  </li>
+                
+                  <li class="nav-item">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                      SE CONNECTER
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+        </nav>
+
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">ENT SUPINFO</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -64,7 +89,7 @@
                     </ul>
 
                     <ul class="navbar-nav ms-auto">
-                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                 {{ app.user.userIdentifier }}
