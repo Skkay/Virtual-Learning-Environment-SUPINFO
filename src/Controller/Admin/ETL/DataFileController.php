@@ -2,9 +2,8 @@
 
 namespace App\Controller\Admin\ETL;
 
+use App\Service\DataFileService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
-use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -13,11 +12,11 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class DataFileController extends AbstractController
 {
-    private $etlDataDirectory;
+    private $dataFileService;
 
-    public function __construct(ParameterBagInterface $params)
+    public function __construct(DataFileService $dataFileService)
     {
-        $this->etlDataDirectory = $params->get('app.etl_data_directory');
+        $this->dataFileService = $dataFileService;
     }
 
     /**
@@ -25,12 +24,10 @@ class DataFileController extends AbstractController
      */
     public function index(): Response
     {
-        $finder = new Finder();
-
-        $finder->files()->in($this->etlDataDirectory)->exclude('.old')->notName('*.skip')->sortByName(true);
+        $files = $this->dataFileService->getDataFiles();
 
         return $this->render('admin/etl/data_file/index.html.twig', [
-            'files' => iterator_to_array($finder),
+            'files' => $files,
         ]);
     }
 }
