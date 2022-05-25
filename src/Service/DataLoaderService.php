@@ -51,7 +51,7 @@ class DataLoaderService
             throw new \Exception('Directory not found');
         }
 
-        $finder->files()->in($this->etlDataDirectory)->notName('*.skip')->sortByName(true);
+        $finder->files()->in($this->etlDataDirectory)->exclude('.old')->notName('*.skip')->sortByName(true);
         if (!$finder->hasResults()) {
             throw new \Exception('No file found');
         }
