@@ -52,4 +52,11 @@ class DataFileService
             $filesystem->remove($this->etlDataDirectory . $dir->getRelativePathname());
         }
     }
+
+    public function handleUploadedFiles(array $files)
+    {
+        foreach ($files as $file) {
+            $file->move($this->etlDataDirectory, $file->getClientOriginalName());
+        }
+    }
 }

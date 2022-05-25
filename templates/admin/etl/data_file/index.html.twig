@@ -6,6 +6,16 @@
 <h1>{{ 'admin.etl.data_file.title.index'|trans }}</h1>
 
 <a href="{{ path('app.admin.etl.data_file.clear') }}">{{ 'admin.etl.data_file.misc.clear_files'|trans }}</a>
+{{ form_start(dataFileUploadForm) }}
+    <div class="d-flex">
+        <div class="flex-grow-1">
+            {{ form_widget(dataFileUploadForm.file) }}
+        </div>
+
+        <button type="submit" class="ms-2 btn btn-primary">{{ 'admin.etl.data_file.form.send'|trans }}</button>
+    </div>
+    {{ form_errors(dataFileUploadForm.file) }}
+{{ form_end(dataFileUploadForm) }}
 
 <table class="table table-sm table-hover">
     <thead>

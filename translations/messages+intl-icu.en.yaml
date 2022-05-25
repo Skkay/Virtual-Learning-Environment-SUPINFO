@@ -227,6 +227,8 @@ admin:
         no_files: No file
       misc:
         clear_files: Remove files
+      form:
+        send: Send
 
 form:
   student_comment_type:
