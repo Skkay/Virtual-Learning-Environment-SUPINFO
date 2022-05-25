@@ -5,6 +5,8 @@
 {% block body %}
 <h1>{{ 'admin.etl.data_file.title.index'|trans }}</h1>
 
+<a href="{{ path('app.admin.etl.data_file.clear') }}">{{ 'admin.etl.data_file.misc.clear_files'|trans }}</a>
+
 <table class="table table-sm table-hover">
     <thead>
         <tr>

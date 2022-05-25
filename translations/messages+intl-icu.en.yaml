@@ -225,6 +225,8 @@ admin:
         filename: File name
         ctime: Modification date
         no_files: No file
+      misc:
+        clear_files: Remove files
 
 form:
   student_comment_type:

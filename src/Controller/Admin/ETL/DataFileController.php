@@ -30,4 +30,14 @@ class DataFileController extends AbstractController
             'files' => $files,
         ]);
     }
+
+    /**
+     * @Route("/clear", name="clear")
+     */
+    public function clear(): Response
+    {
+        $this->dataFileService->clearDataFileDirectory();
+
+        return $this->redirectToRoute('app.admin.etl.data_file.index');
+    }
 }
