@@ -191,6 +191,7 @@ admin:
       theses: Theses
     misc:
       data_sources: Data source schemas
+      data_files: Data source files
   module:
     misc:
       yes: Yes
@@ -215,7 +216,15 @@ admin:
         label: Label
         schema: Schema
         actions: Actions
-        no_records: No schema found  
+        no_records: No schema found
+    data_file:
+      title:
+        index: Data source files
+      table:
+        extension: Type
+        filename: File name
+        ctime: Modification date
+        no_files: No file
 
 form:
   student_comment_type:

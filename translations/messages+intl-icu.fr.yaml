@@ -191,6 +191,7 @@ admin:
       theses: Mémoires
     misc:
       data_sources: Schémas des sources de données
+      data_files: Fichiers des sources de données
   module:
     misc:
       yes: Oui
@@ -215,7 +216,15 @@ admin:
         label: Label
         schema: Schema
         actions: Actions
-        no_records: Aucun schéma  
+        no_records: Aucun schéma
+    data_file:
+      title:
+        index: Fichiers des sources de données
+      table:
+        extension: Type
+        filename: Nom du fichier
+        ctime: Date de modification
+        no_files: Aucun fichier
 
 form:
   student_comment_type:

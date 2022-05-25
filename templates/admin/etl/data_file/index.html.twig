@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'admin.etl.data_file.title.index'|trans }}{% endblock %}
+
+{% block body %}
+<h1>{{ 'admin.etl.data_file.title.index'|trans }}</h1>
+
+<table class="table table-sm table-hover">
+    <thead>
+        <tr>
+            <th scope="col">{{ 'admin.etl.data_file.table.extension'|trans }}</th>
+            <th scope="col">{{ 'admin.etl.data_file.table.filename'|trans }}</th>
+            <th scope="col">{{ 'admin.etl.data_file.table.ctime'|trans }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for file in files %}
+        <tr>
+            <td>{{ file.extension }}</td>
+            <td>{{ file.filename }}</td>
+            <td>{{ file.ctime|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="3" class="text-center fst-italic">{{ 'admin.etl.data_file.table.no_files'|trans }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
