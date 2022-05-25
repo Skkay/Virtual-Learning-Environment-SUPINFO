@@ -18,3 +18,5 @@ yarn-error.log
 
 /public/etl_data
 /public/accounts
+
+.DS_Store
