@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin\ETL;
 
+use App\Enum\UploadModeEnum;
 use App\Form\DataFileUploadType;
 use App\Service\DataFileService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -33,8 +34,22 @@ class DataFileController extends AbstractController
 
         if ($dataFileUploadForm->isSubmitted() && $dataFileUploadForm->isValid()) {
             $uploadedFiles = $dataFileUploadForm->get('file')->getData();
-            
-            $this->dataFileService->handleUploadedFiles($uploadedFiles);
+
+            $mode = $dataFileUploadForm->get('mode')->getData();
+            switch ($mode) {
+                case UploadModeEnum::APPEND:
+                    $this->dataFileService->handleUploadedFiles($uploadedFiles);
+                    break;
+
+                case UploadModeEnum::CLEAR_AND_UPLOAD:
+                    $this->dataFileService->clearDataFileDirectory();
+                    $this->dataFileService->handleUploadedFiles($uploadedFiles);
+                    break;
+                
+                default:
+                    throw new \Exception(sprintf('Unknown upload mode: "%s"', $mode));
+                    break;
+            }
 
             return $this->redirectToRoute('app.admin.etl.data_file.index');
         }

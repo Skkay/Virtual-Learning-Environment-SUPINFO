@@ -236,6 +236,14 @@ form:
   data_source_type:
     label: Label
     equivalence: Schema
+  data_file_upload_type:
+    file:
+      label: File
+    mode:
+      label: Mode
+      choice:
+        clear_and_upload: Remove files and add
+        append: Append
   misc:
     save: Save
     back_to_list: Back to list

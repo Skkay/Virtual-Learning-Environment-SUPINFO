@@ -236,6 +236,15 @@ form:
   data_source_type:
     label: Label
     equivalence: Schéma
+  data_file_upload_type:
+    file:
+      label: Fichier
+    mode:
+      label: Mode
+      choice:
+        clear_and_upload: Supprimer les fichiers et ajouter
+        append: Ajouter à la suite
+
   misc:
     save: Enregistrer
     back_to_list: Retour à la liste
