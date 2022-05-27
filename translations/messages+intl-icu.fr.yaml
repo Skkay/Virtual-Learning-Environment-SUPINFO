@@ -240,6 +240,12 @@ admin:
         ended_at: Date de fin
         nb_files: Nombre de fichiers
         no_imports: Aucun importation réalisée
+      misc:
+        progress: Progressions
+        overall_progress: Progression globale
+        current_file_name: Nom du fichier en cours
+        files_progress: Progression des fichiers
+        current_file_progress: Progression du fichier actuel
 
 form:
   student_comment_type:

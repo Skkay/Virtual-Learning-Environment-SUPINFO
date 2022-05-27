@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ImportController!{% endblock %}
+
+{% block body %}
+<ul>
+    <li><b>import.id:</b> {{ import.id }}</li>
+    <li><b>import.createdAt:</b> {{ import.createdAt|date('Y-m-d h:i:s') }}</li>
+    <li><b>import.updatedAt:</b> {{ import.updatedAt ? import.updatedAt|date('Y-m-d h:i:s') : '-' }}</li>
+    <li><b>import.startedAt:</b> {{ import.startedAt ? import.startedAt|date('Y-m-d h:i:s') : '-' }}</li>
+    <li><b>import.endedAt:</b> {{ import.endedAt ? import.endedAt|date('Y-m-d h:i:s') : '-' }}</li>
+</ul>
+
+<h3>{{ 'admin.etl.import.misc.progress'|trans }}</h3>
+
+<ul>
+    <li><b>{{ 'admin.etl.import.misc.current_file_name'|trans }}:</b> {{ import.currentFileName }}</li>
+    <li class="mt-3">
+        <b>{{ 'admin.etl.import.misc.overall_progress'|trans }}:</b>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: {{ progress.overall }}%;">{{ progress.overall }}%</div>
+        </div>
+    </li>
+    <li class="mt-3">
+        <b>{{ 'admin.etl.import.misc.files_progress'|trans }}:</b> {{ import.currentFile }}/{{ import.nbFiles }}
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: {{ progress.files }}%;">{{ progress.files }}%</div>
+        </div>
+    </li>
+    <li class="mt-3">
+        <b>{{ 'admin.etl.import.misc.current_file_progress'|trans }}:</b> {{ import.currentLine }}/{{ import.nbLines }}
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: {{ progress.lines }}%;">{{ progress.lines }}%</div>
+        </div>
+    </li>
+</ul>
+{% endblock %}

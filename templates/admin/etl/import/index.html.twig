@@ -18,7 +18,7 @@
     <tbody>
         {% for import in imports %}
         <tr>
-            <td>{{ import.id }}</td>
+            <td><a href="{{ path('app.admin.etl.import.show', {'id': import.id}) }}">{{ import.id }}</a></td>
             <td>{{ import.createdAt|date('Y-m-d H:i:s') }}</td>
             <td>{{ import.startedAt ? import.startedAt|date('Y-m-d H:i:s') : '-' }}</td>
             <td>{{ import.endedAt ? import.endedAt|date('Y-m-d H:i:s') : '-' }}</td>
