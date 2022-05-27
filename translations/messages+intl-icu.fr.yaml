@@ -192,6 +192,7 @@ admin:
     misc:
       data_sources: Schémas des sources de données
       data_files: Fichiers des sources de données
+      imports: Importations
   module:
     misc:
       yes: Oui
@@ -229,6 +230,16 @@ admin:
         clear_files: Supprimer les fichiers
       form:
         send: Envoyer
+    import:
+      title:
+        index: Liste des importations
+      table:
+        id: ID
+        created_at: Date de création
+        started_at: Date de démarrage
+        ended_at: Date de fin
+        nb_files: Nombre de fichiers
+        no_imports: Aucun importation réalisée
 
 form:
   student_comment_type:
