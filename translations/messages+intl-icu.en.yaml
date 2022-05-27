@@ -229,6 +229,16 @@ admin:
         clear_files: Remove files
       form:
         send: Send
+    import:
+      title:
+        index: Importation list
+      table:
+        id: ID
+        created_at: Creation date
+        started_at: Start date
+        ended_at: End date
+        nb_files: Number of files
+        no_imports: No import
 
 form:
   student_comment_type:
