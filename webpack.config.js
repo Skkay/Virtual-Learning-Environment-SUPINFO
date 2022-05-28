@@ -23,6 +23,7 @@ Encore
     .addEntry('app', './assets/app.js')
     .addEntry('full_calendar', './assets/js/full_calendar.js')
     .addEntry('konami', './assets/js/konami.js')
+    .addEntry('update_import_progress', './assets/js/update_import_progress.js')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')

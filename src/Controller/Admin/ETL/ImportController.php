@@ -40,10 +40,21 @@ class ImportController extends AbstractController
      */
     public function show(Import $import): Response
     {
-        dump($this->importService->getProgressions($import));
         return $this->render('admin/etl/import/show.html.twig', [
             'import' => $import,
             'progress' => $this->importService->getProgressions($import),
+            'update_progress_url' => $this->generateUrl('app.admin.etl.import.update_progress', ['id' => $import->getId()]),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/update_progress", name="update_progress")
+     */
+    public function updateProgression(Import $import): Response
+    {
+        return $this->json([
+            'import' => $import,
+            'progress' => $this->importService->getProgressions($import)
         ]);
     }
 }
