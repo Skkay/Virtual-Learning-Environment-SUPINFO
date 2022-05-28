@@ -1,3 +1,5 @@
+import '../styles/update_import_progress.css';
+
 const updateProgressUrl = document.getElementById('progressBars').getAttribute('data-update-progress-url');
 
 const progressBarOverallEl = document.getElementById('progressBarOverall');
