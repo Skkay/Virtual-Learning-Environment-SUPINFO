@@ -15,10 +15,15 @@ framework:
             failed: 'doctrine://default?queue_name=failed'
             # sync: 'sync://'
 
+            asyncETL:
+                dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
+                options:
+                    queue_name: asyncETL
+                retry_strategy:
+                    max_retries: 0
+
         routing:
             Symfony\Component\Mailer\Messenger\SendEmailMessage: async
             Symfony\Component\Notifier\Message\ChatMessage: async
             Symfony\Component\Notifier\Message\SmsMessage: async
-
-            # Route your messages to the transports
-            # 'App\Message\YourMessage': async
+            App\Message\ProcessETLMessage: asyncETL

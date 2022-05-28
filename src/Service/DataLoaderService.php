@@ -43,6 +43,13 @@ class DataLoaderService
         $this->annotationsReader = $annotationsReader;
     }
 
+    public function start(Import $import)
+    {
+        $this->importStats = $import;
+
+        $this->loadFiles();
+    }
+
     public function loadFiles()
     {
         $filesystem = new Filesystem();
@@ -58,7 +65,6 @@ class DataLoaderService
             throw new \Exception('No file found');
         }
 
-        $this->importStats = new Import();
         $this->importStats->setNbFiles($finder->count());
         $this->importStats->setStartedAt(new \DateTime());
         $this->em->persist($this->importStats);

@@ -3,10 +3,13 @@
 namespace App\Controller\Admin\ETL;
 
 use App\Entity\Import;
+use App\Message\ProcessETLMessage;
 use App\Repository\ImportRepository;
 use App\Service\ImportService;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -14,13 +17,17 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class ImportController extends AbstractController
 {
+    private $em;
     private $importRepository;
     private $importService;
+    private $bus;
 
-    public function __construct(ImportRepository $importRepository, ImportService $importService)
+    public function __construct(ManagerRegistry $doctrine, ImportRepository $importRepository, ImportService $importService, MessageBusInterface $bus)
     {
+        $this->em = $doctrine->getManager();
         $this->importRepository = $importRepository;
         $this->importService = $importService;
+        $this->bus = $bus;
     }
 
     /**
@@ -32,6 +39,22 @@ class ImportController extends AbstractController
 
         return $this->render('admin/etl/import/index.html.twig', [
             'imports' => $imports,
+        ]);
+    }
+
+    /**
+     * @Route("/start", name="start")
+     */
+    public function start()
+    {
+        $import = new Import();
+        $this->em->persist($import);
+        $this->em->flush();
+
+        $this->bus->dispatch(new ProcessETLMessage($import->getId()));
+
+        return $this->redirectToRoute('app.admin.etl.import.show', [
+            'id' => $import->getId(),
         ]);
     }
 
