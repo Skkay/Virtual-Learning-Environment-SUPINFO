@@ -8,6 +8,14 @@ class ImportService
 {
     public function getProgressions(Import $import): array
     {
+        if ($import->getNbFiles() === null || $import->getNBLines() === null) {
+            return [
+                'files' => 0,
+                'lines' => 0,
+                'overall' => 0,
+            ];
+        }
+
         $percentFile = ($import->getCurrentFile() / $import->getNbFiles()) * 100;
         $percentLine = ($import->getCurrentLine() / $import->getNbLines()) * 100;
 
