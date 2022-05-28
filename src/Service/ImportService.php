@@ -15,9 +15,9 @@ class ImportService
         $overall = ($import->getCurrentLine() * $chunk / $import->getNbLines()) + (($import->getCurrentFile() - 1) * $chunk);
 
         return [
-            'files' => $percentFile,
-            'lines' => $percentLine,
-            'overall' => $overall,
+            'files' => round($percentFile, 2),
+            'lines' => round($percentLine, 2),
+            'overall' => round($overall, 2),
         ];
     }
 }
