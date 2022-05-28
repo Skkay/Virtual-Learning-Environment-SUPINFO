@@ -7,6 +7,7 @@ use App\Message\ProcessETLMessage;
 use App\Repository\ImportRepository;
 use App\Service\ImportService;
 use Doctrine\Persistence\ManagerRegistry;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Messenger\MessageBusInterface;
@@ -14,6 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/admin/etl/imports", name="app.admin.etl.import.")
+ * @Security("is_granted('ROLE_ADMIN')")
  */
 class ImportController extends AbstractController
 {
