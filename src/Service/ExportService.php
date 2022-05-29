@@ -33,7 +33,7 @@ class ExportService
      * 
      * @return string Full path of the output file.
      */
-    public function exportToSQL(string $path, string $name = null): string
+    public function exportToSQL(string $path, string $name = null, $prefix = null): string
     {
         $filesystem = new Filesystem();
 
@@ -52,7 +52,7 @@ class ExportService
             throw new \Exception($process->getErrorOutput());
         }
 
-        $file = rtrim($path, '/') . '/' . ($name ?? date('Y-m-d_H-i-s')) . '.sql';
+        $file = rtrim($path, '/') . '/' . ($prefix ?? '') . ($name ?? date('Y-m-d_H-i-s')) . '.sql';
 
         $filesystem->dumpFile($file, $process->getOutput());
 

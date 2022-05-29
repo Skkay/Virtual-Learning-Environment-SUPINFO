@@ -33,6 +33,7 @@ class DatabaseExportCommand extends Command
             ->addArgument('format', InputArgument::REQUIRED, 'Output format (CSV, SQL)')
             ->addOption('path', 'p', InputOption::VALUE_REQUIRED, 'Output path', $this->exportDir)
             ->addOption('name', 'N', InputOption::VALUE_REQUIRED, 'Output name')
+            ->addOption('prefix', null, InputOption::VALUE_REQUIRED, 'Prefix name')
         ;
     }
 
@@ -43,11 +44,12 @@ class DatabaseExportCommand extends Command
         $format = $input->getArgument('format');
         $path = $input->getOption('path');
         $name = $input->getOption('name');
+        $prefix = $input->getOption('prefix');
 
         if (strtolower($format) === 'sql') {
             $io->note('Exporting database to SQL...');
 
-            $outputFile = $this->exportService->exportToSQL($path, $name);
+            $outputFile = $this->exportService->exportToSQL($path, $name, $prefix);
 
             $io->success('Successfully exported to ' . $outputFile);
         }
