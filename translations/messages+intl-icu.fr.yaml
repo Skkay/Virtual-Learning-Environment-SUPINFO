@@ -228,6 +228,7 @@ admin:
         no_files: Aucun fichier
       misc:
         clear_files: Supprimer les fichiers
+        start: Démarrer l'importation
       form:
         send: Envoyer
     import:

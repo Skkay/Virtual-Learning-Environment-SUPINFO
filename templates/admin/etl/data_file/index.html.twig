@@ -16,6 +16,7 @@
     </div>
     {{ form_errors(dataFileUploadForm.file) }}
 {{ form_end(dataFileUploadForm) }}
+<a href="{{ path('app.admin.etl.import.start') }}">{{ 'admin.etl.data_file.misc.start'|trans }}</a>
 
 <table class="table table-sm table-hover">
     <thead>
