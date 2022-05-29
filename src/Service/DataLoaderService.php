@@ -4,6 +4,7 @@
 namespace App\Service;
 
 use App\Entity\DataSource;
+use App\Entity\Import;
 use App\Entity\Role;
 use App\Enum\RelationEnum;
 use App\Enum\TypeEnum;
@@ -24,10 +25,11 @@ class DataLoaderService
     private $em;
     private $annotationsReader;
 
-    /**
-     * @var DataSourceRepository
-     */
+    /** @var DataSourceRepository */
     private $dataSourceRepository;
+
+    /** @var Import */
+    private $importStats;
 
     private const RELATIONS = [RelationEnum::ONE_TO_ONE, RelationEnum::ONE_TO_MANY, RelationEnum::MANY_TO_ONE, RelationEnum::MANY_TO_MANY];
     
@@ -41,6 +43,13 @@ class DataLoaderService
         $this->annotationsReader = $annotationsReader;
     }
 
+    public function start(Import $import)
+    {
+        $this->importStats = $import;
+
+        $this->loadFiles();
+    }
+
     public function loadFiles()
     {
         $filesystem = new Filesystem();
@@ -51,11 +60,16 @@ class DataLoaderService
             throw new \Exception('Directory not found');
         }
 
-        $finder->files()->in($this->etlDataDirectory)->notName('*.skip')->sortByName(true);
+        $finder->files()->in($this->etlDataDirectory)->exclude('.old')->notName('*.skip')->sortByName(true);
         if (!$finder->hasResults()) {
             throw new \Exception('No file found');
         }
 
+        $this->importStats->setNbFiles($finder->count());
+        $this->importStats->setStartedAt(new \DateTime());
+        $this->em->persist($this->importStats);
+
+        $countFiles = 1;
         foreach ($finder as $file) {
             $splittedFilename = explode('~', $file->getFilename(), 2); // Character before "~" is only designed for priority
             $usedFilename = end($splittedFilename); // Filename is always at the last position (0 if no "~" character, 1 otherwise)
@@ -65,9 +79,15 @@ class DataLoaderService
                 throw new \Exception('File "' . $file->getFilename() . '" has no associated dataSource (labeled "' . $usedFilename . '")');
             }
 
+            $this->importStats->setCurrentFileName($usedFilename);
+            $this->importStats->setCurrentFile($countFiles);
+            $this->em->persist($this->importStats);
+
             if ($file->getExtension() === 'csv') {
                 $this->loadCsv($dataSource, $file);
             }
+
+            $countFiles++;
         }
     }
 
@@ -80,8 +100,19 @@ class DataLoaderService
         $csv->setDelimiter(';');
 
         $records = $csv->getRecords();
+
+        $this->importStats->setNbLines(iterator_count($records));
+        $this->em->persist($this->importStats);
+
+        $countLines = 1;
         foreach ($records as $record) {
+            $this->importStats->setCurrentLine($countLines);
+            $this->em->persist($this->importStats);
+            $this->em->flush();
+
             $this->processRecord($dataSource, $record);
+
+            $countLines++;
         }
     }
 

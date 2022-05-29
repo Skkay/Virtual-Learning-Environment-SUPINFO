@@ -191,6 +191,8 @@ admin:
       theses: Mémoires
     misc:
       data_sources: Schémas des sources de données
+      data_files: Fichiers des sources de données
+      imports: Importations
   module:
     misc:
       yes: Oui
@@ -215,7 +217,36 @@ admin:
         label: Label
         schema: Schema
         actions: Actions
-        no_records: Aucun schéma  
+        no_records: Aucun schéma
+    data_file:
+      title:
+        index: Fichiers des sources de données
+      table:
+        extension: Type
+        filename: Nom du fichier
+        ctime: Date de modification
+        no_files: Aucun fichier
+      misc:
+        clear_files: Supprimer les fichiers
+        start: Démarrer l'importation
+      form:
+        send: Envoyer
+    import:
+      title:
+        index: Liste des importations
+      table:
+        id: ID
+        created_at: Date de création
+        started_at: Date de démarrage
+        ended_at: Date de fin
+        nb_files: Nombre de fichiers
+        no_imports: Aucun importation réalisée
+      misc:
+        progress: Progressions
+        overall_progress: Progression globale
+        current_file_name: Nom du fichier en cours
+        files_progress: Progression des fichiers
+        current_file_progress: Progression du fichier actuel
 
 form:
   student_comment_type:
@@ -223,6 +254,15 @@ form:
   data_source_type:
     label: Label
     equivalence: Schéma
+  data_file_upload_type:
+    file:
+      label: Fichier
+    mode:
+      label: Mode
+      choice:
+        clear_and_upload: Supprimer les fichiers et ajouter
+        append: Ajouter à la suite
+
   misc:
     save: Enregistrer
     back_to_list: Retour à la liste

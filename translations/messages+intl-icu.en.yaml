@@ -191,6 +191,7 @@ admin:
       theses: Theses
     misc:
       data_sources: Data source schemas
+      data_files: Data source files
   module:
     misc:
       yes: Yes
@@ -215,7 +216,36 @@ admin:
         label: Label
         schema: Schema
         actions: Actions
-        no_records: No schema found  
+        no_records: No schema found
+    data_file:
+      title:
+        index: Data source files
+      table:
+        extension: Type
+        filename: File name
+        ctime: Modification date
+        no_files: No file
+      misc:
+        clear_files: Remove files
+        start: Start importation
+      form:
+        send: Send
+    import:
+      title:
+        index: Importation list
+      table:
+        id: ID
+        created_at: Creation date
+        started_at: Start date
+        ended_at: End date
+        nb_files: Number of files
+        no_imports: No import
+      misc:
+        progress: Progress
+        overall_progress: Overall progress
+        current_file_name: Current file name
+        files_progress: Files progress
+        current_file_progress: Current file progress
 
 form:
   student_comment_type:
@@ -223,6 +253,14 @@ form:
   data_source_type:
     label: Label
     equivalence: Schema
+  data_file_upload_type:
+    file:
+      label: File
+    mode:
+      label: Mode
+      choice:
+        clear_and_upload: Remove files and add
+        append: Append
   misc:
     save: Save
     back_to_list: Back to list
