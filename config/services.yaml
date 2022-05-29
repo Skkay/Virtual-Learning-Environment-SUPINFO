@@ -7,6 +7,7 @@ parameters:
   app.locales: [fr, en]
   app.etl_data_directory: '%kernel.project_dir%/public/etl_data/'
   app.accounts.student_documents_directories: '%kernel.project_dir%/public/accounts/students/'
+  app.database.export_directory: '%kernel.project_dir%/public/export'
   app.database.host: '%env(DATABASE_HOST)%'
   app.database.port: '%env(DATABASE_PORT)%'
   app.database.user: '%env(DATABASE_USER)%'
