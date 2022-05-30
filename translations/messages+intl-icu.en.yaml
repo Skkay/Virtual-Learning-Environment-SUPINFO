@@ -254,7 +254,7 @@ admin:
       table:
         extension: Extension
         name: Name
-        ctime: Modification date
+        ctime: Creation date
         no_exports: No export
       misc:
         download: Download
