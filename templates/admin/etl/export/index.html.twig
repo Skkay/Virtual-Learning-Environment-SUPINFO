@@ -19,7 +19,7 @@
             <td>{{ export.extension }}</td>
             <td>{{ export.filename }}</td>
             <td>{{ export.ctime|date('Y-m-d H:i:s') }}</td>
-            <td>{{ 'admin.etl.export.misc.download'|trans }}</td>
+            <td><a href="{{ path('app.admin.etl.export.download_file', {'filename': export.filename}) }}">{{ 'admin.etl.export.misc.download'|trans }}</a></td>
         </tr>
         {% else %}
         <tr>
