@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'admin.etl.export.title.index'|trans }}{% endblock %}
+
+{% block body %}
+<h1>{{ 'admin.etl.export.title.index'|trans }}</h1>
+
+<table class="table table-sm table-hover">
+    <thead>
+        <tr>
+            <th scope="col">{{ 'admin.etl.export.table.extension'|trans }}</th>
+            <th scope="col">{{ 'admin.etl.export.table.name'|trans }}</th>
+            <th scope="col">{{ 'admin.etl.export.table.ctime'|trans }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for export in exports %}
+        <tr>
+            <td>{{ export.extension }}</td>
+            <td>{{ export.filename }}</td>
+            <td>{{ export.ctime|date('Y-m-d H:i:s') }}</td>
+            <td>{{ 'admin.etl.export.misc.download'|trans }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="4" class="text-center fst-italic">{{ 'admin.etl.export.table.no_exports'|trans }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

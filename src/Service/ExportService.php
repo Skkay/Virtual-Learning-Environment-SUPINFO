@@ -2,12 +2,15 @@
 
 namespace App\Service;
 
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
-use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Finder\Finder;
 use Symfony\Component\Process\Process;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class ExportService
 {
+    private $exportDirectory;
+
     private $dbHost;
     private $dbPort;
     private $dbUser;
@@ -16,11 +19,22 @@ class ExportService
 
     public function __construct(ParameterBagInterface $params)
     {
+        $this->exportDirectory = $params->get('app.database.export_directory');
+
         $this->dbHost = $params->get('app.database.host');
         $this->dbPort = $params->get('app.database.port');
         $this->dbUser = $params->get('app.database.user');
         $this->dbPassword = $params->get('app.database.password');
         $this->dbName = $params->get('app.database.name');
+    }
+
+    public function getExportsFiles(): array
+    {
+        $finder = new Finder();
+
+        $finder->files()->in($this->exportDirectory)->sortByChangedTime();
+
+        return iterator_to_array($finder);
     }
 
     /**

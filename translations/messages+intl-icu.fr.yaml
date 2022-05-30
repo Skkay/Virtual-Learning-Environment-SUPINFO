@@ -193,6 +193,7 @@ admin:
       data_sources: Schémas des sources de données
       data_files: Fichiers des sources de données
       imports: Importations
+      exports: Exportations
   module:
     misc:
       yes: Oui
@@ -247,6 +248,16 @@ admin:
         current_file_name: Nom du fichier en cours
         files_progress: Progression des fichiers
         current_file_progress: Progression du fichier actuel
+    export:
+      title:
+        index: Liste des exportations
+      table:
+        extension: Extension
+        name: Nom
+        ctime: Date de modification
+        no_exports: Aucune exportation réalisée
+      misc:
+        download: Télécharger
 
 form:
   student_comment_type:
