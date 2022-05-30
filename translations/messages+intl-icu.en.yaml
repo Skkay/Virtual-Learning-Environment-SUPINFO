@@ -192,6 +192,8 @@ admin:
     misc:
       data_sources: Data source schemas
       data_files: Data source files
+      imports: Imports
+      exports: Exports
   module:
     misc:
       yes: Yes
@@ -246,6 +248,18 @@ admin:
         current_file_name: Current file name
         files_progress: Files progress
         current_file_progress: Current file progress
+    export:
+      title:
+        index: Exportation list
+      table:
+        extension: Extension
+        name: Name
+        ctime: Creation date
+        no_exports: No export
+      misc:
+        download: Download
+        export_database: Export database
+        success: Database exported in
 
 form:
   student_comment_type:
