@@ -190,8 +190,8 @@ admin:
       roles: Roles
       theses: Theses
     misc:
-      data_sources: Data source schemas
-      data_files: Data source files
+      data_schemas: Data schema schemas
+      data_files: Data schema files
       imports: Imports
       exports: Exports
   module:
@@ -207,12 +207,12 @@ admin:
       yes: Yes
       no: No
   etl:
-    data_source:
+    data_schema:
       title:
-        index: Data source schema list
-        data_source: Data source schema
-        edit: Edit a datasource schema
-        create: Create a datasource schema
+        index: Data schema schema list
+        data_schema: Data schema schema
+        edit: Edit a dataschema schema
+        create: Create a dataschema schema
       table:
         id: ID
         label: Label
@@ -221,7 +221,7 @@ admin:
         no_records: No schema found
     data_file:
       title:
-        index: Data source files
+        index: Data schema files
       table:
         extension: Type
         filename: File name
@@ -264,7 +264,7 @@ admin:
 form:
   student_comment_type:
     label: Add a comment
-  data_source_type:
+  data_schema_type:
     label: Label
     equivalence: Schema
   data_file_upload_type:

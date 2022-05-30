@@ -2,24 +2,24 @@
 
 namespace App\Form;
 
-use App\Entity\DataSource;
+use App\Entity\DataSchema;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class DataSourceType extends AbstractType
+class DataSchemaType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('label', TextType::class, [
-                'label' => 'form.data_source_type.label',
+                'label' => 'form.data_schema_type.label',
                 'required' => true,
             ])
             ->add('equivalence', TextType::class, [
-                'label' => 'form.data_source_type.equivalence',
+                'label' => 'form.data_schema_type.equivalence',
                 'required' => true,
             ])
         ;
@@ -38,7 +38,7 @@ class DataSourceType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => DataSource::class,
+            'data_class' => DataSchema::class,
         ]);
     }
 }

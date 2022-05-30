@@ -190,7 +190,7 @@ admin:
       roles: Rôles
       theses: Mémoires
     misc:
-      data_sources: Schémas des sources de données
+      data_schemas: Schémas des sources de données
       data_files: Fichiers des sources de données
       imports: Importations
       exports: Exportations
@@ -207,10 +207,10 @@ admin:
       yes: Oui
       no: Non
   etl:
-    data_source:
+    data_schema:
       title:
         index: Liste des schémas des sources de données
-        data_source: Schéma de source de données
+        data_schema: Schéma de source de données
         edit: Modifier un schéma de source de données
         create: Créer un schéma de source de données
       table:
@@ -264,7 +264,7 @@ admin:
 form:
   student_comment_type:
     label: Ajouter un commentaire
-  data_source_type:
+  data_schema_type:
     label: Label
     equivalence: Schéma
   data_file_upload_type:
