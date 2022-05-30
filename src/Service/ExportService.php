@@ -2,10 +2,10 @@
 
 namespace App\Service;
 
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Process\Process;
-use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class ExportService
 {
@@ -32,7 +32,7 @@ class ExportService
     {
         $finder = new Finder();
 
-        $finder->files()->in($this->exportDirectory)->sortByChangedTime();
+        $finder->files()->in($this->exportDirectory)->sortByChangedTime()->reverseSorting();
 
         return iterator_to_array($finder);
     }
