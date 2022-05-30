@@ -258,6 +258,8 @@ admin:
         no_exports: Aucune exportation réalisée
       misc:
         download: Télécharger
+        export_database: Exporter la base de données
+        success: Base de données exportée dans
 
 form:
   student_comment_type:

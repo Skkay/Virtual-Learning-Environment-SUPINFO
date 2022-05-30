@@ -5,6 +5,15 @@
 {% block body %}
 <h1>{{ 'admin.etl.export.title.index'|trans }}</h1>
 
+<a href="{{ path('app.admin.etl.export.export') }}">{{ 'admin.etl.export.misc.export_database'|trans }}</a>
+
+{% for message in app.flashes('export_success') %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message.text|trans }}: <strong>{{ message.filePath }}</strong>.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endfor %}
+
 <table class="table table-sm table-hover">
     <thead>
         <tr>

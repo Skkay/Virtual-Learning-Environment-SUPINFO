@@ -3,12 +3,12 @@
 namespace App\Controller\Admin\ETL;
 
 use App\Service\ExportService;
-use Symfony\Component\Finder\Finder;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use Symfony\Component\Finder\Finder;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/admin/etl/exports", name="app.admin.etl.export.")
@@ -34,6 +34,18 @@ class ExportController extends AbstractController
         return $this->render('admin/etl/export/index.html.twig', [
             'exports' => $exports,
         ]);
+    }
+
+    /**
+     * @Route("/export", name="export")
+     */
+    public function export(): Response
+    {
+        $filePath = $this->exportService->exportToSQL($this->exportDirectory);
+
+        $this->addFlash('export_success', ['text' => 'admin.etl.export.misc.success', 'filePath' => $filePath]);
+
+        return $this->redirectToRoute('app.admin.etl.export.index');
     }
 
     /**
