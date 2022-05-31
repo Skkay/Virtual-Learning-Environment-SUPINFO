@@ -5,6 +5,7 @@
 {% block body %}
     <h1>{{ 'admin.etl.data_schema.title.index'|trans }}</h1>
 
+    <a href="{{ path('app.admin.etl.data_schema.new') }}">{{ 'form.misc.create'|trans }}</a>
     <table class="table table-sm table-hover">
         <thead>
             <tr>
@@ -30,6 +31,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app.admin.etl.data_schema.new') }}">{{ 'form.misc.create'|trans }}</a>
 {% endblock %}
