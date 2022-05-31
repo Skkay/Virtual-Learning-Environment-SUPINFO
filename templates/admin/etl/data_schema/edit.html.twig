@@ -5,9 +5,13 @@
 {% block body %}
     <h1>{{ 'admin.etl.data_schema.title.edit'|trans }}</h1>
 
-    {{ include('admin/etl/data_schema/_form.html.twig', {'button_label': 'form.misc.update'|trans}) }}
 
-    <a href="{{ path('app.admin.etl.data_schema.index') }}">{{ 'form.misc.back_to_list'|trans }}</a>
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="btn btn-primary">{{ 'form.misc.update'|trans }}</button>
+    {{ form_end(form) }}
+
+    <a class="btn btn-secondary my-2" href="{{ path('app.admin.etl.data_schema.index') }}">{{ 'form.misc.back_to_list'|trans }}</a>
 
     {{ include('admin/etl/data_schema/_delete_form.html.twig') }}
 {% endblock %}
