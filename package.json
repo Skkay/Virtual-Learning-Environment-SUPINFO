@@ -28,6 +28,7 @@
         "@fullcalendar/timegrid": "^5.11.0",
         "@popperjs/core": "^2.11.4",
         "bootstrap": "^5.1.3",
-        "canvas-confetti": "^1.5.1"
+        "canvas-confetti": "^1.5.1",
+        "highlight.js": "^11.5.1"
     }
 }
