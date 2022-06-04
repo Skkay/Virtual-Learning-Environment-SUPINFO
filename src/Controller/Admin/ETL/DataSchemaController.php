@@ -79,7 +79,10 @@ class DataSchemaController extends AbstractController
      */
     public function edit(Request $request, DataSchema $dataSchema): Response
     {
-        $form = $this->createForm(DataSchemaType::class);
+        $form = $this->createForm(DataSchemaType::class, null, [
+            'data_schema' => $dataSchema,
+        ]);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

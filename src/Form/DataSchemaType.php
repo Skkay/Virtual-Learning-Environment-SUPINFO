@@ -16,6 +16,7 @@ class DataSchemaType extends AbstractType
             ->add('label', TextType::class, [
                 'label' => 'form.data_schema_type.label',
                 'required' => true,
+                'data' => isset($options['data_schema']) ? $options['data_schema']->getLabel() : '',
             ])
             ->add('equivalence', HiddenType::class, [
                 'label' => 'form.data_schema_type.equivalence',
@@ -26,6 +27,8 @@ class DataSchemaType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults([]);
+        $resolver->setDefaults([
+            'data_schema' => null,
+        ]);
     }
 }
