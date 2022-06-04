@@ -11,18 +11,20 @@ const hasNoError = () => {
     return errors.length === 0;
 };
 
-const editor = monaco.editor.create(monacoContainerEl, {
-    value: content,
-    language: 'json',
-});
-
-submitButtonEl.addEventListener('click', () => {
+const submitForm = () => {
     const formEl = document.getElementById('formDataSchema');
     const equivalenceInputEl = document.getElementById('data_schema_equivalence');
 
-    equivalenceInputEl.value = editor.getValue();
+    equivalenceInputEl.value = monaco.editor.value;
 
     if (hasNoError()) {
         formEl.submit();
     }
+};
+
+monaco.editor.create(monacoContainerEl, {
+    value: content,
+    language: 'json',
 });
+
+submitButtonEl.addEventListener('click', submitForm);
