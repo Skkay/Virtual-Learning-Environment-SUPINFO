@@ -48,10 +48,15 @@ class DataSchemaController extends AbstractController
     {
         $dataSchema = new DataSchema();
 
-        $form = $this->createForm(DataSchemaType::class, $dataSchema);
+        $form = $this->createForm(DataSchemaType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+
+            $dataSchema->setLabel($data['label']);
+            $dataSchema->setEquivalence(json_decode($data['equivalence'], true));
+
             $this->em->persist($dataSchema);
             $this->em->flush();
 

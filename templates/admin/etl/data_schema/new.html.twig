@@ -2,14 +2,18 @@
 
 {% block title %}{{ 'admin.etl.data_schema.title.create'|trans }}{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('data_schema_monaco_editor') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('data_schema_monaco_editor') }}
+{% endblock %}
+
 {% block body %}
     <h1>{{ 'admin.etl.data_schema.title.create'|trans }}</h1>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <a class="btn btn-secondary" href="{{ path('app.admin.etl.data_schema.index') }}">{{ 'form.misc.back_to_list'|trans }}</a>
-        <button class="btn btn-primary">{{ 'form.misc.save'|trans }}</button>
-    {{ form_end(form) }}
-
-
+    {{ include('admin/etl/data_schema/_form.html.twig') }}
 {% endblock %}
