@@ -26,7 +26,7 @@ Encore
     .addEntry('konami', './assets/js/konami.js')
     .addEntry('update_import_progress', './assets/js/update_import_progress.js')
     .addEntry('highlight', './assets/js/highlight.js')
-    .addEntry('monaco', './assets/js/monaco.js')
+    .addEntry('data_schema_monaco_editor', './assets/js/data_schema_monaco_editor.js')
     .addPlugin(new MonacoWebpackPlugin())
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
