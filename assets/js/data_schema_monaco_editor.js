@@ -7,6 +7,11 @@ const toastErrorEl = document.getElementById('toastErrorDataSchema');
 const toastErrorBodyEl = document.getElementById('toastErrorDataSchemaBody');
 const content = monacoContainerEl.getAttribute('data-content');
 
+const editor = monaco.editor.create(monacoContainerEl, {
+    value: content,
+    language: 'json',
+});
+
 const getErrors = () => {
     const markers = monaco.editor.getModelMarkers();
     const errors = markers.filter((marker) => marker.severity === 8);
@@ -20,7 +25,7 @@ const submitForm = () => {
     const formEl = document.getElementById('formDataSchema');
     const equivalenceInputEl = document.getElementById('data_schema_equivalence');
 
-    equivalenceInputEl.value = monaco.editor.value;
+    equivalenceInputEl.value = editor.getValue();
 
     if (hasErrors()) {
         let toastBody = '';
@@ -38,10 +43,5 @@ const submitForm = () => {
 
     formEl.submit();
 };
-
-monaco.editor.create(monacoContainerEl, {
-    value: content,
-    language: 'json',
-});
 
 submitButtonEl.addEventListener('click', submitForm);
