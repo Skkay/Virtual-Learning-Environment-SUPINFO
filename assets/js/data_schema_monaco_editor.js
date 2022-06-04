@@ -4,11 +4,11 @@ const monacoContainerEl = document.getElementById('monaco-container');
 const submitButtonEl = document.getElementById('submitButton');
 const content = monacoContainerEl.getAttribute('data-content');
 
-const hasNoError = () => {
+const hasError = () => {
     const markers = monaco.editor.getModelMarkers();
     const errors = markers.filter((marker) => marker.severity === 8);
 
-    return errors.length === 0;
+    return errors.length !== 0;
 };
 
 const submitForm = () => {
@@ -17,9 +17,12 @@ const submitForm = () => {
 
     equivalenceInputEl.value = monaco.editor.value;
 
-    if (hasNoError()) {
-        formEl.submit();
+    if (hasError()) {
+        console.log('JSON contains some errors');
+        return;
     }
+
+    formEl.submit();
 };
 
 monaco.editor.create(monacoContainerEl, {
