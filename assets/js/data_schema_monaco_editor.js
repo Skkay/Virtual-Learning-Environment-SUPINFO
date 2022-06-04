@@ -4,6 +4,13 @@ const monacoContainerEl = document.getElementById('monaco-container');
 const submitButtonEl = document.getElementById('submitButton');
 const content = monacoContainerEl.getAttribute('data-content');
 
+const hasNoError = () => {
+    const markers = monaco.editor.getModelMarkers();
+    const errors = markers.filter((marker) => marker.severity === 8);
+
+    return errors.length === 0;
+};
+
 const editor = monaco.editor.create(monacoContainerEl, {
     value: content,
     language: 'json',
@@ -15,5 +22,7 @@ submitButtonEl.addEventListener('click', () => {
 
     equivalenceInputEl.value = editor.getValue();
 
-    formEl.submit();
+    if (hasNoError()) {
+        formEl.submit();
+    }
 });
