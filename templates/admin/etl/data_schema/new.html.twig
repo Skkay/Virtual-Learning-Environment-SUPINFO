@@ -17,3 +17,7 @@
 
     {{ include('admin/etl/data_schema/_form.html.twig', {'submitButtonLabel': 'form.misc.create'|trans}) }}
 {% endblock %}
+
+{% block toasts %}
+    {{ include('admin/etl/data_schema/_toast_error.html.twig') }}
+{% endblock %}

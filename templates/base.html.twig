@@ -102,5 +102,9 @@
             </div>
         </nav>
         {% block body %}{% endblock %}
+
+        <div class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 11">
+            {% block toasts %}{% endblock %}
+        </div>
     </body>
 </html>

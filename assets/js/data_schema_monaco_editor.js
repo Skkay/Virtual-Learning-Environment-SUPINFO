@@ -1,15 +1,20 @@
 import * as monaco from 'monaco-editor';
+import { Toast } from 'bootstrap/dist/js/bootstrap.esm';
 
 const monacoContainerEl = document.getElementById('monaco-container');
 const submitButtonEl = document.getElementById('submitButton');
+const toastErrorEl = document.getElementById('toastErrorDataSchema');
+const toastErrorBodyEl = document.getElementById('toastErrorDataSchemaBody');
 const content = monacoContainerEl.getAttribute('data-content');
 
-const hasError = () => {
+const getErrors = () => {
     const markers = monaco.editor.getModelMarkers();
     const errors = markers.filter((marker) => marker.severity === 8);
 
-    return errors.length !== 0;
+    return errors;
 };
+
+const hasErrors = () => getErrors().length !== 0;
 
 const submitForm = () => {
     const formEl = document.getElementById('formDataSchema');
@@ -17,8 +22,17 @@ const submitForm = () => {
 
     equivalenceInputEl.value = monaco.editor.value;
 
-    if (hasError()) {
-        console.log('JSON contains some errors');
+    if (hasErrors()) {
+        let toastBody = '';
+        getErrors().forEach((error) => {
+            toastBody += `- ${error.message} (line: ${error.startLineNumber}, column: ${error.startColumn})\n`;
+        });
+
+        toastErrorBodyEl.innerText = toastBody;
+
+        const toastError = new Toast(toastErrorEl);
+        toastError.show();
+
         return;
     }
 

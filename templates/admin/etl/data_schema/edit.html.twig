@@ -21,3 +21,7 @@
 
     {{ include('admin/etl/data_schema/_delete_form.html.twig') }}
 {% endblock %}
+
+{% block toasts %}
+    {{ include('admin/etl/data_schema/_toast_error.html.twig') }}
+{% endblock %}
