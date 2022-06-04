@@ -2,6 +2,5 @@
     {{ form_widget(form) }}
 
     {{ include('_monaco.html.twig', { content: data_schema.equivalence ? data_schema.equivalence|json_encode(constant('JSON_PRETTY_PRINT')) : '{}' }) }}
+    <button type="submit" class="btn btn-primary">{{ submitButtonLabel }}</button>
 {{ form_end(form) }}
-
-<button id="submitButton" class="btn btn-primary">{{ submitButtonLabel }}</button>

@@ -1,8 +1,8 @@
 import * as monaco from 'monaco-editor';
 import { Toast } from 'bootstrap/dist/js/bootstrap.esm';
 
+const formEl = document.getElementById('formDataSchema');
 const monacoContainerEl = document.getElementById('monaco-container');
-const submitButtonEl = document.getElementById('submitButton');
 const toastErrorEl = document.getElementById('toastErrorDataSchema');
 const toastErrorBodyEl = document.getElementById('toastErrorDataSchemaBody');
 const content = monacoContainerEl.getAttribute('data-content');
@@ -22,7 +22,6 @@ const getErrors = () => {
 const hasErrors = () => getErrors().length !== 0;
 
 const submitForm = () => {
-    const formEl = document.getElementById('formDataSchema');
     const equivalenceInputEl = document.getElementById('data_schema_equivalence');
 
     equivalenceInputEl.value = editor.getValue();
@@ -44,4 +43,8 @@ const submitForm = () => {
     formEl.submit();
 };
 
-submitButtonEl.addEventListener('click', submitForm);
+formEl.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    submitForm();
+});
