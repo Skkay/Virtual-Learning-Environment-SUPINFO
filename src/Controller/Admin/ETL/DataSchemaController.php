@@ -88,6 +88,12 @@ class DataSchemaController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
 
+            $dataSchema->setLabel($data['label']);
+            $dataSchema->setEquivalence(json_decode($data['equivalence'], true));
+
+            $this->em->persist($dataSchema);
+            $this->em->flush();
+
             return $this->redirectToRoute('app.admin.etl.data_schema.index');
         }
 
