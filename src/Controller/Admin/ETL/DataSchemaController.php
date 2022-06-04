@@ -79,11 +79,11 @@ class DataSchemaController extends AbstractController
      */
     public function edit(Request $request, DataSchema $dataSchema): Response
     {
-        $form = $this->createForm(DataSchemaType::class, $dataSchema);
+        $form = $this->createForm(DataSchemaType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->em->flush();
+            $data = $form->getData();
 
             return $this->redirectToRoute('app.admin.etl.data_schema.index');
         }
