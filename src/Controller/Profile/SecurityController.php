@@ -5,12 +5,11 @@ namespace App\Controller\Profile;
 use App\Entity\User;
 use App\Form\SetPasswordType;
 use App\Form\UpdatePasswordType;
-use Doctrine\Persistence\ManagerRegistry;
+use App\Service\UserService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -19,13 +18,11 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class SecurityController extends AbstractController
 {
-    private $em;
-    private $passwordHaser;
+    private $userService;
 
-    public function __construct(ManagerRegistry $doctrine, UserPasswordHasherInterface $passwordHaser)
+    public function __construct(UserService $userService)
     {
-        $this->em = $doctrine->getManager();
-        $this->passwordHaser = $passwordHaser;
+        $this->userService = $userService;
     }
 
     /**
@@ -48,11 +45,7 @@ class SecurityController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
 
-            $encodedPassword = $this->passwordHaser->hashPassword($user, $data['password']);
-            $user->setPassword($encodedPassword);
-
-            $this->em->persist($user);
-            $this->em->flush();
+            $this->userService->setPassword($user, $data['password']);
 
             $this->addFlash('password_set', ['type' => 'alert-success', 'message' => 'profile.security.misc.password_set']);
 
@@ -84,11 +77,7 @@ class SecurityController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
 
-            $encodedPassword = $this->passwordHaser->hashPassword($user, $data['password']);
-            $user->setPassword($encodedPassword);
-
-            $this->em->persist($user);
-            $this->em->flush();
+            $this->userService->setPassword($user, $data['password']);
 
             $this->addFlash('password_set', ['type' => 'alert-success', 'message' => 'profile.security.misc.password_updated']);
 
