@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfileController!{% endblock %}
+
+{% block body %}
+<h1>{{ 'profile.title.index'|trans }}</h1>
+<h4 class="text-muted">{{ app.user.firstName }} {{ app.user.lastName }}</h4>
+
+{% for flash in app.flashes('password_set') %}
+    <div class="alert alert-dismissible fade show {{ flash.type ?? 'alert-primary' }}" role="alert">
+        {{ flash.message|trans }}.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endfor %}
+
+<h5>{{ 'profile.security.title.category'|trans }}</h5>
+<ul>
+    {% if app.user.password == null %}
+        <li><a href="{{ path('app.profile.security.set_password') }}">{{ 'profile.security.misc.define_password'|trans }}</a></li>
+    {% else %}        
+        <li><a href="{{ path('app.profile.security.update_password') }}">{{ 'profile.security.misc.update_password'|trans }}</a></li>
+    {% endif %}
+</ul>
+{% endblock %}

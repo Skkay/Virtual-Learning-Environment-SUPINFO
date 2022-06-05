@@ -260,6 +260,22 @@ admin:
         download: Télécharger
         export_database: Exporter la base de données
         success: Base de données exportée dans
+  
+profile:
+  title:
+    index: Mon compte
+  security:
+    title:
+      category: Sécurité
+      define_password: Définir un mot de passe
+      update_password: Modifier le mot de passe
+    misc:
+      define_password: Définir un mot de passe
+      password_set: Mot de passe défini
+      password_already_defined: Mot de passe déjà défini
+      update_password: Modifier le mot de passe
+      password_updated: Mot de passe mis à jour
+      password_not_defined: Aucun mot de passe défini
 
 form:
   student_comment_type:
@@ -275,6 +291,11 @@ form:
       choice:
         clear_and_upload: Supprimer les fichiers et ajouter
         append: Ajouter à la suite
+  set_password_type:
+    password: Mot de passe
+    confirm_password: Confirmer le mot de passe
+  update_password_type:
+    current_password: Mot de passe actuel
   misc:
     save: Enregistrer
     back_to_list: Retour à la liste
@@ -283,6 +304,7 @@ form:
     show: Afficher
     delete: Supprimer
     update: Mettre à jour
+    set: Définir
 
 toast:
   title:
