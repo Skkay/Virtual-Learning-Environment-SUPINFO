@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfileController!{% endblock %}
+
+{% block body %}
+<h1>{{ 'profile.title.index'|trans }}</h1>
+<h4 class="text-muted">{{ app.user.firstName }} {{ app.user.lastName }}</h4>
+{% endblock %}

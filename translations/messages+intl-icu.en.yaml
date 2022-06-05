@@ -261,6 +261,10 @@ admin:
         export_database: Export database
         success: Database exported in
 
+profile:
+  title:
+    index: My profile
+
 form:
   student_comment_type:
     label: Add a comment

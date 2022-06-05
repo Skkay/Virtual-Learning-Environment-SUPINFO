@@ -260,6 +260,10 @@ admin:
         download: Télécharger
         export_database: Exporter la base de données
         success: Base de données exportée dans
+  
+profile:
+  title:
+    index: Mon compte
 
 form:
   student_comment_type:
