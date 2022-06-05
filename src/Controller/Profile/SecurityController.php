@@ -30,7 +30,7 @@ class SecurityController extends AbstractController
     /**
      * @Route("/set_password", name="set_password")
      */
-    public function index(Request $request): Response
+    public function setPassword(Request $request): Response
     {
         /** @var User */
         $user = $this->getUser();
