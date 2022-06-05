@@ -17,6 +17,8 @@
 <ul>
     {% if app.user.password == null %}
         <li><a href="{{ path('app.profile.security.set_password') }}">{{ 'profile.security.misc.define_password'|trans }}</a></li>
+    {% else %}        
+        <li><a href="{{ path('app.profile.security.update_password') }}">{{ 'profile.security.misc.update_password'|trans }}</a></li>
     {% endif %}
 </ul>
 {% endblock %}

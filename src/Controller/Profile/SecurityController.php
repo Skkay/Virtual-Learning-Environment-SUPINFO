@@ -4,6 +4,7 @@ namespace App\Controller\Profile;
 
 use App\Entity\User;
 use App\Form\SetPasswordType;
+use App\Form\UpdatePasswordType;
 use Doctrine\Persistence\ManagerRegistry;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -59,6 +60,42 @@ class SecurityController extends AbstractController
         }
 
         return $this->renderForm('profile/security/set_password.html.twig', [
+            'form' => $form,
+        ]);
+    }
+
+    /**
+     * @Route("/update_password", name="update_password")
+     */
+    public function updatePassword(Request $request): Response
+    {
+        /** @var User */
+        $user = $this->getUser();
+
+        if ($user->getPassword() === null) {
+            $this->addFlash('password_set', ['type' => 'alert-danger', 'message' => 'profile.security.misc.password_not_defined']);
+
+            return $this->redirectToRoute('app.profile.index');
+        }
+
+        $form = $this->createForm(UpdatePasswordType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+
+            $encodedPassword = $this->passwordHaser->hashPassword($user, $data['password']);
+            $user->setPassword($encodedPassword);
+
+            $this->em->persist($user);
+            $this->em->flush();
+
+            $this->addFlash('password_set', ['type' => 'alert-success', 'message' => 'profile.security.misc.password_updated']);
+
+            return $this->redirectToRoute('app.profile.index');
+        }
+
+        return $this->renderForm('profile/security/update_password.html.twig', [
             'form' => $form,
         ]);
     }

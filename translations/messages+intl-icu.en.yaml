@@ -268,10 +268,14 @@ profile:
     title:
       category: Sécurity
       define_password: Défine a password
+      update_password: Update password
     misc:
       define_password: Défine a password
       password_set: Password set
       password_already_defined: Password already defined
+      update_password: Update password
+      password_updated: Password updated
+      password_not_defined: No password defined
 
 form:
   student_comment_type:
@@ -290,6 +294,8 @@ form:
   set_password_type:
     password: Password
     confirm_password: Confirm password
+  update_password_type:
+    current_password: Current password
   misc:
     save: Save
     back_to_list: Back to list
