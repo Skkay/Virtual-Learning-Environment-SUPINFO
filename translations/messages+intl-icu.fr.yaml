@@ -190,7 +190,10 @@ admin:
       roles: Rôles
       theses: Mémoires
     misc:
-      data_sources: Schémas des sources de données
+      data_schemas: Schémas des sources de données
+      data_files: Fichiers des sources de données
+      imports: Importations
+      exports: Exportations
   module:
     misc:
       yes: Oui
@@ -204,10 +207,10 @@ admin:
       yes: Oui
       no: Non
   etl:
-    data_source:
+    data_schema:
       title:
         index: Liste des schémas des sources de données
-        data_source: Schéma de source de données
+        data_schema: Schéma de source de données
         edit: Modifier un schéma de source de données
         create: Créer un schéma de source de données
       table:
@@ -215,14 +218,84 @@ admin:
         label: Label
         schema: Schema
         actions: Actions
-        no_records: Aucun schéma  
+        no_records: Aucun schéma
+    data_file:
+      title:
+        index: Fichiers des sources de données
+      table:
+        extension: Type
+        filename: Nom du fichier
+        ctime: Date de modification
+        no_files: Aucun fichier
+      misc:
+        clear_files: Supprimer les fichiers
+        start: Démarrer l'importation
+      form:
+        send: Envoyer
+    import:
+      title:
+        index: Liste des importations
+      table:
+        id: ID
+        created_at: Date de création
+        started_at: Date de démarrage
+        ended_at: Date de fin
+        nb_files: Nombre de fichiers
+        no_imports: Aucun importation réalisée
+      misc:
+        progress: Progressions
+        overall_progress: Progression globale
+        current_file_name: Nom du fichier en cours
+        files_progress: Progression des fichiers
+        current_file_progress: Progression du fichier actuel
+    export:
+      title:
+        index: Liste des exportations
+      table:
+        extension: Extension
+        name: Nom
+        ctime: Date de création
+        no_exports: Aucune exportation réalisée
+      misc:
+        download: Télécharger
+        export_database: Exporter la base de données
+        success: Base de données exportée dans
+  
+profile:
+  title:
+    index: Mon compte
+  security:
+    title:
+      category: Sécurité
+      define_password: Définir un mot de passe
+      update_password: Modifier le mot de passe
+    misc:
+      define_password: Définir un mot de passe
+      password_set: Mot de passe défini
+      password_already_defined: Mot de passe déjà défini
+      update_password: Modifier le mot de passe
+      password_updated: Mot de passe mis à jour
+      password_not_defined: Aucun mot de passe défini
 
 form:
   student_comment_type:
     label: Ajouter un commentaire
-  data_source_type:
+  data_schema_type:
     label: Label
     equivalence: Schéma
+  data_file_upload_type:
+    file:
+      label: Fichier
+    mode:
+      label: Mode
+      choice:
+        clear_and_upload: Supprimer les fichiers et ajouter
+        append: Ajouter à la suite
+  set_password_type:
+    password: Mot de passe
+    confirm_password: Confirmer le mot de passe
+  update_password_type:
+    current_password: Mot de passe actuel
   misc:
     save: Enregistrer
     back_to_list: Retour à la liste
@@ -231,3 +304,8 @@ form:
     show: Afficher
     delete: Supprimer
     update: Mettre à jour
+    set: Définir
+
+toast:
+  title:
+    errors: Erreurs

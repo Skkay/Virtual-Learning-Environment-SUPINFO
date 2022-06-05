@@ -80,7 +80,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a class="dropdown-item {{ route starts with 'app.admin/data_source' ? 'active' }}" href="{{ path('app.admin.etl.data_source.index') }}">Data-sources</a>
+                                    <a class="dropdown-item {{ route starts with 'app.admin/data_schema' ? 'active' }}" href="{{ path('app.admin.etl.data_schema.index') }}">Data-sources</a>
                                 </li>
                             </ul>
                         </li>
@@ -92,7 +92,7 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li>
-                                    <a class="dropdown-item" href="#">{{ 'navbar.my_profile'|trans }}</a>
+                                    <a class="dropdown-item" href="{{ path('app.profile.index') }}">{{ 'navbar.my_profile'|trans }}</a>
                                 </li>
                                 <li>
                                     <a class="dropdown-item" href="{{ path('app.logout') }}">{{ 'navbar.logout'|trans }}</a>
@@ -132,5 +132,9 @@
             </div>
         </nav>
         {% block body %}{% endblock %}
+
+        <div class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 11">
+            {% block toasts %}{% endblock %}
+        </div>
     </body>
 </html>

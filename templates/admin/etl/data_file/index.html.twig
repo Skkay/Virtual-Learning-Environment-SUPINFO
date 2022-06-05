@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'admin.etl.data_file.title.index'|trans }}{% endblock %}
+
+{% block body %}
+<h1>{{ 'admin.etl.data_file.title.index'|trans }}</h1>
+
+<a href="{{ path('app.admin.etl.data_file.clear') }}">{{ 'admin.etl.data_file.misc.clear_files'|trans }}</a>
+{{ form_start(dataFileUploadForm) }}
+    <div class="d-flex">
+        <div class="flex-grow-1">
+            {{ form_widget(dataFileUploadForm.file) }}
+        </div>
+
+        <button type="submit" class="ms-2 btn btn-primary">{{ 'admin.etl.data_file.form.send'|trans }}</button>
+    </div>
+    {{ form_errors(dataFileUploadForm.file) }}
+{{ form_end(dataFileUploadForm) }}
+<a href="{{ path('app.admin.etl.import.start') }}">{{ 'admin.etl.data_file.misc.start'|trans }}</a>
+
+<table class="table table-sm table-hover">
+    <thead>
+        <tr>
+            <th scope="col">{{ 'admin.etl.data_file.table.extension'|trans }}</th>
+            <th scope="col">{{ 'admin.etl.data_file.table.filename'|trans }}</th>
+            <th scope="col">{{ 'admin.etl.data_file.table.ctime'|trans }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for file in files %}
+        <tr>
+            <td>{{ file.extension }}</td>
+            <td>{{ file.filename }}</td>
+            <td>{{ file.ctime|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="3" class="text-center fst-italic">{{ 'admin.etl.data_file.table.no_files'|trans }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

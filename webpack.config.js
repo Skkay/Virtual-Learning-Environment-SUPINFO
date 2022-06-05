@@ -1,4 +1,5 @@
 const Encore = require('@symfony/webpack-encore');
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
 // It's useful when you use tools that rely on webpack.config.js file.
@@ -23,7 +24,11 @@ Encore
     .addEntry('app', './assets/app.js')
     .addEntry('full_calendar', './assets/js/full_calendar.js')
     .addEntry('konami', './assets/js/konami.js')
+    .addEntry('update_import_progress', './assets/js/update_import_progress.js')
+    .addEntry('highlight', './assets/js/highlight.js')
+    .addEntry('data_schema_monaco_editor', './assets/js/data_schema_monaco_editor.js')
     .addEntry('agency', './assets/agency.js')
+    .addPlugin(new MonacoWebpackPlugin())
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')

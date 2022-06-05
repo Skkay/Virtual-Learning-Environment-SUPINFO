@@ -1,3 +1,4 @@
+.DS_Store
 
 ###> symfony/framework-bundle ###
 /.env.local
@@ -18,5 +19,4 @@ yarn-error.log
 
 /public/etl_data
 /public/accounts
-
-.DS_Store
+/public/export

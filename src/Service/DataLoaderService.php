@@ -3,11 +3,12 @@
 
 namespace App\Service;
 
-use App\Entity\DataSource;
+use App\Entity\DataSchema;
+use App\Entity\Import;
 use App\Entity\Role;
 use App\Enum\RelationEnum;
 use App\Enum\TypeEnum;
-use App\Repository\DataSourceRepository;
+use App\Repository\DataSchemaRepository;
 use Doctrine\Common\Annotations\Reader as AnnotationsReader;
 use Doctrine\Persistence\ManagerRegistry;
 use League\Csv\Reader;
@@ -24,10 +25,11 @@ class DataLoaderService
     private $em;
     private $annotationsReader;
 
-    /**
-     * @var DataSourceRepository
-     */
-    private $dataSourceRepository;
+    /** @var DataSchemaRepository */
+    private $dataSchemaRepository;
+
+    /** @var Import */
+    private $importStats;
 
     private const RELATIONS = [RelationEnum::ONE_TO_ONE, RelationEnum::ONE_TO_MANY, RelationEnum::MANY_TO_ONE, RelationEnum::MANY_TO_MANY];
     
@@ -37,8 +39,15 @@ class DataLoaderService
         $this->etlDataDirectory = $params->get('app.etl_data_directory');
         $this->logger = $logger;
         $this->em = $doctrine->getManager();
-        $this->dataSourceRepository = $this->em->getRepository(DataSource::class);
+        $this->dataSchemaRepository = $this->em->getRepository(DataSchema::class);
         $this->annotationsReader = $annotationsReader;
+    }
+
+    public function start(Import $import)
+    {
+        $this->importStats = $import;
+
+        $this->loadFiles();
     }
 
     public function loadFiles()
@@ -51,27 +60,38 @@ class DataLoaderService
             throw new \Exception('Directory not found');
         }
 
-        $finder->files()->in($this->etlDataDirectory)->notName('*.skip')->sortByName(true);
+        $finder->files()->in($this->etlDataDirectory)->exclude('.old')->notName('*.skip')->sortByName(true);
         if (!$finder->hasResults()) {
             throw new \Exception('No file found');
         }
 
+        $this->importStats->setNbFiles($finder->count());
+        $this->importStats->setStartedAt(new \DateTime());
+        $this->em->persist($this->importStats);
+
+        $countFiles = 1;
         foreach ($finder as $file) {
             $splittedFilename = explode('~', $file->getFilename(), 2); // Character before "~" is only designed for priority
             $usedFilename = end($splittedFilename); // Filename is always at the last position (0 if no "~" character, 1 otherwise)
 
-            $dataSource = $this->dataSourceRepository->findOneBy(['label' => $usedFilename]);
-            if ($dataSource === null) {
-                throw new \Exception('File "' . $file->getFilename() . '" has no associated dataSource (labeled "' . $usedFilename . '")');
+            $dataSchema = $this->dataSchemaRepository->findOneBy(['label' => $usedFilename]);
+            if ($dataSchema === null) {
+                throw new \Exception('File "' . $file->getFilename() . '" has no associated dataSchema (labeled "' . $usedFilename . '")');
             }
 
+            $this->importStats->setCurrentFileName($usedFilename);
+            $this->importStats->setCurrentFile($countFiles);
+            $this->em->persist($this->importStats);
+
             if ($file->getExtension() === 'csv') {
-                $this->loadCsv($dataSource, $file);
+                $this->loadCsv($dataSchema, $file);
             }
+
+            $countFiles++;
         }
     }
 
-    private function loadCsv(DataSource $dataSource, SplFileInfo $file)
+    private function loadCsv(DataSchema $dataSchema, SplFileInfo $file)
     {
         $this->logger->debug('src\Service\DataLoaderService.php::loadCsv - Loading CSV', [ 'fileName' => $file->getFilename() ]);
 
@@ -80,16 +100,27 @@ class DataLoaderService
         $csv->setDelimiter(';');
 
         $records = $csv->getRecords();
+
+        $this->importStats->setNbLines(iterator_count($records));
+        $this->em->persist($this->importStats);
+
+        $countLines = 1;
         foreach ($records as $record) {
-            $this->processRecord($dataSource, $record);
+            $this->importStats->setCurrentLine($countLines);
+            $this->em->persist($this->importStats);
+            $this->em->flush();
+
+            $this->processRecord($dataSchema, $record);
+
+            $countLines++;
         }
     }
 
-    private function processRecord(DataSource $dataSource, array $record) 
+    private function processRecord(DataSchema $dataSchema, array $record) 
     {
         $this->logger->debug('src\Service\DataLoaderService.php::processRecord - Processing record', ['record' => $record]);
 
-        $dataEquivalence = $dataSource->getEquivalence();
+        $dataEquivalence = $dataSchema->getEquivalence();
     
         $mainEntityClass = $dataEquivalence['main_entity']['entity'];
 

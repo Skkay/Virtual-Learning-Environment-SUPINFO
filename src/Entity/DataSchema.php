@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\DataSourceRepository;
+use App\Repository\DataSchemaRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=DataSourceRepository::class)
+ * @ORM\Entity(repositoryClass=DataSchemaRepository::class)
  */
-class DataSource
+class DataSchema
 {
     /**
      * @ORM\Id

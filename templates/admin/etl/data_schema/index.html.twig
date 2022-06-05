@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'admin.etl.data_schema.title.index'|trans }}{% endblock %}
+
+{% block body %}
+    <h1>{{ 'admin.etl.data_schema.title.index'|trans }}</h1>
+
+    <a href="{{ path('app.admin.etl.data_schema.new') }}">{{ 'form.misc.create'|trans }}</a>
+    <table class="table table-sm table-hover">
+        <thead>
+            <tr>
+                <th>{{ 'admin.etl.data_schema.table.id'|trans }}</th>
+                <th>{{ 'admin.etl.data_schema.table.label'|trans }}</th>
+                <th>{{ 'admin.etl.data_schema.table.actions'|trans }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for data_schema in data_schemas %}
+            <tr>
+                <td>{{ data_schema.id }}</td>
+                <td>{{ data_schema.label }}</td>
+                <td>
+                    <a href="{{ path('app.admin.etl.data_schema.show', {'id': data_schema.id}) }}">{{ 'form.misc.show'|trans }}</a>
+                    <a href="{{ path('app.admin.etl.data_schema.edit', {'id': data_schema.id}) }}">{{ 'form.misc.edit'|trans }}</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">{{ 'admin.etl.data_schema.table.no_records'|trans }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

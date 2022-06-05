@@ -190,7 +190,10 @@ admin:
       roles: Roles
       theses: Theses
     misc:
-      data_sources: Data source schemas
+      data_schemas: Data schema schemas
+      data_files: Data schema files
+      imports: Imports
+      exports: Exports
   module:
     misc:
       yes: Yes
@@ -204,25 +207,95 @@ admin:
       yes: Yes
       no: No
   etl:
-    data_source:
+    data_schema:
       title:
-        index: Data source schema list
-        data_source: Data source schema
-        edit: Edit a datasource schema
-        create: Create a datasource schema
+        index: Data schema schema list
+        data_schema: Data schema schema
+        edit: Edit a dataschema schema
+        create: Create a dataschema schema
       table:
         id: ID
         label: Label
         schema: Schema
         actions: Actions
-        no_records: No schema found  
+        no_records: No schema found
+    data_file:
+      title:
+        index: Data schema files
+      table:
+        extension: Type
+        filename: File name
+        ctime: Modification date
+        no_files: No file
+      misc:
+        clear_files: Remove files
+        start: Start importation
+      form:
+        send: Send
+    import:
+      title:
+        index: Importation list
+      table:
+        id: ID
+        created_at: Creation date
+        started_at: Start date
+        ended_at: End date
+        nb_files: Number of files
+        no_imports: No import
+      misc:
+        progress: Progress
+        overall_progress: Overall progress
+        current_file_name: Current file name
+        files_progress: Files progress
+        current_file_progress: Current file progress
+    export:
+      title:
+        index: Exportation list
+      table:
+        extension: Extension
+        name: Name
+        ctime: Creation date
+        no_exports: No export
+      misc:
+        download: Download
+        export_database: Export database
+        success: Database exported in
+
+profile:
+  title:
+    index: My profile
+  security:
+    title:
+      category: Sécurity
+      define_password: Défine a password
+      update_password: Update password
+    misc:
+      define_password: Défine a password
+      password_set: Password set
+      password_already_defined: Password already defined
+      update_password: Update password
+      password_updated: Password updated
+      password_not_defined: No password defined
 
 form:
   student_comment_type:
     label: Add a comment
-  data_source_type:
+  data_schema_type:
     label: Label
     equivalence: Schema
+  data_file_upload_type:
+    file:
+      label: File
+    mode:
+      label: Mode
+      choice:
+        clear_and_upload: Remove files and add
+        append: Append
+  set_password_type:
+    password: Password
+    confirm_password: Confirm password
+  update_password_type:
+    current_password: Current password
   misc:
     save: Save
     back_to_list: Back to list
@@ -231,3 +304,8 @@ form:
     show: Show
     delete: Delete
     update: Update
+    set: Set
+
+toast:
+  title:
+    errors: Errors
