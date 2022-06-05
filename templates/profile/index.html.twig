@@ -6,9 +6,9 @@
 <h1>{{ 'profile.title.index'|trans }}</h1>
 <h4 class="text-muted">{{ app.user.firstName }} {{ app.user.lastName }}</h4>
 
-{% for message in app.flashes('password_set') %}
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        {{ message|trans }}.
+{% for flash in app.flashes('password_set') %}
+    <div class="alert alert-dismissible fade show {{ flash.type ?? 'alert-primary' }}" role="alert">
+        {{ flash.message|trans }}.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 {% endfor %}

@@ -36,7 +36,9 @@ class SecurityController extends AbstractController
         $user = $this->getUser();
 
         if ($user->getPassword() !== null) {
-            // TODO
+            $this->addFlash('password_set', ['type' => 'alert-danger', 'message' => 'profile.security.misc.password_already_defined']);
+
+            return $this->redirectToRoute('app.profile.index');
         }
 
         $form = $this->createForm(SetPasswordType::class);
@@ -51,7 +53,7 @@ class SecurityController extends AbstractController
             $this->em->persist($user);
             $this->em->flush();
 
-            $this->addFlash('password_set', 'profile.security.misc.password_set');
+            $this->addFlash('password_set', ['type' => 'alert-success', 'message' => 'profile.security.misc.password_set']);
 
             return $this->redirectToRoute('app.profile.index');
         }

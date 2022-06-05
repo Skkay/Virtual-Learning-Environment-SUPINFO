@@ -271,6 +271,7 @@ profile:
     misc:
       define_password: Définir un mot de passe
       password_set: Mot de passe défini
+      password_already_defined: Mot de passe déjà défini
 
 form:
   student_comment_type:
