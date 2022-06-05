@@ -264,6 +264,13 @@ admin:
 profile:
   title:
     index: Mon compte
+  security:
+    title:
+      category: Sécurité
+      define_password: Définir un mot de passe
+    misc:
+      define_password: Définir un mot de passe
+      password_set: Mot de passe défini
 
 form:
   student_comment_type:
@@ -279,6 +286,9 @@ form:
       choice:
         clear_and_upload: Supprimer les fichiers et ajouter
         append: Ajouter à la suite
+  set_password_type:
+    password: Mot de passe
+    confirm_password: Confirmer le mot de passe
   misc:
     save: Enregistrer
     back_to_list: Retour à la liste
@@ -287,6 +297,7 @@ form:
     show: Afficher
     delete: Supprimer
     update: Mettre à jour
+    set: Définir
 
 toast:
   title:

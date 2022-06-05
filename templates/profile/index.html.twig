@@ -5,4 +5,16 @@
 {% block body %}
 <h1>{{ 'profile.title.index'|trans }}</h1>
 <h4 class="text-muted">{{ app.user.firstName }} {{ app.user.lastName }}</h4>
+
+{% for message in app.flashes('password_set') %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message|trans }}.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endfor %}
+
+<h5>{{ 'profile.security.title.category'|trans }}</h5>
+<ul>
+    <li><a href="{{ path('app.profile.security.set_password') }}">{{ 'profile.security.misc.define_password'|trans }}</a></li>
+</ul>
 {% endblock %}

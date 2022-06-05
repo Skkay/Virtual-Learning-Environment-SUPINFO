@@ -264,6 +264,13 @@ admin:
 profile:
   title:
     index: My profile
+  security:
+    title:
+      category: Sécurity
+      define_password: Défine a password
+    misc:
+      define_password: Défine a password
+      password_set: Password set
 
 form:
   student_comment_type:
@@ -279,6 +286,9 @@ form:
       choice:
         clear_and_upload: Remove files and add
         append: Append
+  set_password_type:
+    password: Password
+    confirm_password: Confirm password
   misc:
     save: Save
     back_to_list: Back to list
@@ -287,6 +297,7 @@ form:
     show: Show
     delete: Delete
     update: Update
+    set: Set
 
 toast:
   title:
