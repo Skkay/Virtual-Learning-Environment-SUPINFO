@@ -3,91 +3,35 @@
 {% block title %}Acceuil{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-    .carousel-indicators {position: absolute;bottom: 0%;margin: auto;height: 20px;left: 46%;right: auto;width: auto;}
-    .carousel-indicators li {display: block;margin-bottom: 8px;border: 1px solid #fff;}
-    .carousel-indicators li.active {margin-bottom: 8px;background: #fff;}
-</style>
 
- <!-- Modal -->
- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header" style="border:none;padding-bottom:0">
-                  <button type="button" class="close text-center" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" style="font-size:35px">&times;</span>
-                  </button>
-                </div>
-               
-                <div class="modal-body">
-                    
-                  <div class="card-body">
-                    <h3 class="card-title text-center pb-3">Bienvenue sur L'ENT de SUPINFO !</h3>
-                    <form class="form-signin"  method="post" action="index.php">
-                      <div class="form-label-group">
-                        <input type="text" id="inputEmail" class="form-control" name="Pseudo" placeholder="Pseudo" required autofocus>
-                        <label for="inputEmail">Pseudo</label>
-                      </div>
-
-                      <div class="form-label-group">
-                        <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required>
-                        <label for="inputPassword">Mot de passe</label>
-                      </div>
-                        
-                      
-                      <?php if(isset($erreur)){ ?>
-                        <div class="alert alert-danger" role="alert"><?php echo $erreur; ?> </div>
-                      <?php } ?>
-                      <div class="text-center">
-                        <button class="btn btn-primary text-uppercase" id="subconnection" type="submit">Se connecter</button>
-                      </div>
-                      <hr class="my-4">
-                      <div class="text-center">
-                        <p>En continuant, vous acceptez les <a href=""><b>Conditions d'utilisation</b></a> de IONIS et reconnaissez avoir lu nos <br /><a href=""><b>Politique de confidentialité</b></a>.</p>
-                      </div>
-                    </form>
-                </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Masthead -->
          
-            <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel" >
-                <ol class="carousel-indicators">
-                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-            <div class="carousel-inner" role="listbox">
-              <!-- Slide One - Set the background image for this slide in the line below -->
-            
-              <div class="carousel-item active " ><img alt="slide 1" class="d-inline-block w-100" src="{{asset('images/iStock-538864120-compressor.jpg')}}" />
-                <div class="carousel-caption carousel-caption-center">
-                     <h1 class="mg-md float-none text-center text-white"></h1>
-                </div>
-                </div>
-             
-              <!-- Slide Two - Set the background image for this slide in the line below -->
-                
-              <div class="carousel-item"><img alt="slide 2" class="d-inline-block w-100" src="{{asset('images/iStock-537342688-compressor.jpg')}}" /><br/>
-                <div class="carousel-caption carousel-caption-center">
-                     <h1 class="mg-md float-none text-center text-white"></h1>
-                </div>
-              </div>
-            
-              <!-- Slide Three - Set the background image for this slide in the line below -->
-              <div class="carousel-item"><img alt="slide 3" class="d-inline-block w-100" src="{{asset('images/bg-masthead-compressor.jpg')}}" />
-                <div class="carousel-caption carousel-caption-center">
-                     <h1 class="mg-md float-none text-center text-white"></h1>
-                </div>
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+            <img src="{{asset('build/images/iStock-538864120-compressor.jpg')}}" class="d-block w-100" alt="slide 1">
             </div>
-            
-          </div>
+            <div class="carousel-item">
+            <img src="{{asset('build/images/iStock-537342688-compressor.jpg')}}" class="d-block w-100" alt="slide 2">
             </div>
+            <div class="carousel-item">
+            <img src="{{asset('build/images/bg-masthead-compressor.jpg')}}" class="d-block w-100" alt="slide 3">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
         
    <!-- Icons Grid -->
           <section class="features-icons bg-light text-center">
@@ -97,22 +41,19 @@
         <div class="bloc l-bloc" id="bloc-2">
             <div class="container bloc-lg">
                 <div class="row">
-                    <div class="col-md-6 col-lg-3 animated fadeInDown scroll-fx-down-in none" data-appear-anim-style="fadeInDown">
+                    <div class="col-md-6 col-lg-4 animated fadeInDown scroll-fx-down-in none" data-appear-anim-style="fadeInDown">
                         <div class="text-center" id="infobulle" aria-label="24h/24 en ligne."><i class=" icon-check icon-lg text-primary" ></i></div>
                         <h3 class="mg-md text-center">Soutien scolaire 24h/24</h3>
                     </div>
-                    <div class="col-md-6 col-lg-3 animated fadeInDown animDelay02 scroll-fx-down-in" data-appear-anim-style="fadeInDown">
+                    <div class="col-md-6 col-lg-4 animated fadeInDown animDelay02 scroll-fx-down-in" data-appear-anim-style="fadeInDown">
                         <div class="text-center" id="infobulle" aria-label="Au travers de services et ateliers variés."><i class=" icon-check icon-lg text-primary" ></i></div>
                         <h3 class="mg-md text-center">Ouverture intellectuelle</h3>
                     </div>
-                    <div class="col-md-6 col-lg-3 animated fadeInDown animDelay04 scroll-fx-down-in" data-appear-anim-style="fadeInDown">
+                    <div class="col-md-6 col-lg-4 animated fadeInDown animDelay04 scroll-fx-down-in" data-appear-anim-style="fadeInDown">
                         <div class="text-center" id="infobulle" aria-label="Accompagnement personnel toute l'année."><i class=" icon-check icon-lg text-primary" ></i></div>
                         <h3 class="mg-md text-center">Aide personnalisée</h3>
                     </div>
-                    <div class="col-md-6 col-lg-3 animated fadeInDown animDelay06 scroll-fx-down-in" data-appear-anim-style="fadeInDown">
-                        <div class="text-center" id="infobulle" aria-label="Gratuité des services pour tous les étudiants ( via leurs établissements scolaires )."><i class=" icon-check icon-lg text-primary" ></i></div>
-                        <h3 class="mg-md text-center">Égalité des chances</h3>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -127,7 +68,7 @@
             <div class="container">
                 <div class="row">
                     <div class="offset-md-2 col-md-8 col-lg-8 offset-lg-2">
-                        <div class="mx-auto d-block blocsapp-device blocsapp-device-mb mb-space-grey scroll-fx-down-in-fade scroll-fx-zoom-pull"><img src="img/fond-pc-accueil.png" data-src="img/fond-pc-accueil.png" class="img-fluid animated fadeIn scroll-fx-down-in-fade scroll-fx-zoom-pull lazyload" alt="mbp screen" data-appear-anim-style="fadeIn" /></div>
+                        <div class="mx-auto d-block blocsapp-device blocsapp-device-mb mb-space-grey scroll-fx-down-in-fade scroll-fx-zoom-pull"><img src="{{asset('build/images/fond-pc-accueil.png')}}" data-src="{{asset('build/images/fond-pc-accueil.png')}}" class="img-fluid animated fadeIn scroll-fx-down-in-fade scroll-fx-zoom-pull lazyload" alt="mbp screen" data-appear-anim-style="fadeIn" /></div>
                     </div>
         
                     <div class="col-lg-12 my-auto showcase-text">
@@ -150,7 +91,7 @@
           <div class="bloc full-width-bloc l-bloc" id="bloc-5">
             <div class="container ">
                 <div class="row">
-                    <div class="col-md-12 offset-lg--1 col-lg-6"><img src="img/TUTEUR-compressor.jpeg" data-src="img/TUTEUR-compressor.jpeg" class="img-fluid mx-auto d-block scroll-fx-left-in-fade lazyload" alt="placeholder image" /></div>
+                    <div class="col-md-12 offset-lg--1 col-lg-6"><img src="{{asset('build/images/TUTEUR-compressor.jpeg')}}" data-src="{{asset('build/images/TUTEUR-compressor.jpeg')}}" class="img-fluid mx-auto d-block scroll-fx-left-in-fade lazyload" alt="placeholder image" /></div>
                     <div class="align-self-center offset-md-1 col-md-10 col-sm-10 offset-sm-1 offset-1 col-10 offset-lg-1 col-lg-4">
                         <h2 class="mg-md">Les Tuteurs</h2>
                         <p class="lead mb-0">Nos tuteurs sont des étudiants de l’enseignement supérieur polyvalents recrutés pour leurs qualités humaines et académiques. Ils sont investis et comprennent parfaitement la situation de chaque élève pour avoir vécu à leurs façons le même parcours.</p>
@@ -162,7 +103,7 @@
         <div class="bloc full-width-bloc l-bloc" id="bloc-6">
             <div class="container ">
                 <div class="row">
-                    <div class="order-md-0 col-md-12 col-lg-6 order-lg-1 offset-lg-1"><img src="img/bg-showcase-2.jpg" data-src="img/bg-showcase-2.jpg" class="img-fluid mx-auto d-block scroll-fx-right-in-fade lazyload" alt="placeholder image" /></div>
+                    <div class="order-md-0 col-md-12 col-lg-6 order-lg-1 offset-lg-1"><img src="{{asset('build/images/bg-showcase-2.jpg ')}}" data-src="{{asset('build/images/bg-showcase-2.jpg ')}}" class="img-fluid mx-auto d-block scroll-fx-right-in-fade lazyload" alt="placeholder image" /></div>
                     <div class="align-self-center offset-md-1 col-md-10 col-lg-4 col-sm-10 offset-sm-1 col-10 offset-1">
                         <h2 class="mg-md">Informatique</h2>
                         <p class="lead mb-0">Les cours de codage informatique ( HTML5, CSS3, JAVASCRIPT, PYTHON ) sont dispensés via le board. Ils sont utiles pour toute personne voulant s’initier à la programmation informatique. Pour les étudiants, cet enseignement est particulièrement intéressant et valorisant dans les dossiers académiques.</p>
@@ -174,7 +115,7 @@
         <div class="bloc full-width-bloc l-bloc" id="bloc-7">
             <div class="container ">
                 <div class="row">
-                    <div class="col-md-12 offset-lg--1 col-lg-6"><img src="img/AdobeStock_65697900-compressor.jpeg" data-src="img/AdobeStock_65697900-compressor.jpeg" class="img-fluid mx-auto d-block scroll-fx-left-in-fade lazyload" alt="placeholder image" /></div>
+                    <div class="col-md-12 offset-lg--1 col-lg-6"><img src="{{asset('build/images/AdobeStock_65697900-compressor.jpeg ')}}" data-src="{{asset('build/images/AdobeStock_65697900-compressor.jpeg ')}}" class="img-fluid mx-auto d-block scroll-fx-left-in-fade lazyload" alt="placeholder image" /></div>
                     <div class="align-self-center offset-md-1 col-md-10 col-sm-10 offset-sm-1 offset-1 col-10 offset-lg-1 col-lg-4">
                         <h2 class="mg-md">Ateliers d'orientation</h2>
                         <p class="lead mb-0">L'Ent de SUPINFO permet une ouverture sur l’orientation académique et professionnelle dès le collège.  En effet, nous mettons à disposition des articles et vidéos centrés sur la découverte de métiers et de filières académiques (Sciences Po, Médecine, CPGE, BTS...).</p>
@@ -186,7 +127,7 @@
         <div class="bloc full-width-bloc l-bloc" id="bloc-8">
             <div class="container ">
                 <div class="row">
-                    <div class="order-md-0 col-md-12 col-lg-6 order-lg-1 offset-lg-1"><img src="img/entracc-compressor.jpeg" data-src="img/entracc-compressor.jpeg" class="img-fluid mx-auto d-block scroll-fx-right-in-fade lazyload" alt="placeholder image" /></div>
+                    <div class="order-md-0 col-md-12 col-lg-6 order-lg-1 offset-lg-1"><img src="{{asset('build/images/entracc-compressor.jpeg ')}}" data-src="{{asset('build/images/entracc-compressor.jpeg ')}}" class="img-fluid mx-auto d-block scroll-fx-right-in-fade lazyload" alt="placeholder image" /></div>
                     <div class="align-self-center offset-md-1 col-md-10 col-lg-4 col-sm-10 offset-sm-1 col-10 offset-1">
                         <h2 class="mg-md">Entrepreneuriat</h2>
                         <p class="lead mb-0">L'ENT de SUPINFO vous accompagne dans votre aventure entrepreneuriale en vous proposant des cours vidéos dispensés par un professeur (Sciences po Paris/Université de Tours) spécialisé en économie, gestion/entrepreneuriat et administration des sociétés. Les thématiques abordées seront par exemple la gestion, le choix des statuts, le financement, l’organisation au sein de la structure et des bases sur l'économie. </p>
@@ -203,7 +144,7 @@
             <div class="container">
                 <h2 class="section-heading text-uppercase scroll-fx-left-in-fade lazyload">Présentation</h2>
               <div class="intro scroll-fx-right-in-fade lazyload">
-                <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="img/iStock-846567624-compressor.jpg" data-src="img/iStock-846567624-compressor.jpg" alt="">
+                <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{asset('build/images/iStock-846567624-compressor.jpg ')}}" data-src="{{asset('build/images/iStock-846567624-compressor.jpg ')}}" alt="">
                 <div class="intro-text left-0 text-center bg-faded p-5 rounded">
                   <h2 class="section-heading mb-4">
                     <span class="section-heading-lower">Bienvenue</span>
@@ -269,7 +210,7 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <textarea name="message" id="message" cols="30" rows="6" class="form-control" placeholder="Entrer votre Message" required="required" ></textarea>
+                                    <textarea name="message" id="message" cols="30" rows="6" class="form-control" placeholder="Entrer votre Message *" required="required" ></textarea>
                                 </div>
                             </div>
                             <div class="g-recaptcha" data-sitekey="6Lcgt58UAAAAAKocJ3W8_rdG4JFBRTyE9TuN70bW"></div>

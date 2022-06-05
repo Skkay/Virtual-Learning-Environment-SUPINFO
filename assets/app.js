@@ -13,6 +13,7 @@ import './bootstrap';
 
 import { Tooltip, Toast, Popover } from 'bootstrap/dist/js/bootstrap.esm';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "animate";
 
 // require jQuery normally
 const $ = require('jquery');

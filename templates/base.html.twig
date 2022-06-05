@@ -7,7 +7,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" integrity="sha512-QKC1UZ/ZHNgFzVKSAhV5v5j73eeL9EEN289eKAEFaAjgAiobVAnVv/AGuPbXsKl1dNoel3kNr6PYnSiTzVVBCw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style>
+            .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+            .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+            .carousel-indicators {position: absolute;bottom: 0%;margin: auto;height: 20px;left: 46%;right: auto;width: auto;}
+            .carousel-indicators li {display: block;margin-bottom: 8px;border: 1px solid #fff;}
+            .carousel-indicators li.active {margin-bottom: 8px;background: #fff;}
+            .mb-space-grey{background-image:url('{{asset('build/images/Apple-Macbook-Space-Grey.png')}}');}
+            .bg-faded{background-color:rgba(255,255,255,.85)}
+            .lead {
+                font-size: 1.0625rem;
+                font-weight: 300;
+            }
+        </style>
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -20,37 +34,21 @@
     </head>
     <body>
          
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-            <div class="container">
-              <a class="navbar-brand js-scroll-trigger" href="index.html" style="color:#007bff;font-size:40px;">G<span style="font-size:35px">o</span>st&upsilon;d&Sigma;nt</a>
-              <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars"></i>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav text-uppercase ml-auto">
-                  <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="/">ACCUEIL</a>
-                  </li>
-                
-                  <li class="nav-item">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                      SE CONNECTER
-                    </button>
-                  </li>
-                </ul>
-              </div>
-            </div>
-        </nav>
-
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    {% set currentPath = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+        {% if 'login' in currentPath %}
+            <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #212529;margin-bottom:20px" id="mainNav">
+        {% else %}
+            <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        {% endif %}
             <div class="container">
                 <a class="navbar-brand" href="#">ENT SUPINFO</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav text-uppercase ml-auto">
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                         <li class="nav-item">
                             <a class="nav-link {{ route == 'app.home' ? 'active' }}" href="{{ path('app.home') }}">{{ 'navbar.home'|trans }}</a>
                         </li>
@@ -86,11 +84,9 @@
                                 </li>
                             </ul>
                         </li>
-                    </ul>
-
-                    <ul class="navbar-nav ms-auto">
                     
-                        <li class="nav-item dropdown">
+                    
+                        <li class="nav-item ">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                 {{ app.user.userIdentifier }}
                             </a>
@@ -104,15 +100,24 @@
                             </ul>
                         </li>
                     {% else %}
+                    <li class="nav-item">
+                        <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal">
+                            <a class="nav-link js-scroll-trigger" href="/">ACCUEIL</a>
+                        </button>
+                    </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ route == 'app.login' ? 'active' }}" aria-current="page" href="{{ path('app.login') }}">{{ 'navbar.login'|trans }}</a>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                <a class="nav-link js-scroll-trigger {{ route == 'app.login' ? 'active' }}" aria-current="page" href="{{ path('app.login') }}">{{ 'navbar.login'|trans }}</a>
+                            </button>
                         </li>
                     {% endif %}
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            
+                            <a class="nav-link dropdown-toggle" style="margin-top:9px" href="#" role="button" data-bs-toggle="dropdown">
                                 {{ 'navbar.language'|trans }}
                             </a>
+                           
                             <ul class="dropdown-menu dropdown-menu-end">
                                 {% for locale in locales %}
                                     <li>
