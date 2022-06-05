@@ -283,3 +283,7 @@ form:
     show: Show
     delete: Delete
     update: Update
+
+toast:
+  title:
+    errors: Errors

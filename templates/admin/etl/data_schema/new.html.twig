@@ -2,10 +2,22 @@
 
 {% block title %}{{ 'admin.etl.data_schema.title.create'|trans }}{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('data_schema_monaco_editor') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('data_schema_monaco_editor') }}
+{% endblock %}
+
 {% block body %}
     <h1>{{ 'admin.etl.data_schema.title.create'|trans }}</h1>
 
-    {{ include('admin/etl/data_schema/_form.html.twig') }}
+    {{ include('admin/etl/data_schema/_form.html.twig', {'submitButtonLabel': 'form.misc.create'|trans}) }}
+{% endblock %}
 
-    <a href="{{ path('app.admin.etl.data_schema.index') }}">{{ 'form.misc.back_to_list'|trans }}</a>
+{% block toasts %}
+    {{ include('admin/etl/data_schema/_toast_error.html.twig') }}
 {% endblock %}

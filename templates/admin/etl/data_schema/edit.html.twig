@@ -2,12 +2,26 @@
 
 {% block title %}{{ 'admin.etl.data_schema.title.edit'|trans }}{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('data_schema_monaco_editor') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('data_schema_monaco_editor') }}
+{% endblock %}
+
 {% block body %}
     <h1>{{ 'admin.etl.data_schema.title.edit'|trans }}</h1>
 
-    {{ include('admin/etl/data_schema/_form.html.twig', {'button_label': 'form.misc.update'|trans}) }}
+    {{ include('admin/etl/data_schema/_form.html.twig', {'submitButtonLabel': 'form.misc.update'|trans}) }}
 
-    <a href="{{ path('app.admin.etl.data_schema.index') }}">{{ 'form.misc.back_to_list'|trans }}</a>
+    <a class="btn btn-secondary my-2" href="{{ path('app.admin.etl.data_schema.index') }}">{{ 'form.misc.back_to_list'|trans }}</a>
 
     {{ include('admin/etl/data_schema/_delete_form.html.twig') }}
+{% endblock %}
+
+{% block toasts %}
+    {{ include('admin/etl/data_schema/_toast_error.html.twig') }}
 {% endblock %}

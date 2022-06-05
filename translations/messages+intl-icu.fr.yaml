@@ -275,7 +275,6 @@ form:
       choice:
         clear_and_upload: Supprimer les fichiers et ajouter
         append: Ajouter à la suite
-
   misc:
     save: Enregistrer
     back_to_list: Retour à la liste
@@ -284,3 +283,7 @@ form:
     show: Afficher
     delete: Supprimer
     update: Mettre à jour
+
+toast:
+  title:
+    errors: Erreurs

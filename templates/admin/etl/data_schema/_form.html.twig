@@ -1,4 +1,6 @@
-{{ form_start(form) }}
+{{ form_start(form, {'attr': {'id': 'formDataSchema'}}) }}
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('form.misc.save'|trans) }}</button>
+
+    {{ include('_monaco.html.twig', { content: data_schema.equivalence ? data_schema.equivalence|json_encode(constant('JSON_PRETTY_PRINT')) : '{}' }) }}
+    <button type="submit" class="btn btn-primary">{{ submitButtonLabel }}</button>
 {{ form_end(form) }}

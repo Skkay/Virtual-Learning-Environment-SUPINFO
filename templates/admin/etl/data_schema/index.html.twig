@@ -5,12 +5,12 @@
 {% block body %}
     <h1>{{ 'admin.etl.data_schema.title.index'|trans }}</h1>
 
-    <table class="table">
+    <a href="{{ path('app.admin.etl.data_schema.new') }}">{{ 'form.misc.create'|trans }}</a>
+    <table class="table table-sm table-hover">
         <thead>
             <tr>
                 <th>{{ 'admin.etl.data_schema.table.id'|trans }}</th>
                 <th>{{ 'admin.etl.data_schema.table.label'|trans }}</th>
-                <th>{{ 'admin.etl.data_schema.table.schema'|trans }}</th>
                 <th>{{ 'admin.etl.data_schema.table.actions'|trans }}</th>
             </tr>
         </thead>
@@ -19,7 +19,6 @@
             <tr>
                 <td>{{ data_schema.id }}</td>
                 <td>{{ data_schema.label }}</td>
-                <td>{{ data_schema.equivalence ? data_schema.equivalence|json_encode : '' }}</td>
                 <td>
                     <a href="{{ path('app.admin.etl.data_schema.show', {'id': data_schema.id}) }}">{{ 'form.misc.show'|trans }}</a>
                     <a href="{{ path('app.admin.etl.data_schema.edit', {'id': data_schema.id}) }}">{{ 'form.misc.edit'|trans }}</a>
@@ -27,11 +26,9 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">{{ 'admin.etl.data_schema.table.no_records'|trans }}</td>
+                <td colspan="3">{{ 'admin.etl.data_schema.table.no_records'|trans }}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app.admin.etl.data_schema.new') }}">{{ 'form.misc.create'|trans }}</a>
 {% endblock %}
