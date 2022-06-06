@@ -105,7 +105,7 @@ RUN set -eux; \
 	composer dump-autoload --classmap-authoritative --no-dev; \
 	composer symfony:dump-env prod; \
 	composer run-script --no-dev post-install-cmd; \
-	chmod +x bin/console; sync
+	chmod 777 bin/console; sync
 VOLUME /srv/app/var
 
 ENTRYPOINT ["docker-entrypoint"]
