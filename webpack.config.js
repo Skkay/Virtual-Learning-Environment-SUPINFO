@@ -27,6 +27,7 @@ Encore
     .addEntry('update_import_progress', './assets/js/update_import_progress.js')
     .addEntry('highlight', './assets/js/highlight.js')
     .addEntry('data_schema_monaco_editor', './assets/js/data_schema_monaco_editor.js')
+    .addEntry('agency', './assets/agency.js')
     .addPlugin(new MonacoWebpackPlugin())
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
@@ -76,7 +77,20 @@ Encore
     //.enableIntegrityHashes(Encore.isProduction())
 
     // uncomment if you're having problems with a jQuery plugin
-    //.autoProvidejQuery()
+    .autoProvidejQuery()
+
+    .copyFiles({
+        from: './assets/images',
+
+        // optional target path, relative to the output dir
+        to: 'images/[path][name].[ext]',
+
+        // if versioning is enabled, add the file hash too
+        //to: 'images/[path][name].[hash:8].[ext]',
+
+        // only copy files matching this pattern
+        //pattern: /\.(png|jpg|jpeg)$/
+    })
 ;
 
 module.exports = Encore.getWebpackConfig();
