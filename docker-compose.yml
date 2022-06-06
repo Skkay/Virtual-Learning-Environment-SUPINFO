@@ -54,6 +54,18 @@ services:
         published: ${HTTP3_PORT:-443}
         protocol: udp
 
+  database:
+    image: mariadb:${DATABASE_VERSION:-10.7.4}
+    restart: always
+    volumes:
+      - mariadb_data:/var/lib/mariadb/data:rw
+    environment:
+      - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD:-ChangeMe}
+      - MARIADB_DATABASE=${DATABASE_NAME:-app}
+      - MARIADB_USER=${DATABASE_USER:-symfony}
+      - MARIADB_PASSWORD=${DATABASE_PASSWORD:-ChangeMe}
+
+
 # Mercure is installed as a Caddy module, prevent the Flex recipe from installing another service
 ###> symfony/mercure-bundle ###
 ###< symfony/mercure-bundle ###
@@ -62,5 +74,6 @@ volumes:
   php_socket:
   caddy_data:
   caddy_config:
+  mariadb_data:
 ###> symfony/mercure-bundle ###
 ###< symfony/mercure-bundle ###
