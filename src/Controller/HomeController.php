@@ -2,8 +2,6 @@
 
 namespace App\Controller;
 
-use App\Service\DataLoaderService;
-use App\Service\TestService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,32 +13,38 @@ class HomeController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
-        ]);
+        $user = $this->getUser();
+
+        if ($user === null) {
+            return $this->redirectToRoute('app.about');
+        }
+
+        if ($this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app.admin.index');
+        }
+
+        if ($this->isGranted('ROLE_ACADEMIC_DIRECTOR')) {
+            return $this->redirectToRoute('app.academic_director.index');
+        }
+
+        if ($this->isGranted('ROLE_EDUCATIONAL_COORDINATOR')) {
+            return $this->redirectToRoute('app.educational_coordinator.index');
+        }
+
+        if ($this->isGranted('ROLE_ACCOUNTS')) {
+            return $this->redirectToRoute('app.accounts.index');
+        }
+
+        if ($this->isGranted('ROLE_USER')) {
+            return $this->redirectToRoute('app.dashboard.index');
+        }
     }
 
     /**
-     * @Route("/test", name="app.test")
+     * @Route("/about", name="app.about")
      */
-    public function test(DataLoaderService $dataLoaderService): Response
+    public function about(): Response
     {
-        $dataLoaderService->loadFiles();
-        // return $this->json(['response' => 200]);
-        return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
-        ]);
+        return $this->render('home/index.html.twig');
     }
-
-    // /**
-    //  * @Route("/test", name="app.test")
-    //  */
-    // public function test(TestService $testService): Response
-    // {
-    //     $testService->testExtractor();
-    //     // return $this->json(['response' => 200]);
-    //     return $this->render('home/index.html.twig', [
-    //         'controller_name' => 'HomeController',
-    //     ]);
-    // }
 }
