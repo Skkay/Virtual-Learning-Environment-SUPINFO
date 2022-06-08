@@ -13,6 +13,19 @@ services:
     volumes:
       - ./docker/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
       - ./public:/srv/app/public:ro
+    ports:
+      # HTTP
+      - target: 80
+        published: 8080
+        protocol: tcp
+      # HTTPS
+      - target: 443
+        published: 8443
+        protocol: tcp
+      # HTTP/3
+      - target: 443
+        published: 8443
+        protocol: udp
 
 ###> symfony/mercure-bundle ###
 ###< symfony/mercure-bundle ###
