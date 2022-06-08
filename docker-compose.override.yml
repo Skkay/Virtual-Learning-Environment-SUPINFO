@@ -26,6 +26,3 @@ services:
       - target: 443
         published: 8443
         protocol: udp
-
-###> symfony/mercure-bundle ###
-###< symfony/mercure-bundle ###
