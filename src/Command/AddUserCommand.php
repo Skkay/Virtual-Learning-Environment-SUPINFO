@@ -3,6 +3,7 @@
 namespace App\Command;
 
 use App\Entity\User;
+use App\Repository\UserRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -22,10 +23,15 @@ class AddUserCommand extends Command
     private $em;
     private $passwordHasher;
 
+    /** @var UserRepository */
+    private $userRepository;
+
     public function __construct(ManagerRegistry $doctrine, UserPasswordHasherInterface $passwordHasher)
     {
         $this->em = $doctrine->getManager();
         $this->passwordHasher = $passwordHasher;
+
+        $this->userRepository = $this->em->getRepository(User::class);
 
         parent::__construct();
     }
@@ -62,6 +68,12 @@ class AddUserCommand extends Command
             if ($helper->ask($input, $output, new ConfirmationQuestion('Add a password ? [Y/n]'))) {
                 $password = $helper->ask($input, $output, (new Question('Password:'))->setHidden(true)->setHiddenFallback(false));
             }
+        }
+
+        if ($this->userRepository->findOneBy(['email' => $email])) {
+            $io->note('A user with email "'. $email .'" already exists.');
+
+            return Command::FAILURE;
         }
 
         $user = new User();
