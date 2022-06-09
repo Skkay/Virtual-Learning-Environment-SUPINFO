@@ -54,7 +54,7 @@ services:
     image: mariadb:${DATABASE_VERSION:-10.7.4}
     restart: always
     volumes:
-      - mariadb_data:/var/lib/mariadb/data:rw
+      - mariadb_data:/var/lib/mysql:rw
     environment:
       - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD:-ChangeMe}
       - MARIADB_DATABASE=${DATABASE_NAME:-app}
