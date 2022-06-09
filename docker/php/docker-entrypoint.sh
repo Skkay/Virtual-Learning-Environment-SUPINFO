@@ -64,6 +64,8 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'php' ] || [ "$1" = 'bin/console' ]; then
 		if [ "$( find ./migrations -iname '*.php' -print -quit )" ]; then
 			bin/console doctrine:migrations:migrate --no-interaction
 		fi
+
+        bin/console app:add-user admin@example.com --password=admin --role=ROLE_ADMIN
 	fi
 
 	setfacl -R -m u:www-data:rwX -m u:"$(whoami)":rwX var
