@@ -89,35 +89,10 @@ RUN mkdir -p /var/log/supervisor
 COPY docker/php/supervisor /etc/supervisor
 ###< supervisor ###
 
-# Allow to choose skeleton
-ARG SKELETON="symfony/skeleton"
-ENV SKELETON ${SKELETON}
-
-# Allow to use development versions of Symfony
-ARG STABILITY="stable"
-ENV STABILITY ${STABILITY}
-
-# Allow to select skeleton version
-ARG SYMFONY_VERSION=""
-ENV SYMFONY_VERSION ${SYMFONY_VERSION}
-
-# Download the Symfony skeleton and leverage Docker cache layers
-RUN composer create-project "${SKELETON} ${SYMFONY_VERSION}" . --stability=$STABILITY --prefer-dist --no-dev --no-progress --no-interaction; \
-	composer clear-cache
-
 ###> recipes ###
 ###< recipes ###
 
 COPY . .
-
-RUN set -eux; \
-	mkdir -p var/cache var/log; \
-	composer install --prefer-dist --no-dev --no-progress --no-scripts --no-interaction; \
-	composer dump-autoload --classmap-authoritative --no-dev; \
-	composer symfony:dump-env prod; \
-	composer run-script --no-dev post-install-cmd; \
-	chmod 777 bin/console; sync
-VOLUME /srv/app/var
 
 ENTRYPOINT ["docker-entrypoint"]
 CMD ["php-fpm"]
