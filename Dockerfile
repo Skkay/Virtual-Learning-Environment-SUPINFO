@@ -78,6 +78,12 @@ ENV PATH="${PATH}:/root/.composer/vendor/bin"
 
 WORKDIR /srv/app
 
+###> supervisor ###
+RUN apk add --no-cache supervisor
+RUN mkdir -p /var/log/supervisor
+COPY docker/php/supervisor /etc/supervisor
+###< supervisor ###
+
 # Allow to choose skeleton
 ARG SKELETON="symfony/skeleton"
 ENV SKELETON ${SKELETON}
