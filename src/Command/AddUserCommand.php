@@ -73,7 +73,7 @@ class AddUserCommand extends Command
         if ($this->userRepository->findOneBy(['email' => $email])) {
             $io->note('A user with email "'. $email .'" already exists.');
 
-            return Command::FAILURE;
+            return Command::SUCCESS;
         }
 
         $user = new User();
