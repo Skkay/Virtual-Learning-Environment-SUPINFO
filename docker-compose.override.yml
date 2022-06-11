@@ -8,6 +8,7 @@ services:
       - ./docker/php/conf.d/symfony.dev.ini:/usr/local/etc/php/conf.d/symfony.ini
     environment:
       APP_ENV: dev
+      MAILER_DSN: smtp://maildev:25
 
   caddy:
     volumes:
@@ -36,3 +37,10 @@ services:
       - 8081:80
     environment:
       - PMA_HOST=database
+
+  maildev:
+    image: maildev/maildev:latest
+    restart: unless-stopped
+    command: bin/maildev --web 80 --smtp 25 --hide-extensions STARTTLS
+    ports:
+      - 8082:80
