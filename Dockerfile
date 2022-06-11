@@ -78,6 +78,11 @@ ENV PATH="${PATH}:/root/.composer/vendor/bin"
 
 WORKDIR /srv/app
 
+###> yarn ###
+RUN apk add --no-cache npm
+RUN npm install --global yarn
+###< yarn ###
+
 ###> supervisor ###
 RUN apk add --no-cache supervisor
 RUN mkdir -p /var/log/supervisor
