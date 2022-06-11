@@ -76,7 +76,7 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'php' ] || [ "$1" = 'bin/console' ]; then
 
     echo "Starting supervisord"
     mkdir -p /var/log/supervisor
-    # supervisord
+    supervisord -c /etc/supervisor/supervisord.conf
 fi
 
 exec docker-php-entrypoint "$@"
