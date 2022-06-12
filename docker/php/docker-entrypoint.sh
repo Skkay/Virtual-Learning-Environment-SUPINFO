@@ -51,7 +51,7 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'php' ] || [ "$1" = 'bin/console' ]; then
         bin/console doctrine:migrations:migrate --no-interaction
     fi
 
-    bin/console app:add-user admin@example.com --password=admin --role=ROLE_ADMIN
+    bin/console app:create-default-admin-user
 
 	setfacl -R -m u:www-data:rwX -m u:"$(whoami)":rwX var
 	setfacl -dR -m u:www-data:rwX -m u:"$(whoami)":rwX var
