@@ -89,6 +89,11 @@ RUN mkdir -p /var/log/supervisor
 COPY docker/php/supervisor /etc/supervisor
 ###< supervisor ###
 
+###> mysql-client ###
+# mysqldump is required to export database from app
+RUN apk add mysql-client
+###< mysql-client ###
+
 ###> recipes ###
 ###< recipes ###
 
