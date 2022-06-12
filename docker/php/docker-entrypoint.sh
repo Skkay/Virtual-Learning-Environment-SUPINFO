@@ -20,7 +20,6 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'php' ] || [ "$1" = 'bin/console' ]; then
         yarn encore dev
     else
         composer install --prefer-dist --no-progress --no-interaction --no-dev --optimize-autoloader
-        composer dump-env prod
         composer run-script --no-dev post-install-cmd
         yarn encore prod
 	fi
