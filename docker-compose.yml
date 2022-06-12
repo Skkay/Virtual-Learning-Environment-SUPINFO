@@ -1,6 +1,7 @@
 version: "3.4"
 
 services:
+###> php app ###
   php:
     build:
       context: .
@@ -29,7 +30,9 @@ services:
       MAILER_DSN: smtp://localhost:25
       ADMIN_EMAIL: ${ADMIN_ACCOUNT_EMAIL}
       ADMIN_PASSWORD: ${ADMIN_ACCOUNT_PASSWORD}
+###< php app ###
 
+###> caddy ###
   caddy:
     build:
       context: .
@@ -45,19 +48,12 @@ services:
       - caddy_config:/config
       - public_dir:/srv/app/public
     ports:
-      # HTTP
-      - target: 80
-        published: 80
-        protocol: tcp
-      # HTTPS
-      - target: 443
-        published: 443
-        protocol: tcp
-      # HTTP/3
-      - target: 443
-        published: 443
-        protocol: udp
+      - "80:80/tcp"   # HTTP
+      - "443:443/tcp" # HTTPS
+      - "443:443/udp" # HTTP/3
+###< caddy ###
 
+###> mariadb ###
   database:
     image: mariadb:10.7.4
     restart: always
@@ -68,6 +64,7 @@ services:
       MARIADB_USER: ${DATABASE_USER}
       MARIADB_PASSWORD: ${DATABASE_PASSWORD}
       MARIADB_ROOT_PASSWORD: ${DATABASE_ROOT_PASSWORD}
+###< mariadb ###
 
 volumes:
   php_socket:

@@ -2,6 +2,7 @@ version: "3.4"
 
 # Development environment override
 services:
+###> php app ###
   php:
     volumes:
       - ./:/srv/app:rw
@@ -9,37 +10,35 @@ services:
     environment:
       APP_ENV: dev
       MAILER_DSN: smtp://maildev:25
+###< php app ###
 
+###> caddy ###
   caddy:
     volumes:
       - ./docker/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
     ports:
-      # HTTP
-      - target: 80
-        published: 8080
-        protocol: tcp
-      # HTTPS
-      - target: 443
-        published: 8443
-        protocol: tcp
-      # HTTP/3
-      - target: 443
-        published: 8443
-        protocol: udp
+      - "8080:80/tcp"  # HTTP
+      - "8443:443/tcp" # HTTPS
+      - "8443:443/udp" # HTTP/3
+###< caddy ###
 
+###> phpmyadmin ###
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:5.2
     restart: unless-stopped
     depends_on:
       - database
     ports:
-      - 8081:80
+      - "8081:80"
     environment:
       - PMA_HOST=database
+###< phpmyadmin ###
 
+###> maildev ###
   maildev:
-    image: maildev/maildev:latest
+    image: maildev/maildev:2.0.5
     restart: unless-stopped
     command: bin/maildev --web 80 --smtp 25 --hide-extensions STARTTLS
     ports:
-      - 8082:80
+      - "8082:80"
+###< maildev ###
