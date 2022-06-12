@@ -10,6 +10,7 @@ services:
       - database
     volumes:
       - php_socket:/var/run/php
+      - public_dir:/srv/app/public
     healthcheck:
       interval: 10s
       timeout: 3s
@@ -37,6 +38,7 @@ services:
       - php_socket:/var/run/php
       - caddy_data:/data
       - caddy_config:/config
+      - public_dir:/srv/app/public
     ports:
       # HTTP
       - target: 80
@@ -67,3 +69,4 @@ volumes:
   caddy_data:
   caddy_config:
   mariadb_data:
+  public_dir:

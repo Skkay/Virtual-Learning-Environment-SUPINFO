@@ -13,7 +13,6 @@ services:
   caddy:
     volumes:
       - ./docker/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
-      - ./public:/srv/app/public:ro
     ports:
       # HTTP
       - target: 80
