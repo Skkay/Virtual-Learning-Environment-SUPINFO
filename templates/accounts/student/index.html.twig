@@ -3,26 +3,33 @@
 {% block title %}Hello AccountsController!{% endblock %}
 
 {% block body %}
-<h1>Students</h1>
-
-<table class="table table-sm table-hover">
-    <thead>
-        <tr>
-            <th scope="col">student.id</th>
-            <th scope="col">student.user.firstName</th>
-            <th scope="col">student.user.lastName</th>
-            <th scope="col">student.campus.label</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for student in students %}
-        <tr>
-            <td><a href="{{ path('app.accounts.student.show', {'id': student.id} ) }}">{{ student.id }}</a></td>
-            <td>{{ student.user.firstName ?? '-' }}</td>
-            <td>{{ student.user.lastName ?? '-' }}</td>
-            <td>{{ student.campus.label ?? '-' }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+        <div class="container">       
+            <header class="animated bounceInDown">
+                <h1><b>Etudiant</b></h1><br />
+            </header>                                                                
+            <div class="table-responsive">          
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Détails</th>
+                            <th scope="col">Prénom</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Campus</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for student in students %}
+                        <tr>
+                            <td><a href="{{ path('app.accounts.student.show', {'id': student.id}) }}"><i class="pe-7s-plus" style="font-size:30px;margin-top:4px"></i></a></td>
+                            <td>{{ student.user.firstName ?? '-' }}</td>
+                            <td>{{ student.user.lastName ?? '-' }}</td>
+                            <td>{{ student.campus.label ?? '-' }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 {% endblock %}

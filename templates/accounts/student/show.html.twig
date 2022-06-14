@@ -3,40 +3,50 @@
 {% block title %}Hello AccountsController!{% endblock %}
 
 {% block body %}
-<ul>
-    <li><b>student.id:</b> {{ student.id }}</li>
-    <li><b>student.user.email:</b> {{ student.user.email }}</li>
-    <li><b>student.user.firstname:</b> {{ student.user.firstname ?? '-' }}</li>
-    <li><b>student.user.lastname:</b> {{ student.user.lastname ?? '-' }}</li>
-    <li><b>student.campus.label:</b> {{ student.campus.label ?? '-' }}</li>
-    <li><b>student.level.label:</b> {{ student.level.label ?? '-' }}</li>
-    <li><b>student.entryLevel.label:</b> {{ student.entryLevel.label ?? '-' }}</li>
-    <li><b>student.exitLevel.label:</b> {{ student.exitLevel.label ?? '-' }}</li>
-    <li><b>student.entryYear:</b> {{ student.entryYear ?? '-' }}</li>
-    <li><b>student.exitYear:</b> {{ student.exitYear ?? '-' }}</li>
-    <li><b>student.professionalTrainingContract:</b> {{ student.professionalTrainingContract ?? '-' }}</li>
-    <li><b>student.accountsPaid:</b> {{ student.accountsPaid ?? '-' }}</li>
-    <li><b>student.accountsPaymentDue:</b> {{ student.accountsPaymentDue ?? '-' }}</li>
-    <li><b>student.accountsReminded:</b> {{ student.accountsReminded ?? '-' }}</li>
-    <li><b>student.accountsPaymentType.label:</b> {{ student.accountsPaymentType.label ?? '-' }}</li>
-    <li><b>student.companyTrainingContract.name:</b> {{ student.companyTrainingContract.name ?? '-' }}</li>
-    <li><b>student.dateStartContract:</b> {{ student.dateStartContract is empty ? '-' : student.dateStartContract|date('d-m-Y') }}</li>
-    <li><b>student.lastDiploma.label:</b> {{ student.lastDiploma.label ?? '-' }}</li>
-    <li><b>student.dateOfBirth:</b> {{ student.dateOfBirth is empty ? '-' : student.dateOfBirth|date('d-m-Y') }}</li>
-    <li><b>student.address:</b> {{ student.address ?? '-' }}</li>
-    <li><b>student.gender.label:</b> {{ student.gender.label ?? '-' }}</li>
-    <li><b>student.region.name:</b> {{ student.region.name ?? '-' }}</li>
-</ul>
+<div class="container">       
+    <header class="animated bounceInDown">
+        <h1><b>Informations sur {{ student.user.lastname ?? '-' }} {{ student.user.firstname ?? '-' }}</b></h1><br />
+    </header>                
+    <div class="container">  
+        <p>
+            L'étudiant {{ student.user.lastname ?? '-' }} {{ student.user.firstname ?? '-' }} ( {{ student.user.email }} ) est née le {{ student.dateOfBirth is empty ? '-' : student.dateOfBirth|date('d/m/Y') }}.<br/>
+            {{ student.user.lastname ?? '-' }} {{ student.user.firstname ?? '-' }} vit en {{ student.region.name ?? '-' }} au {{ student.address ?? '-' }} et se trouve dans le campus {{ student.campus.label ?? '-' }} {{ student.level.label ?? '' is empty ? '' : 'en ' ~ student.level.label }}.<br />
+            L'étudiant est entré en {{ student.entryYear ?? '-' }} dans la promo {{ student.entryLevel.label ?? '-' }} {{ student.exitYear ?? '' is empty ? '' : ' et a terminé son cursus en ' ~ student.exitYear }} {{ student.exitLevel.label ?? '' is empty ? '' : ' dans la promo ' ~ student.exitLevel.label }}.<br />
+            Son dernier diplôme est le {{ student.lastDiploma.label ?? '-' }}.
+        </p>
+        
+        {% if student.companyTrainingContract.name ?? '' is not empty %}
+            <p>Il est en contrat pro avec {{ student.companyTrainingContract.name ?? '' }} depuis le {{ student.dateStartContract|date('d/m/Y') }}.</p>
+        {% endif %}
 
-{{ form_start(commentForm) }}
-    {{ form_row(commentForm.comment) }}
+        {% if student.professionalTrainingContract == 1 %}
+            <p>Il est en contrat de formation professionnelle.</p>
+        {% endif %}
 
-    <button type="submit" class="btn btn-primary">{{ 'form.misc.save'|trans }}</button>
-{{ form_end(commentForm)}}
+        {% if student.accountsPaid == 1 %}
+            <p>Sa scolarité est payé en {{ student.accountsPaymentType.label ?? '-' }}.</p>
+        {% endif %}
 
-<ul>
-    {% for comment in comments %}
-    <li><i>{{ comment.createdAt|date('Y-m-d H:i:s') }}</i> - {{ comment.comment }}</li>
-    {% endfor %}
-</ul>
+        {% if student.accountsPaymentDue ?? '' is not null %}
+            <p>Il reste {{ student.accountsPaymentDue }} € a régler pour cet étudiant.</p>
+        {% endif %}
+
+        {% if student.accountsReminded == 1 %}
+            <p>Compte rappelé : student.accountsReminded.</p>
+        {% endif %}
+
+        {{ form_start(commentForm) }}
+            <div  style="width:70%;margin-left: auto;margin-right: auto;margin-top:60px">
+                {{ form_row(commentForm.comment) }}
+                <button type="submit" class="btn btn-primary" style="background-color:#1D62F0;color:white;border:none;">{{ 'form.misc.save'|trans }}</button>
+            </div>
+        {{ form_end(commentForm)}}
+
+        <ul>
+            {% for comment in comments %}
+            <li><i>{{ comment.createdAt|date('d-m-Y à H:i') }}</i> - {{ comment.comment }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 {% endblock %}

@@ -3,31 +3,53 @@
 {% block title %}Hello ModuleController!{% endblock %}
 
 {% block body %}
-<ul>
-    <li><b>module.id:</b> {{ module.id }}</li>
-    <li><b>module.label:</b> {{ module.label }}</li>
-    <li><b>module.speciality:</b> {{ module.speciality }}</li>
-    <li><b>module.ects:</b> {{ module.ects }}</li>
-    <li><b>instructors:</b>
-        <ul>
-            {% for instructor in instructors %}
-                <li>{{ instructor.user.email }}</li>
-            {% endfor %}
-        </ul>
-    </li>
-    <li><b>module.student:</b>
-        <ul>
-            {% for student in students %}
-                <li>
-                    {{ student.user.firstName }} {{ student.user.lastName }}: 
-                    {% if grades[student.user.userIdentifier].grade is defined and grades[student.user.userIdentifier].grade is not null %}
-                        {{ grades[student.user.userIdentifier].grade }} {{ grades[student.user.userIdentifier].grade > 10 ? 'educational_coordinator.module.misc.accepted'|trans : 'educational_coordinator.module.misc.fail'|trans }}
-                    {% else %}    
-                        -
-                    {% endif %}
-                </li>
-            {% endfor %}
-        </ul>
-    </li>
-</ul>
+    <div class="container">       
+        <header class="animated bounceInDown">
+            <h1><b>Détails du modules {{ module.label }}</b></h1><br />
+        </header>                
+        <div class="container">  
+            
+            <p>Le module {{ module.label }} {{ module.speciality == 1 ? ' est une spécialité qui' : '' }} compte pour {{ module.ects }} crédits ECTS.</p>
+            <p>La ou les instructeurs lié(s) à cette matière sont :</p>
+            <ul>
+                {% for instructor in instructors %}
+                    <li>{{ instructor.user.email }}</li>
+                {% endfor %}
+            </ul>
+
+            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                <div class="container">    
+                    <header class="animated bounceInDown">
+                        <h4><b>Notes de l'étudiant : </b></h4>
+                    </header>                                                                    
+                        <div class="table-responsive">          
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Etudiant</th>
+                                    <th scope="col">Notes</th>
+                                    <th scope="col">Résultat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for student in students %}
+                                <tr>
+                                    <td>{{ student.user.firstName }} {{ student.user.lastName }}</td>
+                                    
+                                    {% if grades[student.user.userIdentifier].grade is defined and grades[student.user.userIdentifier].grade is not null %}
+                                        <td>{{ grades[student.user.userIdentifier].grade }}</td>
+                                        <td>{{ grades[student.user.userIdentifier].grade > 10 ? 'educational_coordinator.module.misc.accepted'|trans : 'educational_coordinator.module.misc.fail'|trans }}</td>
+                                    {% else %}
+                                        <td>-</td>
+                                        <td>-</td>
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -3,22 +3,42 @@
 {% block title %}Hello ProfileController!{% endblock %}
 
 {% block body %}
-<h1>{{ 'profile.title.index'|trans }}</h1>
-<h4 class="text-muted">{{ app.user.firstName }} {{ app.user.lastName }}</h4>
+    <div class="container">
+        <h1>{{ 'profile.title.index'|trans }}</h1>
+        <div id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    
+                    <div class="modal-body">
+                        
+                        <div class="card-body">
+                            
+                            <h3 class="text-muted text-center"><b>{{ app.user.firstName }} {{ app.user.lastName }}</b></h3>
 
-{% for flash in app.flashes('password_set') %}
-    <div class="alert alert-dismissible fade show {{ flash.type ?? 'alert-primary' }}" role="alert">
-        {{ flash.message|trans }}.
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <h4 class="card-title text-center pb-3">{{ 'profile.security.title.category'|trans }}</h4>
+                            
+                                <div class="text-center">
+                                    {% if app.user.password == null %}
+                                        <a href="{{ path('app.profile.security.set_password') }}"><button class="btn btn-primary text-uppercase" style="background-color:#1D62F0;color:white;border:none">{{ 'profile.security.misc.define_password'|trans }}</button></a>
+                                    {% else %}        
+                                        <a href="{{ path('app.profile.security.update_password') }}"><button class="btn btn-primary text-uppercase" style="background-color:#1D62F0;color:white;border:none">{{ 'profile.security.misc.update_password'|trans }}</button></a>
+                                    {% endif %}
+                                </div>
+                
+                            <div class="my-4"></div>
+
+                            {% for flash in app.flashes('password_set') %}
+                                <div class="alert alert-dismissible fade show {{ flash.type ?? 'alert-primary' }}" role="alert">
+                                    {{ flash.message|trans }}.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                        
+                        </div>
+
+                    </div>      
+                </div>
+            </div>
+        </div>
     </div>
-{% endfor %}
-
-<h5>{{ 'profile.security.title.category'|trans }}</h5>
-<ul>
-    {% if app.user.password == null %}
-        <li><a href="{{ path('app.profile.security.set_password') }}">{{ 'profile.security.misc.define_password'|trans }}</a></li>
-    {% else %}        
-        <li><a href="{{ path('app.profile.security.update_password') }}">{{ 'profile.security.misc.update_password'|trans }}</a></li>
-    {% endif %}
-</ul>
 {% endblock %}

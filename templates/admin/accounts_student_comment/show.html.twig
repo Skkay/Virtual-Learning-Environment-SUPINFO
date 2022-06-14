@@ -3,11 +3,16 @@
 {% block title %}Hello AccountsStudentCommentController!{% endblock %}
 
 {% block body %}
-<ul>
-    <li><b>accountsStudentComment.id:</b> {{ accountsStudentComment.id }}</li>
-    <li><b>accountsStudentComment.createdAt:</b> {{ accountsStudentComment.createdAt|date('d-m-Y') }}</li>
-    <li><b>accountsStudentComment.updatedAt:</b> {{ accountsStudentComment.updatedAt|date('d-m-Y') }}</li>
-    <li><b>accountsStudentComment.student.user.email:</b> {{ accountsStudentComment.student.user.email }}</li>
-    <li><b>accountsStudentComment.comment:</b> {{ accountsStudentComment.comment }}</li>
-</ul>
+<div class="container">       
+    <header class="animated bounceInDown">
+        <h1><b>Commentaire de l'élève</b></h1><br />
+    </header>                
+    <div class="container">
+        <p>Le commentaire de {{ accountsStudentComment.student.user.email }} a été crée de {{ accountsStudentComment.createdAt|date('d-m-Y') }} et mise à jour le {{ accountsStudentComment.updatedAt|date('d-m-Y') }}.</p>
+        <p>Commentaires : </p>
+        <ul>
+            <li>{{ accountsStudentComment.comment }}</li>
+        </ul>
+    </div>
+</div>
 {% endblock %}

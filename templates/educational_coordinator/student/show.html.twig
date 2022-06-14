@@ -3,41 +3,63 @@
 {% block title %}Hello EducationalCoordinatorController!{% endblock %}
 
 {% block body %}
-<ul>
-    <li><b>student.id:</b> {{ student.id }}</li>
-    <li><b>student.user.email:</b> {{ student.user.email }}</li>
-    <li><b>student.user.firstname:</b> {{ student.user.firstname ?? '-' }}</li>
-    <li><b>student.user.lastname:</b> {{ student.user.lastname ?? '-' }}</li>
-    <li><b>student.campus.label:</b> {{ student.campus.label ?? '-' }}</li>
-    <li><b>student.level.label:</b> {{ student.level.label ?? '-' }}</li>
-    <li><b>student.professionalTrainingContract:</b> {{ student.professionalTrainingContract ?? '-' }}</li>
-    <li><b>student.companyTrainingContract.name:</b> {{ student.companyTrainingContract.name ?? '-' }}</li>
-    <li><b>student.dateStartContract:</b> {{ student.dateStartContract is empty ? '-' : student.dateStartContract|date('d-m-Y') }}</li>
-    <li><b>student.dateOfBirth:</b> {{ student.dateOfBirth is empty ? '-' : student.dateOfBirth|date('d-m-Y') }}</li>
-    <li><b>student.gender.label:</b> {{ student.gender.label ?? '-' }}</li>
-    <li><b>student.region.name:</b> {{ student.region.name ?? '-' }}</li>
-    <li><b>student.grades:</b>
-        <ul>
-            {% for module in modules %}
-                <li>{{ module.label }}:</u>
-                    {% if grades[module.label] is defined %}
-                        {{ grades[module.label] }} - {{ grades[module.label] > 10 ? 'educational_coordinator.student.misc.accepted'|trans : 'educational_coordinator.student.misc.fail'|trans }}
-                    {% else %}
-                        -
-                    {% endif %}
-                </li>
-            {% endfor %}
-        </ul>
-    </li>
-    <li><b>student.speciality.label:</b> {{ student.speciality.label ?? '-' }}</li>
-    <li>
-        <b>student.absences:</b> {{ student.absences|length }}
-        <ul>
-            {% for absence in student.absences %}
-                <li>{{ absence.date|date('d/m/Y') }} {{ absence.period }} : {{ absence.excuse ?? '-' }}</li>
-            {% endfor %}
-        </ul>
-    </li>
-    <li><b>student.isSCT:</b> {{ student.isSCT ? 'educational_coordinator.student.misc.yes'|trans : 'educational_coordinator.student.misc.no'|trans }}</li>
-</ul>
+    <div class="container">       
+        <header class="animated bounceInDown">
+            <h1><b>Informations sur {{ student.user.lastname ?? '-' }} {{ student.user.firstname ?? '-' }}</b></h1><br />
+        </header>                
+        <div class="container">  
+            <p>
+                L'étudiant {{ student.user.lastname ?? '-' }} {{ student.user.firstname ?? '-' }} ( {{ student.user.email }} ) est née le {{ student.dateOfBirth is empty ? '-' : student.dateOfBirth|date('d/m/Y') }}.<br/>
+                {{ student.user.lastname ?? '-' }} {{ student.user.firstname ?? '-' }} vit en {{ student.region.name ?? '-' }} et se trouve dans le campus {{ student.campus.label ?? '-' }} {{ student.level.label ?? '' is empty ? '' : 'en ' ~ student.level.label }}.
+            </p>
+            
+            {% if student.companyTrainingContract.name ?? '' is empty %}
+            {% else %}
+                <p>Il est en contrat pro avec {{ student.companyTrainingContract.name ?? '' }} depuis le {{ student.dateStartContract|date('d/m/Y') }}.</p>
+            {% endif %}
+
+            {% if student.absences|length > 0 %}
+                <p>L'étudiant compte {{ student.absences|length }} abscence(s) dont les justificatifs sont :</p>
+                <ul>
+                    {% for absence in student.absences %}
+                        <li>{{ absence.date|date('d/m/Y') }} {{ absence.period }} : {{ absence.excuse ?? '-' }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>L'étudiant n'a jamais été absent.</p>
+            {% endif %}
+
+            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                <div class="container">    
+                    <header class="animated bounceInDown">
+                        <h4><b>Notes de l'étudiant : </b></h4>
+                    </header>                                                                    
+                        <div class="table-responsive">          
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Modules</th>
+                                    <th scope="col">Notes</th>
+                                    <th scope="col">Résultat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for module in modules %}
+                                <tr>
+                                    <td>{{ module.label }}</td>
+                                    <td>{{ grades[module.label] ?? '-' }}</td>
+                                    {% if grades[module.label] is defined %}
+                                        <td>{{ grades[module.label] ?? '-' > 10 ? 'educational_coordinator.student.misc.accepted'|trans : 'educational_coordinator.student.misc.fail'|trans }}</td>
+                                    {% else %}
+                                        <td>-</td>
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

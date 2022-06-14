@@ -3,21 +3,33 @@
 {% block title %}Hello ModuleController!{% endblock %}
 
 {% block body %}
-<ul>
-    <li><b>module.id:</b> {{ module.id }}</li>
-    <li><b>module.label:</b> {{ module.label }}</li>
-    <li><b>module.speciality:</b> {{ module.speciality ?? '-' }}</li>
-    <li><b>grade:</b> {{ grade.grade ?? '-' }}</li>
-    <li><b>module.instructors:</b>
-        <ul>
-        {% if module.instructors is empty %}
-            <li>-</li>
-        {% else %}
-            {% for instructor in module.instructors %}
-                <li>{{ instructor.user.email }}</li>
-            {% endfor %}
-        {% endif %}
-        </ul>
-    </li>
-</ul>
+    <div class="container">       
+        <header class="animated bounceInDown">
+            <h1><b>Details du module {{ module.label }}</b></h1><br />
+        </header>                
+        <div class="container">  
+            {% if module.speciality == 1 %}
+                <p>Le module {{ module.label }} est une spécialité de {{ module.label|first }} années.</p>
+            {% else %}
+                <p>Le module {{ module.label }} est un cours de {{ module.label|first }} années.</p>
+            {% endif %}   
+
+            {% if grade.grade ?? '' is empty or  grade.grade ?? '' is null %}
+                <p>Vous n'avez pas encore recu de note pour ce module.</p>
+            {% else %}
+                <p>Pour ce module vous avez recu la note de {{ grade.grade ?? '' }}</p>
+            {% endif %}  
+
+            {% if module.instructors is empty %}
+                <p>Il n'y a pas encore d'intervenants pour ce module.</p>
+            {% else %}
+                <p>Les intervenants de cours sont les suivants : </p>
+                <ul>
+                    {% for instructor in module.instructors %}
+                        <li>{{ instructor.user.email }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}

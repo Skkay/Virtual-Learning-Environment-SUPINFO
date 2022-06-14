@@ -3,17 +3,33 @@
 {% block title %}Hello InstructorController!{% endblock %}
 
 {% block body %}
-<h1>{{ 'educational_coordinator.instructor.title.index'|trans }}</h1>
-
-<ul>
-    {% for instructor in instructors %}
-        <li>{{ instructor.user.firstName }} {{ instructor.user.lastName }} ({{ instructor.user.email }}):
-            <ul>
-                {% for module in instructor.modules %}
-                    <li>{{ module.label }}</li>
-                {% endfor %}
-            </ul>
-        </li>
-    {% endfor %}
-</ul>
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+        <div class="container">       
+            <header class="animated bounceInDown">
+                <h1><b>{{ 'educational_coordinator.instructor.title.index'|trans }}</b></h1><br />
+            </header>                                                                
+            <div class="table-responsive">          
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Adresse Mail</th>
+                            <th scope="col">Module</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for instructor in instructors %}
+                            <tr>
+                                <td>{{ instructor.user.firstName }} {{ instructor.user.lastName }} </td>
+                                <td><a href="mailto:{{ instructor.user.email }}" target="_blank">{{ instructor.user.email }}</a></td>
+                                {% for module in instructor.modules %}
+                                    <td>{{ module.label }}</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 {% endblock %}

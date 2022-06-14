@@ -3,10 +3,24 @@
 {% block title %}Hello AccountsController!{% endblock %}
 
 {% block body %}
-<h1>{{ 'accounts.dashboard.title.index'|trans }}</h1>
-<h4 class="text-muted">{{ 'accounts.dashboard.title.role'|trans }}</h4>
-
-<ul>
-    <li><a href="{{ path('app.accounts.student.index') }}">{{ 'accounts.dashboard.misc.student_list'|trans }}</a></li>
-</ul>
+        <section id="services" class="section-bg">
+            <div class="container">
+                <header class="section-header animated bounceInDown">
+                    <h2><b>Bienvenue dans l'espace <span style="color:#2282ff">{{ 'accounts.dashboard.title.role'|trans }} </span></b></h2><br /><br />
+                </header>
+                <div class="row">
+                    
+                    <div class="col-md-12 col-lg-12 wow bounceInUp" data-wow-duration="1.4s">
+                        <a href="{{ path('app.accounts.student.index') }}">
+                            <div class="box">
+                                <div class="icon" style="background: #e6fdfc;"><i class="pe-7s-note2" style="color: #3fcdc7;font-size:28px;margin-top:4px"></i></div>
+                                <h4 class="title">{{ 'accounts.dashboard.misc.student_list'|trans }}</h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
 {% endblock %}

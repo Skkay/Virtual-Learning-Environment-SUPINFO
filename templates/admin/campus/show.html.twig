@@ -3,42 +3,40 @@
 {% block title %}Hello CampusController!{% endblock %}
 
 {% block body %}
-<ul>
-    <li><b>campus.id:</b> {{ campus.id }}</li>
-    <li><b>campus.label:</b> {{ campus.label }}</li>
-    <li><b>campus.city:</b> {{ campus.city ?? '-' }}</li>
-    <li><b>campus.sections:</b>
-        <ul>
-        {% if campus.sections is empty %}
-            <li>-</li>
-        {% else %}
-            {% for section in campus.sections %}
-                <li>{{ section.label }}</li>
-            {% endfor %}
-        {% endif %}
-        </ul>
-    </li>
-    <li><b>campus.staff:</b>
-        <ul>
-        {% if campus.staff is empty %}
-            <li>-</li>
-        {% else %}
-            {% for staff in campus.staff %}
-                <li>{{ staff.user.email }}</li>
-            {% endfor %}
-        {% endif %}
-        </ul>
-    </li>
-    <li><b>campus.students:</b>
-        <ul>
-        {% if campus.students is empty %}
-            <li>-</li>
-        {% else %}
-            {% for student in campus.students %}
-                <li>{{ student.user.email }}</li>
-            {% endfor %}
-        {% endif %}
-        </ul>
-    </li>
-</ul>
+    <div class="container">       
+        <header class="animated bounceInDown">
+            <h1><b>Détails du campus de {{ campus.label }}</b></h1><br />
+        </header>                
+        <div class="container">
+            <p>{{ campus.city ?? '' is empty ? '' : ' Le campus de ' ~ campus.label  ~ ' se trouve dans la ville de se trouve dans la ville de ' ~ campus.city  }}</p>
+            {% if campus.sections is not empty %}
+                <p>Section(s) du campus :</p>
+                {% for section in campus.sections %}
+                    <ul>
+                        <li>{{ section.label }}</li>
+                    </ul>
+                {% endfor %}
+            {% endif %}
+            
+            {% if campus.staff is not empty %}
+                <p>Campus staff : </p>
+                {% for staff in campus.staff %}
+                    <ul>
+                        <li>{{ staff.user.email }}</li>
+                    </ul>
+                {% endfor %}
+            {% endif %}
+
+            
+            {% if campus.students is not empty %}
+                <p>Etudiant du campus de {{ campus.label }} : </p>
+                {% for student in campus.students %}
+                    <ul>
+                        <li>{{ student.user.email }}</li>
+                    </ul>
+                {% endfor %}
+            {% endif %}
+            
+        </div>
+    </div>
 {% endblock %}

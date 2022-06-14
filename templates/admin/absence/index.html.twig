@@ -3,28 +3,35 @@
 {% block title %}Hello AbsenceController!{% endblock %}
 
 {% block body %}
-<h1>Absences</h1>
-
-<table class="table table-sm table-hover">
-    <thead>
-        <tr>
-            <th scope="col">absence.id</th>
-            <th scope="col">absence.student.user.email</th>
-            <th scope="col">absence.date</th>
-            <th scope="col">absence.period</th>
-            <th scope="col">absence.excuse</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for absence in absences %}
-        <tr>
-            <td><a href="{{ path('app.admin.absence.show', {'id': absence.id} ) }}">{{ absence.id }}</a></td>
-            <td>{{ absence.student.user.email }}</td>
-            <td>{{ absence.date|date('d-m-Y') }}</td>
-            <td>{{ absence.period }}</td>
-            <td>{{ absence.excuse }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+        <div class="container">       
+            <header class="animated bounceInDown">
+                <h1><b>Absences</b></h1><br />
+            </header>                                                                
+            <div class="table-responsive">          
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Détails</th>
+                            <th scope="col">Adresse mail</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Période</th>
+                            <th scope="col">Justificatif</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for absence in absences %}
+                        <tr>
+                            <td><a href="{{ path('app.admin.absence.show', {'id': absence.id} ) }}"><i class="pe-7s-plus" style="font-size:30px;margin-top:4px"></i></a></td>
+                            <td>{{ absence.student.user.email }}</td>
+                            <td>{{ absence.date|date('d-m-Y') }}</td>
+                            <td>{{ absence.period }}</td>
+                            <td>{{ absence.excuse }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 {% endblock %}
