@@ -1,14 +1,44 @@
-version: '3'
+version: "3.4"
 
+# Development environment override
 services:
-###> doctrine/doctrine-bundle ###
-  database:
-    ports:
-      - "5432"
-###< doctrine/doctrine-bundle ###
+###> php app ###
+  php:
+    volumes:
+      - ./:/srv/app:rw
+      - ./docker/php/conf.d/symfony.dev.ini:/usr/local/etc/php/conf.d/symfony.ini
+    environment:
+      APP_ENV: dev
+      MAILER_DSN: smtp://maildev:25
+###< php app ###
 
-###> symfony/mailer ###
-  mailer:
-    image: schickling/mailcatcher
-    ports: [1025, 1080]
-###< symfony/mailer ###
+###> caddy ###
+  caddy:
+    volumes:
+      - ./docker/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+    ports:
+      - "8080:80/tcp"  # HTTP
+      - "8443:443/tcp" # HTTPS
+      - "8443:443/udp" # HTTP/3
+###< caddy ###
+
+###> phpmyadmin ###
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:5.2
+    restart: unless-stopped
+    depends_on:
+      - database
+    ports:
+      - "8081:80"
+    environment:
+      - PMA_HOST=database
+###< phpmyadmin ###
+
+###> maildev ###
+  maildev:
+    image: maildev/maildev:2.0.5
+    restart: unless-stopped
+    command: bin/maildev --web 80 --smtp 25 --hide-extensions STARTTLS
+    ports:
+      - "8082:80"
+###< maildev ###

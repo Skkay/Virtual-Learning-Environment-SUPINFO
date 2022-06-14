@@ -13,6 +13,8 @@ parameters:
   app.database.user: '%env(DATABASE_USER)%'
   app.database.password: '%env(DATABASE_PASSWORD)%'
   app.database.name: '%env(DATABASE_NAME)%'
+  app.admin_account.email: '%env(ADMIN_EMAIL)%'
+  app.admin_account.password: '%env(ADMIN_PASSWORD)%'
 
 services:
     # default configuration for services in *this* file
