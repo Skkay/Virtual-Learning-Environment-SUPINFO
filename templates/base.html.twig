@@ -84,7 +84,6 @@
                             
 
                             <ul class="nav navbar-nav navbar-right d-inline-block">
-                            {% set currentPath = path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) %}
                             {% if app.request.uri == 'https://127.0.0.1:8000/modules' or 'https://127.0.0.1:8000/report_card/' in app.request.uri %}
                                 <li style="margin-top:8px;display:inline-block">
                                     <i class="pe-7s-search" aria-hidden="true"></i>
