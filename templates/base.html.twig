@@ -47,12 +47,6 @@
                             <li class="active">
                                 <a class=" {{ route == 'app.admin.index' ? 'active' }}" href="{{ path('app.admin.index') }}"><i class="pe-7s-graph"></i><p>{{ 'navbar.dashboard'|trans }}</p></a>
                             </li>
-                            <li>
-                                <a class="{{ route == 'app.admin.etl.data_schema.index' ? 'active' }}" href="{{ path('app.admin.etl.data_schema.index') }}">
-                                    <i class="pe-7s-server"></i>
-                                    <p>Data-sources</p>
-                                </a>
-                            </li>  
                         {% else %} {# Student #}
                             <li class="active">
                                 <a class="{{ route == 'app.dashboard' ? 'active' }}" href="{{ path('app.dashboard.index') }}"><i class="pe-7s-graph"></i><p>{{ 'navbar.dashboard'|trans }}</p></a>
