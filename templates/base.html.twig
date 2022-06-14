@@ -48,7 +48,7 @@
                                 <a class=" {{ route == 'app.admin.index' ? 'active' }}" href="{{ path('app.admin.index') }}"><i class="pe-7s-graph"></i><p>{{ 'navbar.dashboard'|trans }}</p></a>
                             </li>
                             <li>
-                                <a class="{{ route starts with 'app.admin/data_schema' ? 'active' }}" href="{{ path('app.admin.etl.data_schema.index') }}">
+                                <a class="{{ route == 'app.admin.etl.data_schema.index' ? 'active' }}" href="{{ path('app.admin.etl.data_schema.index') }}">
                                     <i class="pe-7s-server"></i>
                                     <p>Data-sources</p>
                                 </a>
@@ -84,7 +84,7 @@
                             
 
                             <ul class="nav navbar-nav navbar-right d-inline-block">
-                            {% if app.request.uri == 'https://127.0.0.1:8000/modules' or 'https://127.0.0.1:8000/report_card/' in app.request.uri %}
+                            {% if route == 'app.module.index' or route starts with 'app.report_card' %}
                                 <li style="margin-top:8px;display:inline-block">
                                     <i class="pe-7s-search" aria-hidden="true"></i>
                                     <input class="form-control form-control-sm ml-3 w-75 d-inline-block" type="text" id="Empsearch" placeholder="Recherche" aria-label="Recherche">
@@ -101,7 +101,7 @@
                     </div>
                 </nav>
         {% else %}
-        {% if app.request.uri == 'https://127.0.0.1:8000/about' %}
+        {% if route == 'app.about' %}
             <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         {% else %}
             <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #212529;margin-bottom:20px" id="mainNav">
