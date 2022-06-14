@@ -3,26 +3,31 @@
 {% block title %}Hello CompanyController!{% endblock %}
 
 {% block body %}
-<h1>Companies</h1>
-
-<table class="table table-sm table-hover">
-    <thead>
-        <tr>
-            <th scope="col">campus.id</th>
-            <th scope="col">campus.name</th>
-            <th scope="col">campus.address</th>
-            <th scope="col">campus.sector</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for company in companies %}
-        <tr>
-            <td><a href="{{ path('app.admin.company.show', {'id': company.id} ) }}">{{ company.id }}</a></td>
-            <td>{{ company.name }}</td>
-            <td>{{ company.address ?? '-' }}</td>
-            <td>{{ company.sector ?? '-' }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+        <div class="container">       
+            <header class="animated bounceInDown">
+                <h1><b>Entreprise</b></h1><br />
+            </header>                                                                
+            <div class="table-responsive">          
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Adresse</th>
+                            <th scope="col">Secteur</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for company in companies %}
+                        <tr>
+                            <td><a href="{{ path('app.admin.company.show', {'id': company.id} ) }}">{{ company.name }}</a></td>
+                            <td>{{ company.address ?? '-' }}</td>
+                            <td>{{ company.sector ?? '-' }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 {% endblock %}

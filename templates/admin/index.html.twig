@@ -27,23 +27,69 @@
 {% block title %}Hello AdminController!{% endblock %}
 
 {% block body %}
-<h1>{{ 'admin.dashboard.title.index'|trans }}</h1>
-<h4 class="text-muted">{{ 'admin.dashboard.title.role'|trans }}</h4>
 
-<h5>{{ 'admin.dashboard.title.entities'|trans }}</h5>
-<ul>
-    {% for entity in entities|sort((a, b) => a[1] <=> b[1]) %}
-        <li>
-            <a href="{{ path('app.admin.' ~ entity[0] ~ '.index') }}">{{ entity[1] }}</a>
-        </li>
-    {% endfor %}
-</ul> 
 
-<h5>{{ 'admin.dashboard.title.etl'|trans }}</h5>
-<ul>
-    <li><a href="{{ path('app.admin.etl.data_schema.index') }}">{{ 'admin.dashboard.misc.data_schemas'|trans }}</a></li>
-    <li><a href="{{ path('app.admin.etl.data_file.index') }}">{{ 'admin.dashboard.misc.data_files'|trans }}</a></li>
-    <li><a href="{{ path('app.admin.etl.import.index') }}">{{ 'admin.dashboard.misc.imports'|trans }}</a></li>
-    <li><a href="{{ path('app.admin.etl.export.index') }}">{{ 'admin.dashboard.misc.exports'|trans }}</a></li>
-</ul>
+
+    <section id="services" class="section-bg">
+        <div class="container">
+            <header class="section-header animated bounceInDown">
+                <h2><b>Bienvenue dans la partie <span style="color:#2282ff">{{ 'admin.dashboard.title.role'|trans }}</span></b></h2><br /><br />
+            </header>
+            
+
+            <div class="row">
+                {% for entity in entities|sort((a, b) => a[1] <=> b[1]) %}
+                   
+                    <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+                        <a href="{{ path('app.admin.' ~ entity[0] ~ '.index') }}">
+                            <div class="box">
+                                <div class="icon" style="background: #e6fdfc;"><i class="pe-7s-study" style="color: #3fcdc7;font-size:30px;margin-top:4px"></i></div>
+                                <h4 class="title">{{ entity[1] }}</h4>
+                            </div>
+                        </a>
+                    </div>
+                    
+                {% endfor %}
+            </div>
+
+            <div class="row">
+               
+                <div class="col-md-6 col-lg-6 wow bounceInUp" data-wow-duration="1.4s">
+                    <a href="{{ path('app.admin.etl.data_schema.index') }}">
+                        <div class="box">
+                            <div class="icon" style="background: #fff0da;"><i class="pe-7s-server" style="color: #e98e06;font-size:28px;margin-top:4px"></i></div>
+                            <h4 class="title">{{ 'admin.dashboard.misc.data_schemas'|trans }}</h4>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-6 wow bounceInUp" data-wow-duration="1.4s">
+                    <a href="{{ path('app.admin.etl.data_file.index') }}">
+                        <div class="box">
+                            <div class="icon" style="background: #fff0da;"><i class="pe-7s-server" style="color: #e98e06;font-size:28px;margin-top:4px"></i></div>
+                            <h4 class="title">{{ 'admin.dashboard.misc.data_files'|trans }}</h4>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-6 wow bounceInUp" data-wow-duration="1.4s">
+                    <a href="{{ path('app.admin.etl.import.index') }}">
+                        <div class="box">
+                            <div class="icon" style="background: #fff0da;"><i class="pe-7s-server" style="color: #e98e06;font-size:28px;margin-top:4px"></i></div>
+                            <h4 class="title">{{ 'admin.dashboard.misc.imports'|trans }}</h4>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-6 wow bounceInUp" data-wow-duration="1.4s">
+                    <a href="{{ path('app.admin.etl.export.index') }}">
+                        <div class="box">
+                            <div class="icon" style="background: #fff0da;"><i class="pe-7s-server" style="color: #e98e06;font-size:28px;margin-top:4px"></i></div>
+                            <h4 class="title">{{ 'admin.dashboard.misc.exports'|trans }}</h4>
+                        </div>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    </div>
+</div>
 {% endblock %}

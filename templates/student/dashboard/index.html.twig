@@ -14,20 +14,47 @@
 
 
 {% block body %}
-<h1>{{ 'dashboard.title.index'|trans }}</h1>
-<h4>{{ student.user.firstName|capitalize  }} {{ student.user.lastName|upper }}</h4>
+    <section id="services" class="section-bg">
+        <div class="container">
+            <header class="section-header animated bounceInDown">
+                <h2><b>Bienvenue <span style="color:#2282ff">{{ student.user.firstName|capitalize  }} {{ student.user.lastName|upper }}</span></b></h2><br /><br />
+            </header>
+            <div class="row">
+               
+                <div class="col-md-12 col-lg-12 wow bounceInUp" data-wow-duration="1.4s">
+                    <a href="{{ path('app.module.index') }}">
+                        <div class="box">
+                            <div class="icon" style="background: #fff0da;"><i class="pe-7s-notebook" style="color: #e98e06;font-size:28px;margin-top:4px"></i></div>
+                            <h4 class="title">{{ 'dashboard.misc.module_list'|trans }}</h4>
+                        </div>
+                    </a>
+                </div>
+                
+            </div>
 
-<ul>
-    <li><a href="{{ path('app.module.index') }}">{{ 'dashboard.misc.module_list'|trans }}</a></li>
-    <li>{{ 'dashboard.misc.report_card_list'|trans }}:
-        <ul>
-        {% for level in levels %}
-            <li><a href="{{ path('app.report_card.show', {'level': level.id}) }}">{{ level.label }}</a></li>
-        {% endfor %}
-        </ul>
-    </li>
-</ul>
+            <div class="row">
+                    {% for level in levels %}
+                        {% if loop.last or loop.revindex0 == 1 %}
+                            <div class="col-md-6 col-lg-6 wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+                        {% else %}
+                            <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+                        {% endif %}
+                        
+                            <a href="{{ path('app.report_card.show', {'level': level.id}) }}">
+                                <div class="box">
+                                    <div class="icon" style="background: #e6fdfc;"><i class="pe-7s-study" style="color: #3fcdc7;font-size:30px;margin-top:4px"></i></div>
+                                    <h4 class="title">{{ 'dashboard.misc.report_card_list'|trans }} {{ level.label }}</h4>
+                                </div>
+                            </a>
+                        </div>
+                        
+                    {% endfor %}
+                </div>
+            </div>
+    </section>
 
-{{ include('_planning.html.twig', { url: path('app.planning_events.index') }) }}
+        {{ include('_planning.html.twig', { url: path('app.planning_events.index') }) }}
+    </div>
+</div>
 
 {% endblock %}

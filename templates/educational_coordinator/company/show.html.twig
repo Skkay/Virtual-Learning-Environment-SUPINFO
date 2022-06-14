@@ -3,24 +3,36 @@
 {% block title %}Hello CompanyController!{% endblock %}
 
 {% block body %}
-<ul>
-    <li><b>company.id:</b> {{ company.id }}</li>
-    <li><b>company.name:</b> {{ company.name }}</li>
-    <li><b>company.address:</b> {{ company.address }}</li>
-    <li><b>company.sector:</b> {{ company.sector }}</li>
-    <li><b>studentsInTrainingContract:</b>
-        <ul>
-            {% for student in studentsInTrainingContract %}
-                <li>{{ student.user.firstName }} {{ student.user.lastName }}</li>
-            {% endfor %}
-        </ul>
-    </li>
-    <li><b>studentsHired:</b>
-        <ul>
-            {% for student in studentsHired %}
-                <li>{{ student.user.firstName }} {{ student.user.lastName }}</li>
-            {% endfor %}
-        </ul>
-    </li>
-</ul>
+
+<div class="container"> 
+    <header class="animated bounceInDown">
+        <h1><b>Détails de l'entreprise {{ company.name }}</b></h1><br />
+    </header>  
+    <div class="container"> 
+        {% if studentsHired is not empty %}
+            <p>L'entreprise {{ company.name }} {{ company.sector is not null ? ' dans le secteur du ' ~ company.sector : '' }} embauche : </p>
+            <ul>
+                {% for student in studentsHired %}
+                    <li>{{ student.user.firstName }} {{ student.user.lastName }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>L'entreprise {{ company.name }} n'embauche aucun de nos étudiants.</p>
+        {% endif %}
+        {% if studentsInTrainingContract is not empty %}
+            <p>Les étudiants en contrat de formation chez {{ company.name }} sont : </p>
+            <ul>
+                {% for student in studentsInTrainingContract %}
+                    <li>{{ student.user.firstName }} {{ student.user.lastName }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>{{ company.name }} n'a aucun de nos étudiants en contrat de formation.</p>
+        {% endif %}
+        {% if company.address is not empty %}
+            <p>Adresse de l'entreprise : {{ company.address }}.</p>
+        {% endif %}
+    </div>
+</div>
+    
 {% endblock %}

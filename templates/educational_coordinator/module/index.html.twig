@@ -3,26 +3,35 @@
 {% block title %}Hello ModuleController!{% endblock %}
 
 {% block body %}
-<h1>{{ 'educational_coordinator.module.title.index'|trans }}</h1>
-
-<table class="table table-sm table-hover">
-    <thead>
-        <tr>
-            <th scope="col">module.id</th>
-            <th scope="col">module.label</th>
-            <th scope="col">module.speciality</th>
-            <th scope="col">module.ects</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for module in modules %}
-        <tr>
-            <td><a href="{{ path('app.educational_coordinator.module.show', {'id': module.id} ) }}">{{ module.id }}</a></td>
-            <td>{{ module.label }}</td>
-            <td>{{ module.speciality ?? '-' }}</td>
-            <td>{{ module.ects ?? '-' }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+        <div class="container">       
+            <header class="animated bounceInDown">
+                <h1><b>{{ 'educational_coordinator.module.title.index'|trans }}</b></h1><br />
+            </header>                                                                
+            <div class="table-responsive">          
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Spécialité</th>
+                            <th scope="col">ECTS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for module in modules %}
+                            <tr>
+                                <td><a href="{{ path('app.educational_coordinator.module.show', {'id': module.id} ) }}">{{ module.label }}</a></td>
+                                {% if module.speciality == 1 %}
+                                    <td>Oui</td>
+                                {% else %}
+                                    <td>Non</td>
+                                {% endif %}
+                                <td>{{ module.ects ?? '-' }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 {% endblock %}

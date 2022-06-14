@@ -3,19 +3,14 @@
 {% block title %}Hello DiplomaController!{% endblock %}
 
 {% block body %}
-<ul>
-    <li><b>diploma.id:</b> {{ diploma.id }}</li>
-    <li><b>diploma.label:</b> {{ diploma.label }}</li>
-    <li><b>diploma.students:</b>
-        <ul>
-        {% if diploma.students is empty %}
-            <li>-</li>
-        {% else %}
+<div class="container">
+    <p>Le diplome du {{ diploma.label }} a été obtenu par : </p>
+    <ul>
+        {% if diploma.students is not empty %}
             {% for student in diploma.students %}
                 <li>{{ student.user.email }}</li>
             {% endfor %}
         {% endif %}
-        </ul>
-    </li>
-</ul>
+    </ul>
+</div>
 {% endblock %}

@@ -3,30 +3,36 @@
 {% block title %}Hello ReportCardController!{% endblock %}
 
 {% block body %}
-<h1>{{ 'report_card.title.index'|trans }} - {{ level.label }}</h1>
-<h4>{{ student.user.firstName|capitalize  }} {{ student.user.lastName|upper }}</h4>
-
-<table class="table table-sm table-hover">
-    <thead>
-        <tr>
-            <th scope="col">{{ 'report_card.misc.course_code'|trans }}</th>
-            <th scope="col">{{ 'report_card.misc.course_name'|trans }}</th>
-            <th scope="col">{{ 'report_card.misc.credits_per_course'|trans }}</th>
-            <th scope="col">{{ 'report_card.misc.grades'|trans }}</th>
-            <th scope="col">{{ 'report_card.misc.validated_credits'|trans }}</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for module in modules %}
-
-            <tr>
-                <td>{{ module.label }}</td>
-                <td>{{ module.name ?? '-' }}</td>
-                <td>{{ module.ects }}</td>
-                <td>{{ grades[module.label] ?? '-' }}</td>
-                <td>{{ grades[module.label] is not defined or grades[module.label] < 10 ? '0' : module.ects }}</td>
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <div class="container">       
+    <header class="animated bounceInDown">
+        <h1><b>{{ 'report_card.title.index'|trans }} - {{ level.label }}</b></h1><br />
+        <h4>{{ student.user.firstName|capitalize  }} {{ student.user.lastName|upper }}</h4>
+    </header>                                                                
+        <div class="table-responsive">          
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">{{ 'report_card.misc.course_code'|trans }}</th>
+                        <th scope="col">{{ 'report_card.misc.course_name'|trans }}</th>
+                        <th scope="col">{{ 'report_card.misc.credits_per_course'|trans }}</th>
+                        <th scope="col">{{ 'report_card.misc.grades'|trans }}</th>
+                        <th scope="col">{{ 'report_card.misc.validated_credits'|trans }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for module in modules %}
+                        <tr>
+                            <td>{{ module.label }}</td>
+                            <td>{{ module.name ?? '-' }}</td>
+                            <td>{{ module.ects }}</td>
+                            <td>{{ grades[module.label] ?? '-' }}</td>
+                            <td>{{ grades[module.label] is not defined or grades[module.label] < 10 ? '0' : module.ects }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 {% endblock %}

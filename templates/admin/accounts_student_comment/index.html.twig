@@ -3,28 +3,35 @@
 {% block title %}Hello AccountsStudentCommentController!{% endblock %}
 
 {% block body %}
-<h1>AccountsStudentComment</h1>
-
-<table class="table table-sm table-hover">
-    <thead>
-        <tr>
-            <th scope="col">accountsStudentComment.id</th>
-            <th scope="col">accountsStudentComment.comment</th>
-            <th scope="col">accountsStudentComment.createdAt</th>
-            <th scope="col">accountsStudentComment.updatedAt</th>
-            <th scope="col">accountsStudentComment.student.user.email</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for accountsStudentComment in accountsStudentComments %}
-        <tr>
-            <td><a href="{{ path('app.admin.accountsStudentComment.show', {'id': accountsStudentComment.id} ) }}">{{ accountsStudentComment.id }}</a></td>
-            <td>{{ accountsStudentComment.comment }}</td>
-            <td>{{ accountsStudentComment.createdAt|date('d-m-Y') }}</td>
-            <td>{{ accountsStudentComment.updatedAt|date('d-m-Y') }}</td>
-            <td>{{ accountsStudentComment.student.user.email }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+        <div class="container">       
+            <header class="animated bounceInDown">
+                <h1><b>Commentaire des étudiants</b></h1><br />
+            </header>                                                                
+            <div class="table-responsive">          
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Détails</th>
+                            <th scope="col">Commentaire</th>
+                            <th scope="col">Date de création</th>
+                            <th scope="col">Date de modification</th>
+                            <th scope="col">Adresse mail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for accountsStudentComment in accountsStudentComments %}
+                        <tr>
+                            <td><a href="{{ path('app.admin.accountsStudentComment.show', {'id': accountsStudentComment.id} ) }}"><i class="pe-7s-plus" style="font-size:30px;margin-top:4px"></i></a></td>
+                            <td>{{ accountsStudentComment.comment }}</td>
+                            <td>{{ accountsStudentComment.createdAt|date('d-m-Y') }}</td>
+                            <td>{{ accountsStudentComment.updatedAt|date('d-m-Y') }}</td>
+                            <td>{{ accountsStudentComment.student.user.email }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 {% endblock %}

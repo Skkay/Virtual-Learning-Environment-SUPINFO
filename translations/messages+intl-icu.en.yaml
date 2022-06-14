@@ -21,7 +21,7 @@ dashboard:
     index: Dashboard
   misc:
     module_list: Course list
-    report_card_list: Report cards
+    report_card_list: Report card
 
 accounts:
   dashboard:
