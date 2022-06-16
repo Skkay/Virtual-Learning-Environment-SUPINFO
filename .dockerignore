@@ -24,6 +24,9 @@ bin/*
 docker/db/data/
 helm/
 public/bundles/
+public/accounts/
+public/etl_data/
+public/export/
 var/
 vendor/
 .todo/
