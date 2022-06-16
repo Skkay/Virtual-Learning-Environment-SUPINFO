@@ -3,6 +3,7 @@
 namespace App\Controller\Admin\ETL;
 
 use App\Service\ExportService;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Finder\Finder;
@@ -12,6 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/admin/etl/exports", name="app.admin.etl.export.")
+ * @Security("is_granted('ROLE_ADMIN')")
  */
 class ExportController extends AbstractController
 {
