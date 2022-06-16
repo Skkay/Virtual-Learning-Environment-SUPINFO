@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DashboardController!{% endblock %}
+{% block title %}Bienvenue {{ student.user.firstName|capitalize  }} {{ student.user.lastName|upper }}{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
