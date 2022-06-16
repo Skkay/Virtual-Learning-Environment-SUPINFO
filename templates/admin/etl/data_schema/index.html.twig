@@ -3,32 +3,33 @@
 {% block title %}{{ 'admin.etl.data_schema.title.index'|trans }}{% endblock %}
 
 {% block body %}
-    <h1>{{ 'admin.etl.data_schema.title.index'|trans }}</h1>
-
-    <a href="{{ path('app.admin.etl.data_schema.new') }}">{{ 'form.misc.create'|trans }}</a>
-    <table class="table table-sm table-hover">
-        <thead>
-            <tr>
-                <th>{{ 'admin.etl.data_schema.table.id'|trans }}</th>
-                <th>{{ 'admin.etl.data_schema.table.label'|trans }}</th>
-                <th>{{ 'admin.etl.data_schema.table.actions'|trans }}</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for data_schema in data_schemas %}
-            <tr>
-                <td>{{ data_schema.id }}</td>
-                <td>{{ data_schema.label }}</td>
-                <td>
-                    <a href="{{ path('app.admin.etl.data_schema.show', {'id': data_schema.id}) }}">{{ 'form.misc.show'|trans }}</a>
-                    <a href="{{ path('app.admin.etl.data_schema.edit', {'id': data_schema.id}) }}">{{ 'form.misc.edit'|trans }}</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">{{ 'admin.etl.data_schema.table.no_records'|trans }}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="container">
+        <h1>{{ 'admin.etl.data_schema.title.index'|trans }}</h1>
+        <div style="margin-left:auto;margin-right:auto;" class="text-center my-5">
+            <a href="{{ path('app.admin.etl.data_schema.new') }}" style="text-decoration:none;color:white"><button class="btn btn-success" style="background-color:#87CB16;border:none;width:20%;color:white">{{ 'form.misc.create'|trans }}</button></a>
+        </div>
+        
+        <table class="table table-sm table-hover">
+            <thead>
+                <tr>
+                    <th>Détails</th>
+                    <th>{{ 'admin.etl.data_schema.table.label'|trans }}</th>
+                    <th>Modifier</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for data_schema in data_schemas %}
+                <tr>
+                    <td><a href="{{ path('app.admin.etl.data_schema.show', {'id': data_schema.id}) }}"><i class="pe-7s-plus" style="font-size:30px;margin-top:4px"></i></a></td>
+                    <td>{{ data_schema.label }}</td>
+                    <td><a href="{{ path('app.admin.etl.data_schema.edit', {'id': data_schema.id}) }}">{{ 'form.misc.edit'|trans }}</a></td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">{{ 'admin.etl.data_schema.table.no_records'|trans }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

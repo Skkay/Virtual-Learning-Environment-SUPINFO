@@ -4,6 +4,12 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-agency/blob/master/LICENSE)
  */
 
+  .btn-primary{
+    background-color: #3D2683 !important;
+    color: white !important;
+    border:none;
+  }
+  
  body {
     overflow-x: hidden;
     font-family: 'Roboto Slab', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -67,11 +73,6 @@ h6 {
     color: white;
   }
   
-  
-  
-  ::selection {
-    text-shadow: none;
-  }
   
   img::selection {
     background: transparent;
@@ -877,7 +878,7 @@ div.masthead .masthead-content .masthead-subheading {
 .btn-primary{background-color:royalblue;border-color:transparent}
 .btn-primary:active,.btn-primary:focus,.btn-primary:hover{background-color:royalblue;border-color:transparent;color:#fff}
 .btn-primary:active,.btn-primary:focus{-webkit-box-shadow:0 0 0 10rem transparent!important;box-shadow:0 0 0 10rem transparent!important}
-::selection{background:transparent;text-shadow:none}img::selection{background:0 0}img::-moz-selection{background:0 0}
+img::selection{background:0 0}img::-moz-selection{background:0 0}
 
 #infobulle {
   position: relative;  /* les .infobulle deviennent référents */

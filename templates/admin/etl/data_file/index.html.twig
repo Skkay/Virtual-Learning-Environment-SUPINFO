@@ -3,41 +3,47 @@
 {% block title %}{{ 'admin.etl.data_file.title.index'|trans }}{% endblock %}
 
 {% block body %}
-<h1>{{ 'admin.etl.data_file.title.index'|trans }}</h1>
+<div class="container">
+    <h1>{{ 'admin.etl.data_file.title.index'|trans }}</h1>
 
-<a href="{{ path('app.admin.etl.data_file.clear') }}">{{ 'admin.etl.data_file.misc.clear_files'|trans }}</a>
-{{ form_start(dataFileUploadForm) }}
-    <div class="d-flex">
-        <div class="flex-grow-1">
-            {{ form_widget(dataFileUploadForm.file) }}
-        </div>
-
-        <button type="submit" class="ms-2 btn btn-primary">{{ 'admin.etl.data_file.form.send'|trans }}</button>
+    <div style="margin-left:auto;margin-right:auto;" class="text-center my-5">
+        <a href="{{ path('app.admin.etl.data_file.clear') }}" style="text-decoration:none;color:white"><button class="btn btn-danger" style="background-color:#FF4A55;border:none;width:20%;color:white">{{ 'admin.etl.data_file.misc.clear_files'|trans }}</button></a>
     </div>
-    {{ form_errors(dataFileUploadForm.file) }}
-{{ form_end(dataFileUploadForm) }}
-<a href="{{ path('app.admin.etl.import.start') }}">{{ 'admin.etl.data_file.misc.start'|trans }}</a>
 
-<table class="table table-sm table-hover">
-    <thead>
-        <tr>
-            <th scope="col">{{ 'admin.etl.data_file.table.extension'|trans }}</th>
-            <th scope="col">{{ 'admin.etl.data_file.table.filename'|trans }}</th>
-            <th scope="col">{{ 'admin.etl.data_file.table.ctime'|trans }}</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for file in files %}
-        <tr>
-            <td>{{ file.extension }}</td>
-            <td>{{ file.filename }}</td>
-            <td>{{ file.ctime|date('Y-m-d H:i:s') }}</td>
-        </tr>
-        {% else %}
-        <tr>
-            <td colspan="3" class="text-center fst-italic">{{ 'admin.etl.data_file.table.no_files'|trans }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+    {{ form_start(dataFileUploadForm) }}
+        <div class="d-flex">
+            <div class="flex-grow-1">
+                {{ form_widget(dataFileUploadForm.file) }}
+            </div>
+
+            <button type="submit" class="ms-2 btn btn-primary">{{ 'admin.etl.data_file.form.send'|trans }}</button>
+        </div>
+        {{ form_errors(dataFileUploadForm.file) }}
+    {{ form_end(dataFileUploadForm) }}
+
+    <div style="margin-left:auto;margin-right:auto;" class="text-center my-5">
+        <a href="{{ path('app.admin.etl.import.start') }}" style="text-decoration:none;color:white"><button class="btn btn-success" style="background-color:#87CB16;border:none;width:20%;color:white">{{ 'admin.etl.data_file.misc.start'|trans }}</button></a>
+    </div>
+
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">                                                
+        <div class="table-responsive">          
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">{{ 'admin.etl.data_file.table.extension'|trans }}</th>
+                        <th scope="col">{{ 'admin.etl.data_file.table.filename'|trans }}</th>
+                        <th scope="col">{{ 'admin.etl.data_file.table.ctime'|trans }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for file in files %}
+                    <tr>
+                        <td colspan="3" class="text-center fst-italic">{{ 'admin.etl.data_file.table.no_files'|trans }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 {% endblock %}
