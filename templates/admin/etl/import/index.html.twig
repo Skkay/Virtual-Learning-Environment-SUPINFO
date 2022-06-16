@@ -8,7 +8,7 @@
 <table class="table table-sm table-hover">
     <thead>
         <tr>
-            <th scope="col">{{ 'admin.etl.import.table.id'|trans }}</th>
+            <th scope="col">Détails</th>
             <th scope="col">{{ 'admin.etl.import.table.created_at'|trans }}</th>
             <th scope="col">{{ 'admin.etl.import.table.started_at'|trans }}</th>
             <th scope="col">{{ 'admin.etl.import.table.ended_at'|trans }}</th>
@@ -18,7 +18,7 @@
     <tbody>
         {% for import in imports %}
         <tr>
-            <td><a href="{{ path('app.admin.etl.import.show', {'id': import.id}) }}">{{ import.id }}</a></td>
+            <td><a href="{{ path('app.admin.etl.import.show', {'id': import.id}) }}"><i class="pe-7s-plus" style="font-size:30px;margin-top:4px"></i></a></td>
             <td>{{ import.createdAt|date('Y-m-d H:i:s') }}</td>
             <td>{{ import.startedAt ? import.startedAt|date('Y-m-d H:i:s') : '-' }}</td>
             <td>{{ import.endedAt ? import.endedAt|date('Y-m-d H:i:s') : '-' }}</td>

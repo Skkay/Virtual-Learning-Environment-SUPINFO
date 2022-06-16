@@ -2,5 +2,8 @@
     {{ form_widget(form) }}
 
     {{ include('_monaco.html.twig', { content: data_schema.equivalence ? data_schema.equivalence|json_encode(constant('JSON_PRETTY_PRINT')) : '{}' }) }}
-    <button type="submit" class="btn btn-primary">{{ submitButtonLabel }}</button>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary">{{ submitButtonLabel }}</button>
+    </div>
+    
 {{ form_end(form) }}

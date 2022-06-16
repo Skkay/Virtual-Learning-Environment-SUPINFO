@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ModuleController!{% endblock %}
+{% block title %}Détails du modules {{ module.label }}{% endblock %}
 
 {% block body %}
     <div class="container">       
@@ -9,9 +9,9 @@
         </header>                
         <div class="container">  
             {% if module.speciality == 1 %}
-                <p>Le module {{ module.label }} est une spécialité de {{ module.label|first }} années.</p>
+                <p>Le module {{ module.label }} est une spécialité de {{ module.label|first == 1 ? module.label|first ~ 'er ' : module.label|first  ~ 'ème ' }} année.</p>
             {% else %}
-                <p>Le module {{ module.label }} est un cours de {{ module.label|first }} années.</p>
+                <p>Le module {{ module.label }} est un cours de {{ module.label|first == 1 ? module.label|first ~ 'er ' : module.label|first  ~ 'ème ' }} année.</p>
             {% endif %}   
 
             {% if grade.grade ?? '' is empty or  grade.grade ?? '' is null %}
@@ -26,7 +26,7 @@
                 <p>Les intervenants de cours sont les suivants : </p>
                 <ul>
                     {% for instructor in module.instructors %}
-                        <li>{{ instructor.user.email }}</li>
+                        <li><a href="mailto:{{ instructor.user.email }}">{{ instructor.user.email }}</a></li>
                     {% endfor %}
                 </ul>
             {% endif %}

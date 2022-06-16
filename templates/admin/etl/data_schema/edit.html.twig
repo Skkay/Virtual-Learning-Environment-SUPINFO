@@ -13,13 +13,14 @@
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'admin.etl.data_schema.title.edit'|trans }}</h1>
-
-    {{ include('admin/etl/data_schema/_form.html.twig', {'submitButtonLabel': 'form.misc.update'|trans}) }}
-
-    <a class="btn btn-secondary my-2" href="{{ path('app.admin.etl.data_schema.index') }}">{{ 'form.misc.back_to_list'|trans }}</a>
-
-    {{ include('admin/etl/data_schema/_delete_form.html.twig') }}
+    <div class="container">
+        <h1>{{ 'admin.etl.data_schema.title.edit'|trans }}</h1>
+            {{ include('admin/etl/data_schema/_form.html.twig', {'submitButtonLabel': 'form.misc.update'|trans}) }}
+            <div class="text-center">
+                <a class="btn btn-secondary my-2" href="{{ path('app.admin.etl.data_schema.index') }}">{{ 'form.misc.back_to_list'|trans }}</a>
+                {{ include('admin/etl/data_schema/_delete_form.html.twig') }}
+            </div>
+    </div>
 {% endblock %}
 
 {% block toasts %}
