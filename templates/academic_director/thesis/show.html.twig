@@ -4,10 +4,10 @@
 
 {% block body %}
 <ul>
-    <li><b>thesis.id:</b> {{ thesis.id }}</li>
-    <li><b>thesis.student:</b> {{ thesis.student.user.firstName }} {{ thesis.student.user.lastName|upper }} ({{ thesis.student.user.email }})</li>
-    <li><b>thesis.delivered:</b> {{ thesis.delivered ? 'academic_director.thesis.misc.yes'|trans : 'academic_director.thesis.misc.no'|trans }}</li>
-    <li><b>thesis.subject:</b> {{ thesis.subject }}</li>
-    <li><b>thesis.remark:</b> {{ thesis.remark }}</li>
+    <li><b>{{ 'academic_director.thesis.misc.id'|trans }}:</b> {{ thesis.id }}</li>
+    <li><b>{{ 'academic_director.thesis.misc.student'|trans }}:</b> {{ thesis.student.user.firstName }} {{ thesis.student.user.lastName|upper }} ({{ thesis.student.user.email }})</li>
+    <li><b>{{ 'academic_director.thesis.misc.delivered'|trans }} ?:</b> {{ thesis.delivered ? 'academic_director.thesis.misc.yes'|trans : 'academic_director.thesis.misc.no'|trans }}</li>
+    <li><b>{{ 'academic_director.thesis.misc.subject'|trans }}:</b> {{ thesis.subject }}</li>
+    <li><b>{{ 'academic_director.thesis.misc.remark'|trans }}:</b> {{ thesis.remark }}</li>
 </ul>
 {% endblock %}

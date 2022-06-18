@@ -1,4 +1,11 @@
 academic_director.campus.misc.other: Other
+academic_director.campus.misc.id: ID
+academic_director.campus.misc.label: Label
+academic_director.campus.misc.city: City
+academic_director.campus.misc.nb_student: Number of student
+academic_director.campus.misc.sections: Sections
+academic_director.campus.misc.students: Students
+academic_director.campus.misc.instructors: Instructors
 academic_director.campus.table.city: City
 academic_director.campus.table.id: ID
 academic_director.campus.table.label: Label
@@ -16,8 +23,21 @@ academic_director.dashboard.title.role: 'Academic director'
 academic_director.instructor.title.index: 'Instructor list'
 academic_director.module.misc.accepted: Accepted
 academic_director.module.misc.fail: Fail
+academic_director.module.misc.id: ID
+academic_director.module.misc.label: Label
+academic_director.module.misc.speciality: Speciality
+academic_director.module.misc.ects: ECTS
+academic_director.module.misc.instructors: Instructors
+academic_director.module.misc.students: Students
+academic_director.module.table.id: ID
+academic_director.module.table.label: Label
+academic_director.module.table.speciality: Speciality
+academic_director.module.table.ects: ECTS
 academic_director.module.title.index: 'Course list'
 academic_director.module.title.show: Module
+academic_director.partnership.misc.id: ID
+academic_director.partnership.misc.label: Label
+academic_director.partnership.misc.description: Description
 academic_director.partnership.table.description: Description
 academic_director.partnership.table.id: ID
 academic_director.partnership.table.label: Label
@@ -33,6 +53,21 @@ academic_director.student.misc.max_needed_ects: 'Maximum ECTS needed'
 academic_director.student.misc.no: 'No'
 academic_director.student.misc.report_card_list: 'Report cards'
 academic_director.student.misc.yes: 'Yes'
+academic_director.student.misc.id: ID
+academic_director.student.misc.email: Email
+academic_director.student.misc.firstname: Firstname
+academic_director.student.misc.lastname: Lastname
+academic_director.student.misc.campus: Campus
+academic_director.student.misc.level: Level
+academic_director.student.misc.company_training_contract: Company training contract
+academic_director.student.misc.date_start_contract: Training contract start date
+academic_director.student.misc.date_of_birth: Date of birth
+academic_director.student.misc.gender: Gender
+academic_director.student.misc.region: Region
+academic_director.student.misc.grades: Grades
+academic_director.student.misc.speciality: Speciality
+academic_director.student.misc.absences: Absences
+academic_director.student.misc.is_sct: SCT
 academic_director.student.table.campus: Campus
 academic_director.student.table.company: Company
 academic_director.student.table.email: Email
@@ -45,6 +80,11 @@ academic_director.student.title.index: 'Student list'
 academic_director.student.title.show: Student
 academic_director.thesis.misc.no: 'No'
 academic_director.thesis.misc.yes: 'Yes'
+academic_director.thesis.misc.id: ID
+academic_director.thesis.misc.student: Student
+academic_director.thesis.misc.delivered: Delivered
+academic_director.thesis.misc.subject: Subject
+academic_director.thesis.misc.remark: Remark
 academic_director.thesis.table.delivered: Delivered
 academic_director.thesis.table.id: ID
 academic_director.thesis.table.remark: Remark
@@ -101,7 +141,7 @@ admin.accounts_payment_type.table.label: Label
 admin.accounts_payment_type.title.index: 'Payment type list'
 admin.accounts_payment_type.title.show: 'Payment type'
 admin.accounts_student_comment.misc.comment: Comment
-admin.accounts_student_comment.misc.comment_of: 'This {firstname} {lastname} comment was created on {createDate} and updated on {updateDate},'
+admin.accounts_student_comment.misc.comment_of: 'This {firstname} {lastname} comment was created on {createDate} and updated on {updateDate}.'
 admin.accounts_student_comment.table.comment: Comment
 admin.accounts_student_comment.table.create_date: 'Creation date'
 admin.accounts_student_comment.table.details: Details
@@ -111,7 +151,7 @@ admin.accounts_student_comment.title.index: 'Comment list'
 admin.accounts_student_comment.title.show: Comment
 admin.campus.misc.details_of: 'Details about campus « {label} »'
 admin.campus.misc.location: 'The campus  « {label} » is located in {city}.'
-admin.campus.misc.no_location: 'The campus  « {label} » is not in any city,'
+admin.campus.misc.no_location: 'The campus  « {label} » is not in any city.'
 admin.campus.misc.sections: 'Associated sections'
 admin.campus.misc.staff: 'Campus staff'
 admin.campus.misc.students: 'Student in this campus'
@@ -405,8 +445,8 @@ admin.user.table.student: Student
 admin.user.title.index: 'User list'
 admin.user.title.show: User
 educational_coordinator.company.misc.address: 'Postal address'
-educational_coordinator.company.misc.no_student_hired: 'The company has not hired any of our students,'
-educational_coordinator.company.misc.no_training_contract: 'The company has any of our students in training contract,'
+educational_coordinator.company.misc.no_student_hired: 'The company has not hired any of our students.'
+educational_coordinator.company.misc.no_training_contract: 'The company has any of our students in training contract.'
 educational_coordinator.company.misc.student_hired: 'The company has hired these students'
 educational_coordinator.company.misc.training_contract: 'Students in profressional training contract'
 educational_coordinator.company.misc.welcome: 'Welcome -'
@@ -456,7 +496,7 @@ educational_coordinator.student.misc.training_contract: Is in training contract 
 educational_coordinator.student.misc.yes: 'Yes'
 educational_coordinator.student.table.campus: Campus
 educational_coordinator.student.table.company: Company
-educational_coordinator.student.table.details: Student {firstname} {lastname}
+educational_coordinator.student.table.details: Details
 educational_coordinator.student.table.email: Email
 educational_coordinator.student.table.first_name: Firstname
 educational_coordinator.student.table.grade: Grade
@@ -523,8 +563,8 @@ login.misc.tos_privacy_2: 'of IONIS and acknowledge having read our'
 login.title.index: Login
 misc.abbr_first: st
 misc.abbr_second: nd
-misc.abbr_th: rd
-misc.abbr_third: th
+misc.abbr_third: rd
+misc.abbr_th: th
 navbar.dashboard: Dashboard
 navbar.home: Home
 navbar.language: Language
@@ -540,7 +580,7 @@ profile.security.misc.password_updated: 'Password updated'
 profile.security.misc.set_your_password: 'Set your new password'
 profile.security.misc.update_password: 'Update password'
 profile.security.misc.update_your_password: 'Update your password'
-profile.security.title.category: Sécurity
+profile.security.title.category: Security
 profile.security.title.define_password: 'Défine a password'
 profile.security.title.update_password: 'Update password'
 profile.title.index: 'My profile'

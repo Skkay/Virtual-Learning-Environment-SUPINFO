@@ -206,13 +206,39 @@ academic_director:
       current_needed_ects: Crédits requis pour cette année
       max_ects: Crédits maximum obtenables
       max_needed_ects: Crédits maximum requis
+      id: ID
+      email: Email
+      firstname: Prénom
+      lastname: Nom
+      campus: Campus
+      level: Niveau
+      company_training_contract: Contrat d'alternance
+      date_start_contract: Date de début d'alternance
+      date_of_birth: Date de naissance
+      gender: Sexe
+      region: Région
+      grades: Notes
+      speciality: Spécialité
+      absences: Absences
+      is_sct: SCT
   module:
     title:
       index: Liste des modules
       show: Module
+    table:
+      id: ID
+      label: Label
+      speciality: Specialité
+      ects: ECTS
     misc:
       accepted: Admis
       fail: Recalé
+      id: ID
+      label: Label
+      speciality: Spécialité
+      ects: ECTS
+      instructors: Intervenants
+      students: Étudiants
   instructor:
     title:
       index: Liste des intervenants
@@ -227,11 +253,22 @@ academic_director:
       nb_active_student: Nombre d'étudiant actifs
     misc:
       other: Autre
+      id: ID
+      label: Label
+      city: Ville
+      nb_student: Nombre d'étudiants
+      sections: Sections
+      students: Étudiants
+      instructors: Intervenants
   partnership:
     title:
       index: Liste des partenariats
       show: Partenariats
     table:
+      id: ID
+      label: Label
+      description: Description
+    misc:
       id: ID
       label: Label
       description: Description
@@ -248,6 +285,11 @@ academic_director:
     misc:
       yes: Oui
       no: Non
+      id: ID
+      student: Étudiant
+      delivered: Rendu
+      subject: Sujet
+      remark: Commentaire
 
 admin:
   dashboard:

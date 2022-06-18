@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ 'academic_director.partnership.title.show'|trans }}  {{ partnership.label ?? '' }}{% endblock %}
+{% block title %}{{ 'academic_director.partnership.title.show'|trans }} {{ partnership.label ?? '' }}{% endblock %}
 
 {% block body %}
-<img src="{{ partnership.imageUrl }}" alt="">
+<img class="m-3" src="{{ partnership.imageUrl }}" alt="">
 <ul>
-    <li><b>partnership.id:</b> {{ partnership.id }}</li>
-    <li><b>partnership.label:</b> {{ partnership.label ?? '-' }}</li>
-    <li><b>partnership.city:</b> {{ partnership.description ?? '-' }}</li>
+    <li><b>{{ 'academic_director.partnership.misc.id'|trans }}:</b> {{ partnership.id }}</li>
+    <li><b>{{ 'academic_director.partnership.misc.label'|trans }}:</b> {{ partnership.label ?? '-' }}</li>
+    <li><b>{{ 'academic_director.partnership.misc.description'|trans }}:</b> {{ partnership.description ?? '-' }}</li>
 </ul>
 {% endblock %}

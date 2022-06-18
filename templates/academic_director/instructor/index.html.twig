@@ -7,7 +7,7 @@
 
 <ul>
     {% for instructor in instructors %}
-        <li>{{ instructor.user.firstName }} {{ instructor.user.lastName }} ({{ instructor.user.email }}):
+        <li>{{ instructor.user.firstName }} {{ instructor.user.lastName }} (<a href="mailto:{{ instructor.user.email }}">{{ instructor.user.email }}</a>):
             <ul>
                 {% for module in instructor.modules %}
                     <li>{{ module.label }}</li>

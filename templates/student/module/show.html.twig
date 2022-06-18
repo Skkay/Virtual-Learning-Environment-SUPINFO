@@ -25,8 +25,8 @@
                 <p>{{ 'student.module.misc.description'|trans({ 'module': module.label, 'n': module.level.numericLevel ?? '-', 'th': th }) }}</p>
             {% endif %}   
 
-            {% if grade.grade %}
-                <p>{{ 'student.module.misc.graded'|trans({ 'graded': grade.grade }) }}</p>
+            {% if grade %}
+                <p>{{ 'student.module.misc.graded'|trans({ 'grade': grade.grade }) }}</p>
             {% else %}
                 <p>{{ 'student.module.misc.not_graded'|trans }}</p>
             {% endif %}  
