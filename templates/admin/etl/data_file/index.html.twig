@@ -38,6 +38,12 @@
                 <tbody>
                 {% for file in files %}
                     <tr>
+                        <td>{{ file.extension }}</td>
+                        <td>{{ file.filename }}</td>
+                        <td>{{ file.ctime|date('Y-m-d H:i:s') }}</td>
+                    </tr>
+                {% else %}
+                    <tr>
                         <td colspan="3" class="text-center fst-italic">{{ 'admin.etl.data_file.table.no_files'|trans }}</td>
                     </tr>
                 {% endfor %}
