@@ -59,7 +59,7 @@ accounts:
       students: Étudiants
       informations_about: Informations sur {firstname} {lastname}
       born: L'étudiant {firstname} {lastname} est né le {firstname} {dob}.
-      live_in: Vit en {region} au {address} et se trouve au campus de {campus} en {level}.
+      live_in: Vit en {region} au {address} et se trouve au campus « {campus} ».
       entry: Est entré en {entryYear} en {entryLevel}.
       exit: A terminé son cursus en {exitYear} en {exitLevel}.
       last_diploma: Son dernier diplôme est le {diploma}.
@@ -69,6 +69,7 @@ accounts:
       payment_remain: Il reste {due} € à régler.
       reminded: Relancé.
       view_documents: Voir les documents associés
+      level: '{level}'
     table:
       details: Détails
       firstname: Prénom

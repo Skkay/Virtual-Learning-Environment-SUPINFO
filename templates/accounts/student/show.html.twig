@@ -9,8 +9,11 @@
     </header>                
     <div class="container">  
         <p>
+            {% if student.level %}
+            {{ 'accounts.student.misc.level'|trans({'level': student.level.label }) }}<br/>
+            {% endif %}
             {{ 'accounts.student.misc.born'|trans({ 'firstname': student.user.firstName, 'lastname': student.user.lastName, 'dob': student.dateOfBirth|date('d/m/Y') }) }}<br/>
-            {{ 'accounts.student.misc.live_in'|trans({ 'region': student.region.name ?? '-', 'address': student.address ?? '-', 'campus': student.campus.label, 'level': student.level.label ?? '-' }) }}<br/>
+            {{ 'accounts.student.misc.live_in'|trans({ 'region': student.region.name ?? '-', 'address': student.address ?? '-', 'campus': student.campus.label }) }}<br/>
             {{ 'accounts.student.misc.entry'|trans({ 'entryYear': student.entryYear ?? '-', 'entryLevel': student.entryLevel.label ?? '-' }) }}<br/>
             
             {% if student.exitYear %}
