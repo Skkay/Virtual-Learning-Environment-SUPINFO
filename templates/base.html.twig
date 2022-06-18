@@ -118,21 +118,18 @@
                                 <a class="nav-link js-scroll-trigger {{ route == 'app.login' ? 'active' }}" aria-current="page" href="{{ path('app.login') }}">{{ 'navbar.login'|trans }}</a>
                             </button>
                         </li>
-                
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="line-height:49px">
-                                {{ 'navbar.language'|trans }}
-                            </a>
-                           
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                {% for locale in locales %}
-                                    <li>
-                                        <a class="dropdown-item {{ locale == app.request.locale ? 'active' }}" href="{{ path('app.locale.change', { 'locale': locale }) }}">{{ locale }}</a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </li>
 
+                        <li class="nav-item">
+                            {% if app.request.locale == 'fr' %}
+                            <button type="button" class="btn" style="border:none;font-size:15px">
+                                <a class="nav-link js-scroll-trigger" href="{{ path('app.locale.change', { 'locale': 'en' }) }}">EN</a>
+                            </button>
+                            {% elseif app.request.locale == 'en' %}
+                            <button type="button" class="btn" style="border:none;font-size:15px">
+                                <a class="nav-link js-scroll-trigger" href="{{ path('app.locale.change', { 'locale': 'fr' }) }}">FR</a>
+                            </button>
+                            {% endif %}
+                        </li>
                     </ul>
 
                 </div>
