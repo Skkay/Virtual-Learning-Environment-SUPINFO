@@ -1,21 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AccountsController!{% endblock %}
+{% block title %}{{ 'accounts.student.title.index'|trans }}{% endblock %}
 
 {% block body %}
     <div class="table-wrapper-scroll-y my-custom-scrollbar">
         <div class="container">       
             <header class="animated bounceInDown">
-                <h1><b>Etudiant</b></h1><br />
+                <h1><b>{{ 'accounts.student.misc.students'|trans }}</b></h1><br />
             </header>                                                                
             <div class="table-responsive">          
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Détails</th>
-                            <th scope="col">Prénom</th>
-                            <th scope="col">Nom</th>
-                            <th scope="col">Campus</th>
+                            <th scope="col">{{ 'accounts.student.table.details'|trans }}</th>
+                            <th scope="col">{{ 'accounts.student.table.firstname'|trans }}</th>
+                            <th scope="col">{{ 'accounts.student.table.lastname'|trans }}</th>
+                            <th scope="col">{{ 'accounts.student.table.campus'|trans }}</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bienvenue {{ student.user.firstName|capitalize  }} {{ student.user.lastName|upper }}{% endblock %}
+{% block title %}{{ 'student.dashboard.title.index'|trans }}{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -17,7 +17,7 @@
     <section id="services" class="section-bg">
         <div class="container">
             <header class="section-header animated bounceInDown">
-                <h2><b>Bienvenue <span style="color:#2282ff">{{ student.user.firstName|capitalize  }} {{ student.user.lastName|upper }}</span></b></h2><br /><br />
+                <h2><b>{{ 'student.dashboard.misc.welcome'|trans }} <span style="color:#2282ff">{{ student.user.firstName ? student.user.firstName|capitalize : '-' }} {{ student.user.lastName ? student.user.lastName|upper : '-' }}</span></b></h2><br /><br />
             </header>
             <div class="row">
                
@@ -25,7 +25,7 @@
                     <a href="{{ path('app.module.index') }}">
                         <div class="box">
                             <div class="icon" style="background: #fff0da;"><i class="pe-7s-notebook" style="color: #e98e06;font-size:28px;margin-top:4px"></i></div>
-                            <h4 class="title">{{ 'dashboard.misc.module_list'|trans }}</h4>
+                            <h4 class="title">{{ 'student.dashboard.misc.module_list'|trans }}</h4>
                         </div>
                     </a>
                 </div>
@@ -43,7 +43,7 @@
                             <a href="{{ path('app.report_card.show', {'level': level.id}) }}">
                                 <div class="box">
                                     <div class="icon" style="background: #e6fdfc;"><i class="pe-7s-study" style="color: #3fcdc7;font-size:30px;margin-top:4px"></i></div>
-                                    <h4 class="title">{{ 'dashboard.misc.report_card_list'|trans }} {{ level.label }}</h4>
+                                    <h4 class="title">{{ 'student.dashboard.misc.report_card_list'|trans }} {{ level.label }}</h4>
                                 </div>
                             </a>
                         </div>

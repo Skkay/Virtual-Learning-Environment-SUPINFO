@@ -5,46 +5,56 @@
 {% block body %}
 <div class="container">       
     <header class="animated bounceInDown">
-        <h1><b>Informations sur {{ student.user.lastname ?? '-' }} {{ student.user.firstname ?? '-' }}</b></h1><br />
+        <h1><b>{{ 'accounts.student.misc.informations_about'|trans({'firstname': student.user.firstName|capitalize, 'lastname': student.user.lastName|upper}) }}</b></h1><br />
     </header>                
     <div class="container">  
         <p>
-            L'étudiant {{ student.user.lastname ?? '-' }} {{ student.user.firstname ?? '-' }} ( {{ student.user.email }} ) est née le {{ student.dateOfBirth is empty ? '-' : student.dateOfBirth|date('d/m/Y') }}.<br/>
-            {{ student.user.lastname ?? '-' }} {{ student.user.firstname ?? '-' }} vit en {{ student.region.name ?? '-' }} au {{ student.address ?? '-' }} et se trouve dans le campus {{ student.campus.label ?? '-' }} {{ student.level.label ?? '' is empty ? '' : 'en ' ~ student.level.label }}.<br />
-            L'étudiant est entré en {{ student.entryYear ?? '-' }} dans la promo {{ student.entryLevel.label ?? '-' }} {{ student.exitYear ?? '' is empty ? '' : ' et a terminé son cursus en ' ~ student.exitYear }} {{ student.exitLevel.label ?? '' is empty ? '' : ' dans la promo ' ~ student.exitLevel.label }}.<br />
-            Son dernier diplôme est le {{ student.lastDiploma.label ?? '-' }}.
+            {% if student.level %}
+            {{ 'accounts.student.misc.level'|trans({'level': student.level.label }) }}<br/>
+            {% endif %}
+            {{ 'accounts.student.misc.born'|trans({ 'firstname': student.user.firstName, 'lastname': student.user.lastName, 'dob': student.dateOfBirth|date('d/m/Y') }) }}<br/>
+            {{ 'accounts.student.misc.live_in'|trans({ 'region': student.region.name ?? '-', 'address': student.address ?? '-', 'campus': student.campus.label }) }}<br/>
+            {{ 'accounts.student.misc.entry'|trans({ 'entryYear': student.entryYear ?? '-', 'entryLevel': student.entryLevel.label ?? '-' }) }}<br/>
+            
+            {% if student.exitYear %}
+            {{ 'accounts.student.misc.exit'|trans({ 'exitYear': student.exitYear ?? '', 'exitLevel': student.exitLevel.label ?? '' }) }}<br/>
+            {% endif %}
+            
+            {{ 'accounts.student.misc.last_diploma'|trans({ 'diploma': student.lastDiploma.label ?? '-' }) }}
         </p>
         
-        {% if student.companyTrainingContract.name ?? '' is not empty %}
-            <p>Il est en contrat pro avec {{ student.companyTrainingContract.name ?? '' }} depuis le {{ student.dateStartContract|date('d/m/Y') }}.</p>
+        {% if student.professionalTrainingContract == 1 %}
+            <p>{{ 'accounts.student.misc.is_training_contract_yes'|trans }}</p>
         {% endif %}
 
-        {% if student.professionalTrainingContract == 1 %}
-            <p>Il est en contrat de formation professionnelle.</p>
+        {% if student.companyTrainingContract and student.companyTrainingContract.name is not empty %}
+            <p>{{ 'accounts.student.misc.training_contract'|trans({ 'company': student.companyTrainingContract.name, 'startDate': student.dateStartContract|date('d/m/Y') }) }}</p>
         {% endif %}
 
         {% if student.accountsPaid == 1 %}
-            <p>Sa scolarité est payé en {{ student.accountsPaymentType.label ?? '-' }}.</p>
+            <p>{{ 'accounts.student.misc.payment_type'|trans({ 'type': student.accountsPaymentType.label ?? '-' }) }}</p>
         {% endif %}
 
-        {% if student.accountsPaymentDue ?? '' is not null %}
-            <p>Il reste {{ student.accountsPaymentDue }} € a régler pour cet étudiant.</p>
+        {% if student.accountsPaymentDue is not null %}
+            <p>{{ 'accounts.student.misc.payment_remain'|trans({'due': student.accountsPaymentDue }) }}</p>
         {% endif %}
 
         {% if student.accountsReminded == 1 %}
-            <p>Compte rappelé : student.accountsReminded.</p>
+            <p>{{ 'accounts.student.misc.reminded'|trans }}</p>
         {% endif %}
 
+        <a class="btn btn-primary" href="{{ path('app.accounts.student.document', { 'id': student.id }) }}" style="background-color:#1D62F0;color:white;border:none;">{{ 'accounts.student.misc.view_documents'|trans }}</a>
+
         {{ form_start(commentForm) }}
-            <div  style="width:70%;margin-left: auto;margin-right: auto;margin-top:60px">
-                {{ form_row(commentForm.comment) }}
+            <div class="mt-4">
+                {{ form_row(commentForm.comment, { 'attr': {'style': 'height: 100px'}} ) }}
                 <button type="submit" class="btn btn-primary" style="background-color:#1D62F0;color:white;border:none;">{{ 'form.misc.save'|trans }}</button>
             </div>
         {{ form_end(commentForm)}}
 
-        <ul>
+        <ul class="mt-3">
             {% for comment in comments %}
-            <li><i>{{ comment.createdAt|date('d-m-Y à H:i') }}</i> - {{ comment.comment }}</li>
+            <li><i>{{ comment.createdAt|date('d-m-Y H:i') }}</i> - {{ comment.comment }}</li>
             {% endfor %}
         </ul>
     </div>

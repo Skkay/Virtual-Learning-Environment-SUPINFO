@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello StaffController!{% endblock %}
+{% block title %}{{ 'admin.staff.title.show'|trans }}{% endblock %}
 
 {% block body %}
 <ul>
-    <li><b>staff.id:</b> {{ staff.id }}</li>
-    <li><b>staff.user.email:</b> {{ staff.user.email }}</li>
-    <li><b>staff.user.firstname:</b> {{ staff.user.firstname ?? '-' }}</li>
-    <li><b>staff.user.lastname:</b> {{ staff.user.lastname ?? '-' }}</li>
-    <li><b>staff.campus:</b>
+    <li><b>{{ 'admin.staff.misc.id'|trans }}:</b> {{ staff.id }}</li>
+    <li><b>{{ 'admin.staff.misc.email'|trans }}:</b> <a href="mailto:{{ staff.user.email }}">{{ staff.user.email }}</a></li>
+    <li><b>{{ 'admin.staff.misc.firstname'|trans }}:</b> {{ staff.user.firstname ?? '-' }}</li>
+    <li><b>{{ 'admin.staff.misc.lastname'|trans }}:</b> {{ staff.user.lastname ?? '-' }}</li>
+    <li><b>{{ 'admin.staff.misc.campus'|trans }}:</b>
         <ul>
         {% if staff.campus is empty %}
             <li>-</li>

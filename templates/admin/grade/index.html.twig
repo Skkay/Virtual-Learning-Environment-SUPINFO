@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello GradeController!{% endblock %}
+{% block title %}{{ 'admin.grade.title.index'|trans }}{% endblock %}
 
 {% block body %}
-<h1>Grades</h1>
+<h1>{{ 'admin.grade.title.index'|trans }}</h1>
 
 <table class="table table-sm table-hover">
     <thead>
         <tr>
-            <th scope="col">grade.id</th>
-            <th scope="col">grade.student.user.email</th>
-            <th scope="col">grade.module.label</th>
-            <th scope="col">grade.grade</th>
+            <th scope="col">{{ 'admin.grade.table.id'|trans }}</th>
+            <th scope="col">{{ 'admin.grade.table.email'|trans }}</th>
+            <th scope="col">{{ 'admin.grade.table.module'|trans }}</th>
+            <th scope="col">{{ 'admin.grade.table.grade'|trans }}</th>
         </tr>
     </thead>
     <tbody>

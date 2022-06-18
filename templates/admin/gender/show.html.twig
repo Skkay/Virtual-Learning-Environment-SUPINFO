@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello GenderController!{% endblock %}
+{% block title %}{{ 'admin.gender.title.show'|trans }}{% endblock %}
 
 {% block body %}
 <ul>
-    <li><b>gender.id:</b> {{ gender.id }}</li>
-    <li><b>gender.label:</b> {{ gender.label }}</li>
-    <li><b>gender.students:</b>
+    <li><b>{{ 'admin.gender.misc.id'|trans }}:</b> {{ gender.id }}</li>
+    <li><b>{{ 'admin.gender.misc.label'|trans }}:</b> {{ gender.label }}</li>
+    <li><b>{{ 'admin.gender.misc.students'|trans }}:</b>
         <ul>
         {% if gender.students is empty %}
             <li>-</li>

@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AcademicDirectorController!{% endblock %}
+{% block title %}{{ 'academic_director.dashboard.title.index'|trans }} {{ 'academic_director.dashboard.title.role'|trans }}{% endblock %}
 
 {% block body %}
     <section id="services" class="section-bg">
         <div class="container">
             <header class="section-header animated bounceInDown">
-                <h2><b>Bienvenue <span style="color:#2282ff">{{ 'academic_director.dashboard.title.role'|trans }}</span></b></h2><br /><br />
+                <h2><b>{{ 'academic_director.dashboard.misc.welcome'|trans }} <span style="color:#2282ff">{{ 'academic_director.dashboard.title.role'|trans }}</span></b></h2><br /><br />
             </header>
 
             <div class="row">
@@ -35,7 +35,15 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-md-6 col-lg-6 wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+                <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+                    <a href="{{ path('app.academic_director.campus.index') }}">
+                        <div class="box">
+                            <div class="icon" style="background: #e6fdfc;"><i class="pe-7s-study" style="color: #3fcdc7;font-size:30px;margin-top:4px"></i></div>
+                            <h4 class="title">{{ 'academic_director.dashboard.misc.campus_list'|trans }}</h4>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
                     <a href="{{ path('app.academic_director.partnership.index') }}">
                         <div class="box">
                             <div class="icon" style="background: #e6fdfc;"><i class="pe-7s-study" style="color: #3fcdc7;font-size:30px;margin-top:4px"></i></div>
@@ -43,7 +51,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-md-6 col-lg-6 wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+                <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
                     <a href="{{ path('app.academic_director.thesis.index') }}">
                         <div class="box">
                             <div class="icon" style="background: #e6fdfc;"><i class="pe-7s-study" style="color: #3fcdc7;font-size:30px;margin-top:4px"></i></div>

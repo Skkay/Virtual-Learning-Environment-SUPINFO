@@ -1,23 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AbsenceController!{% endblock %}
+{% block title %}{{ 'admin.absence.title.show'|trans }}{% endblock %}
 
 {% block body %}
     <div class="container">       
         <header class="animated bounceInDown">
-            <h1><b>Abscence de {{ absence.student.user.email }}</b></h1><br />
+            <h1><b>{{ 'admin.absence.misc.absence_of'|trans({ 'firstname': absence.student.user.firstName ?? '-', 'lastname': absence.student.user.lastName ?? '-' }) }}</b></h1><br />
         </header>                
         <div class="container">  
             <p>
-                L'étudiant {{ absence.student.user.email }} a été abscent {{ absence.period == "AM" ? ' le matin du ' : " l'après-midi du " }} {{ absence.date|date('d-m-Y') }}.
+                {% if absence.period == 'AM' %}
+                    {{ 'admin.absence.misc.absence_of_detail.morning'|trans({ 'firstname': absence.student.user.firstName ?? '-', 'lastname': absence.student.user.lastName ?? '-', 'date': absence.date|date('d-m-Y') }) }}
+                {% else %}
+                    {{ 'admin.absence.misc.absence_of_detail.afternoon'|trans({ 'firstname': absence.student.user.firstName ?? '-', 'lastname': absence.student.user.lastName ?? '-', 'date': absence.date|date('d-m-Y') }) }}
+                {% endif %}
             </p>
             {% if absence.excuse is not empty %}
-                <p>Justificatif : </p>
+                <p>{{ 'admin.absence.misc.excuse'|trans }}: </p>
                 <ul>
                     <li>{{ absence.excuse }}</li>
                 </ul>
             {% else %}
-                <p>Il n'y a aucun justificatif pour cette abscence.</p>
+                <p>{{ 'admin.absence.misc.no_excuse'|trans }}</p>
             {% endif %}
         </div>
     </div>

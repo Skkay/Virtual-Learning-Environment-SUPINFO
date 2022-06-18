@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ModuleController!{% endblock %}
+{% block title %}{{ 'academic_director.module.title.show'|trans }} {{ module.label }}{% endblock %}
 
 {% block body %}
 <ul>
-    <li><b>module.id:</b> {{ module.id }}</li>
-    <li><b>module.label:</b> {{ module.label }}</li>
-    <li><b>module.speciality:</b> {{ module.speciality }}</li>
-    <li><b>module.ects:</b> {{ module.ects }}</li>
-    <li><b>instructors:</b>
+    <li><b>{{ 'academic_director.module.misc.id'|trans }}:</b> {{ module.id }}</li>
+    <li><b>{{ 'academic_director.module.misc.label'|trans }}:</b> {{ module.label }}</li>
+    <li><b>{{ 'academic_director.module.misc.speciality'|trans }}:</b> {{ module.speciality }}</li>
+    <li><b>{{ 'academic_director.module.misc.ects'|trans }}:</b> {{ module.ects }}</li>
+    <li><b>{{ 'academic_director.module.misc.instructors'|trans }}:</b>
         <ul>
             {% for instructor in instructors %}
                 <li>{{ instructor.user.email }}
@@ -21,13 +21,13 @@
             {% endfor %}
         </ul>
     </li>
-    <li><b>module.student:</b>
+    <li><b>{{ 'academic_director.module.misc.students'|trans }}:</b>
         <ul>
             {% for student in students %}
                 <li>
                     [{{ student.campus.label }}] {{ student.user.firstName }} {{ student.user.lastName }}: 
                     {% if grades[student.user.userIdentifier].grade is defined and grades[student.user.userIdentifier].grade is not null %}
-                        {{ grades[student.user.userIdentifier].grade }} {{ grades[student.user.userIdentifier].grade > 10 ? 'educational_coordinator.module.misc.accepted'|trans : 'educational_coordinator.module.misc.fail'|trans }}
+                        {{ grades[student.user.userIdentifier].grade }} → {{ grades[student.user.userIdentifier].grade > 10 ? 'educational_coordinator.module.misc.accepted'|trans : 'educational_coordinator.module.misc.fail'|trans }}
                     {% else %}    
                         -
                     {% endif %}

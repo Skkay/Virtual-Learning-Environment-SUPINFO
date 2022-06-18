@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello GradeController!{% endblock %}
+{% block title %}{{ 'admin.grade.title.show'|trans }}{% endblock %}
 
 {% block body %}
 <ul>
-    <li><b>grade.id:</b> {{ grade.id }}</li>
-    <li><b>grade.student.user.email:</b> {{ grade.student.user.email }}</li>
-    <li><b>grade.module.label:</b> {{ grade.module.label }}</li>
-    <li><b>grade.grade:</b> {{ grade.grade }}</li>
+    <li><b>{{ 'admin.grade.misc.id'|trans }}:</b> {{ grade.id }}</li>
+    <li><b>{{ 'admin.grade.misc.email'|trans }}:</b> {{ grade.student.user.email }}</li>
+    <li><b>{{ 'admin.grade.misc.module'|trans }}:</b> {{ grade.module.label }}</li>
+    <li><b>{{ 'admin.grade.misc.grade'|trans }}:</b> {{ grade.grade }}</li>
 </ul>
 {% endblock %}

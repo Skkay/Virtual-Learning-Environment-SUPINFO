@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello InstructorController!{% endblock %}
+{% block title %}{{ 'educational_coordinator.instructor.title.index'|trans }}{% endblock %}
 
 {% block body %}
     <div class="table-wrapper-scroll-y my-custom-scrollbar">
@@ -12,9 +12,9 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Nom</th>
-                            <th scope="col">Adresse Mail</th>
-                            <th scope="col">Module</th>
+                            <th scope="col">{{ 'educational_coordinator.instructor.table.name'|trans }}</th>
+                            <th scope="col">{{ 'educational_coordinator.instructor.table.email'|trans }}</th>
+                            <th scope="col">{{ 'educational_coordinator.instructor.table.modules'|trans }}</th>
                         </tr>
                     </thead>
                     <tbody>

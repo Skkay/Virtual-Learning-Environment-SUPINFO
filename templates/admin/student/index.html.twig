@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello StudentController!{% endblock %}
+{% block title %}{{ 'admin.student.title.index'|trans }}{% endblock %}
 
 {% block body %}
-<h1>Students</h1>
+<h1>{{ 'admin.student.title.index'|trans }}</h1>
 
 <table class="table table-sm table-hover">
     <thead>
         <tr>
-            <th scope="col">student.id</th>
-            <th scope="col">student.user.firstName</th>
-            <th scope="col">student.user.lastName</th>
-            <th scope="col">student.campus.label</th>
-            <th scope="col">student.level.label</th>
+            <th scope="col">{{ 'admin.student.table.id'|trans }}</th>
+            <th scope="col">{{ 'admin.student.table.firstname'|trans }}</th>
+            <th scope="col">{{ 'admin.student.table.lastname'|trans }}</th>
+            <th scope="col">{{ 'admin.student.table.campus'|trans }}</th>
+            <th scope="col">{{ 'admin.student.table.level'|trans }}</th>
         </tr>
     </thead>
     <tbody>

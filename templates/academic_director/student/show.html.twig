@@ -1,22 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AcademicDirectorController!{% endblock %}
+{% block title %}{{ 'academic_director.student.title.show'|trans }} {{ student.user.email }}{% endblock %}
 
 {% block body %}
 <ul>
-    <li><b>student.id:</b> {{ student.id }}</li>
-    <li><b>student.user.email:</b> {{ student.user.email }}</li>
-    <li><b>student.user.firstname:</b> {{ student.user.firstname ?? '-' }}</li>
-    <li><b>student.user.lastname:</b> {{ student.user.lastname ?? '-' }}</li>
-    <li><b>student.campus.label:</b> {{ student.campus.label ?? '-' }}</li>
-    <li><b>student.level.label:</b> {{ student.level.label ?? '-' }}</li>
-    <li><b>student.professionalTrainingContract:</b> {{ student.professionalTrainingContract ?? '-' }}</li>
-    <li><b>student.companyTrainingContract.name:</b> {{ student.companyTrainingContract.name ?? '-' }}</li>
-    <li><b>student.dateStartContract:</b> {{ student.dateStartContract is empty ? '-' : student.dateStartContract|date('d-m-Y') }}</li>
-    <li><b>student.dateOfBirth:</b> {{ student.dateOfBirth is empty ? '-' : student.dateOfBirth|date('d-m-Y') }}</li>
-    <li><b>student.gender.label:</b> {{ student.gender.label ?? '-' }}</li>
-    <li><b>student.region.name:</b> {{ student.region.name ?? '-' }}</li>
-    <li><b>student.grades:</b>
+    <li><b>{{ 'academic_director.student.misc.id'|trans }}:</b> {{ student.id }}</li>
+    <li><b>{{ 'academic_director.student.misc.email'|trans }}:</b> {{ student.user.email }}</li>
+    <li><b>{{ 'academic_director.student.misc.firstname'|trans }}:</b> {{ student.user.firstname ?? '-' }}</li>
+    <li><b>{{ 'academic_director.student.misc.lastname'|trans }}:</b> {{ student.user.lastname ?? '-' }}</li>
+    <li><b>{{ 'academic_director.student.misc.campus'|trans }}:</b> {{ student.campus.label ?? '-' }}</li>
+    <li><b>{{ 'academic_director.student.misc.level'|trans }}:</b> {{ student.level.label ?? '-' }}</li>
+    <li><b>{{ 'academic_director.student.misc.company_training_contract'|trans }}:</b> {{ student.companyTrainingContract.name ?? '-' }}</li>
+    <li><b>{{ 'academic_director.student.misc.date_start_contract'|trans }}:</b> {{ student.dateStartContract is empty ? '-' : student.dateStartContract|date('d-m-Y') }}</li>
+    <li><b>{{ 'academic_director.student.misc.date_of_birth'|trans }}:</b> {{ student.dateOfBirth is empty ? '-' : student.dateOfBirth|date('d-m-Y') }}</li>
+    <li><b>{{ 'academic_director.student.misc.gender'|trans }}:</b> {{ student.gender.label ?? '-' }}</li>
+    <li><b>{{ 'academic_director.student.misc.region'|trans }}:</b> {{ student.region.name ?? '-' }}</li>
+    <li><b>{{ 'academic_director.student.misc.grades'|trans }}:</b>
         <ul>
             {% for module in modules %}
                 <li>{{ module.label }}:</u>
@@ -29,16 +28,16 @@
             {% endfor %}
         </ul>
     </li>
-    <li><b>student.speciality.label:</b> {{ student.speciality.label ?? '-' }}</li>
+    <li><b>{{ 'academic_director.student.misc.speciality'|trans }}:</b> {{ student.speciality.label ?? '-' }}</li>
     <li>
-        <b>student.absences:</b> {{ student.absences|length }}
+        <b>{{ 'academic_director.student.misc.absences'|trans }}:</b> {{ student.absences|length }}
         <ul>
             {% for absence in student.absences %}
                 <li>{{ absence.date|date('d/m/Y') }} {{ absence.period }} : {{ absence.excuse ?? '-' }}</li>
             {% endfor %}
         </ul>
     </li>
-    <li><b>student.isSCT:</b> {{ student.isSCT ? 'educational_coordinator.student.misc.yes'|trans : 'educational_coordinator.student.misc.no'|trans }}</li>
+    <li><b>{{ 'academic_director.student.misc.is_sct'|trans }} ?:</b> {{ student.isSCT ? 'educational_coordinator.student.misc.yes'|trans : 'educational_coordinator.student.misc.no'|trans }}</li>
     <li><b>{{ 'academic_director.student.misc.report_card_list'|trans }}:</b>
         <ul>
         {% for level in levels %}

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Connexion{% endblock %}
+{% block title %}{{ 'login.title.index'|trans }}{% endblock %}
 
 {% block body %}
 
@@ -12,25 +12,25 @@
                     
                     <div class="card-body">
              
-                        <h3 class="card-title text-center pb-3">Connexion</h3>
+                        <h3 class="card-title text-center pb-3">{{ 'login.misc.login'|trans }}</h3>
                         <form class="form-signin" action="{{ path('app.login') }}" method="post">
                             <div class="form-label-group">
-                                <input type="email" id="username" name="_username" value="{{ last_username }}" class="form-control" placeholder="Adresse mail" required autofocus>
-                                <label for="username">Adresse mail</label>
+                                <input type="email" id="username" name="_username" value="{{ last_username }}" class="form-control" placeholder="{{ 'login.misc.email_address'|trans }}" required autofocus>
+                                <label for="username">{{ 'login.misc.email_address'|trans }}</label>
                             </div>
 
                             {# If you want to control the URL the user is redirected to on success
                             <input type="hidden" name="_target_path" value="/account"/> #}
 
                             <div class="form-label-group">
-                                <input type="password" id="password" name="_password" class="form-control" placeholder="Password">
-                                <label for="password">Mot de passe</label>
+                                <input type="password" id="password" name="_password" class="form-control" placeholder="{{ 'login.misc.password'|trans }}">
+                                <label for="password">{{ 'login.misc.password'|trans }}</label>
                             </div>
                             
                             
                             
                             <div class="text-center">
-                                <button class="btn btn-primary text-uppercase" type="submit">Se connecter</button>
+                                <button class="btn btn-primary text-uppercase" type="submit">{{ 'login.button.login'|trans }}</button>
                             </div>
                         </form>
 
@@ -40,19 +40,19 @@
                             {% set invalidEmailFlash = app.flashes('invalid-email')[0] %}
                         {% endif %}
                         
-                        <h3 class="card-title text-center pb-3">Lien de connexion</h3>
+                        <h3 class="card-title text-center pb-3">{{ 'login.misc.login_link'|trans }}</h3>
                     
                         <form class="form-signin" action="{{ path('app.login_link') }}" method="POST">
                             <div class="form-label-group">
-                                <input id="email" class="form-control {{ invalidEmailFlash is defined ? 'is-invalid' }}" type="email" name="email" placeholder="Adresse mail" required autofocus>
-                                <label for="email">Adresse mail</label>
+                                <input id="email" class="form-control {{ invalidEmailFlash is defined ? 'is-invalid' }}" type="email" name="email" placeholder="{{ 'login.misc.email_address'|trans }}" required autofocus>
+                                <label for="email">{{ 'login.misc.email_address'|trans }}</label>
                             </div>
                             <div id="validationServerUsernameFeedback" class="invalid-feedback">
                                 {{ invalidEmailFlash is defined ? invalidEmailFlash }}
                             </div>
                         
                             <div class="text-center">
-                                <button class="btn btn-primary text-uppercase" type="submit">Obtenir le lien de connexion</button>
+                                <button class="btn btn-primary text-uppercase" type="submit">{{ 'login.button.login_link'|trans }}</button>
                             </div>
                         </form>
 
@@ -62,7 +62,7 @@
                         {% endif %}
                         <hr class="my-4">
                         <div class="text-center">
-                            <p>En continuant, vous acceptez les <a href=""><b>Conditions d'utilisation</b></a> de IONIS et reconnaissez avoir lu notre <br /><a href=""><b>Politique de confidentialité</b></a>.</p>
+                            <p>{{ 'login.misc.tos_privacy_1'|trans }} <a href="#"><b>{{ 'login.button.terms_of_service'|trans }}</b></a> {{ 'login.misc.tos_privacy_2'|trans }} <br /><a href="#"><b>{{ 'login.button.privacy_policy'|trans }}</b></a>.</p>
                         </div>
                     </div>
 

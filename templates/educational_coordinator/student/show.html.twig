@@ -1,46 +1,46 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello EducationalCoordinatorController!{% endblock %}
+{% block title %}{{ 'educational_coordinator.student.title.show'|trans({ 'firstname': student.user.firstname ?? '-', 'lastname': student.user.lastname ?? '-' }) }}{% endblock %}
 
 {% block body %}
     <div class="container">       
         <header class="animated bounceInDown">
-            <h1><b>Informations sur {{ student.user.lastname ?? '-' }} {{ student.user.firstname ?? '-' }}</b></h1><br />
+            <h1><b>{{ 'educational_coordinator.student.title.show'|trans({ 'firstname': student.user.firstname ?? '-', 'lastname': student.user.lastname ?? '-' }) }}</b></h1><br />
         </header>                
         <div class="container">  
             <p>
-                L'étudiant {{ student.user.lastname ?? '-' }} {{ student.user.firstname ?? '-' }} ( {{ student.user.email }} ) est née le {{ student.dateOfBirth is empty ? '-' : student.dateOfBirth|date('d/m/Y') }}.<br/>
-                {{ student.user.lastname ?? '-' }} {{ student.user.firstname ?? '-' }} vit en {{ student.region.name ?? '-' }} et se trouve dans le campus {{ student.campus.label ?? '-' }} {{ student.level.label ?? '' is empty ? '' : 'en ' ~ student.level.label }}.
+                {{ 'educational_coordinator.student.misc.description'|trans({ 'firstname': student.user.firstname ?? '-', 'lastname': student.user.lastname ?? '-' , 'dob': student.dateOfBirth ? student.dateOfBirth|date('d/m/Y') : '' }) }}<br/>
+                {{ 'educational_coordinator.student.misc.campus'|trans({ 'campus': student.campus.label ?? '-' }) }}
             </p>
             
             {% if student.companyTrainingContract.name ?? '' is empty %}
             {% else %}
-                <p>Il est en contrat pro avec {{ student.companyTrainingContract.name ?? '' }} depuis le {{ student.dateStartContract|date('d/m/Y') }}.</p>
+                <p>{{ 'educational_coordinator.student.misc.training_contract'|trans({ 'company': student.companyTrainingContract.name ?? '-', 'date': student.dateStartContract ? student.dateStartContract|date('d/m/Y') : '-' }) }}</p>
             {% endif %}
 
             {% if student.absences|length > 0 %}
-                <p>L'étudiant compte {{ student.absences|length }} abscence(s) dont les justificatifs sont :</p>
+                <p>{{ 'educational_coordinator.student.misc.absences'|trans({ 'n': student.absences|length }) }}:</p>
                 <ul>
                     {% for absence in student.absences %}
                         <li>{{ absence.date|date('d/m/Y') }} {{ absence.period }} : {{ absence.excuse ?? '-' }}</li>
                     {% endfor %}
                 </ul>
             {% else %}
-                <p>L'étudiant n'a jamais été absent.</p>
+                <p>{{ 'educational_coordinator.student.misc.no_absence'|trans }}</p>
             {% endif %}
 
             <div class="table-wrapper-scroll-y my-custom-scrollbar">
                 <div class="container">    
                     <header class="animated bounceInDown">
-                        <h4><b>Notes de l'étudiant : </b></h4>
+                        <h4><b>{{ 'educational_coordinator.student.misc.grades'|trans }}:</b></h4>
                     </header>                                                                    
                         <div class="table-responsive">          
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">Modules</th>
-                                    <th scope="col">Notes</th>
-                                    <th scope="col">Résultat</th>
+                                    <th scope="col">{{ 'educational_coordinator.student.table.module'|trans }}</th>
+                                    <th scope="col">{{ 'educational_coordinator.student.table.grade'|trans }}</th>
+                                    <th scope="col">{{ 'educational_coordinator.student.table.result'|trans }}</th>
                                 </tr>
                             </thead>
                             <tbody>

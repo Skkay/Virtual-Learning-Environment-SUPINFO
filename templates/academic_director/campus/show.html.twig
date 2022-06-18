@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CampusController!{% endblock %}
+{% block title %}{{ 'academic_director.campus.title.show'|trans }} {{ campus.label }}{% endblock %}
 
 {% block body %}
 <ul>
-    <li><b>campus.id:</b> {{ campus.id }}</li>
-    <li><b>campus.label:</b> {{ campus.label }}</li>
-    <li><b>campus.city:</b> {{ campus.city ?? '-' }}</li>
-    <li><b>nbStudent:</b>
+    <li><b>{{ 'academic_director.campus.misc.id'|trans }}:</b> {{ campus.id }}</li>
+    <li><b>{{ 'academic_director.campus.misc.label'|trans }}:</b> {{ campus.label }}</li>
+    <li><b>{{ 'academic_director.campus.misc.city'|trans }}:</b> {{ campus.city ?? '-' }}</li>
+    <li><b>{{ 'academic_director.campus.misc.nb_student'|trans }}:</b>
         <ul>
             {% for level in levels %}
                 <li>{{ level.label }}: {{ nbStudents[level.label] ?? '0' }}</li>
@@ -15,11 +15,11 @@
             <li>{{ 'academic_director.campus.misc.other'|trans }}: {{ nbStudents[''] ?? '0' }}</li>
         </ul>
     </li>
-    <li><b>campus.sections:</b>
+    <li><b>{{ 'academic_director.campus.misc.sections'|trans }}:</b>
         <ul>
             {% for section in campus.sections %}
                 <li>{{ section.label }}:
-                    <ul><b>section.instructors:</b>
+                    <ul><b>{{ 'academic_director.campus.misc.instructors'|trans }}:</b>
                         {% for instructor in section.instructors %}
                            <li>{{ instructor.user.email }}</li>
                         {% endfor %}
@@ -28,7 +28,7 @@
             {% endfor %}
         </ul>
     </li>
-    <li><b>campus.students:</b>
+    <li><b>{{ 'academic_director.campus.misc.students'|trans }}:</b>
         <ul>
             {% for student in campus.students %}
                 <li>{{ student.user.email }}</li>

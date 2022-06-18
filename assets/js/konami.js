@@ -19,6 +19,7 @@ confettiCanvas.style.left = '0px';
 confettiCanvas.style.width = '100%';
 confettiCanvas.style.height = '100%';
 confettiCanvas.style.pointerEvents = 'none';
+confettiCanvas.style.zIndex = '100';
 document.body.appendChild(confettiCanvas);
 
 const myConfetti = confetti.create(confettiCanvas, {

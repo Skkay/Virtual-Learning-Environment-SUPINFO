@@ -21,11 +21,13 @@ import { ScrollSpy } from 'bootstrap/dist/js/bootstrap.esm';
       $('.navbar-collapse').collapse('hide');
     });
   
-    // Activate scrollspy to add active class to navbar items on scroll
-    var scrollSpy = new ScrollSpy(document.body, {
-      target: '#mainNav',
-      offset: 56
-    });
+    if (document.getElementById('mainNav')) {
+        // Activate scrollspy to add active class to navbar items on scroll
+        var scrollSpy = new ScrollSpy(document.body, {
+            target: '#mainNav',
+            offset: 56
+        });
+    }
   
   
     // Collapse Navbar

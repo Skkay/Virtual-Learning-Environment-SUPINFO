@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ModuleController!{% endblock %}
+{% block title %}{{ 'educational_coordinator.module.title.index'|trans }}{% endblock %}
 
 {% block body %}
     <div class="table-wrapper-scroll-y my-custom-scrollbar">
@@ -12,9 +12,9 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Nom</th>
-                            <th scope="col">Spécialité</th>
-                            <th scope="col">ECTS</th>
+                            <th scope="col">{{ 'educational_coordinator.module.table.name'|trans }}</th>
+                            <th scope="col">{{ 'educational_coordinator.module.table.speciality'|trans }}</th>
+                            <th scope="col">{{ 'educational_coordinator.module.table.ects'|trans }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -22,9 +22,9 @@
                             <tr>
                                 <td><a href="{{ path('app.educational_coordinator.module.show', {'id': module.id} ) }}">{{ module.label }}</a></td>
                                 {% if module.speciality == 1 %}
-                                    <td>Oui</td>
+                                    <td>{{ 'educational_coordinator.module.misc.yes'|trans }}</td>
                                 {% else %}
-                                    <td>Non</td>
+                                    <td>{{ 'educational_coordinator.module.misc.no'|trans }}</td>
                                 {% endif %}
                                 <td>{{ module.ects ?? '-' }}</td>
                             </tr>

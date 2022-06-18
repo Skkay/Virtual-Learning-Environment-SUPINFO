@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ModuleController!{% endblock %}
+{% block title %}{{ 'academic_director.module.title.index'|trans }}{% endblock %}
 
 {% block body %}
 <h1>{{ 'academic_director.module.title.index'|trans }}</h1>
@@ -8,10 +8,10 @@
 <table class="table table-sm table-hover">
     <thead>
         <tr>
-            <th scope="col">module.id</th>
-            <th scope="col">module.label</th>
-            <th scope="col">module.speciality</th>
-            <th scope="col">module.ects</th>
+            <th scope="col">{{ 'academic_director.module.table.id'|trans }}</th>
+            <th scope="col">{{ 'academic_director.module.table.label'|trans }}</th>
+            <th scope="col">{{ 'academic_director.module.table.speciality'|trans }}</th>
+            <th scope="col">{{ 'academic_director.module.table.ects'|trans }}</th>
         </tr>
     </thead>
     <tbody>

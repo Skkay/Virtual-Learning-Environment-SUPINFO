@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AccountsController!{% endblock %}
+{% block title %}{{ 'accounts.dashboard.title.index'|trans }} {{ 'accounts.dashboard.title.role'|trans }}{% endblock %}
 
 {% block body %}
         <section id="services" class="section-bg">
             <div class="container">
                 <header class="section-header animated bounceInDown">
-                    <h2><b>Bienvenue dans l'espace <span style="color:#2282ff">{{ 'accounts.dashboard.title.role'|trans }} </span></b></h2><br /><br />
+                    <h2><b>{{ 'accounts.dashboard.misc.welcome'|trans }} <span style="color:#2282ff">{{ 'accounts.dashboard.title.role'|trans }} </span></b></h2><br /><br />
                 </header>
                 <div class="row">
                     

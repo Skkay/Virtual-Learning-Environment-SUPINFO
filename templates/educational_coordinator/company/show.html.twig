@@ -1,36 +1,36 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CompanyController!{% endblock %}
+{% block title %}{{ 'educational_coordinator.company.title.show'|trans({ 'company': company.name }) }}{% endblock %}
 
 {% block body %}
 
 <div class="container"> 
     <header class="animated bounceInDown">
-        <h1><b>Détails de l'entreprise {{ company.name }}</b></h1><br />
+        <h1><b>{{ 'educational_coordinator.company.title.show'|trans({ 'company': company.name }) }}</b></h1><br />
     </header>  
     <div class="container"> 
         {% if studentsHired is not empty %}
-            <p>L'entreprise {{ company.name }} {{ company.sector is not null ? ' dans le secteur du ' ~ company.sector : '' }} embauche : </p>
+            <p>{{ 'educational_coordinator.company.misc.student_hired'|trans }}:</p>
             <ul>
                 {% for student in studentsHired %}
                     <li>{{ student.user.firstName }} {{ student.user.lastName }}</li>
                 {% endfor %}
             </ul>
         {% else %}
-            <p>L'entreprise {{ company.name }} n'embauche aucun de nos étudiants.</p>
+            <p>{{ 'educational_coordinator.company.misc.no_student_hired'|trans }}</p>
         {% endif %}
         {% if studentsInTrainingContract is not empty %}
-            <p>Les étudiants en contrat de formation chez {{ company.name }} sont : </p>
+            <p>{{ 'educational_coordinator.company.misc.training_contract'|trans }}:</p>
             <ul>
                 {% for student in studentsInTrainingContract %}
                     <li>{{ student.user.firstName }} {{ student.user.lastName }}</li>
                 {% endfor %}
             </ul>
         {% else %}
-            <p>{{ company.name }} n'a aucun de nos étudiants en contrat de formation.</p>
+            <p>{{ 'educational_coordinator.company.misc.no_training_contract'|trans }}</p>
         {% endif %}
         {% if company.address is not empty %}
-            <p>Adresse de l'entreprise : {{ company.address }}.</p>
+            <p>{{ 'educational_coordinator.company.misc.address'|trans }}: {{ company.address }}.</p>
         {% endif %}
     </div>
 </div>

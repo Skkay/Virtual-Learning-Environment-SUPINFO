@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PartnershipController!{% endblock %}
+{% block title %}{{ 'academic_director.partnership.title.index'|trans }}{% endblock %}
 
 {% block body %}
 <h1>{{ 'academic_director.partnership.title.index'|trans }}</h1>
@@ -8,7 +8,7 @@
 <table class="table table-sm table-hover">
     <thead>
         <tr>
-            <th scope="col">(img)</th>
+            <th scope="col"></th>
             <th scope="col">{{ 'academic_director.partnership.table.id'|trans }}</th>
             <th scope="col">{{ 'academic_director.partnership.table.label'|trans }}</th>
             <th scope="col">{{ 'academic_director.partnership.table.description'|trans }}</th>

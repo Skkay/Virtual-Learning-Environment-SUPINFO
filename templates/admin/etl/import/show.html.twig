@@ -15,14 +15,14 @@
 {% block body %}
 <div class="container">
     <header class="animated bounceInDown">
-        <h1><b>Importation du fichier {{ import.currentFileName }}</b></h1><br />
+        <h1><b>Importation N°{{ import.id }}</b></h1><br />
     </header>      
     <div class="container">
-        <p>Le fichier {{ import.currentFileName }} a été crée le {{ import.createdAt|date('d/m/Y à h:i:s') is not empty ? import.createdAt|date('d/m/Y à h:i:s') : '' }} 
+        <p>Importation créée le {{ import.createdAt ? import.createdAt|date('d/m/Y à h:i:s') : '' }} 
             {{ import.updatedAt is not empty ? ' et mise à jour le ' ~ import.updatedAt|date('d/m/Y à h:i:s') : '' }}.
         </p>
         <p>
-            Le téléchargement a commencer le {{ import.startedAt ? import.startedAt|date('Y-m-d h:i:s') : '-' }} {{ import.endedAt is not empty ? " et s'est terminé le " ~ import.endedAt|date('d/m/Y à h:i:s') : '' }}.
+            Commencée le {{ import.startedAt ? import.startedAt|date('Y-m-d à h:i:s') : '-' }}. {{ import.endedAt ? ' Terminée le ' ~ import.endedAt|date('d/m/Y à h:i:s') : '' }}.
         </p>
 
         <h3>{{ 'admin.etl.import.misc.progress'|trans }}</h3>

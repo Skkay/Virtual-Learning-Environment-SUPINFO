@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello SectionController!{% endblock %}
+{% block title %}{{ 'admin.section.title.index'|trans }}{% endblock %}
 
 {% block body %}
-<h1>Sections</h1>
+<h1>{{ 'admin.section.title.index'|trans }}</h1>
 
 <table class="table table-sm table-hover">
     <thead>
         <tr>
-            <th scope="col">section.id</th>
-            <th scope="col">section.label</th>
-            <th scope="col">section.campus.label</th>
-            <th scope="col">section.year</th>
+            <th scope="col">{{ 'admin.section.table.id'|trans }}</th>
+            <th scope="col">{{ 'admin.section.table.label'|trans }}</th>
+            <th scope="col">{{ 'admin.section.table.campus'|trans }}</th>
+            <th scope="col">{{ 'admin.section.table.year'|trans }}</th>
         </tr>
     </thead>
     <tbody>

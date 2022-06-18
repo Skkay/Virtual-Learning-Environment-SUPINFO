@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello LevelController!{% endblock %}
+{% block title %}{{ 'admin.level.title.index'|trans }}{% endblock %}
 
 {% block body %}
-<h1>Levels</h1>
+<h1>{{ 'admin.level.title.index'|trans }}</h1>
 
 <table class="table table-sm table-hover">
     <thead>
         <tr>
-            <th scope="col">level.id</th>
-            <th scope="col">level.label</th>
+            <th scope="col">{{ 'admin.level.table.id'|trans }}</th>
+            <th scope="col">{{ 'admin.level.table.label'|trans }}</th>
         </tr>
     </thead>
     <tbody>

@@ -23,7 +23,7 @@ const calendar = new Calendar(calendarEl, {
     dayMaxEvents: true,
     eventStartEditable: false,
     locales: [frLocale],
-    locale: 'fr',
+    locale: window.locale ? window.locale : 'fr',
 });
 
 calendar.render();

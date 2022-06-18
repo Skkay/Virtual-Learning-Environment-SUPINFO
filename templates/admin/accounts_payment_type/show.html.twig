@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AccountsPaymentTypeController!{% endblock %}
+{% block title %}{{ 'admin.accounts_payment_type.title.show'|trans }}{% endblock %}
 
 {% block body %}
 <ul>
-    <li><b>accountsPaymentType.id:</b> {{ accountsPaymentType.id }}</li>
-    <li><b>accountsPaymentType.label:</b> {{ accountsPaymentType.label }}</li>
-    <li><b>accountsPaymentType.students:</b>
+    <li><b>{{ 'admin.accounts_payment_type.misc.id'|trans }}:</b> {{ accountsPaymentType.id }}</li>
+    <li><b>{{ 'admin.accounts_payment_type.misc.label'|trans }}:</b> {{ accountsPaymentType.label }}</li>
+    <li><b>{{ 'admin.accounts_payment_type.misc.students'|trans }}:</b>
         <ul>
         {% if accountsPaymentType.students is empty %}
             <li>-</li>

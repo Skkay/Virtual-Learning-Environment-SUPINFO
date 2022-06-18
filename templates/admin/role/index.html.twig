@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello RoleController!{% endblock %}
+{% block title %}{{ 'admin.role.title.index'|trans }}{% endblock %}
 
 {% block body %}
 <h1>Role</h1>
@@ -8,9 +8,9 @@
 <table class="table table-sm table-hover">
     <thead>
         <tr>
-            <th scope="col">role.id</th>
-            <th scope="col">role.from</th>
-            <th scope="col">role.to</th>
+            <th scope="col">{{ 'admin.role.table.id'|trans }}</th>
+            <th scope="col">{{ 'admin.role.table.from'|trans }}</th>
+            <th scope="col">{{ 'admin.role.table.to'|trans }}</th>
         </tr>
     </thead>
     <tbody>

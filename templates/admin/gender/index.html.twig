@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello GenderController!{% endblock %}
+{% block title %}{{ 'admin.gender.title.index'|trans }}{% endblock %}
 
 {% block body %}
-<h1>Genders</h1>
+<h1>{{ 'admin.gender.title.index'|trans }}</h1>
 
 <table class="table table-sm table-hover">
     <thead>
         <tr>
-            <th scope="col">gender.id</th>
-            <th scope="col">gender.label</th>
+            <th scope="col">{{ 'admin.gender.table.id'|trans }}</th>
+            <th scope="col">{{ 'admin.gender.table.label'|trans }}</th>
         </tr>
     </thead>
     <tbody>

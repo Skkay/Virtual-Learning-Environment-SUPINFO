@@ -1,19 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PlanningEventController!{% endblock %}
+{% block title %}{{ 'admin.planning_event.title.show'|trans }}{% endblock %}
 
 {% block body %}
 <ul>
-    <li><b>planningEvent.id:</b> {{ planningEvent.id }}</li>
-    <li><b>planningEvent.title:</b> {{ planningEvent.title ?? '-' }}</li>
-    <li><b>planningEvent.description:</b> {{ planningEvent.description ?? '-' }}</li>
-    <li><b>planningEvent.start:</b> {{ planningEvent.start ? planningEvent.start|date('d-m-Y') : '-' }}</li>
-    <li><b>planningEvent.end:</b> {{ planningEvent.end ? planningEvent.end|date('d-m-Y') : '-' }}</li>
-    <li><b>planningEvent.allDay:</b> {{ planningEvent.allDay ? 'admin.planning_event.misc.yes'|trans : 'admin.planning_event.misc.no'|trans }}</li>
-    <li><b>planningEvent.campus.label:</b> {{ planningEvent.campus.label ?? '-' }}</li>
-    <li><b>planningEvent.level.label:</b> {{ planningEvent.level.label ?? '-' }}</li>
-    <li><b>planningEvent.backgroundColor:</b> {{ planningEvent.backgroundColor ? planningEvent.backgroundColor|upper : '-' }}</li>
-    <li><b>planningEvent.borderColor:</b> {{ planningEvent.borderColor ? planningEvent.borderColor|upper : '-' }}</li>
-    <li><b>planningEvent.textColor:</b> {{ planningEvent.textColor ? planningEvent.textColor|upper : '-' }}</li>
+    <li><b>{{ 'admin.planning_event.misc.id'|trans }}:</b> {{ planningEvent.id }}</li>
+    <li><b>{{ 'admin.planning_event.misc.title'|trans }}:</b> {{ planningEvent.title ?? '-' }}</li>
+    <li><b>{{ 'admin.planning_event.misc.description'|trans }}:</b> {{ planningEvent.description ?? '-' }}</li>
+    <li><b>{{ 'admin.planning_event.misc.start'|trans }}:</b> {{ planningEvent.start ? planningEvent.start|date('d-m-Y') : '-' }}</li>
+    <li><b>{{ 'admin.planning_event.misc.end'|trans }}:</b> {{ planningEvent.end ? planningEvent.end|date('d-m-Y') : '-' }}</li>
+    <li><b>{{ 'admin.planning_event.misc.all_day'|trans }}:</b> {{ planningEvent.allDay ? 'admin.planning_event.misc.yes'|trans : 'admin.planning_event.misc.no'|trans }}</li>
+    <li><b>{{ 'admin.planning_event.misc.campus'|trans }}:</b> {{ planningEvent.campus.label ?? '-' }}</li>
+    <li><b>{{ 'admin.planning_event.misc.level'|trans }}:</b> {{ planningEvent.level.label ?? '-' }}</li>
+    <li><b>{{ 'admin.planning_event.misc.background_color'|trans }}:</b> {{ planningEvent.backgroundColor ? planningEvent.backgroundColor|upper : '-' }}</li>
+    <li><b>{{ 'admin.planning_event.misc.border_color'|trans }}:</b> {{ planningEvent.borderColor ? planningEvent.borderColor|upper : '-' }}</li>
+    <li><b>{{ 'admin.planning_event.misc.text_color'|trans }}:</b> {{ planningEvent.textColor ? planningEvent.textColor|upper : '-' }}</li>
 </ul>
 {% endblock %}

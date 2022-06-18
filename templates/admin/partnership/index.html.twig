@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PartnershipController!{% endblock %}
+{% block title %}{{ 'admin.partnership.title.index'|trans }}{% endblock %}
 
 {% block body %}
-<h1>Partnership</h1>
+<h1>{{ 'admin.partnership.title.index'|trans }}</h1>
 
 <table class="table table-sm table-hover">
     <thead>
         <tr>
-            <th scope="col">partnership.id</th>
-            <th scope="col">partnership.label</th>
-            <th scope="col">partnership.imageUrl</th>
-            <th scope="col">partnership.description</th>
+            <th scope="col">{{ 'admin.partnership.table.id'|trans }}</th>
+            <th scope="col">{{ 'admin.partnership.table.label'|trans }}</th>
+            <th scope="col">{{ 'admin.partnership.table.image_url'|trans }}</th>
+            <th scope="col">{{ 'admin.partnership.table.description'|trans }}</th>
         </tr>
     </thead>
     <tbody>
