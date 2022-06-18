@@ -1,0 +1,99 @@
+{
+    "main_entity": {
+        "entity": "App\\Entity\\Instructor",
+        "identified_by": {
+            "destination": "user",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\User",
+                    "destination": "email",
+                    "source": "email",
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "fields": [
+        {
+            "destination": "user",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\User",
+                    "identified_by": {
+                        "source": "email",
+                        "destination": "email"
+                    },
+                    "destination": "firstName",
+                    "source": "first_name",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "user",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\User",
+                    "identified_by": {
+                        "source": "email",
+                        "destination": "email"
+                    },
+                    "destination": "lastName",
+                    "source": "last_name",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "user",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\User",
+                    "identified_by": {
+                        "source": "email",
+                        "destination": "email"
+                    },
+                    "destination": "email",
+                    "source": "email",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "modules",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Module",
+                    "identified_by": {
+                        "destination": "label",
+                        "source": "modules"
+                    },
+                    "destination": "label",
+                    "source": "modules",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "sections",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Section",
+                    "identified_by": {
+                        "destination": "label",
+                        "source": "Section"
+                    },
+                    "destination": "label",
+                    "source": "Section",
+                    "type": "string"
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,53 @@
+{
+    "main_entity": {
+        "entity": "App\\Entity\\Absence",
+        "identified_by": {
+            "destination": "id",
+            "source": "id",
+            "metatype": {
+                "type": "int"
+            }
+        }
+    },
+    "fields": [
+        {
+            "destination": "student",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Student",
+                    "identified_by": {
+                        "relation": {
+                            "entity": "App\\Entity\\User",
+                            "source": "email",
+                            "destination": "email"
+                        }
+                    },
+                    "destination": "student"
+                }
+            }
+        },
+        {
+            "destination": "date",
+            "source": "date",
+            "metatype": {
+                "type": "date",
+                "date_format": "d\/m\/Y"
+            }
+        },
+        {
+            "destination": "period",
+            "source": "periode",
+            "metatype": {
+                "type": "string"
+            }
+        },
+        {
+            "destination": "excuse",
+            "source": "raison",
+            "metatype": {
+                "type": "string"
+            }
+        }
+    ]
+}

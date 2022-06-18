@@ -30,3 +30,4 @@ public/export/
 var/
 vendor/
 .todo/
+data_sample/

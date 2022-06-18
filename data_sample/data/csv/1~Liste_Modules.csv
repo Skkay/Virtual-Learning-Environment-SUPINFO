@@ -1,0 +1,51 @@
+id;code;speciality;ects;level;description
+1;1PYTH;false;6;B.ENG 1;Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+2;1WORK;false;5;B.ENG 1;In convallis turpis eu est ultrices, vitae ornare ligula convallis.
+3;1WDEV;false;7;B.ENG 1;Morbi malesuada massa a volutpat egestas.
+4;1ITWO;false;4;B.ENG 1;Fusce imperdiet nisi vitae cursus pretium.
+5;1TEAM;false;8;B.ENG 1;Fusce ut metus nec tortor ornare blandit sit amet quis leo.
+6;1O365;false;5;B.ENG 1;In sit amet nulla sed enim tempor aliquet sit amet sit amet est.
+7;2JAVA;false;6;B.ENG 2;Sed nec elit rhoncus, vehicula dolor et, tempus velit.
+8;2PHPD;false;5;B.ENG 2;Sed sagittis augue non ex tristique feugiat quis et orci.
+9;2GRAP;false;7;B.ENG 2;Praesent lacinia leo in nisi volutpat tristique.
+10;2DTTL;false;4;B.ENG 2;Donec imperdiet neque et bibendum placerat.
+11;2DVST;false;8;B.ENG 2;Fusce sed lorem aliquam, tincidunt erat egestas, mollis dolor.
+12;2AWSP;false;5;B.ENG 2;Integer vel tortor in risus rutrum maximus.
+13;3ANDM;false;6;B.ENG 3;Aliquam vulputate lorem id lacinia aliquet.
+14;3CCNA;false;5;B.ENG 3;Etiam non nibh placerat eros rutrum pellentesque id non arcu.
+15;3ASPC;false;7;B.ENG 3;Proin gravida leo non orci luctus, ut placerat lorem luctus.
+16;3LPIC;false;4;B.ENG 3;Curabitur finibus lorem id maximus hendrerit.
+17;3AGIL;false;8;B.ENG 3;Etiam ac purus id neque posuere scelerisque nec eu elit.
+18;4AZUR;false;6;M.ENG 1;Maecenas quis eros egestas risus finibus congue.
+19;4BOSS;false;5;M.ENG 1;Vestibulum sed sem convallis, iaculis risus sit amet, dapibus felis.
+20;4GDPR;false;7;M.ENG 1;Nunc euismod magna nec pulvinar pellentesque.
+21;4DOCKR;false;4;M.ENG 1;Donec sit amet nibh sed turpis congue porttitor in vitae lectus.
+22;4CHGM;false;8;M.ENG 1;Donec sed massa a mi hendrerit varius.
+23;4BINT;false;5;M.ENG 1;Vestibulum venenatis ex vel nunc condimentum, ac tempus augue efficitur.
+24;4SECU;false;7;M.ENG 1;Nullam eu ante dictum, efficitur nunc vel, molestie mauris.
+25;5CCNA;false;6;M.ENG 2;Donec sodales nulla dictum nisl commodo, in faucibus nibh congue.
+26;5DATA;false;5;M.ENG 2;Maecenas congue dui vitae ipsum tincidunt faucibus.
+27;5DOOP;false;7;M.ENG 2;Aenean sit amet metus vehicula, varius lorem ac, tincidunt erat.
+28;5ITIL;false;4;M.ENG 2;Suspendisse finibus velit nec est condimentum dictum.
+29;5RBIG;false;8;M.ENG 2;Integer ut risus a nisi sollicitudin malesuada.
+30;5BLOC;false;5;M.ENG 2;Duis convallis diam eget imperdiet efficitur.
+31;5MDD;false;7;M.ENG 2;Sed elementum metus et velit cursus, id varius magna tempor.
+32;1AAAA;false;7;B.ENG 1;Sed a tellus imperdiet, pretium lacus sit amet, maximus sapien.
+33;1BBBB;false;6;B.ENG 1;Ut posuere leo sed tincidunt bibendum.
+34;1CCCC;false;6;B.ENG 1;Cras dignissim massa bibendum, maximus ligula molestie, lobortis nulla.
+35;1DDDD;false;6;B.ENG 1;Etiam egestas nisi quis faucibus accumsan.
+36;2AAAA;false;7;B.ENG 2;Etiam vehicula nisi nec semper rutrum.
+37;2BBBB;false;6;B.ENG 2;Ut fringilla libero id euismod mattis.
+38;2CCCC;false;6;B.ENG 2;Aliquam vehicula nisi sodales elementum dignissim.
+39;2DDDD;false;6;B.ENG 2;Nam feugiat ex vel eros rutrum, et egestas lectus efficitur.
+40;3AAAA;false;5;B.ENG 3;In pretium velit nec erat ultrices posuere.
+41;3BBBB;false;7;B.ENG 3;Duis mollis mi sit amet convallis ornare.
+42;3CCCC;false;6;B.ENG 3;Maecenas et orci vel tortor mattis aliquam.
+43;3DDDD;false;6;B.ENG 3;Integer commodo ipsum id erat efficitur lobortis.
+44;3EEEE;false;6;B.ENG 3;Nullam in lacus fringilla, dictum tortor ac, mattis sapien.
+45;4AAAA;true;6;M.ENG 1;Nam facilisis leo quis velit maximus, eget feugiat mauris commodo.
+46;4BBBB;true;6;M.ENG 1;Donec in purus et ex porta tincidunt.
+47;4CCCC;true;6;M.ENG 1;Etiam sit amet quam a urna viverra porta.
+48;5AAAA;true;6;M.ENG 2;Aenean pharetra nulla ac sem posuere aliquam.
+49;5BBBB;true;6;M.ENG 2;Suspendisse at nunc suscipit, tempor mauris vitae, scelerisque augue.
+50;5CCCC;true;6;M.ENG 2;Ut et eros convallis, lobortis mauris in, aliquam velit.

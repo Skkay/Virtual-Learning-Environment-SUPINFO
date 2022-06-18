@@ -1,0 +1,28 @@
+{
+    "main_entity": {
+        "entity": "App\\Entity\\Level",
+        "identified_by": {
+            "destination": "label",
+            "source": "label",
+            "metatype": {
+                "type": "string"
+            }
+        }
+    },
+    "fields": [
+        {
+            "destination": "label",
+            "source": "label",
+            "metatype": {
+                "type": "string"
+            }
+        },
+        {
+            "destination": "numericLevel",
+            "source": "numeric_level",
+            "metatype": {
+                "type": "int"
+            }
+        }
+    ]
+}

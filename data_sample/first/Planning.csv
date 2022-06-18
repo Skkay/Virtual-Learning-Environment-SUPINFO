@@ -1,0 +1,14 @@
+id;campus;level;title;description;start;end;backgroundColor;borderColor;textColor;allDay
+19;Distanciel;M.ENG 1;4AZUR;Vivamus semper risus at mollis suscipit.;2022-06-06T09:00:00;2022-06-06T17:00:00;#3F51B5;#3F51B5;#FFFFFF;true
+20;Distanciel;M.ENG 1;4AZUR;Vivamus semper risus at mollis suscipit.;2022-06-07T09:00:00;2022-06-07T17:00:00;#3F51B5;#3F51B5;#FFFFFF;true
+21;Distanciel;M.ENG 1;4AZUR;Vivamus semper risus at mollis suscipit.;2022-06-08T09:00:00;2022-06-08T17:00:00;#3F51B5;#3F51B5;#FFFFFF;true
+22;Distanciel;M.ENG 1;4AZUR;Vivamus semper risus at mollis suscipit.;2022-06-13T09:00:00;2022-06-13T17:00:00;#3F51B5;#3F51B5;#FFFFFF;true
+23;Distanciel;M.ENG 1;4AZUR;Vivamus semper risus at mollis suscipit.;2022-06-14T09:00:00;2022-06-14T17:00:00;#3F51B5;#3F51B5;#FFFFFF;true
+24;Distanciel;M.ENG 1;4AZUR;Vivamus semper risus at mollis suscipit.;2022-06-15T09:00:00;2022-06-15T17:00:00;#3F51B5;#3F51B5;#FFFFFF;true
+25;Distanciel;M.ENG 1;Point 4PROJ;Phasellus vel nisi vehicula, scelerisque nulla et, convallis magna.;2022-06-15T17:00:00;;;#B52B2B;;false
+26;Distanciel;B.ENG 3;3ANDM;Vivamus semper risus at mollis suscipit.;2022-06-06T09:00:00;2022-06-06T17:00:00;#60A021;#60A021;#FFFFFF;true
+27;Distanciel;B.ENG 3;3ANDM;Vivamus semper risus at mollis suscipit.;2022-06-07T09:00:00;2022-06-07T17:00:00;#60A021;#60A021;#FFFFFF;true
+28;Distanciel;B.ENG 3;3ANDM;Vivamus semper risus at mollis suscipit.;2022-06-08T09:00:00;2022-06-08T17:00:00;#60A021;#60A021;#FFFFFF;true
+29;Distanciel;B.ENG 3;3ANDM;Vivamus semper risus at mollis suscipit.;2022-06-13T09:00:00;2022-06-13T17:00:00;#60A021;#60A021;#FFFFFF;true
+30;Distanciel;B.ENG 3;3ANDM;Vivamus semper risus at mollis suscipit.;2022-06-14T09:00:00;2022-06-14T17:00:00;#60A021;#60A021;#FFFFFF;true
+31;Distanciel;B.ENG 3;3ANDM;Vivamus semper risus at mollis suscipit.;2022-06-15T09:00:00;2022-06-15T17:00:00;#60A021;#60A021;#FFFFFF;true

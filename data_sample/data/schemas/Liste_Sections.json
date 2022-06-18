@@ -1,0 +1,44 @@
+{
+    "main_entity": {
+        "entity": "App\\Entity\\Section",
+        "identified_by": {
+            "destination": "label",
+            "source": "label",
+            "metatype": {
+                "type": "string"
+            }
+        }
+    },
+    "fields": [
+        {
+            "destination": "label",
+            "source": "label",
+            "metatype": {
+                "type": "string"
+            }
+        },
+        {
+            "destination": "campus",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Campus",
+                    "identified_by": {
+                        "destination": "label",
+                        "source": "campus"
+                    },
+                    "destination": "label",
+                    "source": "campus",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "year",
+            "source": "year",
+            "metatype": {
+                "type": "int"
+            }
+        }
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "main_entity": {
+        "entity": "App\\Entity\\Role",
+        "identified_by": {
+            "destination": "from",
+            "source": "from",
+            "metatype": {
+                "type": "string"
+            }
+        }
+    },
+    "fields": [
+        {
+            "destination": "from",
+            "source": "from",
+            "metatype": {
+                "type": "string"
+            }
+        },
+        {
+            "destination": "to",
+            "source": "to",
+            "metatype": {
+                "type": "string"
+            }
+        }
+    ]
+}

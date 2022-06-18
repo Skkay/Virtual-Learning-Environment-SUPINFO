@@ -1,0 +1,865 @@
+{
+    "main_entity": {
+        "entity": "App\\Entity\\Student",
+        "identified_by": {
+            "destination": "user",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\User",
+                    "destination": "email",
+                    "source": "email",
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "fields": [
+        {
+            "destination": "user",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\User",
+                    "identified_by": {
+                        "source": "email",
+                        "destination": "email"
+                    },
+                    "destination": "firstName",
+                    "source": "first_name",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "user",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\User",
+                    "identified_by": {
+                        "source": "email",
+                        "destination": "email"
+                    },
+                    "destination": "lastName",
+                    "source": "last_name",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "user",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\User",
+                    "identified_by": {
+                        "source": "email",
+                        "destination": "email"
+                    },
+                    "destination": "email",
+                    "source": "email",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "campus",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Campus",
+                    "identified_by": {
+                        "source": "campus",
+                        "destination": "label"
+                    },
+                    "destination": "label",
+                    "source": "campus",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "level",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Level",
+                    "identified_by": {
+                        "source": "level",
+                        "destination": "label"
+                    },
+                    "destination": "label",
+                    "source": "level",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "grades",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Grade",
+                    "identified_by": null,
+                    "destination": "grade",
+                    "source": "1WORK",
+                    "type": "float"
+                }
+            },
+            "options": {
+                "key_as_value": {
+                    "destination": "module",
+                    "metatype": {
+                        "entity": "App\\Entity\\Module",
+                        "identified_by": "label",
+                        "destination": "label",
+                        "source": "1WORK",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "destination": "grades",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Grade",
+                    "identified_by": null,
+                    "destination": "grade",
+                    "source": "1WDEV",
+                    "type": "float"
+                }
+            },
+            "options": {
+                "key_as_value": {
+                    "destination": "module",
+                    "metatype": {
+                        "entity": "App\\Entity\\Module",
+                        "identified_by": "label",
+                        "destination": "label",
+                        "source": "1WDEV",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "destination": "grades",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Grade",
+                    "identified_by": null,
+                    "destination": "grade",
+                    "source": "1ITWO",
+                    "type": "float"
+                }
+            },
+            "options": {
+                "key_as_value": {
+                    "destination": "module",
+                    "metatype": {
+                        "entity": "App\\Entity\\Module",
+                        "identified_by": "label",
+                        "destination": "label",
+                        "source": "1ITWO",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "destination": "grades",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Grade",
+                    "identified_by": null,
+                    "destination": "grade",
+                    "source": "1TEAM",
+                    "type": "float"
+                }
+            },
+            "options": {
+                "key_as_value": {
+                    "destination": "module",
+                    "metatype": {
+                        "entity": "App\\Entity\\Module",
+                        "identified_by": "label",
+                        "destination": "label",
+                        "source": "1TEAM",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "destination": "grades",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Grade",
+                    "identified_by": null,
+                    "destination": "grade",
+                    "source": "1O365",
+                    "type": "float"
+                }
+            },
+            "options": {
+                "key_as_value": {
+                    "destination": "module",
+                    "metatype": {
+                        "entity": "App\\Entity\\Module",
+                        "identified_by": "label",
+                        "destination": "label",
+                        "source": "1O365",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "destination": "grades",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Grade",
+                    "identified_by": null,
+                    "destination": "grade",
+                    "source": "2JAVA",
+                    "type": "float"
+                }
+            },
+            "options": {
+                "key_as_value": {
+                    "destination": "module",
+                    "metatype": {
+                        "entity": "App\\Entity\\Module",
+                        "identified_by": "label",
+                        "destination": "label",
+                        "source": "2JAVA",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "destination": "grades",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Grade",
+                    "identified_by": null,
+                    "destination": "grade",
+                    "source": "2PHPD",
+                    "type": "float"
+                }
+            },
+            "options": {
+                "key_as_value": {
+                    "destination": "module",
+                    "metatype": {
+                        "entity": "App\\Entity\\Module",
+                        "identified_by": "label",
+                        "destination": "label",
+                        "source": "2PHPD",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "destination": "grades",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Grade",
+                    "identified_by": null,
+                    "destination": "grade",
+                    "source": "2GRAP",
+                    "type": "float"
+                }
+            },
+            "options": {
+                "key_as_value": {
+                    "destination": "module",
+                    "metatype": {
+                        "entity": "App\\Entity\\Module",
+                        "identified_by": "label",
+                        "destination": "label",
+                        "source": "2GRAP",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "destination": "grades",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Grade",
+                    "identified_by": null,
+                    "destination": "grade",
+                    "source": "2DTTL",
+                    "type": "float"
+                }
+            },
+            "options": {
+                "key_as_value": {
+                    "destination": "module",
+                    "metatype": {
+                        "entity": "App\\Entity\\Module",
+                        "identified_by": "label",
+                        "destination": "label",
+                        "source": "2DTTL",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "destination": "grades",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Grade",
+                    "identified_by": null,
+                    "destination": "grade",
+                    "source": "2DVST",
+                    "type": "float"
+                }
+            },
+            "options": {
+                "key_as_value": {
+                    "destination": "module",
+                    "metatype": {
+                        "entity": "App\\Entity\\Module",
+                        "identified_by": "label",
+                        "destination": "label",
+                        "source": "2DVST",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "destination": "grades",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Grade",
+                    "identified_by": null,
+                    "destination": "grade",
+                    "source": "2AWSP",
+                    "type": "float"
+                }
+            },
+            "options": {
+                "key_as_value": {
+                    "destination": "module",
+                    "metatype": {
+                        "entity": "App\\Entity\\Module",
+                        "identified_by": "label",
+                        "destination": "label",
+                        "source": "2AWSP",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "destination": "grades",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Grade",
+                    "identified_by": null,
+                    "destination": "grade",
+                    "source": "3ANDM",
+                    "type": "float"
+                }
+            },
+            "options": {
+                "key_as_value": {
+                    "destination": "module",
+                    "metatype": {
+                        "entity": "App\\Entity\\Module",
+                        "identified_by": "label",
+                        "destination": "label",
+                        "source": "3ANDM",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "destination": "grades",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Grade",
+                    "identified_by": null,
+                    "destination": "grade",
+                    "source": "3CCNA",
+                    "type": "float"
+                }
+            },
+            "options": {
+                "key_as_value": {
+                    "destination": "module",
+                    "metatype": {
+                        "entity": "App\\Entity\\Module",
+                        "identified_by": "label",
+                        "destination": "label",
+                        "source": "3CCNA",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "destination": "grades",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Grade",
+                    "identified_by": null,
+                    "destination": "grade",
+                    "source": "3ASPC",
+                    "type": "float"
+                }
+            },
+            "options": {
+                "key_as_value": {
+                    "destination": "module",
+                    "metatype": {
+                        "entity": "App\\Entity\\Module",
+                        "identified_by": "label",
+                        "destination": "label",
+                        "source": "3ASPC",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "destination": "grades",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Grade",
+                    "identified_by": null,
+                    "destination": "grade",
+                    "source": "3LPIC",
+                    "type": "float"
+                }
+            },
+            "options": {
+                "key_as_value": {
+                    "destination": "module",
+                    "metatype": {
+                        "entity": "App\\Entity\\Module",
+                        "identified_by": "label",
+                        "destination": "label",
+                        "source": "3LPIC",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "destination": "grades",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Grade",
+                    "identified_by": null,
+                    "destination": "grade",
+                    "source": "3AGIL",
+                    "type": "float"
+                }
+            },
+            "options": {
+                "key_as_value": {
+                    "destination": "module",
+                    "metatype": {
+                        "entity": "App\\Entity\\Module",
+                        "identified_by": "label",
+                        "destination": "label",
+                        "source": "3AGIL",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "destination": "grades",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Grade",
+                    "identified_by": null,
+                    "destination": "grade",
+                    "source": "4AZUR",
+                    "type": "float"
+                }
+            },
+            "options": {
+                "key_as_value": {
+                    "destination": "module",
+                    "metatype": {
+                        "entity": "App\\Entity\\Module",
+                        "identified_by": "label",
+                        "destination": "label",
+                        "source": "4AZUR",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "destination": "grades",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Grade",
+                    "identified_by": null,
+                    "destination": "grade",
+                    "source": "4BOSS",
+                    "type": "float"
+                }
+            },
+            "options": {
+                "key_as_value": {
+                    "destination": "module",
+                    "metatype": {
+                        "entity": "App\\Entity\\Module",
+                        "identified_by": "label",
+                        "destination": "label",
+                        "source": "4BOSS",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "destination": "grades",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Grade",
+                    "identified_by": null,
+                    "destination": "grade",
+                    "source": "4GDPR",
+                    "type": "float"
+                }
+            },
+            "options": {
+                "key_as_value": {
+                    "destination": "module",
+                    "metatype": {
+                        "entity": "App\\Entity\\Module",
+                        "identified_by": "label",
+                        "destination": "label",
+                        "source": "4GDPR",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "destination": "grades",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Grade",
+                    "identified_by": null,
+                    "destination": "grade",
+                    "source": "4DOCKR",
+                    "type": "float"
+                }
+            },
+            "options": {
+                "key_as_value": {
+                    "destination": "module",
+                    "metatype": {
+                        "entity": "App\\Entity\\Module",
+                        "identified_by": "label",
+                        "destination": "label",
+                        "source": "4DOCKR",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "destination": "grades",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Grade",
+                    "identified_by": null,
+                    "destination": "grade",
+                    "source": "4CHGM",
+                    "type": "float"
+                }
+            },
+            "options": {
+                "key_as_value": {
+                    "destination": "module",
+                    "metatype": {
+                        "entity": "App\\Entity\\Module",
+                        "identified_by": "label",
+                        "destination": "label",
+                        "source": "4CHGM",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "destination": "grades",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Grade",
+                    "identified_by": null,
+                    "destination": "grade",
+                    "source": "4BINT",
+                    "type": "float"
+                }
+            },
+            "options": {
+                "key_as_value": {
+                    "destination": "module",
+                    "metatype": {
+                        "entity": "App\\Entity\\Module",
+                        "identified_by": "label",
+                        "destination": "label",
+                        "source": "4BINT",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "destination": "grades",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Grade",
+                    "identified_by": null,
+                    "destination": "grade",
+                    "source": "4SECU",
+                    "type": "float"
+                }
+            },
+            "options": {
+                "key_as_value": {
+                    "destination": "module",
+                    "metatype": {
+                        "entity": "App\\Entity\\Module",
+                        "identified_by": "label",
+                        "destination": "label",
+                        "source": "4SECU",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "destination": "grades",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Grade",
+                    "identified_by": null,
+                    "destination": "grade",
+                    "source": "5CCNA",
+                    "type": "float"
+                }
+            },
+            "options": {
+                "key_as_value": {
+                    "destination": "module",
+                    "metatype": {
+                        "entity": "App\\Entity\\Module",
+                        "identified_by": "label",
+                        "destination": "label",
+                        "source": "5CCNA",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "destination": "grades",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Grade",
+                    "identified_by": null,
+                    "destination": "grade",
+                    "source": "5DATA",
+                    "type": "float"
+                }
+            },
+            "options": {
+                "key_as_value": {
+                    "destination": "module",
+                    "metatype": {
+                        "entity": "App\\Entity\\Module",
+                        "identified_by": "label",
+                        "destination": "label",
+                        "source": "5DATA",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "destination": "grades",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Grade",
+                    "identified_by": null,
+                    "destination": "grade",
+                    "source": "5DOOP",
+                    "type": "float"
+                }
+            },
+            "options": {
+                "key_as_value": {
+                    "destination": "module",
+                    "metatype": {
+                        "entity": "App\\Entity\\Module",
+                        "identified_by": "label",
+                        "destination": "label",
+                        "source": "5DOOP",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "destination": "grades",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Grade",
+                    "identified_by": null,
+                    "destination": "grade",
+                    "source": "5ITIL",
+                    "type": "float"
+                }
+            },
+            "options": {
+                "key_as_value": {
+                    "destination": "module",
+                    "metatype": {
+                        "entity": "App\\Entity\\Module",
+                        "identified_by": "label",
+                        "destination": "label",
+                        "source": "5ITIL",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "destination": "grades",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Grade",
+                    "identified_by": null,
+                    "destination": "grade",
+                    "source": "5RBIG",
+                    "type": "float"
+                }
+            },
+            "options": {
+                "key_as_value": {
+                    "destination": "module",
+                    "metatype": {
+                        "entity": "App\\Entity\\Module",
+                        "identified_by": "label",
+                        "destination": "label",
+                        "source": "5RBIG",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "destination": "grades",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Grade",
+                    "identified_by": null,
+                    "destination": "grade",
+                    "source": "5BLOC",
+                    "type": "float"
+                }
+            },
+            "options": {
+                "key_as_value": {
+                    "destination": "module",
+                    "metatype": {
+                        "entity": "App\\Entity\\Module",
+                        "identified_by": "label",
+                        "destination": "label",
+                        "source": "5BLOC",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "destination": "grades",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Grade",
+                    "identified_by": null,
+                    "destination": "grade",
+                    "source": "5MDD",
+                    "type": "float"
+                }
+            },
+            "options": {
+                "key_as_value": {
+                    "destination": "module",
+                    "metatype": {
+                        "entity": "App\\Entity\\Module",
+                        "identified_by": "label",
+                        "destination": "label",
+                        "source": "5MDD",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "destination": "speciality",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Speciality",
+                    "identified_by": {
+                        "source": "speciality",
+                        "destination": "label"
+                    },
+                    "source": "speciality",
+                    "destination": "label",
+                    "type": "string"
+                }
+            }
+        }
+    ]
+}

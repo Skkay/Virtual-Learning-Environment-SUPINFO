@@ -1,0 +1,35 @@
+{
+    "main_entity": {
+        "entity": "App\\Entity\\Partnership",
+        "identified_by": {
+            "destination": "id",
+            "source": "id",
+            "metatype": {
+                "type": "int"
+            }
+        }
+    },
+    "fields": [
+        {
+            "destination": "label",
+            "source": "label",
+            "metatype": {
+                "type": "string"
+            }
+        },
+        {
+            "destination": "imageUrl",
+            "source": "img_url",
+            "metatype": {
+                "type": "string"
+            }
+        },
+        {
+            "destination": "description",
+            "source": "description",
+            "metatype": {
+                "type": "string"
+            }
+        }
+    ]
+}

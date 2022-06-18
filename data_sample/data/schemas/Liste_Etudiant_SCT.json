@@ -1,0 +1,26 @@
+{
+    "main_entity": {
+        "entity": "App\\Entity\\Student",
+        "identified_by": {
+            "destination": "user",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\User",
+                    "destination": "email",
+                    "source": "email",
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "fields": [
+        {
+            "destination": "isSCT",
+            "source": "sct",
+            "metatype": {
+                "type": "bool"
+            }
+        }
+    ]
+}

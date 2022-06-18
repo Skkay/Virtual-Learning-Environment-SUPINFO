@@ -1,0 +1,104 @@
+{
+    "main_entity": {
+        "entity": "App\\Entity\\PlanningEvent",
+        "identified_by": {
+            "destination": "id",
+            "source": "id",
+            "metatype": {
+                "type": "int"
+            }
+        }
+    },
+    "fields": [
+        {
+            "destination": "campus",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Campus",
+                    "identified_by": {
+                        "destination": "label",
+                        "source": "campus"
+                    },
+                    "destination": "label",
+                    "source": "campus",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "level",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Level",
+                    "identified_by": {
+                        "source": "level",
+                        "destination": "label"
+                    },
+                    "destination": "label",
+                    "source": "level",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "title",
+            "source": "title",
+            "metatype": {
+                "type": "string"
+            }
+        },
+        {
+            "destination": "description",
+            "source": "description",
+            "metatype": {
+                "type": "string"
+            }
+        },
+        {
+            "destination": "start",
+            "source": "start",
+            "metatype": {
+                "type": "date",
+                "date_format": "Y-m-d\\TH:i:s"
+            }
+        },
+        {
+            "destination": "end",
+            "source": "end",
+            "metatype": {
+                "type": "date",
+                "date_format": "Y-m-d\\TH:i:s"
+            }
+        },
+        {
+            "destination": "backgroundColor",
+            "source": "backgroundColor",
+            "metatype": {
+                "type": "string"
+            }
+        },
+        {
+            "destination": "borderColor",
+            "source": "borderColor",
+            "metatype": {
+                "type": "string"
+            }
+        },
+        {
+            "destination": "textColor",
+            "source": "textColor",
+            "metatype": {
+                "type": "string"
+            }
+        },
+        {
+            "destination": "allDay",
+            "source": "allDay",
+            "metatype": {
+                "type": "bool"
+            }
+        }
+    ]
+}

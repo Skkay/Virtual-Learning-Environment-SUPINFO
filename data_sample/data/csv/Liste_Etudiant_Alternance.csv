@@ -1,0 +1,101 @@
+first_name;last_name;date_of_birth;year_of_birth;street_address;email;gender;region;campus;level;contratPro;is_hired;lenght_month_hired;speciality;company_hired;entreprise_alternance;entreprise_alternance_address;poste_occupe;secteur_activite_entreprise_alternance;date_debut_alternance
+Sunny;Jessel;02/10/1979;1979;40 Nova Crossing;sunnyjessel@supinfo.com;Male;Normandie;Distanciel;;false;true;3;;Wavestone;;;;;
+Kesley;Benedek;13/03/1981;1981;9 Packers Parkway;kesleybenedek@supinfo.com;Male;Centre-Val de Loire;Distanciel;M.ENG 1;true;;;Intelligence Artificielle;;Adobe;3 Holy Cross Avenue;;Software;2021-11-11 13:14:55 UTC
+Helen-elizabeth;Clarycott;27/10/1990;1990;9 Forest Dale Way;helen-elizabethclarycott@supinfo.com;Female;Bretagne;Distanciel;;false;true;4;;Adobe;;;;;
+Nelson;Fairest;11/06/1982;1982;8410 Del Mar Place;nelsonfairest@supinfo.com;Male;Hauts-de-France;Distanciel;;false;true;4;;Dassault;;;;;
+Petronilla;McKeevers;18/01/1984;1984;78802 Riverside Drive;petronillamckeevers@supinfo.com;Male;Centre-Val de Loire;Tours;;false;true;3;;Renault;;;;;
+Rolf;Scranny;25/06/1995;1995;92 Myrtle Street;rolfscranny@supinfo.com;Female;Hauts-de-France;Distanciel;;false;true;2;;BNP;;;;;
+Thoma;Leopold;15/04/2000;2000;8 Knutson Terrace;thomaleopold@supinfo.com;Female;Hauts-de-France;Distanciel;;false;true;4;;BNP;;;;;
+Tess;Muncey;22/08/1990;1990;71 Loftsgordon Pass;tessmuncey@supinfo.com;Male;Pays de la Loire;Distanciel;;false;true;1;;Google;;;;;
+Camile;Tolliday;29/12/1984;1984;28 Hazelcrest Drive;camiletolliday@supinfo.com;Female;Centre-Val de Loire;Tours;;false;true;5;;Microsoft;;;;;
+Dav;Squibbs;10/11/1984;1984;9 Esker Parkway;davsquibbs@supinfo.com;Female;Pays de la Loire;Distanciel;;false;true;2;;HSBC;;;;;
+Rich;Murdoch;16/05/1995;1995;48 Fieldstone Way;richmurdoch@supinfo.com;Male;Centre-Val de Loire;Tours;;false;true;2;;Osiatis;;;;;
+Mano;Excell;06/04/1994;1994;7202 Rusk Street;manoexcell@supinfo.com;Male;Pays de la Loire;Distanciel;M.ENG 1;false;;;Intelligence Artificielle;;;;;;2021-11-09 07:57:35 UTC
+Orly;Giacobilio;06/02/1998;1998;4 Stang Circle;orlygiacobilio@supinfo.com;Female;Hauts-de-France;Distanciel;;false;true;2;;HSBC;;;;;
+Raoul;Walkowski;10/07/1975;1975;530 Cody Lane;raoulwalkowski@supinfo.com;Female;Hauts-de-France;Distanciel;;false;true;4;;Adobe;;;;;
+Martelle;Crowley;21/05/1984;1984;07778 Northwestern Way;martellecrowley@supinfo.com;Male;Centre-Val de Loire;Tours;;false;true;2;;Microsoft;;;;;
+Andra;Itzik;02/10/1985;1985;6017 Parkside Point;andraitzik@supinfo.com;Male;Pays de la Loire;Distanciel;;false;;;;;;;;;
+Isidore;Jouannin;29/09/1993;1993;9869 Wayridge Hill;isidorejouannin@supinfo.com;Male;Hauts-de-France;Distanciel;;false;true;2;;Sage;;;;;
+Carlyn;Nesby;01/01/1999;1999;85 Hoard Trail;carlynnesby@supinfo.com;Male;Pays de la Loire;Distanciel;;false;true;2;;Wavestone;;;;;
+Marji;Galliard;10/01/1997;1997;343 Lindbergh Crossing;marjigalliard@supinfo.com;Male;Bretagne;Distanciel;;false;false;;;;;;;;
+Oneida;Klimschak;03/11/1986;1986;39 Emmet Terrace;oneidaklimschak@supinfo.com;Female;Grand Est;Distanciel;;false;true;3;;HSBC;;;;;
+Olympia;Bugg;15/04/2001;2001;4 Mesta Street;olympiabugg@supinfo.com;Female;Hauts-de-France;Distanciel;M.ENG 2;true;;;Intelligence Artificielle;;Cegedim;68 Pond Trail;;Consulting;2020-11-17 15:31:41 UTC
+Minne;Mougenel;05/01/1979;1979;8 Golden Leaf Road;minnemougenel@supinfo.com;Female;Grand Est;Distanciel;;false;true;3;;BNP;;;;;
+Theressa;Reneke;14/05/1977;1977;64843 Autumn Leaf Road;theressareneke@supinfo.com;Male;Grand Est;Distanciel;;false;true;3;;Total;;;;;
+Zacharia;Strathe;07/05/1976;1976;80534 Bunker Hill Junction;zachariastrathe@supinfo.com;Male;Bretagne;Distanciel;;false;true;;;Samsung;;;;;
+Doyle;MacConnechie;19/05/1997;1997;19 Esker Parkway;doylemacconnechie@supinfo.com;Female;Pays de la Loire;Distanciel;;false;true;4;;LaPoste;;;;;
+Lorna;Bonhome;13/06/1997;1997;08573 Northwestern Point;lornabonhome@supinfo.com;Male;Pays de la Loire;Distanciel;;false;true;2;;Altran;;;;;
+Elysia;Westphal;26/01/1979;1979;2296 Lien Park;elysiawestphal@supinfo.com;Male;Hauts-de-France;Distanciel;M.ENG 2;true;;;Data Engineering;;Adobe;3 Holy Cross Avenue;;Software;2020-11-17 17:31:52 UTC
+Bone;Balfe;15/10/1987;1987;41 Hagan Parkway;bonebalfe@supinfo.com;Female;Grand Est;Distanciel;;false;true;5;;Altran;;;;;
+Kippy;Shoveller;06/06/1994;1994;28 Macpherson Place;kippyshoveller@supinfo.com;Male;Normandie;Caen;;false;true;3;;BNP;;;;;
+Sidney;Melbourne;31/01/2001;2001;48378 Walton Plaza;sidneymelbourne@supinfo.com;Male;Bretagne;Distanciel;M.ENG 2;true;;;Intelligence Artificielle;;Insight;1818 Quincy Street;;Consulting;2020-11-10 05:46:37 UTC
+Morganica;Spira;11/06/2001;2001;43 Mosinee Center;morganicaspira@supinfo.com;Female;Pays de la Loire;Distanciel;;false;true;3;;Cegid;;;;;
+Andras;January 1st;28/09/1978;1978;15705 Pierstorff Point;andrasjanuary 1st@supinfo.com;Female;Centre-Val de Loire;Tours;;false;false;;;;;;;;
+Selie;Neubigging;04/02/2001;2001;4754 Stuart Center;selieneubigging@supinfo.com;Male;Hauts-de-France;Distanciel;B.ENG 3;false;;;;;;;;;
+Eolande;Leijs;15/10/1984;1984;5 Tennessee Pass;eolandeleijs@supinfo.com;Male;Normandie;Caen;M.ENG 2;true;;;Intelligence Artificielle;;Facebook;5405 East Plaza;;Social Networking;2020-11-16 14:47:15 UTC
+Prissie;Mebius;29/01/1998;1998;2419 Crescent Oaks Plaza;prissiemebius@supinfo.com;Male;Pays de la Loire;Distanciel;;false;true;;;Dassault;;;;;
+Derick;Haburne;25/02/1980;1980;637 Hanover Terrace;derickhaburne@supinfo.com;Female;Centre-Val de Loire;Distanciel;;false;true;4;;Insight;;;;;
+Marlon;Ogbourne;31/05/1997;1997;0 Maywood Alley;marlonogbourne@supinfo.com;Female;Pays de la Loire;Distanciel;M.ENG 2;true;;;Intelligence Artificielle;;Osiatis;7395 Hollow Ridge Crossing;;Consulting;2020-11-15 17:31:29 UTC
+Michaeline;Saddleton;01/09/1979;1979;87357 Hanover Street;michaelinesaddleton@supinfo.com;Male;Bretagne;Distanciel;;false;true;3;;Axway;;;;;
+Lydia;Hackelton;06/05/1978;1978;50 Reindahl Point;lydiahackelton@supinfo.com;Male;Nouvelle-Aquitaine;Distanciel;M.ENG 1;true;;;Intelligence Artificielle;;EDF;695 1st Park;;Industrie;2021-11-13 09:31:26 UTC
+Allyce;Balentyne;05/07/1979;1979;5 Lien Road;allycebalentyne@supinfo.com;Male;Normandie;Caen;;false;true;2;;Samsung;;;;;
+Jeffry;Weth;18/04/2002;2002;54457 Talisman Trail;jeffryweth@supinfo.com;Female;Pays de la Loire;Distanciel;B.ENG 3;true;;;;;KPMG;882 Calypso Court;;Consulting;
+Emlynn;Cropton;15/10/1990;1990;975 Loomis Hill;emlynncropton@supinfo.com;Female;Pays de la Loire;Distanciel;;false;true;2;;Sopra Steria;;;;;
+Zeke;Knevet;05/07/1980;1980;038 Blue Bill Park Point;zekeknevet@supinfo.com;Male;Bretagne;Distanciel;;false;true;4;;Nextieraone;;;;;
+Faye;Lorincz;16/12/1989;1989;75 Moose Terrace;fayelorincz@supinfo.com;Male;Normandie;Caen;;false;true;4;;Neuronnes;;;;;
+Brett;Gillebride;28/08/1978;1978;8493 Maple Wood Alley;brettgillebride@supinfo.com;Male;Hauts-de-France;Distanciel;;false;true;2;;Tesla;;;;;
+Leandra;Oxborough;20/12/2002;2002;30 Hallows Point;leandraoxborough@supinfo.com;Female;Nouvelle-Aquitaine;Distanciel;B.ENG 2;false;;;;;;;;;
+Vladamir;Zannutti;02/03/1989;1989;2818 Vahlen Crossing;vladamirzannutti@supinfo.com;Female;Bretagne;Distanciel;;false;true;2;;Apple;;;;;
+Birk;Cullotey;10/06/1986;1986;1492 Jackson Place;birkcullotey@supinfo.com;Male;Centre-Val de Loire;Tours;;false;true;1;;Peugeot;;;;;
+Clyde;Rockwill;20/01/1985;1985;97 Dakota Plaza;clyderockwill@supinfo.com;Male;Normandie;Caen;;false;true;;;Adobe;;;;;
+Carissa;Wemyss;07/03/1993;1993;0787 Shasta Plaza;carissawemyss@supinfo.com;Male;Hauts-de-France;Distanciel;;false;true;3;;Total;;;;;
+Iona;Vasishchev;19/12/1982;1982;14816 Burning Wood Park;ionavasishchev@supinfo.com;Male;Centre-Val de Loire;Distanciel;;false;true;4;;Altran;;;;;
+Symon;Mounsey;07/12/1977;1977;44 Haas Circle;symonmounsey@supinfo.com;Male;Normandie;Caen;;false;true;3;;Carrefour;;;;;
+Briana;Langeley;10/01/1987;1987;6 Haas Avenue;brianalangeley@supinfo.com;Female;Centre-Val de Loire;Tours;;false;true;;;Sopra Steria;;;;;
+Shandeigh;Son;02/04/2001;2001;46 Cordelia Avenue;shandeighson@supinfo.com;Female;Normandie;Caen;B.ENG 3;false;;;;;;;;;
+Taylor;Yabsley;01/03/1997;1997;625 Kedzie Crossing;tayloryabsley@supinfo.com;Female;Bretagne;Distanciel;;false;true;;;Accenture;;;;;
+Lowe;Thorneloe;15/12/1982;1982;14 Monterey Alley;lowethorneloe@supinfo.com;Male;Normandie;Caen;;false;true;5;;Carrefour;;;;;
+Siusan;Mollon;28/04/2002;2002;44 Northport Lane;siusanmollon@supinfo.com;Female;Nouvelle-Aquitaine;Distanciel;B.ENG 3;false;;;;;;;;;
+Lola;Paskin;13/09/1978;1978;0 Ruskin Hill;lolapaskin@supinfo.com;Male;Corse;Distanciel;M.ENG 2;true;;;Systemes Reseaux et securité;;Natixis;4744 Ludington Center;;Consulting;2020-11-06 14:54:12 UTC
+Linoel;Abercrombie;17/11/1993;1993;48218 Pierstorff Pass;linoelabercrombie@supinfo.com;Male;Grand Est;Distanciel;;false;true;2;;Alten;;;;;
+Dar;Kimber;20/05/1994;1994;713 Badeau Circle;darkimber@supinfo.com;Female;Corse;Distanciel;;false;true;4;;Dassault;;;;;
+Trude;Snarie;15/02/1998;1998;18704 Bellgrove Circle;trudesnarie@supinfo.com;Male;Normandie;Distanciel;;false;true;3;;Altran;;;;;
+Wilone;Kalewe;03/04/1976;1976;040 Wayridge Circle;wilonekalewe@supinfo.com;Male;Hauts-de-France;Distanciel;;false;true;2;;Banque de France;;;;;
+Rosalinde;Livett;06/09/1986;1986;714 Stoughton Plaza;rosalindelivett@supinfo.com;Male;Centre-Val de Loire;Tours;;false;true;3;;Wavestone;;;;;
+Regine;Coom;03/01/1996;1996;66 Sugar Hill;reginecoom@supinfo.com;Female;Grand Est;Distanciel;;false;true;3;;Ubisoft;;;;;
+Josefa;Caplen;31/03/1986;1986;15 Ridgeway Pass;josefacaplen@supinfo.com;Male;Grand Est;Distanciel;;false;true;3;;EDF;;;;;
+Maxi;Petruska;04/04/1982;1982;1647 Washington Avenue;maxipetruska@supinfo.com;Female;Normandie;Caen;;false;true;4;;Carrefour;;;;;
+Griffy;Allanson;05/12/1986;1986;553 Westend Drive;griffyallanson@supinfo.com;Male;Normandie;Caen;;false;true;4;;Ubisoft;;;;;
+Diego;McLernon;12/10/1979;1979;80719 Reinke Terrace;diegomclernon@supinfo.com;Male;Bretagne;Distanciel;;false;true;3;;Wavestone;;;;;
+Claudia;Wheaton;21/04/1992;1992;57 Morningstar Plaza;claudiawheaton@supinfo.com;Male;Pays de la Loire;Distanciel;;false;true;5;;Nextieraone;;;;;
+Trace;Jayume;29/10/1986;1986;29 Tennessee Alley;tracejayume@supinfo.com;Male;Centre-Val de Loire;Tours;;false;;;;;;;;;
+Galvan;Bunford;17/12/1987;1987;023 Schmedeman Avenue;galvanbunford@supinfo.com;Male;Pays de la Loire;Distanciel;;false;true;3;;Insight;;;;;
+Orelle;Cristofaro;26/07/1990;1990;9591 Homewood Circle;orellecristofaro@supinfo.com;Male;Bretagne;Distanciel;;false;true;2;;Peugeot;;;;;
+Gaye;Adamov;23/03/1988;1988;394 Summerview Crossing;gayeadamov@supinfo.com;Male;Bretagne;Distanciel;;false;true;3;;Dassault;;;;;
+Ilysa;Aujouanet;23/09/1984;1984;0949 Old Gate Place;ilysaaujouanet@supinfo.com;Male;Hauts-de-France;Distanciel;;false;true;;;Huawei;;;;;
+Daisi;MacBey;15/08/2002;2002;7547 Corben Trail;daisimacbey@supinfo.com;Male;Centre-Val de Loire;Tours;;false;true;3;;Dassault;;;;;
+Wren;Ancliff;28/12/1993;1993;90468 Roxbury Parkway;wrenancliff@supinfo.com;Female;Grand Est;Distanciel;;false;true;4;;Peugeot;;;;;
+Ashlee;Gronav;06/12/1977;1977;29765 Gateway Drive;ashleegronav@supinfo.com;Female;Corse;Distanciel;;false;false;;;;;;;;
+Inna;Wankling;26/06/1984;1984;8 Haas Court;innawankling@supinfo.com;Male;Hauts-de-France;Distanciel;;false;true;4;;Cegedim;;;;;
+Claiborne;Jamrowicz;11/06/1998;1998;1426 Vernon Drive;claibornejamrowicz@supinfo.com;Female;Grand Est;Distanciel;;false;;;;;;;;;
+Donall;Padgett;04/04/1998;1998;0915 Alpine Junction;donallpadgett@supinfo.com;Female;Pays de la Loire;Distanciel;;false;true;;;SCC;;;;;
+Kristoforo;McBrier;04/10/1975;1975;994 Messerschmidt Avenue;kristoforomcbrier@supinfo.com;Male;Pays de la Loire;Distanciel;;false;true;2;;Atos;;;;;
+Nowell;Winters;23/11/1998;1998;95 South Road;nowellwinters@supinfo.com;Female;Hauts-de-France;Distanciel;;false;true;;;Apple;;;;;
+Florence;Sex;04/09/1985;1985;606 Tomscot Pass;florencesex@supinfo.com;Female;Hauts-de-France;Distanciel;;false;true;3;;Dassault;;;;;
+Jannel;Pierrepoint;31/03/2000;2000;751 Oak Valley Road;jannelpierrepoint@supinfo.com;Female;Centre-Val de Loire;Tours;M.ENG 2;true;;;Systemes Reseaux et securité;;HSBC;315 Spenser Way;;Banking;2020-11-15 06:51:07 UTC
+Raine;Salsbury;14/07/1980;1980;360 Mifflin Avenue;rainesalsbury@supinfo.com;Male;Bretagne;Distanciel;B.ENG 2;false;;;;;;;;;
+Arabel;Grigson;27/05/2002;2002;7 Cordelia Parkway;arabelgrigson@supinfo.com;Female;Corse;Distanciel;M.ENG 1;true;;;Intelligence Artificielle;;Samsung;46 Surrey Trail;;Industrie;2021-11-11 11:26:16 UTC
+Burgess;Ferronet;11/06/1976;1976;1 Dennis Avenue;burgessferronet@supinfo.com;Female;Normandie;Caen;;false;true;2;;Toyota;;;;;
+Wilek;Quadling;07/06/1975;1975;709 Moland Center;wilekquadling@supinfo.com;Female;Hauts-de-France;Distanciel;;false;;;;;;;;;
+Carleton;Folkes;03/10/1980;1980;1769 Tony Junction;carletonfolkes@supinfo.com;Male;Normandie;Caen;;false;true;3;;BNP;;;;;
+Abey;Mozzi;25/05/1985;1985;2 Thompson Way;abeymozzi@supinfo.com;Female;Hauts-de-France;Distanciel;;false;true;4;;Wavestone;;;;;
+Guy;Mickleburgh;07/12/1976;1976;0413 Annamark Circle;guymickleburgh@supinfo.com;Female;Hauts-de-France;Distanciel;;false;true;2;;LaPoste;;;;;
+Alard;Glazer;02/09/1999;1999;447 Nevada Terrace;alardglazer@supinfo.com;Female;Normandie;Distanciel;M.ENG 2;true;;;Systemes Reseaux et securité;;Sage;562 Fairfield Center;;Software;2020-11-15 02:27:47 UTC
+Leeanne;Flewan;12/12/1993;1993;4 Lawn Plaza;leeanneflewan@supinfo.com;Male;Pays de la Loire;Distanciel;B.ENG 3;false;;;;;;;;;
+Rosmunda;Frankiss;19/05/2001;2001;38 Rigney Pass;rosmundafrankiss@supinfo.com;Male;Centre-Val de Loire;Tours;B.ENG 3;false;;;;;;;;;
+Inger;Denizet;19/12/2000;2000;714 Farmco Trail;ingerdenizet@supinfo.com;Female;Bretagne;Distanciel;;false;true;3;;Altran;;;;;
+Doria;Field;04/03/1988;1988;83 Warrior Road;doriafield@supinfo.com;Male;Normandie;Caen;B.ENG 3;false;;;;;;;;;
+Jessalin;Seear;28/08/1982;1982;973 Westerfield Pass;jessalinseear@supinfo.com;Male;Bretagne;Distanciel;;false;true;4;;Axway;;;;;
+Richmound;Puddicombe;31/03/1980;1980;9206 Fulton Drive;richmoundpuddicombe@supinfo.com;Female;Grand Est;Distanciel;;false;true;4;;Ubisoft;;;;;
+Levy;Kirkebye;19/06/1990;1990;442 Holy Cross Avenue;levykirkebye@supinfo.com;Female;Normandie;Caen;;false;true;2;;Natixis;;;;;
+Bradly;Stendell;30/04/1979;1979;0 Summit Crossing;bradlystendell@supinfo.com;Male;Normandie;Caen;M.ENG 2;true;;;Intelligence Artificielle;;BNP;97809 Sundown Drive;;Banking;2020-11-08 19:17:45 UTC

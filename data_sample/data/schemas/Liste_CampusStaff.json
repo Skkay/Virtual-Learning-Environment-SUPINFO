@@ -1,0 +1,99 @@
+{
+    "main_entity": {
+        "entity": "App\\Entity\\Staff",
+        "identified_by": {
+            "destination": "user",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\User",
+                    "destination": "email",
+                    "source": "email",
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "fields": [
+        {
+            "destination": "user",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\User",
+                    "identified_by": {
+                        "source": "email",
+                        "destination": "email"
+                    },
+                    "destination": "firstName",
+                    "source": "first_name",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "user",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\User",
+                    "identified_by": {
+                        "source": "email",
+                        "destination": "email"
+                    },
+                    "destination": "lastName",
+                    "source": "last_name",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "user",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\User",
+                    "identified_by": {
+                        "source": "email",
+                        "destination": "email"
+                    },
+                    "destination": "email",
+                    "source": "email",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "user",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\User",
+                    "identified_by": {
+                        "source": "email",
+                        "destination": "email"
+                    },
+                    "destination": "roles",
+                    "source": "Roles",
+                    "type": "role"
+                }
+            }
+        },
+        {
+            "destination": "campus",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Campus",
+                    "identified_by": {
+                        "source": "Campus",
+                        "destination": "label"
+                    },
+                    "destination": "label",
+                    "source": "Campus",
+                    "type": "string"
+                }
+            }
+        }
+    ]
+}

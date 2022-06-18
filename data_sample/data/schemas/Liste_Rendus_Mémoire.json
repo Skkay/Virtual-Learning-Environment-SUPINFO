@@ -1,0 +1,52 @@
+{
+    "main_entity": {
+        "entity": "App\\Entity\\Thesis",
+        "identified_by": {
+            "destination": "id",
+            "source": "id",
+            "metatype": {
+                "type": "int"
+            }
+        }
+    },
+    "fields": [
+        {
+            "destination": "student",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Student",
+                    "identified_by": {
+                        "relation": {
+                            "entity": "App\\Entity\\User",
+                            "source": "email_etudiant",
+                            "destination": "email"
+                        }
+                    },
+                    "destination": "student"
+                }
+            }
+        },
+        {
+            "destination": "subject",
+            "source": "sujet",
+            "metatype": {
+                "type": "string"
+            }
+        },
+        {
+            "destination": "delivered",
+            "source": "rendu",
+            "metatype": {
+                "type": "bool"
+            }
+        },
+        {
+            "destination": "remark",
+            "source": "commentaire",
+            "metatype": {
+                "type": "string"
+            }
+        }
+    ]
+}

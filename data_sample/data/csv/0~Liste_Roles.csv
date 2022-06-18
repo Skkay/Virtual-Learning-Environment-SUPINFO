@@ -1,0 +1,7 @@
+from;to
+Full Professor;ROLE_FULL_PROFESSOR
+Coordinateur;ROLE_EDUCATIONAL_COORDINATOR
+Directeur academique;ROLE_ACADEMIC_DIRECTOR
+Administratif;ROLE_ACCOUNTS
+Etudiant;ROLE_USER
+Administrateur;ROLE_ADMIN

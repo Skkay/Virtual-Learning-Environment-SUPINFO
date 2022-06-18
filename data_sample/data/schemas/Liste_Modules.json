@@ -1,0 +1,58 @@
+{
+    "main_entity": {
+        "entity": "App\\Entity\\Module",
+        "identified_by": {
+            "destination": "label",
+            "source": "code",
+            "metatype": {
+                "type": "string"
+            }
+        }
+    },
+    "fields": [
+        {
+            "destination": "label",
+            "source": "code",
+            "metatype": {
+                "type": "string"
+            }
+        },
+        {
+            "destination": "speciality",
+            "source": "speciality",
+            "metatype": {
+                "type": "bool"
+            }
+        },
+        {
+            "destination": "ects",
+            "source": "ects",
+            "metatype": {
+                "type": "int"
+            }
+        },
+        {
+            "destination": "description",
+            "source": "description",
+            "metatype": {
+                "type": "string"
+            }
+        },
+        {
+            "destination": "level",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Level",
+                    "identified_by": {
+                        "source": "level",
+                        "destination": "label"
+                    },
+                    "destination": "label",
+                    "source": "level",
+                    "type": "string"
+                }
+            }
+        }
+    ]
+}

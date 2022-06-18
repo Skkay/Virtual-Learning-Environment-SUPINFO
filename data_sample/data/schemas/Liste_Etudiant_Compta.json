@@ -1,0 +1,245 @@
+{
+    "main_entity": {
+        "entity": "App\\Entity\\Student",
+        "identified_by": {
+            "destination": "user",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\User",
+                    "destination": "email",
+                    "source": "email",
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "fields": [
+        {
+            "destination": "user",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\User",
+                    "identified_by": {
+                        "source": "email",
+                        "destination": "email"
+                    },
+                    "destination": "firstName",
+                    "source": "first_name",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "user",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\User",
+                    "identified_by": {
+                        "source": "email",
+                        "destination": "email"
+                    },
+                    "destination": "lastName",
+                    "source": "last_name",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "dateOfBirth",
+            "source": "date_of_birth",
+            "metatype": {
+                "type": "date",
+                "date_format": "d\/m\/Y"
+            }
+        },
+        {
+            "destination": "address",
+            "source": "street_address",
+            "metatype": {
+                "type": "string"
+            }
+        },
+        {
+            "destination": "user",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\User",
+                    "identified_by": {
+                        "source": "email",
+                        "destination": "email"
+                    },
+                    "destination": "email",
+                    "source": "email",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "gender",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Gender",
+                    "identified_by": {
+                        "source": "gender",
+                        "destination": "label"
+                    },
+                    "source": "gender",
+                    "destination": "label",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "region",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Region",
+                    "identified_by": {
+                        "source": "region",
+                        "destination": "name"
+                    },
+                    "destination": "name",
+                    "source": "region",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "campus",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Campus",
+                    "identified_by": {
+                        "source": "campus",
+                        "destination": "label"
+                    },
+                    "destination": "label",
+                    "source": "campus",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "entryLevel",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Level",
+                    "identified_by": {
+                        "source": "entry_level",
+                        "destination": "label"
+                    },
+                    "destination": "label",
+                    "source": "entry_level",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "entryYear",
+            "source": "year_of_entry",
+            "metatype": {
+                "type": "int"
+            }
+        },
+        {
+            "destination": "exitYear",
+            "source": "year_of_exit",
+            "metatype": {
+                "type": "int"
+            }
+        },
+        {
+            "destination": "exitLevel",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Level",
+                    "identified_by": {
+                        "source": "level_of_exit",
+                        "destination": "label"
+                    },
+                    "destination": "label",
+                    "source": "level_of_exit",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "level",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Level",
+                    "identified_by": {
+                        "source": "level",
+                        "destination": "label"
+                    },
+                    "destination": "label",
+                    "source": "level",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "accountsPaymentType",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\AccountsPaymentType",
+                    "identified_by": {
+                        "source": "compta_paymentType",
+                        "destination": "label"
+                    },
+                    "destination": "label",
+                    "source": "compta_paymentType",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "accountsPaid",
+            "source": "compta_paid",
+            "metatype": {
+                "type": "bool"
+            }
+        },
+        {
+            "destination": "accountsPaymentDue",
+            "source": "compta_paymentDue",
+            "metatype": {
+                "type": "int"
+            }
+        },
+        {
+            "destination": "accountsReminded",
+            "source": "compta_relance",
+            "metatype": {
+                "type": "bool"
+            }
+        },
+        {
+            "destination": "speciality",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Speciality",
+                    "identified_by": {
+                        "source": "speciality",
+                        "destination": "label"
+                    },
+                    "source": "speciality",
+                    "destination": "label",
+                    "type": "string"
+                }
+            }
+        }
+    ]
+}

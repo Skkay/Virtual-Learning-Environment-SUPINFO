@@ -1,0 +1,310 @@
+{
+    "main_entity": {
+        "entity": "App\\Entity\\Student",
+        "identified_by": {
+            "destination": "user",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\User",
+                    "destination": "email",
+                    "source": "email",
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "fields": [
+        {
+            "destination": "user",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\User",
+                    "identified_by": {
+                        "source": "email",
+                        "destination": "email"
+                    },
+                    "destination": "firstName",
+                    "source": "first_name",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "user",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\User",
+                    "identified_by": {
+                        "source": "email",
+                        "destination": "email"
+                    },
+                    "destination": "lastName",
+                    "source": "last_name",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "dateOfBirth",
+            "source": "date_of_birth",
+            "metatype": {
+                "type": "date",
+                "date_format": "d\/m\/Y"
+            }
+        },
+        {
+            "destination": "address",
+            "source": "street_address",
+            "metatype": {
+                "type": "string"
+            }
+        },
+        {
+            "destination": "user",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\User",
+                    "identified_by": {
+                        "source": "email",
+                        "destination": "email"
+                    },
+                    "destination": "email",
+                    "source": "email",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "gender",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Gender",
+                    "identified_by": {
+                        "source": "gender",
+                        "destination": "label"
+                    },
+                    "source": "gender",
+                    "destination": "label",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "region",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Region",
+                    "identified_by": {
+                        "source": "region",
+                        "destination": "name"
+                    },
+                    "destination": "name",
+                    "source": "region",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "campus",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Campus",
+                    "identified_by": {
+                        "source": "campus",
+                        "destination": "label"
+                    },
+                    "destination": "label",
+                    "source": "campus",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "lastDiploma",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Diploma",
+                    "identified_by": {
+                        "source": "previous_level",
+                        "destination": "label"
+                    },
+                    "destination": "label",
+                    "source": "previous_level",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "entryLevel",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Level",
+                    "identified_by": {
+                        "source": "entry_level",
+                        "destination": "label"
+                    },
+                    "destination": "label",
+                    "source": "entry_level",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "entryYear",
+            "source": "year_of_entry",
+            "metatype": {
+                "type": "int"
+            }
+        },
+        {
+            "destination": "exitYear",
+            "source": "year_of_exit",
+            "metatype": {
+                "type": "int"
+            }
+        },
+        {
+            "destination": "exitLevel",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Level",
+                    "identified_by": {
+                        "source": "level_of_exit",
+                        "destination": "label"
+                    },
+                    "destination": "label",
+                    "source": "level_of_exit",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "level",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Level",
+                    "identified_by": {
+                        "source": "level",
+                        "destination": "label"
+                    },
+                    "destination": "label",
+                    "source": "level",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "numberOfAbsences",
+            "source": "nbre_absence",
+            "metatype": {
+                "type": "int"
+            }
+        },
+        {
+            "destination": "companyTrainingContract",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Company",
+                    "identified_by": {
+                        "source": "entreprise_alternance",
+                        "destination": "name"
+                    },
+                    "destination": "name",
+                    "source": "entreprise_alternance",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "companyTrainingContract",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Company",
+                    "identified_by": {
+                        "source": "entreprise_alternance",
+                        "destination": "name"
+                    },
+                    "destination": "address",
+                    "source": "entreprise_alternance_address",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "employedAs",
+            "source": "poste_occupe",
+            "metatype": {
+                "type": "string"
+            }
+        },
+        {
+            "destination": "companyTrainingContract",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Company",
+                    "identified_by": {
+                        "source": "entreprise_alternance",
+                        "destination": "name"
+                    },
+                    "destination": "sector",
+                    "source": "secteur_activite_entreprise_alternance",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "companyHired",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Company",
+                    "identified_by": {
+                        "source": "company_hired",
+                        "destination": "name"
+                    },
+                    "destination": "name",
+                    "source": "company_hired",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "destination": "dateStartContract",
+            "source": "date_debut_alternance",
+            "metatype": {
+                "type": "date",
+                "date_format": "Y-m-d H:i:s \\U\\T\\C"
+            }
+        },
+        {
+            "destination": "speciality",
+            "metatype": {
+                "type": "relation",
+                "relation": {
+                    "entity": "App\\Entity\\Speciality",
+                    "identified_by": {
+                        "source": "speciality",
+                        "destination": "label"
+                    },
+                    "source": "speciality",
+                    "destination": "label",
+                    "type": "string"
+                }
+            }
+        }
+    ]
+}
