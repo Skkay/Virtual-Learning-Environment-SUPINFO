@@ -192,8 +192,8 @@ admin.dashboard.entity.staffs: Staffs
 admin.dashboard.entity.students: Students
 admin.dashboard.entity.theses: Theses
 admin.dashboard.entity.users: Users
-admin.dashboard.misc.data_files: 'Data schema files'
-admin.dashboard.misc.data_schemas: 'Data schema schemas'
+admin.dashboard.misc.data_files: 'Data files'
+admin.dashboard.misc.data_schemas: 'Data schemas'
 admin.dashboard.misc.exports: Exports
 admin.dashboard.misc.imports: Imports
 admin.dashboard.misc.welcome: 'Welcome -'
@@ -213,7 +213,7 @@ admin.etl.data_file.table.ctime: 'Modification date'
 admin.etl.data_file.table.extension: Type
 admin.etl.data_file.table.filename: 'File name'
 admin.etl.data_file.table.no_files: 'No file'
-admin.etl.data_file.title.index: 'Data schema files'
+admin.etl.data_file.title.index: 'Data files'
 admin.etl.data_schema.table.actions: Actions
 admin.etl.data_schema.table.details: Details
 admin.etl.data_schema.table.id: ID
@@ -221,10 +221,10 @@ admin.etl.data_schema.table.label: Label
 admin.etl.data_schema.table.no_records: 'No schema found'
 admin.etl.data_schema.table.schema: Schema
 admin.etl.data_schema.table.update: Update
-admin.etl.data_schema.title.create: 'Create a dataschema schema'
-admin.etl.data_schema.title.data_schema: 'Data schema schema'
-admin.etl.data_schema.title.edit: 'Edit a dataschema schema'
-admin.etl.data_schema.title.index: 'Data schema schema list'
+admin.etl.data_schema.title.create: 'Create a data schema'
+admin.etl.data_schema.title.data_schema: 'Data schema'
+admin.etl.data_schema.title.edit: 'Edit a data schema'
+admin.etl.data_schema.title.index: 'Data schema list'
 admin.etl.export.misc.download: Download
 admin.etl.export.misc.export_database: 'Export database'
 admin.etl.export.misc.success: 'Database exported in'
