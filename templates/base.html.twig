@@ -18,6 +18,10 @@
             {{ encore_entry_script_tags('app') }}
             {{ encore_entry_script_tags('konami') }}
             {{ encore_entry_script_tags('agency') }}
+
+            <script>
+                window.locale = '{{ app.request.locale }}';
+            </script>
         {% endblock %}
     </head>
     <body>
