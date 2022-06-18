@@ -30,7 +30,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    {% for student in students %}
+                    {% for document in documents %}
                         <tr>
                             <td>{{ document.extension }}</td>
                             <td><a href="{{ path('app.accounts.student.open_document', {'id': student.id, 'filename': document.filename}) }}">{{ document.filename }}</a></td>
