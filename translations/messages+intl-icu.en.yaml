@@ -17,6 +17,7 @@ academic_director.dashboard.misc.module_list: 'Course list'
 academic_director.dashboard.misc.partnership_list: 'Partnership list'
 academic_director.dashboard.misc.student_list: 'Student list'
 academic_director.dashboard.misc.thesis_list: 'Thesis list'
+academic_director.dashboard.misc.campus_list: 'Campus list'
 academic_director.dashboard.misc.welcome: 'Welcome -'
 academic_director.dashboard.title.index: Dashboard
 academic_director.dashboard.title.role: 'Academic director'

@@ -181,6 +181,7 @@ academic_director:
       instructor_list: Liste des intervenants
       partnership_list: Liste des partenariats
       thesis_list: Liste des mémoires
+      campus_list: Liste des campus
       welcome: Bienvenue - 
   student:
     title:
