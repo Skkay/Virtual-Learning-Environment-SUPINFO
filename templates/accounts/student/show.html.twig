@@ -46,8 +46,8 @@
         <a class="btn btn-primary" href="{{ path('app.accounts.student.document', { 'id': student.id }) }}" style="background-color:#1D62F0;color:white;border:none;">{{ 'accounts.student.misc.view_documents'|trans }}</a>
 
         {{ form_start(commentForm) }}
-            <div  style="width:70%;margin-left: auto;margin-right: auto;margin-top:60px">
-                {{ form_row(commentForm.comment) }}
+            <div class="mt-4">
+                {{ form_row(commentForm.comment, { 'attr': {'style': 'height: 100px'}} ) }}
                 <button type="submit" class="btn btn-primary" style="background-color:#1D62F0;color:white;border:none;">{{ 'form.misc.save'|trans }}</button>
             </div>
         {{ form_end(commentForm)}}
