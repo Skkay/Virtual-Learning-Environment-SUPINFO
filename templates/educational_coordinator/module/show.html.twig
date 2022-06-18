@@ -1,16 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ModuleController!{% endblock %}
+{% block title %}{{ 'educational_coordinator.module.title.show'|trans({ 'module': module.label }) }}{% endblock %}
 
 {% block body %}
     <div class="container">       
         <header class="animated bounceInDown">
-            <h1><b>Détails du modules {{ module.label }}</b></h1><br />
+            <h1><b>{{ 'educational_coordinator.module.title.show'|trans({ 'module': module.label }) }}</b></h1><br />
         </header>                
-        <div class="container">  
-            
-            <p>Le module {{ module.label }} {{ module.speciality == 1 ? ' est une spécialité qui' : '' }} compte pour {{ module.ects }} crédits ECTS.</p>
-            <p>La ou les instructeurs lié(s) à cette matière sont :</p>
+        <div class="container">              
+            {% if module.speciality %}
+                <p>{{ 'educational_coordinator.module.misc.description_speciality'|trans({ 'module': module.label, 'ects': module.ects }) }}</p>
+            {% else %}
+                <p>{{ 'educational_coordinator.module.misc.description'|trans({ 'module': module.label, 'ects': module.ects }) }}</p>
+            {% endif %}
+
+            <p>{{ 'educational_coordinator.module.misc.instructors'|trans }}:</p>
             <ul>
                 {% for instructor in instructors %}
                     <li>{{ instructor.user.email }}</li>
@@ -20,15 +24,15 @@
             <div class="table-wrapper-scroll-y my-custom-scrollbar">
                 <div class="container">    
                     <header class="animated bounceInDown">
-                        <h4><b>Notes de l'étudiant : </b></h4>
+                        <h4><b>{{ 'educational_coordinator.module.misc.grades'|trans }}:</b></h4>
                     </header>                                                                    
                         <div class="table-responsive">          
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">Etudiant</th>
-                                    <th scope="col">Notes</th>
-                                    <th scope="col">Résultat</th>
+                                    <th scope="col">{{ 'educational_coordinator.module.table.student'|trans }}</th>
+                                    <th scope="col">{{ 'educational_coordinator.module.table.grade'|trans }}</th>
+                                    <th scope="col">{{ 'educational_coordinator.module.table.result'|trans }}</th>
                                 </tr>
                             </thead>
                             <tbody>

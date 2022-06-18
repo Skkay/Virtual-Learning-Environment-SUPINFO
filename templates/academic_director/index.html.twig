@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AcademicDirectorController!{% endblock %}
+{% block title %}{{ 'academic_director.dashboard.title.index'|trans }} {{ 'academic_director.dashboard.title.role'|trans }}{% endblock %}
 
 {% block body %}
     <section id="services" class="section-bg">
         <div class="container">
             <header class="section-header animated bounceInDown">
-                <h2><b>Bienvenue <span style="color:#2282ff">{{ 'academic_director.dashboard.title.role'|trans }}</span></b></h2><br /><br />
+                <h2><b>{{ 'academic_director.dashboard.misc.welcome'|trans }} <span style="color:#2282ff">{{ 'academic_director.dashboard.title.role'|trans }}</span></b></h2><br /><br />
             </header>
 
             <div class="row">

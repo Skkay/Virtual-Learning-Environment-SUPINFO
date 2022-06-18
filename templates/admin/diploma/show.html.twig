@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DiplomaController!{% endblock %}
+{% block title %}{{ 'admin.diploma.title.show'|trans }}{% endblock %}
 
 {% block body %}
 <div class="container">
-    <p>Le diplome du {{ diploma.label }} a été obtenu par : </p>
+    <p>{{ 'admin.diploma.misc.students'|trans }}:</p>
     <ul>
         {% if diploma.students is not empty %}
             {% for student in diploma.students %}

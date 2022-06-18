@@ -1,24 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PlanningEventController!{% endblock %}
+{% block title %}{{ 'admin.planning_event.title.index'|trans }}{% endblock %}
 
 {% block body %}
-<h1>PlanningEvent</h1>
+<h1>{{ 'admin.planning_event.title.index'|trans }}</h1>
 
 <table class="table table-sm table-hover">
     <thead>
         <tr>
-            <th scope="col">planningEvent.id</th>
-            <th scope="col">planningEvent.title</th>
-            <th scope="col">planningEvent.description</th>
-            <th scope="col">planningEvent.start</th>
-            <th scope="col">planningEvent.end</th>
-            <th scope="col">planningEvent.allDay</th>
-            <th scope="col">planningEvent.campus.label</th>
-            <th scope="col">planningEvent.level.label</th>
-            <th scope="col">planningEvent.backgroundColor</th>
-            <th scope="col">planningEvent.borderColor</th>
-            <th scope="col">planningEvent.textColor</th>
+            <th scope="col">{{ 'admin.planning_event.table.id'|trans }}</th>
+            <th scope="col">{{ 'admin.planning_event.table.title'|trans }}</th>
+            <th scope="col">{{ 'admin.planning_event.table.description'|trans }}</th>
+            <th scope="col">{{ 'admin.planning_event.table.start'|trans }}</th>
+            <th scope="col">{{ 'admin.planning_event.table.end'|trans }}</th>
+            <th scope="col">{{ 'admin.planning_event.table.all_day'|trans }}</th>
+            <th scope="col">{{ 'admin.planning_event.table.campus'|trans }}</th>
+            <th scope="col">{{ 'admin.planning_event.table.level'|trans }}</th>
+            <th scope="col">{{ 'admin.planning_event.table.background_color'|trans }}</th>
+            <th scope="col">{{ 'admin.planning_event.table.border_color'|trans }}</th>
+            <th scope="col">{{ 'admin.planning_event.table.text_color'|trans }}</th>
         </tr>
     </thead>
     <tbody>

@@ -1,32 +1,43 @@
+{# Determine ordinal number abbreviation #}
+{% if module.level.numericLevel == 1 %}
+    {% set th = 'misc.abbr_first'|trans %}
+{% else if module.level.numericLevel == 2 %}
+    {% set th = 'misc.abbr_second'|trans %}
+{% else if module.level.numericLevel == 3 %}
+    {% set th = 'misc.abbr_third'|trans %}                       
+{% else %}
+    {% set th = 'misc.abbr_th'|trans %}                       
+{% endif %}
+
 {% extends 'base.html.twig' %}
 
-{% block title %}Détails du modules {{ module.label }}{% endblock %}
+{% block title %}{{ 'student.module.title.show'|trans({ 'module': module.label }) }}{% endblock %}
 
 {% block body %}
     <div class="container">       
         <header class="animated bounceInDown">
-            <h1><b>Details du module {{ module.label }}</b></h1><br />
+            <h1><b>{{ 'student.module.title.show'|trans({ 'module': module.label }) }}</b></h1><br />
         </header>                
         <div class="container">  
             {% if module.speciality == 1 %}
-                <p>Le module {{ module.label }} est une spécialité de {{ module.label|first == 1 ? module.label|first ~ 'er ' : module.label|first  ~ 'ème ' }} année.</p>
+                <p>{{ 'student.module.misc.description_speciality'|trans({ 'module': module.label, 'n': module.level.numericLevel ?? '-', 'th': th }) }}</p>
             {% else %}
-                <p>Le module {{ module.label }} est un cours de {{ module.label|first == 1 ? module.label|first ~ 'er ' : module.label|first  ~ 'ème ' }} année.</p>
+                <p>{{ 'student.module.misc.description'|trans({ 'module': module.label, 'n': module.level.numericLevel ?? '-', 'th': th }) }}</p>
             {% endif %}   
 
-            {% if grade.grade ?? '' is empty or  grade.grade ?? '' is null %}
-                <p>Vous n'avez pas encore recu de note pour ce module.</p>
+            {% if grade.grade %}
+                <p>{{ 'student.module.misc.graded'|trans({ 'graded': grade.grade }) }}</p>
             {% else %}
-                <p>Pour ce module vous avez recu la note de {{ grade.grade ?? '' }}</p>
+                <p>{{ 'student.module.misc.not_graded'|trans }}</p>
             {% endif %}  
 
             {% if module.instructors is empty %}
-                <p>Il n'y a pas encore d'intervenants pour ce module.</p>
+                <p>{{ 'student.module.misc.not_instructor'|trans }}</p>
             {% else %}
-                <p>Les intervenants de cours sont les suivants : </p>
+                <p>{{ 'student.module.misc.instructors'|trans }}:</p>
                 <ul>
                     {% for instructor in module.instructors %}
-                        <li><a href="mailto:{{ instructor.user.email }}">{{ instructor.user.email }}</a></li>
+                        <li>{{ instructor.user.firstname ?? '-' }} {{ instructor.user.lastname ?? '-' }} (<a href="mailto:{{ instructor.user.email }}">{{ instructor.user.email }}</a>)</li>
                     {% endfor %}
                 </ul>
             {% endif %}

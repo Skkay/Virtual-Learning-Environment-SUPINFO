@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello LevelController!{% endblock %}
+{% block title %}{{ 'admin.level.title.show'|trans }}{% endblock %}
 
 {% block body %}
 <ul>
-    <li><b>level.id:</b> {{ level.id }}</li>
-    <li><b>level.label:</b> {{ level.label }}</li>
-    <li><b>level.students:</b>
+    <li><b>{{ 'admin.level.misc.id'|trans }}:</b> {{ level.id }}</li>
+    <li><b>{{ 'admin.level.misc.label'|trans }}:</b> {{ level.label }}</li>
+    <li><b>{{ 'admin.level.misc.students'|trans }}:</b>
         <ul>
         {% if level.students is empty %}
             <li>-</li>

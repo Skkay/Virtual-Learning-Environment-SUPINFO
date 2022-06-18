@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello SectionController!{% endblock %}
+{% block title %}{{ 'admin.section.title.show'|trans }}{% endblock %}
 
 {% block body %}
 <ul>
-    <li><b>section.id:</b> {{ section.id }}</li>
-    <li><b>section.label:</b> {{ section.label }}</li>
-    <li><b>section.campus.label:</b> {{ section.campus.label ?? '-' }}</li>
-    <li><b>section.year:</b> {{ section.year ?? '-' }}</li>
-    <li><b>section.instructors:</b>
+    <li><b>{{ 'admin.section.misc.id'|trans }}:</b> {{ section.id }}</li>
+    <li><b>{{ 'admin.section.misc.label'|trans }}:</b> {{ section.label }}</li>
+    <li><b>{{ 'admin.section.misc.campus'|trans }}:</b> {{ section.campus.label ?? '-' }}</li>
+    <li><b>{{ 'admin.section.misc.year'|trans }}:</b> {{ section.year ?? '-' }}</li>
+    <li><b>{{ 'admin.section.misc.instructors'|trans }}:</b>
         <ul>
         {% if section.instructors is empty %}
             <li>-</li>

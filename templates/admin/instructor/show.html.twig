@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello InstructorController!{% endblock %}
+{% block title %}{{ 'admin.instructor.title.show'|trans }}{% endblock %}
 
 {% block body %}
 <ul>
-    <li><b>instructor.id:</b> {{ instructor.id }}</li>
-    <li><b>instructor.user.email:</b> {{ instructor.user.email }}</li>
-    <li><b>instructor.modules:</b>
+    <li><b>{{ 'admin.instructor.misc.id'|trans }}:</b> {{ instructor.id }}</li>
+    <li><b>{{ 'admin.instructor.misc.email'|trans }}:</b> {{ instructor.user.email }}</li>
+    <li><b>{{ 'admin.instructor.misc.modules'|trans }}:</b>
         <ul>
         {% if instructor.modules is empty %}
             <li>-</li>
@@ -17,7 +17,7 @@
         {% endif %}
         </ul>
     </li>
-    <li><b>instructor.sections:</b>
+    <li><b>{{ 'admin.instructor.misc.sections'|trans }}:</b>
         <ul>
         {% if instructor.sections is empty %}
             <li>-</li>

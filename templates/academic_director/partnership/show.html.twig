@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CampusController!{% endblock %}
+{% block title %}{{ 'academic_director.partnership.title.show'|trans }}  {{ partnership.label ?? '' }}{% endblock %}
 
 {% block body %}
 <img src="{{ partnership.imageUrl }}" alt="">

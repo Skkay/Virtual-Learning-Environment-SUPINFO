@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello SpecialityController!{% endblock %}
+{% block title %}{{ 'admin.speciality.title.show'|trans }}{% endblock %}
 
 {% block body %}
 <ul>
-    <li><b>speciality.id:</b> {{ speciality.id }}</li>
-    <li><b>speciality.label:</b> {{ speciality.label }}</li>
-    <li><b>speciality.students:</b>
+    <li><b>{{ 'admin.speciality.misc.id'|trans }}:</b> {{ speciality.id }}</li>
+    <li><b>{{ 'admin.speciality.misc.label'|trans }}:</b> {{ speciality.label }}</li>
+    <li><b>{{ 'admin.speciality.misc.students'|trans }}:</b>
         <ul>
         {% if speciality.students is empty %}
             <li>-</li>

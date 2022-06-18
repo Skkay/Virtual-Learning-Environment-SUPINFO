@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ModuleController!{% endblock %}
+{% block title %}{{ 'admin.module.title.show'|trans }}{% endblock %}
 
 {% block body %}
 <ul>
-    <li><b>module.id:</b> {{ module.id }}</li>
-    <li><b>module.label:</b> {{ module.label ?? '-' }}</li>
-    <li><b>module.instructors:</b>
+    <li><b>{{ 'admin.module.misc.id'|trans }}:</b> {{ module.id }}</li>
+    <li><b>{{ 'admin.module.misc.label'|trans }}:</b> {{ module.label ?? '-' }}</li>
+    <li><b>{{ 'admin.module.misc.instructors'|trans }}:</b>
         <ul>
         {% if module.instructors is empty %}
             <li>-</li>
@@ -17,8 +17,8 @@
         {% endif %}
         </ul>
     </li>
-    <li><b>module.speciality:</b> {{ module.speciality ? 'admin.module.misc.yes'|trans : 'admin.module.misc.no'|trans }}</li>
-    <li><b>module.students:</b>
+    <li><b>{{ 'admin.module.misc.speciality'|trans }}:</b> {{ module.speciality ? 'admin.module.misc.yes'|trans : 'admin.module.misc.no'|trans }}</li>
+    <li><b>{{ 'admin.module.misc.students'|trans }}:</b>
         <ul>
         {% if module.students is empty %}
             <li>-</li>
@@ -29,7 +29,7 @@
         {% endif %}
         </ul>
     </li>
-    <li><b>module.grades:</b>
+    <li><b>{{ 'admin.module.misc.grades'|trans }}:</b>
         <ul>
         {% if module.grades is empty %}
             <li>-</li>
@@ -40,9 +40,9 @@
         {% endif %}
         </ul>
     </li>
-    <li><b>module.ects:</b> {{ module.ects ?? '-' }}</li>
-    <li><b>module.description:</b> {{ module.description ?? '-' }}</li>
-    <li><b>module.level.label:</b> {{ module.level.label }}</li>
-    <li><b>module.name:</b> {{ module.name ?? '-' }}</li>
+    <li><b>{{ 'admin.module.misc.ects'|trans }}:</b> {{ module.ects ?? '-' }}</li>
+    <li><b>{{ 'admin.module.misc.description'|trans }}:</b> {{ module.description ?? '-' }}</li>
+    <li><b>{{ 'admin.module.misc.level'|trans }}:</b> {{ module.level.label }}</li>
+    <li><b>{{ 'admin.module.misc.name'|trans }}:</b> {{ module.name ?? '-' }}</li>
 </ul>
 {% endblock %}

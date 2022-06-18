@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CompanyController!{% endblock %}
+{% block title %}{{ 'admin.company.title.show'|trans }}{% endblock %}
 
 {% block body %}
 <ul>
-    <li><b>company.id:</b> {{ company.id }}</li>
-    <li><b>company.name:</b> {{ company.name }}</li>
-    <li><b>company.address:</b> {{ company.address ?? '-' }}</li>
-    <li><b>company.sector:</b> {{ company.sector ?? '-' }}</li>
-    <li><b>company.studentsTrainingContract:</b>
+    <li><b>{{ 'admin.company.misc.id'|trans }}:</b> {{ company.id }}</li>
+    <li><b>{{ 'admin.company.misc.name'|trans }}:</b> {{ company.name }}</li>
+    <li><b>{{ 'admin.company.misc.address'|trans }}:</b> {{ company.address ?? '-' }}</li>
+    <li><b>{{ 'admin.company.misc.sector'|trans }}:</b> {{ company.sector ?? '-' }}</li>
+    <li><b>{{ 'admin.company.misc.students_training_contract'|trans }}:</b>
         <ul>
         {% if company.studentsTrainingContract is empty %}
             <li>-</li>
@@ -19,7 +19,7 @@
         {% endif %}
         </ul>
     </li>
-    <li><b>company.studentsCompanyHired:</b>
+    <li><b>{{ 'admin.company.misc.students_hired'|trans }}:</b>
         <ul>
         {% if company.studentsCompanyHired is empty %}
             <li>-</li>

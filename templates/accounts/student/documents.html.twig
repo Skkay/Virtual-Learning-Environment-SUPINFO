@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AccountsController!{% endblock %}
+{% block title %}{{ 'accounts.student.document.title.index'|trans }}{% endblock %}
 
 {% block body %}
 
@@ -10,7 +10,7 @@
             {{ form_widget(documentUploadForm.file) }}
         </div>
 
-        <button type="submit" class="ms-2 btn btn-primary">Envoyer</button>
+        <button type="submit" class="ms-2 btn btn-primary">{{ 'form.misc.send'|trans }}</button>
     </div>
     {{ form_errors(documentUploadForm.file) }}
 {{ form_end(documentUploadForm) }}

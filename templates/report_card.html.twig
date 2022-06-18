@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ 'report_card.title.index'|trans }} - {{ level.label }}{% endblock %}
+{% block title %}{{ 'report_card.title.index'|trans({ 'level': level.label }) }}{% endblock %}
 
 {% block body %}
 <div class="table-wrapper-scroll-y my-custom-scrollbar">
     <div class="container">       
     <header class="animated bounceInDown">
-        <h1><b>{{ 'report_card.title.index'|trans }} - {{ level.label }}</b></h1><br />
+        <h1><b>{{ 'report_card.title.index'|trans({ 'level': level.label }) }}</b></h1><br />
         <h4>{{ student.user.firstName|capitalize  }} {{ student.user.lastName|upper }}</h4>
     </header>                                                                
         <div class="table-responsive">          

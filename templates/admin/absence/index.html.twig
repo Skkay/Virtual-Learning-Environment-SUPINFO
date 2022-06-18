@@ -1,22 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AbsenceController!{% endblock %}
+{% block title %}{{ 'admin.absence.title.index'|trans }}{% endblock %}
 
 {% block body %}
     <div class="table-wrapper-scroll-y my-custom-scrollbar">
         <div class="container">       
             <header class="animated bounceInDown">
-                <h1><b>Absences</b></h1><br />
+                <h1><b>{{ 'admin.absence.title.index'|trans }}</b></h1><br />
             </header>                                                                
             <div class="table-responsive">          
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Détails</th>
-                            <th scope="col">Adresse mail</th>
-                            <th scope="col">Date</th>
-                            <th scope="col">Période</th>
-                            <th scope="col">Justificatif</th>
+                            <th scope="col">{{ 'admin.absence.table.details'|trans }}</th>
+                            <th scope="col">{{ 'admin.absence.table.email'|trans }}</th>
+                            <th scope="col">{{ 'admin.absence.table.date'|trans }}</th>
+                            <th scope="col">{{ 'admin.absence.table.period'|trans }}</th>
+                            <th scope="col">{{ 'admin.absence.table.excuse'|trans }}</th>
                         </tr>
                     </thead>
                     <tbody>

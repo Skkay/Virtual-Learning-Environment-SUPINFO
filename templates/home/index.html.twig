@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Acceuil{% endblock %}
+{% block title %}{{ 'home.title'|trans }}{% endblock %}
 
 {% block body %}
 
@@ -27,39 +27,34 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-        
-<!-- Icons Grid -->
-        <section class="features-icons bg-light text-center">
-            <div class="container">
+
+    <section class="features-icons bg-light text-center">
+        <div class="container">
             <div class="row">
-                
-        <div class="bloc l-bloc" id="bloc-2">
-            <div class="container bloc-lg">
-                <div class="row">
-                    <div class="col-md-6 col-lg-4 animated fadeInDown scroll-fx-down-in none" data-appear-anim-style="fadeInDown">
-                        <div class="text-center" id="infobulle" aria-label="24h/24 en ligne."><i class=" icon-check icon-lg text-primary" ></i></div>
-                        <h3 class="mg-md text-center">Soutien scolaire 24h/24</h3>
+                <div class="bloc l-bloc" id="bloc-2">
+                    <div class="container bloc-lg">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-4 animated fadeInDown scroll-fx-down-in none" data-appear-anim-style="fadeInDown">
+                                <div class="text-center" id="infobulle"><i class=" icon-check icon-lg text-primary" ></i></div>
+                                <h3 class="mg-md text-center">{{ 'home.block_1'|trans }}</h3>
+                            </div>
+                            <div class="col-md-6 col-lg-4 animated fadeInDown animDelay02 scroll-fx-down-in" data-appear-anim-style="fadeInDown">
+                                <div class="text-center" id="infobulle"><i class=" icon-check icon-lg text-primary" ></i></div>
+                                <h3 class="mg-md text-center">{{ 'home.block_2'|trans }}</h3>
+                            </div>
+                            <div class="col-md-6 col-lg-4 animated fadeInDown animDelay04 scroll-fx-down-in" data-appear-anim-style="fadeInDown">
+                                <div class="text-center" id="infobulle"><i class=" icon-check icon-lg text-primary" ></i></div>
+                                <h3 class="mg-md text-center">{{ 'home.block_3'|trans }}</h3>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 animated fadeInDown animDelay02 scroll-fx-down-in" data-appear-anim-style="fadeInDown">
-                        <div class="text-center" id="infobulle" aria-label="Au travers de services et ateliers variés."><i class=" icon-check icon-lg text-primary" ></i></div>
-                        <h3 class="mg-md text-center">Ouverture intellectuelle</h3>
-                    </div>
-                    <div class="col-md-6 col-lg-4 animated fadeInDown animDelay04 scroll-fx-down-in" data-appear-anim-style="fadeInDown">
-                        <div class="text-center" id="infobulle" aria-label="Accompagnement personnel toute l'année."><i class=" icon-check icon-lg text-primary" ></i></div>
-                        <h3 class="mg-md text-center">Aide personnalisée</h3>
-                    </div>
-                    
                 </div>
             </div>
         </div>
+    </section>
 
-            </div>
-            </div>
-        </section>
-
-        <!-- Image Showcases -->
-        <section class="showcase">
-            <div class="bloc bloc-fill-screen l-bloc" id="bloc-0">
+    <section class="showcase">
+        <div class="bloc bloc-fill-screen l-bloc" id="bloc-0">
             <div class="container">
                 <div class="row">
                     <div class="offset-md-2 col-md-8 col-lg-8 offset-lg-2">
@@ -67,135 +62,125 @@
                     </div>
         
                     <div class="col-lg-12 my-auto showcase-text">
-        
-                <h2>L'Accueil</h2>
-                <p class="lead mb-0">L'Accueil permet aux intervenants et aux élèves d&rsquo;échanger sur le contenu des cours, et sur les formations académiques. 
-                    Les élèves peuvent consulter les informations sur leur modules, sur leur notes ainsi qu'accèder à leur bulletin.
-                 </p>
-                </div>
+                        <h2>{{ 'home.home.title'|trans }}</h2>
+                        <p class="lead mb-0">
+                            {{ 'home.home.description'|trans }}
+                        </p>
+                    </div>
                 </div>
             </div>
-            </div>
-<!--<div style="border-bottom:1px solid black;"></div>-->
-            
-            
+        </div>
+
         <div class="bloc full-width-bloc l-bloc" id="bloc-5">
             <div class="container ">
                 <div class="row">
                     <div class="order-md-0 col-md-12 col-lg-6 order-lg-1 offset-lg-1"><img src="{{asset('build/images/TUTEUR-compressor.jpeg')}}" data-src="{{asset('build/images/TUTEUR-compressor.jpeg')}}" class="img-fluid mx-auto d-block scroll-fx-right-in-fade lazyload" alt="placeholder image" /></div>
                     <div class="align-self-center offset-md-1 col-md-10 col-lg-4 col-sm-10 offset-sm-1 col-10 offset-1">
-                        <h2 class="mg-md">Les Intervenants</h2>
-                        <p class="lead mb-0">Nos intervenants sont des professionnels polyvalents recrutés pour leurs qualités humaines et académiques. Ils sont investis et comprennent parfaitement la situation de chaque élève pour avoir vécu à leurs façons le même parcours.</p>
+                        <h2 class="mg-md">{{ 'home.instructors.title'|trans }}</h2>
+                        <p class="lead mb-0">
+                            {{ 'home.instructors.description'|trans }}
+                        </p>
                     </div>
                 </div>
             </div>
-        </div><!-- bloc-5 END -->
-        <!-- bloc-7 -->
+        </div>
+
         <div class="bloc full-width-bloc l-bloc" id="bloc-7">
             <div class="container ">
                 <div class="row">
                     <div class="col-md-12 offset-lg--1 col-lg-6"><img src="{{asset('build/images/AdobeStock_65697900-compressor.jpeg ')}}" data-src="{{asset('build/images/AdobeStock_65697900-compressor.jpeg ')}}" class="img-fluid mx-auto d-block scroll-fx-left-in-fade lazyload" alt="placeholder image" /></div>
                     <div class="align-self-center offset-md-1 col-md-10 col-sm-10 offset-sm-1 offset-1 col-10 offset-lg-1 col-lg-4">
-                        <h2 class="mg-md">Ateliers d'orientation</h2>
-                        <p class="lead mb-0">L'Ent de SUPINFO permet une ouverture sur l’orientation académique et professionnelle. En effet, nous mettons à disposition des articles et vidéos centrés sur la découverte des fillières de l'informatique.</p>
+                        <h2 class="mg-md">{{ 'home.course_guidance.title'|trans }}</h2>
+                        <p class="lead mb-0">
+                            {{ 'home.course_guidance.description'|trans }}
+                        </p>
                     </div>
                 </div>
             </div>
-        </div><!-- bloc-7 END -->
-        <!-- bloc-8 -->
+        </div>
+
         <div class="bloc full-width-bloc l-bloc" id="bloc-8">
             <div class="container ">
                 <div class="row">
                     <div class="order-md-0 col-md-12 col-lg-6 order-lg-1 offset-lg-1"><img src="{{asset('build/images/entracc-compressor.jpeg ')}}" data-src="{{asset('build/images/entracc-compressor.jpeg ')}}" class="img-fluid mx-auto d-block scroll-fx-right-in-fade lazyload" alt="placeholder image" /></div>
                     <div class="align-self-center offset-md-1 col-md-10 col-lg-4 col-sm-10 offset-sm-1 col-10 offset-1">
-                        <h2 class="mg-md">Entrepreneuriat</h2>
-                        <p class="lead mb-0">L'ENT de SUPINFO vous accompagne dans votre aventure entrepreneuriale en vous proposant des cours vidéos dispensés par un professeur (Sciences po Paris/Université de Tours) spécialisé en économie, gestion/entrepreneuriat et administration des sociétés. Les thématiques abordées seront par exemple la gestion, le choix des statuts, le financement, l’organisation au sein de la structure et des bases sur l'économie. </p>
+                        <h2 class="mg-md">{{ 'home.entrepreneurship.title'|trans }}</h2>
+                        <p class="lead mb-0">
+                            {{ 'home.entrepreneurship.description'|trans }}
+                        </p>
                     </div>
                 </div>
             </div>
-        </div><!-- bloc-8 END -->
+        </div>
+    </section>
 
-        </section>
-
-
-
-        <section class="page-section clearfix">
-            <div class="container">
-                <h2 class="section-heading text-uppercase scroll-fx-left-in-fade lazyload">Présentation</h2>
+    <section class="page-section clearfix">
+        <div class="container">
+            <h2 class="section-heading text-uppercase scroll-fx-left-in-fade lazyload">{{ 'home.presentation.title'|trans }}</h2>
             <div class="intro scroll-fx-right-in-fade lazyload">
                 <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{asset('build/images/iStock-846567624-compressor.jpg ')}}" data-src="{{asset('build/images/iStock-846567624-compressor.jpg ')}}" alt="">
                 <div class="intro-text left-0 text-center bg-faded p-5 rounded">
-                <h2 class="section-heading mb-4">
-                    <span class="section-heading-lower">Bienvenue</span>
-                </h2>
-                <p class="mb-3">"L'ENT de SUPINFO, c'est tout ce dont nous rêvions étant plus jeunes. Effectivement, une solution complète d'enseignements en ligne est dorénavant disponible pour TOUS."</p>
-                <div class="intro-button mx-auto">
-                    <div class="btn btn-primary btn-xl" style="cursor:default;border:none;background-color: #3472F7;color:white">L'équipe SUPINFO</div>
-                </div>
+                    <h2 class="section-heading mb-4">
+                        <span class="section-heading-lower">{{ 'home.presentation.welcome'|trans }}</span>
+                    </h2>
+                    <p class="mb-3">
+                        "{{ 'home.presentation.quote'|trans }}"
+                    </p>
+                    <div class="intro-button mx-auto">
+                        <div class="btn btn-primary btn-xl" style="cursor:default;border:none;background-color: #3472F7;color:white">{{ 'home.presentation.team'|trans }}</div>
+                    </div>
                 </div>
             </div>
-            </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Contact ================================================== -->
     <section class="section" id="contact" style="background-color:whitesmoke;">
         <div class="container">
             <div class="row justify-content-center mb-4">
                 <div class="col-md-8 col-lg-8 text-center">
-
-                    <!-- Heading -->
-                    <h2 class="lg-title mb-2">
-                        NOUS-CONTACTER
-                    </h2>
-
-                    <!-- Subheading -->
-                <p></p>
-
+                    <h2 class="lg-title mb-2">{{ 'home.contact.contact_us'|trans }}</h2>
                 </div>
             </div>
-            <!-- / .row -->
-
 
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <form action="mail.php" method="post" id="main_contact_form" class="contact__form">
-                        <!-- form message -->
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="alert alert-success contact__msg" style="display: none" role="alert">
-                                        Votre message a bien été envoyé.
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end message -->
-                            
                         <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <input type="text" name="name" id="name" class="form-control" placeholder="Entrez votre nom">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <input type="text" name="email" id="email" class="form-control" placeholder="Entrer votre Adresse mail *" required="required">
+                            <div class="col-12">
+                                <div class="alert alert-success contact__msg" style="display: none" role="alert">
+                                    {{ 'home.contact.message_sent'|trans }}
                                 </div>
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input type="text" name="name" id="name" class="form-control" placeholder="{{ 'home.contact.form_placeholder.name'|trans }}">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input type="text" name="email" id="email" class="form-control" placeholder="{{ 'home.contact.form_placeholder.email'|trans }} *" required="required">
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <input type="text" name="subject" id="subject" class="form-control" placeholder="Entrer votre objet *" required="required">
+                                    <input type="text" name="subject" id="subject" class="form-control" placeholder="{{ 'home.contact.form_placeholder.subject'|trans }} *" required="required">
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <textarea name="message" id="message" cols="30" rows="6" class="form-control" placeholder="Entrer votre Message *" required="required" ></textarea>
+                                    <textarea name="message" id="message" cols="30" rows="6" class="form-control" placeholder="{{ 'home.contact.form_placeholder.message'|trans }} *" required="required" ></textarea>
                                 </div>
                             </div>
                             <div class="g-recaptcha" data-sitekey="6Lcgt58UAAAAAKocJ3W8_rdG4JFBRTyE9TuN70bW"></div>
                             <div class="col-lg-12">
                                 <div class="submit text-center">
-                                    <input name="submit" type="submit" class="btn btn-primary btn-lg" style="border:none;background-color: #3472F7;color:white" value="Soumettre">
+                                    <input name="submit" type="submit" class="btn btn-primary btn-lg" style="border:none;background-color: #3472F7;color:white" value="{{ 'home.contact.form_placeholder.submit'|trans }}">
                                 </div>
                             </div>
                         </div>
@@ -206,18 +191,13 @@
     </section>
     
     <script src='https://www.google.com/recaptcha/api.js?hl=fr'></script>
-    <!-- Preloader -->
-    <div id="page-loading-blocs-notifaction" class="page-preloader"></div><!-- Preloader END -->
-    <script type="text/javascript">
-        window.onscroll = function() {myFunction()};
 
-        function myFunction() {
+    <div id="page-loading-blocs-notifaction" class="page-preloader"></div>
+    <script type="text/javascript">
+        window.onscroll = function() {
             if (document.body.scrollTop > 440 || document.documentElement.scrollTop > 440) {
                 document.getElementsByClassName("rebond").className = "bounce";
-            } else {
-                
             }
-        }
+        };
     </script>
-
 {% endblock %}

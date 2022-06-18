@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello RegionController!{% endblock %}
+{% block title %}{{ 'admin.region.title.show'|trans }}{% endblock %}
 
 {% block body %}
 <ul>
-    <li><b>region.id:</b> {{ region.id }}</li>
-    <li><b>region.name:</b> {{ region.name }}</li>
-    <li><b>region.students:</b>
+    <li><b>{{ 'admin.region.misc.id'|trans }}:</b> {{ region.id }}</li>
+    <li><b>{{ 'admin.region.misc.name'|trans }}:</b> {{ region.name }}</li>
+    <li><b>{{ 'admin.region.misc.students'|trans }}:</b>
         <ul>
         {% if region.students is empty %}
             <li>-</li>

@@ -24,22 +24,17 @@
 
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AdminController!{% endblock %}
+{% block title %}{{ 'admin.dashboard.title.index' }} {{ 'admin.dashboard.title.role' }}{% endblock %}
 
 {% block body %}
-
-
-
     <section id="services" class="section-bg">
         <div class="container">
             <header class="section-header animated bounceInDown">
-                <h2><b>Bienvenue dans la partie <span style="color:#2282ff">{{ 'admin.dashboard.title.role'|trans }}</span></b></h2><br /><br />
+                <h2><b>{{ 'admin.dashboard.misc.welcome' }} <span style="color:#2282ff">{{ 'admin.dashboard.title.role'|trans }}</span></b></h2><br /><br />
             </header>
-            
 
             <div class="row">
                 {% for entity in entities|sort((a, b) => a[1] <=> b[1]) %}
-                   
                     <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
                         <a href="{{ path('app.admin.' ~ entity[0] ~ '.index') }}">
                             <div class="box">
@@ -48,12 +43,10 @@
                             </div>
                         </a>
                     </div>
-                    
                 {% endfor %}
             </div>
 
             <div class="row">
-               
                 <div class="col-md-6 col-lg-6 wow bounceInUp" data-wow-duration="1.4s">
                     <a href="{{ path('app.admin.etl.data_schema.index') }}">
                         <div class="box">
@@ -86,8 +79,8 @@
                         </div>
                     </a>
                 </div>
-                
             </div>
+
         </div>
     </section>
     </div>

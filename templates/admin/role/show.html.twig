@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello RoleController!{% endblock %}
+{% block title %}{{ 'admin.role.title.show'|trans }}{% endblock %}
 
 {% block body %}
 <ul>
-    <li><b>role.id:</b> {{ role.id }}</li>
-    <li><b>role.from:</b> {{ role.from ?? '-' }}</li>
-    <li><b>role.to:</b> {{ role.to ?? '-' }}</li>
+    <li><b>{{ 'admin.role.misc.id'|trans }}:</b> {{ role.id }}</li>
+    <li><b>{{ 'admin.role.misc.from'|trans }}:</b> {{ role.from ?? '-' }}</li>
+    <li><b>{{ 'admin.role.misc.to'|trans }}:</b> {{ role.to ?? '-' }}</li>
 </ul>
 {% endblock %}

@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello UserController!{% endblock %}
+{% block title %}{{ 'admin.user.title.show'|trans }}{% endblock %}
 
 {% block body %}
 <ul>
-    <li><b>user.id:</b> {{ user.id }}</li>
-    <li><b>user.email:</b> {{ user.email }}</li>
-    <li><b>user.firstName:</b> {{ user.firstName ?? '-' }}</li>
-    <li><b>user.lastName:</b> {{ user.lastName ?? '-' }}</li>
-    <li><b>user.roles:</b> {{ user.roles|json_encode(constant('JSON_PRETTY_PRINT')) }}</li>
+    <li><b>{{ 'admin.user.misc.id'|trans }}:</b> {{ user.id }}</li>
+    <li><b>{{ 'admin.user.misc.email'|trans }}:</b> {{ user.email }}</li>
+    <li><b>{{ 'admin.user.misc.firstname'|trans }}:</b> {{ user.firstName ?? '-' }}</li>
+    <li><b>{{ 'admin.user.misc.lastname'|trans }}:</b> {{ user.lastName ?? '-' }}</li>
+    <li><b>{{ 'admin.user.misc.roles'|trans }}:</b> {{ user.roles|json_encode(constant('JSON_PRETTY_PRINT')) }}</li>
     <li>
-        <b>user.instructor:</b> 
+        <b>{{ 'admin.user.misc.instructor'|trans }}:</b> 
         {% if user.instructor %}
             <a href="{{ path('app.admin.instructor.show', {'id': user.instructor.id}) }}">{{ user.instructor.id }}</a>
         {% else %}
@@ -18,7 +18,7 @@
         {% endif %}
     </li>
     <li>
-        <b>user.staff:</b> 
+        <b>{{ 'admin.user.misc.staff'|trans }}:</b> 
         {% if user.staff %}
             <a href="{{ path('app.admin.staff.show', {'id': user.staff.id}) }}">{{ user.staff.id }}</a>
         {% else %}
@@ -26,7 +26,7 @@
         {% endif %}
     </li>
     <li>
-        <b>user.student:</b> 
+        <b>{{ 'admin.user.misc.student'|trans }}:</b> 
         {% if user.student %}
             <a href="{{ path('app.admin.student.show', {'id': user.student.id}) }}">{{ user.student.id }}</a>
         {% else %}

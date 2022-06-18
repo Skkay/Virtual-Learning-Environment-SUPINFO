@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello EducationalCoordinatorController!{% endblock %}
+{% block title %}{{ 'educational_coordinator.dashboard.title.index'|trans }}{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -18,7 +18,7 @@
 <section id="services" class="section-bg">
     <div class="container">
             <header class="section-header animated bounceInDown">
-                <h2><b>Bienvenue <span style="color:#2282ff">{{ 'educational_coordinator.dashboard.title.role'|trans }}</span></b></h2><br /><br />
+                <h2><b>{{ 'educational_coordinator.dashboard.misc.welcome'|trans }} <span style="color:#2282ff">{{ 'educational_coordinator.dashboard.title.role'|trans }}</span></b></h2><br /><br />
             </header>
             <div class="row">
                 

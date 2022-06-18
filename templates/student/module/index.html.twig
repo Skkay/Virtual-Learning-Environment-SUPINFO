@@ -1,21 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Listes des modules{% endblock %}
+{% block title %}{{ 'student.module.title.index'|trans }}{% endblock %}
 
 {% block body %}
     <div class="table-wrapper-scroll-y my-custom-scrollbar">
         <div class="container">       
         <header class="animated bounceInDown">
-            <h1><b>Modules</b></h1><br />
+            <h1><b>{{ 'student.module.title.index'|trans }}</b></h1><br />
         </header>                                                                
             <div class="table-responsive">          
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Nom</th>
-                            <th scope="col">Spécialité</th>
-                            <th scope="col">Notes</th>
-                            <th scope="col">ECTS</th>
+                            <th scope="col">{{ 'student.module.table.name'|trans }}</th>
+                            <th scope="col">{{ 'student.module.table.speciality'|trans }}</th>
+                            <th scope="col">{{ 'student.module.table.grade'|trans }}</th>
+                            <th scope="col">{{ 'student.module.table.ects'|trans }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -25,9 +25,9 @@
                                     <h5><a href="{{ path('app.module.show', {'id': module.id} ) }}">{{ module.label }}</a></h5>
                                 </td>
                                 {% if module.speciality == 1 %}
-                                    <td class="sub-info hide-640">Oui</td>
+                                    <td class="sub-info hide-640">{{ 'student.module.misc.yes'|trans }}</td>
                                 {% else %}
-                                    <td class="sub-info hide-640">Non</td>
+                                    <td class="sub-info hide-640">{{ 'student.module.misc.no'|trans }}</td>
                                 {% endif %}
                                 <td class="sub-info">{{ grades[module.label].grade ?? '-' }}</td>
                                 <td class="sub-info">{{ module.ects ?? '-' }}</td>

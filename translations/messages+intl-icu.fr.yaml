@@ -5,10 +5,11 @@ navbar:
   logout: Déconnexion
   my_profile: Mon compte
   language: Langue
+  search_bar: Rechercher
 
 report_card:
   title: 
-    index: Bulletin de notes
+    index: Bulletin de notes - {level}
   misc:
     course_code: Code du cours
     course_name: Nom du cours
@@ -16,12 +17,32 @@ report_card:
     grades: Notes
     validated_credits: Crédits validés
 
-dashboard:
-  title:
-    index: Tableau de bord
-  misc:
-    module_list: Liste des cours
-    report_card_list: Bulletin de note
+student:
+  dashboard:
+    title:
+      index: Tableau de bord
+    misc:
+      module_list: Liste des cours
+      report_card_list: Bulletin de note
+      welcome: Bienvenue
+  module:
+    title:
+      index: Liste des modules
+      show: Module {module}
+    table:
+      name: Nom
+      speciality: Spécialité
+      grade: Note
+      ects: ECTS
+    misc:
+      yes: Oui
+      no: Non
+      description: Le module {module} est un cours de {n}{th} année.
+      description_speciality: Le module {module} est une spécialité de {n}{th} année.
+      not_graded: Vous n'avez pas encore reçu de note pour ce module.
+      graded: Vous avez reçu la note de {grade}.
+      not_instructor: Il n'y a pas encore d'intervenant pour ce module.
+      instructors: Les intervenants pour ce module sont les suivants
 
 accounts:
   dashboard:
@@ -30,9 +51,31 @@ accounts:
       role: Administratif
     misc:
       student_list: Liste des étudiants
+      welcome: Bienvenue - 
   student:
+    title:
+      index: Liste des étudiants
+    misc:
+      students: Étudiants
+      informations_about: Informations sur {firstname} {lastname}
+      born: L'étudiant {firstname} {lastname} est né le {firstname} {dob}.
+      live_in: Vit en {region} au {address} et se trouve au campus de {campus} en {level}.
+      entry: Est entré en {entryYear} en {entryLevel}.
+      exit: A terminé son cursus en {exitYear} en {exitLevel}.
+      last_diploma: Son dernier diplôme est le {diploma}.
+      is_training_contract_yes: Il est en contrat de formation professionnelle.
+      training_contract: En alternance chez {company} depuis le {startDate}.
+      payment_type: Scolarité payé en {type}.
+      payment_remain: Il reste {due} € à régler.
+      reminded: Relancé.
+    table:
+      details: Détails
+      firstname: Prénom
+      lastname: Nom
+      campus: Campus
     document:
       title:
+        index: Documents
         documents_of: Documents de {firstname} {lastname}
       table:
         extension: Type
@@ -51,9 +94,11 @@ educational_coordinator:
       module_list: Liste des modules
       instructor_list: Liste des intervenants
       company_list: Liste des entreprises
+      welcome: Bienvenue -
   student:
     title:
       index: Liste des étudiants
+      show: Étudiant {firstname} {lastname}
     table:
       id: ID
       first_name: Prénom
@@ -63,29 +108,65 @@ educational_coordinator:
       company: Entreprise
       email: Email
       sct: SCT
+      details: Détails
+      module: Module
+      grade: Note
+      result: Résultat
     misc:
       accepted: Admis
       fail: Recalé
       yes: Oui
       no: Non
+      description: L'étudiant {firstname} {lastname} est né le {dob}.
+      campus: Il fait parti du campus « {campus} ».
+      training_contract: Il est en contrat d'alternance dans l'entreprise {company} depuis le {date}.
+      absences: Il compte {n} absence(s) donc les justifications sont
+      no_absence: Il n'a jamais été absent.
+      grades: Notes
   module:
     title:
       index: Liste des modules
+      show: Module {module}
+    table:
+      name: Nom
+      speciality: Spécialité
+      ects: ECTS
+      student: Étudiant
+      grade: Note
+      result: Résultat
     misc:
       accepted: Admis
       fail: Recalé
+      yes: Oui
+      no: Non
+      description: Le module {module} compte pour {ects} crédits ECTS.
+      description_speciality: Le module {module} est une spécialité qui compte pour {ects} crédits ECTS.
+      instructors: Intervenants de ce modules
+      grades: Notes des étudiants
   instructor:
     title:
       index: Liste des intervenants
+    table:
+      name: Nom
+      email: Email
+      modules: Modules
   company:
     title:
       index: Liste des entreprises
+      show: Détails de l'entreprise {company}
     table:
       id: ID
       name: Nom
       sector: Secteur d'activité
       nb_student_training_contract: Nombre d'étudiant en alternance
       nb_student_hired: Nombre d'étudiant embauché
+    misc:
+      student_hired: L'entreprise à embauché ces étudiants
+      no_student_hired: L'entreprise n'a embauché aucun de nos étudiants.
+      training_contract: Étudiants en contrat d'alternance
+      no_training_contract: L'entreprise n'a aucun de nos étudiants en contrat d'alternance.
+      address: Adresse postale
+      welcome: Bienvenue -
   
 academic_director:
   dashboard:
@@ -98,9 +179,11 @@ academic_director:
       instructor_list: Liste des intervenants
       partnership_list: Liste des partenariats
       thesis_list: Liste des mémoires
+      welcome: Bienvenue - 
   student:
     title:
       index: Liste des étudiants
+      show: Étudiant
     table:
       id: ID
       first_name: Prénom
@@ -124,6 +207,7 @@ academic_director:
   module:
     title:
       index: Liste des modules
+      show: Module
     misc:
       accepted: Admis
       fail: Recalé
@@ -133,6 +217,7 @@ academic_director:
   campus:
     title:
       index: Liste des campus
+      show: Campus
     table:
       id: ID
       label: Label
@@ -143,6 +228,7 @@ academic_director:
   partnership:
     title:
       index: Liste des partenariats
+      show: Partenariats
     table:
       id: ID
       label: Label
@@ -150,6 +236,7 @@ academic_director:
   thesis:
     title:
       index: Liste des mémoires
+      show: Mémoire
     table:
       id: ID
       student: Étudiant
@@ -194,18 +281,80 @@ admin:
       data_files: Fichiers des sources de données
       imports: Importations
       exports: Exportations
+      welcome: Bienvenue - 
   module:
+    title:
+      index: Liste des modules
+      show: Module
+    table:
+      id: ID
+      label: Label
+      speciality: Spécialité
+      ects: ECTS
+      description: Description
+      level: Niveau
+      name: Nom
     misc:
       yes: Oui
       no: Non
+      id: ID
+      label: Label
+      instructors: Intervenants
+      speciality: Specialité
+      students: Étudiants
+      grades: Notes
+      ects: ECTS
+      description: Description
+      level: Niveau
+      name: Nom
   planning_event:
+    title:
+      index: Liste de évènements du planning
+      show: Évènement
+    table:
+      id: ID
+      title: Titre
+      description: Description
+      start: Date de début
+      end: Date de fin
+      all_day: Toute la journée
+      campus: Campus
+      level: Niveau
+      background_color: Couleur de fond
+      border_color: Couleur de bordure
+      text_color: Couleur de texte
     misc:
       yes: Oui
       no: Non
+      id: ID
+      title: Titre
+      description: Description
+      start: Date de début
+      end: Date de fin
+      all_day: Toute la journée
+      campus: Campus
+      level: Niveau
+      background_color: Couleur de fond
+      border_color: Couleur de bordure
+      text_color: Couleur de texte
   thesis:
+    title:
+      index: Liste des mémoires
+      show: Mémoire
+    table:
+      id: ID
+      student: Étudiant
+      subject: Sujet
+      delivered: Rendu
+      remark: Commentaire
     misc:
       yes: Oui
       no: Non
+      id: ID
+      student: Étudiant
+      subject: Sujet
+      delivered: Rendu
+      remark: Commentaire
   etl:
     data_schema:
       title:
@@ -219,6 +368,8 @@ admin:
         schema: Schema
         actions: Actions
         no_records: Aucun schéma
+        details: Détails
+        update: Modifier
     data_file:
       title:
         index: Fichiers des sources de données
@@ -260,7 +411,273 @@ admin:
         download: Télécharger
         export_database: Exporter la base de données
         success: Base de données exportée dans
-  
+  absence:
+    title:
+      index: Liste des absences
+      show: Absence
+    table:
+      details: Détails
+      email: Email
+      date: Date
+      period: Période
+      excuse: Justification
+    misc:
+      absence_of: Absence de {firstname} {lastname}
+      absence_of_detail:
+        morning: L'étudiant {firstname} {lastname} a été absent le matin du {date}
+        afternoon: L'étudiant {firstname} {lastname} a été absent l'après-midi du {date}
+      excuse: Justification
+      no_excuse: Il n'y a aucun justificatif pour cette abscence.
+  accounts_payment_type:
+    title:
+      index: Liste des moyens de paiements
+      show: Moyen de paiement
+    table:
+      id: ID
+      label: Label
+    misc:
+      id: ID
+      label: Label
+      students: Étudiants ayant payés avec ce type de paiement
+  accounts_student_comment:
+    title:
+      index: Liste des commentaires
+      show: Commentaire
+    table:
+      details: Détails
+      comment: Commentaire
+      create_date: Date de création
+      update_date: Date de modification
+      email: Adresse email
+    misc:
+      comment: Commentaire
+      comment_of: Ce commentaire de {firstname} {lastname} a été créé le {createDate} et mis à jour le {updateDate}.
+  campus:
+    title:
+      index: Liste des campus
+      show: Campus
+    table:
+      label: Label
+      city: Ville
+    misc:
+      details_of: Détails du campus « {label} »
+      location: Le campus « {label} » se trouve dans la ville de {city}.
+      no_location: Le campus « {label} » n'est dans aucune ville.
+      sections: Sections associées
+      staff: Staff du campus
+      students: Étudiant dans ce campus
+  company:
+    title:
+      index: Liste des entreprises
+      show: Entreprise
+    table:
+      name: Nom
+      address: Adresse
+      sector: Secteur
+    misc:
+      id: ID
+      name: Nom
+      address: Adresse
+      sector: Secteur
+      students_training_contract: Étudiants en contrat d'alternance
+      students_hired: Étudiants embauchés
+  diploma:
+    title:
+      index: Liste des diplômes
+      show: Diplôme
+    table:
+      details: Détails
+      diploma: Diplôme
+    misc:
+      students: Étudiants ayant ce diplôme
+  gender:
+    title:
+      index: Liste des genres
+      show: Genre
+    table:
+      id: ID
+      label: Label
+    misc:
+      id: ID
+      label: Label
+      students: Étudiants
+  grade:
+    title:
+      index: Liste des notes
+      show: Note
+    table:
+      id: ID
+      email: Email
+      module: Module
+      grade: Note
+    misc:
+      id: ID
+      email: Email
+      module: Module
+      grade: Note
+  instructor:
+    title:
+      index: Liste des intervenants
+      show: Intervenant
+    table:
+      id: ID
+      email: Email
+    misc:
+      id: ID
+      email: Email
+      modules: Cet intervenant dispense ces modules
+      sections: Cet intervanant intervient dans ces sections
+  level:
+    title:
+      index: Liste des niveaux
+      show: Niveau
+    table:
+      id: ID
+      label: Label
+    misc:
+      id: ID
+      label: Label
+      students: Étudiants ayant ce niveau
+  partnership:
+    title:
+      index: Liste des partenariats
+      show: Partenariat
+    table:
+      id: ID
+      label: Label
+      image_url: URL de l'image
+      description: Description
+    misc:
+      id: ID
+      label: Label
+      image_url: URL de l'image
+      description: Description
+  region:
+    title:
+      index: Liste des régions 
+      show: Région
+    table:
+      id: ID
+      name: Nom
+    misc:
+      id: ID
+      name: Nom
+      students: Ces étudiants habitent dans cette région
+  role:
+    title:
+      index: Liste des rôles
+      show: Rôle
+    table:
+      id: ID
+      from: Source
+      to: Destination
+    misc:
+      id: ID
+      from: Source
+      to: Destination
+  section:
+    title:
+      index: Liste des sections
+      show: Section
+    table:
+      id: ID
+      label: Label
+      campus: Campus
+      year: Année
+    misc:
+      id: ID
+      label: Label
+      campus: Campus
+      year: Année
+      instructors: Intervenants de cette section
+  speciality:
+    title:
+      index: Liste des spécialités
+      show: Spécialité
+    table:
+      id: ID
+      label: Label
+    misc:
+      id: ID
+      label: Label
+      students: Étudiants de cette spécialité
+  staff:
+    title:
+      index: Liste du staff
+      show: Staff
+    table:
+      id: ID
+      firstname: Prénom
+      lastname: Nom
+      email: Email
+    misc:
+      id: ID
+      firstname: Prénom
+      lastname: Nom
+      email: Email
+      campus: Campus
+  student:
+    title:
+      index: Liste des étudiants
+      show: Étudiants
+    table:
+      id: ID
+      firstname: Prénom
+      lastname: Nom
+      campus: Campus
+      level: Niveau
+    misc:
+      id: ID
+      email: Email
+      firstname: Prénom
+      lastname: Nom
+      campus: Campus
+      level: Level
+      modules: Modules
+      entry_level: Niveau d'entré
+      exit_level: Niveau de sortie
+      entry_year: Année d'entré
+      exit_year: Année de sortie
+      professional_training_contract: Contrat d'alternance
+      accounts_paid: Scolarité payée
+      accounts_payment_due: Reste à payer
+      accounts_reminded: Étudiant relancé
+      accounts_payment_type: Type de paiement utilisé
+      company_training_contract: Entreprise d'alternance
+      company_hired: Entreprisé d'embauche
+      date_start_contract: Date de début du contrat
+      employed_as: Employé en
+      last_diploma: Dernier diplôme
+      grades: Notes
+      date_of_birth: Date de naissance
+      address: Adresse
+      gender: Sexe
+      region: Région
+      speciality: Spécialité
+      absences: Absences
+  user:
+    title:
+      index: Liste des utilisateurs
+      show: Utilisateur
+    table:
+      id: ID
+      email: Email
+      firstname: Prénom
+      lastname: Nom
+      roles: Rôles
+      instructor: Intervenant
+      staff: Staff
+      student: Étudiant
+    misc:
+      id: ID
+      email: Email
+      firstname: Prénom
+      lastname: Nom
+      roles: Rôles
+      instructor: Intervenant
+      staff: Staff
+      student: Étudiant
+
 profile:
   title:
     index: Mon compte
@@ -276,6 +693,56 @@ profile:
       update_password: Modifier le mot de passe
       password_updated: Mot de passe mis à jour
       password_not_defined: Aucun mot de passe défini
+      set_your_password: Entrer votre nouveau mot de passe
+      update_your_password: Modifier votre mot de passe
+
+login:
+  title:
+    index: Connexion
+  misc:
+    login: Connexion
+    email_address: Adresse email
+    login_link: Lien de connexion
+    tos_privacy_1: En continuant, vous acceptez les
+    tos_privacy_2: de IONIS et reconnaissez avoir lu notre
+    password: Mot de passe
+  button:
+    login: Se connecter
+    login_link: Obtenir le lien de connexion
+    terms_of_service: Conditions d'utilisation
+    privacy_policy: Politique de confidentialité
+
+home:
+  title: Accueil
+  block_1: Soutien scolaire 24h/24
+  block_2: Ouverture intellectuelle
+  block_3: Aide personnalisée
+  home:
+    title: L'Accueil
+    description: L'Accueil permet aux intervenants et aux élèves d'échanger sur le contenu des cours, et sur les formations académiques. Les élèves peuvent consulter les informations sur leur modules, sur leur notes ainsi qu'accèder à leur bulletin.
+  instructors:
+    title: Les Intervenants
+    description: Nos intervenants sont des professionnels polyvalents recrutés pour leurs qualités humaines et académiques. Ils sont investis et comprennent parfaitement la situation de chaque élève pour avoir vécu à leurs façons le même parcours.
+  course_guidance:
+    title: Ateliers d'orientation
+    description: L'Ent de SUPINFO permet une ouverture sur l'orientation académique et professionnelle. En effet, nous mettons à disposition des articles et vidéos centrés sur la découverte des fillières de l'informatique.
+  entrepreneurship:
+    title: Entrepreneuriat
+    description: L'ENT de SUPINFO vous accompagne dans votre aventure entrepreneuriale en vous proposant des cours vidéos dispensés par un professeur (Sciences po Paris/Université de Tours) spécialisé en économie, gestion/entrepreneuriat et administration des sociétés. Les thématiques abordées seront par exemple la gestion, le choix des statuts, le financement, l'organisation au sein de la structure et des bases sur l'économie.
+  presentation:
+    welcome: Bienvenue
+    title: Présentation
+    quote: L'ENT de SUPINFO, c'est tout ce dont nous rêvions étant plus jeunes. Effectivement, une solution complète d'enseignements en ligne est dorénavant disponible pour TOUS.
+    team: L'équipe SUPINFO
+  contact:
+    contact_us: NOUS CONTACTER
+    message_sent: Votre message a bien été envoyé.
+    form_placeholder:
+      name: Entrer votre nom
+      email: Entrer votre adresse email
+      subject: Entrer votre objet
+      message: Entrer votre message
+      submit: Soumettre
 
 form:
   student_comment_type:
@@ -305,7 +772,14 @@ form:
     delete: Supprimer
     update: Mettre à jour
     set: Définir
+    send: Envoyer
 
 toast:
   title:
     errors: Erreurs
+
+misc:
+  abbr_first: er
+  abbr_second: ème
+  abbr_third: ème
+  abbr_th: ème

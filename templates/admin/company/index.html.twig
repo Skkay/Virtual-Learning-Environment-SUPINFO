@@ -1,20 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CompanyController!{% endblock %}
+{% block title %}{{ 'admin.company.title.index'|trans }}{% endblock %}
 
 {% block body %}
     <div class="table-wrapper-scroll-y my-custom-scrollbar">
         <div class="container">       
             <header class="animated bounceInDown">
-                <h1><b>Entreprise</b></h1><br />
+                <h1><b>{{ 'admin.company.title.index'|trans }}</b></h1><br />
             </header>                                                                
             <div class="table-responsive">          
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Nom</th>
-                            <th scope="col">Adresse</th>
-                            <th scope="col">Secteur</th>
+                            <th scope="col">{{ 'admin.company.table.name'|trans }}</th>
+                            <th scope="col">{{ 'admin.company.table.address'|trans }}</th>
+                            <th scope="col">{{ 'admin.company.table.sector'|trans }}</th>
                         </tr>
                     </thead>
                     <tbody>
