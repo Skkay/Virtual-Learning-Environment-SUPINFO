@@ -1,311 +1,569 @@
-navbar:
-  home: Home
-  dashboard: Dashboard
-  login: Login
-  logout: Logout
-  my_profile: My profile
-  language: Language
-
-report_card:
-  title: 
-    index: Report cards
-  misc:
-    course_code: Course code
-    course_name: Course name
-    credits_per_course: Credits/course
-    grades: Grades
-    validated_credits: Validated credits
-
-dashboard:
-  title:
-    index: Dashboard
-  misc:
-    module_list: Course list
-    report_card_list: Report card
-
-accounts:
-  dashboard:
-    title:
-      index: Dashboard
-      role: Accounts
-    misc:
-      student_list: Student list
-  student:
-    document:
-      title:
-        documents_of: Documents of {firstname} {lastname}
-      table:
-        extension: Type
-        filename: File name
-        ctime: Mmodification date
-      misc:
-        download: Download
-
-educational_coordinator:
-  dashboard:
-    title:
-      index: Dashboard
-      role: Educational coordinator
-    misc:
-      student_list: Student list
-      module_list: Course list
-      instructor_list: Instructor list
-      company_list: Company list
-  student:
-    title:
-      index: Student list
-    table:
-      id: ID
-      first_name: Firstname
-      last_name: Lastname
-      campus: Campus
-      level: Level
-      company: Company
-      email: Email
-      sct: SCT
-    misc:
-      accepted: Accepted
-      fail: Fail
-      yes: Yes
-      no: No
-  module:
-    title:
-      index: Course list
-    misc:
-      accepted: Accepted
-      fail: Fail
-  instructor:
-    title:
-      index: Instructor list
-  company:
-    title:
-      index: Company list
-    table:
-      id: ID
-      name: Name
-      sector: Activity sector
-      nb_student_training_contract: Number of student in training contract
-      nb_student_hired: Number of student hired
-  
-academic_director:
-  dashboard:
-    title:
-      index: Dashboard
-      role: Academic director
-    misc:
-      student_list: Student list
-      module_list: Course list
-      instructor_list: Instructor list
-      partnership_list: Partnership list
-      thesis_list: Thesis list
-  student:
-    title:
-      index: Student list
-    table:
-      id: ID
-      first_name: Firstname
-      last_name: Lastname
-      campus: Campus
-      level: Level
-      company: Company
-      email: Email
-      sct: SCT
-    misc:
-      accepted: Accepted
-      fail: Fail
-      yes: Yes
-      no: No
-      report_card_list: Report cards
-      ects: ECTS
-      current_ects: Current ECTS
-      current_needed_ects: ECTS needed for this year
-      max_ects: Maximum ECTS available
-      max_needed_ects: Maximum ECTS needed
-  module:
-    title:
-      index: Course list
-    misc:
-      accepted: Accepted
-      fail: Fail
-  instructor:
-    title:
-      index: Instructor list
-  campus:
-    title:
-      index: Campus list
-    table:
-      id: ID
-      label: Label
-      city: City
-      nb_active_student: Number of active student
-    misc:
-      other: Other
-  partnership:
-    title:
-      index: Partnership list
-    table:
-      id: ID
-      label: Label
-      description: Description
-  thesis:
-    title:
-      index: Thesis list
-    table:
-      id: ID
-      student: Student
-      subject: Subject
-      delivered: Delivered
-      remark: Remark
-    misc:
-      yes: Yes
-      no: No
-
-admin:
-  dashboard:
-    title:
-      index: Dashboard
-      role: Administration
-      entities: Entities
-      etl: ETL
-    entity:
-      companies: Companies
-      campus: Campus
-      diplomas: Diplomas
-      genders: Genders
-      grades: Grades
-      instructors: Instructors
-      levels: Levels
-      modules: Modules
-      regions: Regions
-      sections: Sections
-      specialities: Specialities
-      staffs: Staffs
-      students: Students
-      users: Users
-      absences: Absences
-      accounts_payment_types: Payment types
-      accounts_student_comments: Accounts' student comments
-      partnerships: Partnerships
-      planning_events: Planning events
-      roles: Roles
-      theses: Theses
-    misc:
-      data_schemas: Data schema schemas
-      data_files: Data schema files
-      imports: Imports
-      exports: Exports
-  module:
-    misc:
-      yes: Yes
-      no: No
-  planning_event:
-    misc:
-      yes: Yes
-      no: No
-  thesis:
-    misc:
-      yes: Yes
-      no: No
-  etl:
-    data_schema:
-      title:
-        index: Data schema schema list
-        data_schema: Data schema schema
-        edit: Edit a dataschema schema
-        create: Create a dataschema schema
-      table:
-        id: ID
-        label: Label
-        schema: Schema
-        actions: Actions
-        no_records: No schema found
-    data_file:
-      title:
-        index: Data schema files
-      table:
-        extension: Type
-        filename: File name
-        ctime: Modification date
-        no_files: No file
-      misc:
-        clear_files: Remove files
-        start: Start importation
-      form:
-        send: Send
-    import:
-      title:
-        index: Importation list
-      table:
-        id: ID
-        created_at: Creation date
-        started_at: Start date
-        ended_at: End date
-        nb_files: Number of files
-        no_imports: No import
-      misc:
-        progress: Progress
-        overall_progress: Overall progress
-        current_file_name: Current file name
-        files_progress: Files progress
-        current_file_progress: Current file progress
-    export:
-      title:
-        index: Exportation list
-      table:
-        extension: Extension
-        name: Name
-        ctime: Creation date
-        no_exports: No export
-      misc:
-        download: Download
-        export_database: Export database
-        success: Database exported in
-
-profile:
-  title:
-    index: My profile
-  security:
-    title:
-      category: Sécurity
-      define_password: Défine a password
-      update_password: Update password
-    misc:
-      define_password: Défine a password
-      password_set: Password set
-      password_already_defined: Password already defined
-      update_password: Update password
-      password_updated: Password updated
-      password_not_defined: No password defined
-
-form:
-  student_comment_type:
-    label: Add a comment
-  data_schema_type:
-    label: Label
-    equivalence: Schema
-  data_file_upload_type:
-    file:
-      label: File
-    mode:
-      label: Mode
-      choice:
-        clear_and_upload: Remove files and add
-        append: Append
-  set_password_type:
-    password: Password
-    confirm_password: Confirm password
-  update_password_type:
-    current_password: Current password
-  misc:
-    save: Save
-    back_to_list: Back to list
-    edit: Edit
-    create: Create
-    show: Show
-    delete: Delete
-    update: Update
-    set: Set
-
-toast:
-  title:
-    errors: Errors
+academic_director.campus.misc.other: Other
+academic_director.campus.table.city: City
+academic_director.campus.table.id: ID
+academic_director.campus.table.label: Label
+academic_director.campus.table.nb_active_student: 'Number of active student'
+academic_director.campus.title.index: 'Campus list'
+academic_director.campus.title.show: Campus
+academic_director.dashboard.misc.instructor_list: 'Instructor list'
+academic_director.dashboard.misc.module_list: 'Course list'
+academic_director.dashboard.misc.partnership_list: 'Partnership list'
+academic_director.dashboard.misc.student_list: 'Student list'
+academic_director.dashboard.misc.thesis_list: 'Thesis list'
+academic_director.dashboard.misc.welcome: 'Welcome -'
+academic_director.dashboard.title.index: Dashboard
+academic_director.dashboard.title.role: 'Academic director'
+academic_director.instructor.title.index: 'Instructor list'
+academic_director.module.misc.accepted: Accepted
+academic_director.module.misc.fail: Fail
+academic_director.module.title.index: 'Course list'
+academic_director.module.title.show: Module
+academic_director.partnership.table.description: Description
+academic_director.partnership.table.id: ID
+academic_director.partnership.table.label: Label
+academic_director.partnership.title.index: 'Partnership list'
+academic_director.partnership.title.show: Partnership
+academic_director.student.misc.accepted: Accepted
+academic_director.student.misc.current_ects: 'Current ECTS'
+academic_director.student.misc.current_needed_ects: 'ECTS needed for this year'
+academic_director.student.misc.ects: ECTS
+academic_director.student.misc.fail: Fail
+academic_director.student.misc.max_ects: 'Maximum ECTS available'
+academic_director.student.misc.max_needed_ects: 'Maximum ECTS needed'
+academic_director.student.misc.no: 'No'
+academic_director.student.misc.report_card_list: 'Report cards'
+academic_director.student.misc.yes: 'Yes'
+academic_director.student.table.campus: Campus
+academic_director.student.table.company: Company
+academic_director.student.table.email: Email
+academic_director.student.table.first_name: Firstname
+academic_director.student.table.id: ID
+academic_director.student.table.last_name: Lastname
+academic_director.student.table.level: Level
+academic_director.student.table.sct: SCT
+academic_director.student.title.index: 'Student list'
+academic_director.student.title.show: Student
+academic_director.thesis.misc.no: 'No'
+academic_director.thesis.misc.yes: 'Yes'
+academic_director.thesis.table.delivered: Delivered
+academic_director.thesis.table.id: ID
+academic_director.thesis.table.remark: Remark
+academic_director.thesis.table.student: Student
+academic_director.thesis.table.subject: Subject
+academic_director.thesis.title.index: 'Thesis list'
+academic_director.thesis.title.show: Thesis
+accounts.dashboard.misc.student_list: 'Student list'
+accounts.dashboard.misc.welcome: 'Welcome -'
+accounts.dashboard.title.index: Dashboard
+accounts.dashboard.title.role: Accounts
+accounts.student.document.misc.download: Download
+accounts.student.document.table.ctime: 'Modification date'
+accounts.student.document.table.extension: Type
+accounts.student.document.table.filename: 'File name'
+accounts.student.document.title.documents_of: 'Documents of {firstname} {lastname}'
+accounts.student.document.title.index: Documents
+accounts.student.misc.born: 'Student {firstname} {lastname} was born the {dob}'
+accounts.student.misc.entry: 'Is entered in {entryYear} ({entryLevel})'
+accounts.student.misc.exit: 'Ends in {exitYear} ({exitLevel})'
+accounts.student.misc.informations_about: 'Informations about {firstname} {lastname}'
+accounts.student.misc.is_training_contract_yes: 'Is in professional training contract'
+accounts.student.misc.last_diploma: 'His last diploma is {diploma}'
+accounts.student.misc.live_in: 'Live in {region} ({address}) and study at campus « {campus} » ({level})'
+accounts.student.misc.payment_remain: '{due} € left to pay'
+accounts.student.misc.payment_type: 'Education paid in {type}'
+accounts.student.misc.reminded: Reminded
+accounts.student.misc.students: Students
+accounts.student.misc.training_contract: 'In professional training contract at {company} since {startDate}'
+accounts.student.table.campus: Campus
+accounts.student.table.details: Details
+accounts.student.table.firstname: Firstname
+accounts.student.table.lastname: Name
+accounts.student.title.index: 'Student list'
+admin.absence.misc.absence_of: 'Absence of {firstname} {lastname}'
+admin.absence.misc.absence_of_detail.afternoon: 'Student {firstname} {lastname} was absent the afternoon of {date}'
+admin.absence.misc.absence_of_detail.morning: 'Student {firstname} {lastname} was absent the morning of {date}'
+admin.absence.misc.excuse: Justification
+admin.absence.misc.no_excuse: 'There is no justification for this absence'
+admin.absence.table.date: Date
+admin.absence.table.details: Details
+admin.absence.table.email: Email
+admin.absence.table.excuse: Justification
+admin.absence.table.period: Period
+admin.absence.title.index: 'Absence list'
+admin.absence.title.show: Absence
+admin.accounts_payment_type.misc.id: ID
+admin.accounts_payment_type.misc.label: Label
+admin.accounts_payment_type.misc.students: 'Students who paid with this type of payment'
+admin.accounts_payment_type.table.id: ID
+admin.accounts_payment_type.table.label: Label
+admin.accounts_payment_type.title.index: 'Payment type list'
+admin.accounts_payment_type.title.show: 'Payment type'
+admin.accounts_student_comment.misc.comment: Comment
+admin.accounts_student_comment.misc.comment_of: 'This {firstname} {lastname} comment was created on {createDate} and updated on {updateDate},'
+admin.accounts_student_comment.table.comment: Comment
+admin.accounts_student_comment.table.create_date: 'Creation date'
+admin.accounts_student_comment.table.details: Details
+admin.accounts_student_comment.table.email: 'Email address'
+admin.accounts_student_comment.table.update_date: 'Modification Date'
+admin.accounts_student_comment.title.index: 'Comment list'
+admin.accounts_student_comment.title.show: Comment
+admin.campus.misc.details_of: 'Details about campus « {label} »'
+admin.campus.misc.location: 'The campus  « {label} » is located in {city}.'
+admin.campus.misc.no_location: 'The campus  « {label} » is not in any city,'
+admin.campus.misc.sections: 'Associated sections'
+admin.campus.misc.staff: 'Campus staff'
+admin.campus.misc.students: 'Student in this campus'
+admin.campus.table.city: City
+admin.campus.table.label: Label
+admin.campus.title.index: 'Campus list'
+admin.campus.title.show: Campus
+admin.company.misc.address: Address
+admin.company.misc.id: ID
+admin.company.misc.name: Name
+admin.company.misc.sector: Sector
+admin.company.misc.students_hired: 'Hired students'
+admin.company.misc.students_training_contract: 'Students in profressional training contract'
+admin.company.table.address: Address
+admin.company.table.name: Name
+admin.company.table.sector: Sector
+admin.company.title.index: 'Company list'
+admin.company.title.show: Company
+admin.dashboard.entity.absences: Absences
+admin.dashboard.entity.accounts_payment_types: 'Payment types'
+admin.dashboard.entity.accounts_student_comments: 'Accounts'' student comments'
+admin.dashboard.entity.campus: Campus
+admin.dashboard.entity.companies: Companies
+admin.dashboard.entity.diplomas: Diplomas
+admin.dashboard.entity.genders: Genders
+admin.dashboard.entity.grades: Grades
+admin.dashboard.entity.instructors: Instructors
+admin.dashboard.entity.levels: Levels
+admin.dashboard.entity.modules: Modules
+admin.dashboard.entity.partnerships: Partnerships
+admin.dashboard.entity.planning_events: 'Planning events'
+admin.dashboard.entity.regions: Regions
+admin.dashboard.entity.roles: Roles
+admin.dashboard.entity.sections: Sections
+admin.dashboard.entity.specialities: Specialities
+admin.dashboard.entity.staffs: Staffs
+admin.dashboard.entity.students: Students
+admin.dashboard.entity.theses: Theses
+admin.dashboard.entity.users: Users
+admin.dashboard.misc.data_files: 'Data schema files'
+admin.dashboard.misc.data_schemas: 'Data schema schemas'
+admin.dashboard.misc.exports: Exports
+admin.dashboard.misc.imports: Imports
+admin.dashboard.misc.welcome: 'Welcome -'
+admin.dashboard.title.entities: Entities
+admin.dashboard.title.etl: ETL
+admin.dashboard.title.index: Dashboard
+admin.dashboard.title.role: Administration
+admin.diploma.misc.students: 'Students with this diploma'
+admin.diploma.table.details: Details
+admin.diploma.table.diploma: Diploma
+admin.diploma.title.index: 'Diploma list'
+admin.diploma.title.show: Diploma
+admin.etl.data_file.form.send: Send
+admin.etl.data_file.misc.clear_files: 'Remove files'
+admin.etl.data_file.misc.start: 'Start importation'
+admin.etl.data_file.table.ctime: 'Modification date'
+admin.etl.data_file.table.extension: Type
+admin.etl.data_file.table.filename: 'File name'
+admin.etl.data_file.table.no_files: 'No file'
+admin.etl.data_file.title.index: 'Data schema files'
+admin.etl.data_schema.table.actions: Actions
+admin.etl.data_schema.table.details: Details
+admin.etl.data_schema.table.id: ID
+admin.etl.data_schema.table.label: Label
+admin.etl.data_schema.table.no_records: 'No schema found'
+admin.etl.data_schema.table.schema: Schema
+admin.etl.data_schema.table.update: Update
+admin.etl.data_schema.title.create: 'Create a dataschema schema'
+admin.etl.data_schema.title.data_schema: 'Data schema schema'
+admin.etl.data_schema.title.edit: 'Edit a dataschema schema'
+admin.etl.data_schema.title.index: 'Data schema schema list'
+admin.etl.export.misc.download: Download
+admin.etl.export.misc.export_database: 'Export database'
+admin.etl.export.misc.success: 'Database exported in'
+admin.etl.export.table.ctime: 'Creation date'
+admin.etl.export.table.extension: Extension
+admin.etl.export.table.name: Name
+admin.etl.export.table.no_exports: 'No export'
+admin.etl.export.title.index: 'Exportation list'
+admin.etl.import.misc.current_file_name: 'Current file name'
+admin.etl.import.misc.current_file_progress: 'Current file progress'
+admin.etl.import.misc.files_progress: 'Files progress'
+admin.etl.import.misc.overall_progress: 'Overall progress'
+admin.etl.import.misc.progress: Progress
+admin.etl.import.table.created_at: 'Creation date'
+admin.etl.import.table.ended_at: 'End date'
+admin.etl.import.table.id: ID
+admin.etl.import.table.nb_files: 'Number of files'
+admin.etl.import.table.no_imports: 'No import'
+admin.etl.import.table.started_at: 'Start date'
+admin.etl.import.title.index: 'Importation list'
+admin.gender.misc.id: ID
+admin.gender.misc.label: Label
+admin.gender.misc.students: Students
+admin.gender.table.id: ID
+admin.gender.table.label: Label
+admin.gender.title.index: 'Gender list'
+admin.gender.title.show: Gender
+admin.grade.misc.email: Email
+admin.grade.misc.grade: Grade
+admin.grade.misc.id: ID
+admin.grade.misc.module: Module
+admin.grade.table.email: Email
+admin.grade.table.grade: Grade
+admin.grade.table.id: ID
+admin.grade.table.module: Module
+admin.grade.title.index: 'Grade list'
+admin.grade.title.show: Grade
+admin.instructor.misc.email: Email
+admin.instructor.misc.id: ID
+admin.instructor.misc.modules: 'This instructor teached these modules'
+admin.instructor.misc.sections: 'This instructor intervenes is these sections'
+admin.instructor.table.email: Email
+admin.instructor.table.id: ID
+admin.instructor.title.index: 'Instructor list'
+admin.instructor.title.show: Instructor
+admin.level.misc.id: ID
+admin.level.misc.label: Label
+admin.level.misc.students: 'Student at this level'
+admin.level.table.id: ID
+admin.level.table.label: Label
+admin.level.title.index: 'Level list'
+admin.level.title.show: Level
+admin.module.misc.description: Description
+admin.module.misc.ects: ECTS
+admin.module.misc.grades: Grades
+admin.module.misc.id: ID
+admin.module.misc.instructors: Instructors
+admin.module.misc.label: Label
+admin.module.misc.level: Level
+admin.module.misc.name: Name
+admin.module.misc.no: 'No'
+admin.module.misc.speciality: Speciality
+admin.module.misc.students: Students
+admin.module.misc.yes: 'Yes'
+admin.module.table.description: Description
+admin.module.table.ects: ECTS
+admin.module.table.id: ID
+admin.module.table.label: Label
+admin.module.table.level: Level
+admin.module.table.name: Name
+admin.module.table.speciality: Speciality
+admin.module.title.index: 'Module list'
+admin.module.title.show: Module
+admin.partnership.misc.description: Description
+admin.partnership.misc.id: ID
+admin.partnership.misc.image_url: Image URL
+admin.partnership.misc.label: Label
+admin.partnership.table.description: Description
+admin.partnership.table.id: ID
+admin.partnership.table.image_url: Image URL
+admin.partnership.table.label: Label
+admin.partnership.title.index: 'Partnership list'
+admin.partnership.title.show: Partnership
+admin.planning_event.misc.all_day: 'All day'
+admin.planning_event.misc.background_color: 'Background color'
+admin.planning_event.misc.border_color: 'Border color'
+admin.planning_event.misc.campus: Campus
+admin.planning_event.misc.description: Description
+admin.planning_event.misc.end: 'End date'
+admin.planning_event.misc.id: ID
+admin.planning_event.misc.level: Level
+admin.planning_event.misc.no: 'No'
+admin.planning_event.misc.start: 'Start date'
+admin.planning_event.misc.text_color: 'Text color'
+admin.planning_event.misc.title: Title
+admin.planning_event.misc.yes: 'Yes'
+admin.planning_event.table.all_day: 'All day'
+admin.planning_event.table.background_color: 'Background color'
+admin.planning_event.table.border_color: 'Border color'
+admin.planning_event.table.campus: Campus
+admin.planning_event.table.description: Description
+admin.planning_event.table.end: 'End date'
+admin.planning_event.table.id: ID
+admin.planning_event.table.level: Level
+admin.planning_event.table.start: 'Start date'
+admin.planning_event.table.text_color: 'Text color'
+admin.planning_event.table.title: Title
+admin.planning_event.title.index: 'Planning events'
+admin.planning_event.title.show: Events
+admin.region.misc.id: ID
+admin.region.misc.name: Name
+admin.region.misc.students: 'These students live in this region'
+admin.region.table.id: ID
+admin.region.table.name: Name
+admin.region.title.index: 'Region list'
+admin.region.title.show: Region
+admin.role.misc.from: Source
+admin.role.misc.id: ID
+admin.role.misc.to: Destination
+admin.role.table.from: Source
+admin.role.table.id: ID
+admin.role.table.to: Destination
+admin.role.title.index: 'Role list'
+admin.role.title.show: Role
+admin.section.misc.campus: Campus
+admin.section.misc.id: ID
+admin.section.misc.instructors: 'Instructor of this section'
+admin.section.misc.label: Label
+admin.section.misc.year: Year
+admin.section.table.campus: Campus
+admin.section.table.id: ID
+admin.section.table.label: Label
+admin.section.table.year: Year
+admin.section.title.index: 'Section list'
+admin.section.title.show: Section
+admin.speciality.misc.id: ID
+admin.speciality.misc.label: Label
+admin.speciality.misc.students: 'Student with this speciality'
+admin.speciality.table.id: ID
+admin.speciality.table.label: Label
+admin.speciality.title.index: 'Speciality list'
+admin.speciality.title.show: Speciality
+admin.staff.misc.campus: Campus
+admin.staff.misc.email: Email
+admin.staff.misc.firstname: Firstname
+admin.staff.misc.id: ID
+admin.staff.misc.lastname: Name
+admin.staff.table.email: Email
+admin.staff.table.firstname: Firstname
+admin.staff.table.id: ID
+admin.staff.table.lastname: Name
+admin.staff.title.index: 'Staff list'
+admin.staff.title.show: Staff
+admin.student.misc.absences: Absences
+admin.student.misc.accounts_paid: 'Education paid'
+admin.student.misc.accounts_payment_due: 'Left to pay'
+admin.student.misc.accounts_payment_type: 'Payment type used'
+admin.student.misc.accounts_reminded: 'Student reminded'
+admin.student.misc.address: Address
+admin.student.misc.campus: Campus
+admin.student.misc.company_hired: 'Hiring company'
+admin.student.misc.company_training_contract: 'Training company'
+admin.student.misc.date_of_birth: 'Date of birth'
+admin.student.misc.date_start_contract: 'Contract start date'
+admin.student.misc.email: Email
+admin.student.misc.employed_as: 'Employed as'
+admin.student.misc.entry_level: 'Entry level'
+admin.student.misc.entry_year: 'Entry year'
+admin.student.misc.exit_level: 'Exit level'
+admin.student.misc.exit_year: 'Exit year'
+admin.student.misc.firstname: Firstname
+admin.student.misc.gender: Gender
+admin.student.misc.grades: Grades
+admin.student.misc.id: ID
+admin.student.misc.last_diploma: Last diploma
+admin.student.misc.lastname: Lastname
+admin.student.misc.level: Level
+admin.student.misc.modules: Modules
+admin.student.misc.professional_training_contract: 'Training contract'
+admin.student.misc.region: Region
+admin.student.misc.speciality: Speciality
+admin.student.table.campus: Campus
+admin.student.table.firstname: Firstname
+admin.student.table.id: ID
+admin.student.table.lastname: Lastname
+admin.student.table.level: Level
+admin.student.title.index: 'Student list'
+admin.student.title.show: Student
+admin.thesis.misc.delivered: Delivered
+admin.thesis.misc.id: ID
+admin.thesis.misc.no: 'No'
+admin.thesis.misc.remark: Comment
+admin.thesis.misc.student: Student
+admin.thesis.misc.subject: Subject
+admin.thesis.misc.yes: 'Yes'
+admin.thesis.table.delivered: Delivered
+admin.thesis.table.id: ID
+admin.thesis.table.remark: Comment
+admin.thesis.table.student: Student
+admin.thesis.table.subject: Subject
+admin.thesis.title.index: 'Thesis list'
+admin.thesis.title.show: Thesis
+admin.user.misc.email: Email
+admin.user.misc.firstname: Firstname
+admin.user.misc.id: ID
+admin.user.misc.instructor: Instructor
+admin.user.misc.lastname: Lastname
+admin.user.misc.roles: Roles
+admin.user.misc.staff: Staff
+admin.user.misc.student: Student
+admin.user.table.email: Email
+admin.user.table.firstname: Firstname
+admin.user.table.id: ID
+admin.user.table.instructor: Instructor
+admin.user.table.lastname: Lastname
+admin.user.table.roles: Roles
+admin.user.table.staff: Staff
+admin.user.table.student: Student
+admin.user.title.index: 'User list'
+admin.user.title.show: User
+educational_coordinator.company.misc.address: 'Postal address'
+educational_coordinator.company.misc.no_student_hired: 'The company has not hired any of our students,'
+educational_coordinator.company.misc.no_training_contract: 'The company has any of our students in training contract,'
+educational_coordinator.company.misc.student_hired: 'The company has hired these students'
+educational_coordinator.company.misc.training_contract: 'Students in profressional training contract'
+educational_coordinator.company.misc.welcome: 'Welcome -'
+educational_coordinator.company.table.id: ID
+educational_coordinator.company.table.name: Name
+educational_coordinator.company.table.nb_student_hired: 'Number of student hired'
+educational_coordinator.company.table.nb_student_training_contract: 'Number of student in training contract'
+educational_coordinator.company.table.sector: 'Activity sector'
+educational_coordinator.company.title.index: 'Company list'
+educational_coordinator.company.title.show: Details about {company} company
+educational_coordinator.dashboard.misc.company_list: 'Company list'
+educational_coordinator.dashboard.misc.instructor_list: 'Instructor list'
+educational_coordinator.dashboard.misc.module_list: 'Course list'
+educational_coordinator.dashboard.misc.student_list: 'Student list'
+educational_coordinator.dashboard.misc.welcome: 'Welcome -'
+educational_coordinator.dashboard.title.index: Dashboard
+educational_coordinator.dashboard.title.role: 'Educational coordinator'
+educational_coordinator.instructor.table.email: Email
+educational_coordinator.instructor.table.modules: Modules
+educational_coordinator.instructor.table.name: Name
+educational_coordinator.instructor.title.index: 'Instructor list'
+educational_coordinator.module.misc.accepted: Accepted
+educational_coordinator.module.misc.description: 'The module {module} worth {ects} ECTS credits.'
+educational_coordinator.module.misc.description_speciality: 'The module {module} is a speciality and worth {etcs} ECTS credits.'
+educational_coordinator.module.misc.fail: Fail
+educational_coordinator.module.misc.grades: 'Student grades'
+educational_coordinator.module.misc.instructors: 'Instructors of this module'
+educational_coordinator.module.misc.no: 'No'
+educational_coordinator.module.misc.yes: 'Yes'
+educational_coordinator.module.table.ects: ECTS
+educational_coordinator.module.table.grade: Grade
+educational_coordinator.module.table.name: Name
+educational_coordinator.module.table.result: Result
+educational_coordinator.module.table.speciality: Speciality
+educational_coordinator.module.table.student: Student
+educational_coordinator.module.title.index: 'Course list'
+educational_coordinator.module.title.show: 'Module {module}'
+educational_coordinator.student.misc.absences: 'He has {n} absence(s) whose the excuses are'
+educational_coordinator.student.misc.accepted: Accepted
+educational_coordinator.student.misc.campus: 'He''s part of the campus « {campus} ».'
+educational_coordinator.student.misc.description: 'Student {firstname} {lastname} was born the {dob}'
+educational_coordinator.student.misc.fail: Fail
+educational_coordinator.student.misc.grades: Grades
+educational_coordinator.student.misc.no: 'No'
+educational_coordinator.student.misc.no_absence: 'Has no absence'
+educational_coordinator.student.misc.training_contract: Is in training contract at {company} since {date},
+educational_coordinator.student.misc.yes: 'Yes'
+educational_coordinator.student.table.campus: Campus
+educational_coordinator.student.table.company: Company
+educational_coordinator.student.table.details: Student {firstname} {lastname}
+educational_coordinator.student.table.email: Email
+educational_coordinator.student.table.first_name: Firstname
+educational_coordinator.student.table.grade: Grade
+educational_coordinator.student.table.id: ID
+educational_coordinator.student.table.last_name: Lastname
+educational_coordinator.student.table.level: Level
+educational_coordinator.student.table.module: Module
+educational_coordinator.student.table.result: Result
+educational_coordinator.student.table.sct: SCT
+educational_coordinator.student.title.index: 'Student list'
+educational_coordinator.student.title.show: 'Student {firstname} {lastname}'
+form.data_file_upload_type.file.label: File
+form.data_file_upload_type.mode.choice.append: Append
+form.data_file_upload_type.mode.choice.clear_and_upload: 'Remove files and add'
+form.data_file_upload_type.mode.label: Mode
+form.data_schema_type.equivalence: Schema
+form.data_schema_type.label: Label
+form.misc.back_to_list: 'Back to list'
+form.misc.create: Create
+form.misc.delete: Delete
+form.misc.edit: Edit
+form.misc.save: Save
+form.misc.send: Send
+form.misc.set: Set
+form.misc.show: Show
+form.misc.update: Update
+form.set_password_type.confirm_password: 'Confirm password'
+form.set_password_type.password: Password
+form.student_comment_type.label: 'Add a comment'
+form.update_password_type.current_password: 'Current password'
+home.block_1: '24-hour tutoring'
+home.block_2: 'Intellectual openness'
+home.block_3: 'Personalized help'
+home.contact.contact_us: 'CONTACT US'
+home.contact.form_placeholder.email: 'Enter your email address'
+home.contact.form_placeholder.message: 'Enter your message'
+home.contact.form_placeholder.name: 'Enter your name'
+home.contact.form_placeholder.subject: 'Enter your subject'
+home.contact.form_placeholder.submit: Submit
+home.contact.message_sent: 'Your message has been sent.'
+home.course_guidance.description: 'SUPINFO''s VLE allows an opening on academic and professional orientation. Indeed, we provide articles and videos focused on the discovery of the fields of computer science.'
+home.course_guidance.title: 'Course guidance'
+home.entrepreneurship.description: 'SUPINFO''s VLE accompanies you in your entrepreneurial adventure by offering you video courses given by a professor (Sciences po Paris/University of Tours) specialized in economics, management/entrepreneurship and company administration. The topics covered will be for example management, the choice of statutes, financing, organization within the structure and the basics of economics.'
+home.entrepreneurship.title: Entrepreneurship
+home.home.description: 'The Home page allows teachers and students to exchange information on course content and academic training. Students can view information on their modules, grades and report cards.'
+home.home.title: Home
+home.instructors.description: 'Our teachers are versatile professionals recruited for their human and academic qualities. They are committed and understand each student''s situation perfectly because they have experienced the same journey in their own way.'
+home.instructors.title: 'Our instructors'
+home.presentation.quote: 'SUPINFO''s VLE is everything we dreamed of when we were younger. Indeed, a complete online teaching solution is now available for ALL.'
+home.presentation.team: 'SUPINFO Team'
+home.presentation.title: Presentation
+home.presentation.welcome: Welcome
+home.title: Home
+login.button.login: Logn
+login.button.login_link: 'Send login link'
+login.button.privacy_policy: 'Privacy policy'
+login.button.terms_of_service: 'Terms of service'
+login.misc.email_address: 'Email address'
+login.misc.login: Login
+login.misc.login_link: 'Login link'
+login.misc.password: Password
+login.misc.tos_privacy_1: 'By continuing, you accept the'
+login.misc.tos_privacy_2: 'of IONIS and acknowledge having read our'
+login.title.index: Login
+misc.abbr_first: st
+misc.abbr_second: nd
+misc.abbr_th: rd
+misc.abbr_third: th
+navbar.dashboard: Dashboard
+navbar.home: Home
+navbar.language: Language
+navbar.login: Login
+navbar.logout: Logout
+navbar.my_profile: 'My profile'
+navbar.search_bar: Search
+profile.security.misc.define_password: 'Défine a password'
+profile.security.misc.password_already_defined: 'Password already defined'
+profile.security.misc.password_not_defined: 'No password defined'
+profile.security.misc.password_set: 'Password set'
+profile.security.misc.password_updated: 'Password updated'
+profile.security.misc.set_your_password: 'Set your new password'
+profile.security.misc.update_password: 'Update password'
+profile.security.misc.update_your_password: 'Update your password'
+profile.security.title.category: Sécurity
+profile.security.title.define_password: 'Défine a password'
+profile.security.title.update_password: 'Update password'
+profile.title.index: 'My profile'
+report_card.misc.course_code: 'Course code'
+report_card.misc.course_name: 'Course name'
+report_card.misc.credits_per_course: Credits/course
+report_card.misc.grades: Grades
+report_card.misc.validated_credits: 'Validated credits'
+report_card.title.index: 'Report cards'
+student.dashboard.misc.module_list: 'Course list'
+student.dashboard.misc.report_card_list: 'Report card'
+student.dashboard.misc.welcome: Welcome
+student.dashboard.title.index: Dashboard
+student.module.misc.description: 'The module {module} is a {n}{th} year course.'
+student.module.misc.description_speciality: 'The module {module} is a {n}{th} year speciality.'
+student.module.misc.graded: 'You got the grade {grade}'
+student.module.misc.instructors: 'Instructors of this module'
+student.module.misc.no: 'No'
+student.module.misc.not_graded: 'You have not yet received a grade for this module'
+student.module.misc.not_instructor: 'There are no instructors for this module yet.'
+student.module.misc.yes: 'Yes'
+student.module.table.ects: ECTS
+student.module.table.grade: Grade
+student.module.table.name: Name
+student.module.table.speciality: Speciality
+student.module.title.index: 'Module list'
+student.module.title.show: 'Module {module}'
+toast.title.errors: Errors

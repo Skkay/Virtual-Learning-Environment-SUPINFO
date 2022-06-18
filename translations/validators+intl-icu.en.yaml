@@ -1,3 +1,1 @@
-form:
-  set_password_type:
-    invalid_message: Passwords are not equal.
+form.set_password_type.invalid_message: 'Passwords are not equal.'
