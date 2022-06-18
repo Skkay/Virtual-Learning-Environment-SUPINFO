@@ -88,6 +88,15 @@
                                 <li>
                                     <a class="dropdown-item" href="{{ path('app.logout') }}"><p>{{ 'navbar.logout'|trans }}</p></a>
                                 </li>
+
+                                <li>
+                                    {% if app.request.locale == 'fr' %}
+                                    <a class="dropdown-item" href="{{ path('app.locale.change', { 'locale': 'en' }) }}"><p>EN</p></a>
+                                    {% elseif app.request.locale == 'en' %}
+                                    <a class="dropdown-item" href="{{ path('app.locale.change', { 'locale': 'fr' }) }}"><p>FR</p></a>
+                                    {% endif %}
+                                </li>
+
                                 <li class="separator hidden-lg"></li>
                             </ul>
                         </div>
