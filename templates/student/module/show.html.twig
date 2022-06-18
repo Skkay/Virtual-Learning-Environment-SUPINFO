@@ -1,9 +1,9 @@
 {# Determine ordinal number abbreviation #}
 {% if module.level.numericLevel == 1 %}
     {% set th = 'misc.abbr_first'|trans %}
-{% else if module.level.numericLevel == 2 %}
+{% elseif module.level.numericLevel == 2 %}
     {% set th = 'misc.abbr_second'|trans %}
-{% else if module.level.numericLevel == 3 %}
+{% elseif module.level.numericLevel == 3 %}
     {% set th = 'misc.abbr_third'|trans %}                       
 {% else %}
     {% set th = 'misc.abbr_th'|trans %}                       
