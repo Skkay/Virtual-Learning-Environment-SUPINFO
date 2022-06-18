@@ -74,6 +74,7 @@ accounts.student.misc.payment_type: 'Education paid in {type}'
 accounts.student.misc.reminded: Reminded
 accounts.student.misc.students: Students
 accounts.student.misc.training_contract: 'In professional training contract at {company} since {startDate}'
+accounts.student.misc.view_documents: 'View related documents'
 accounts.student.table.campus: Campus
 accounts.student.table.details: Details
 accounts.student.table.firstname: Firstname

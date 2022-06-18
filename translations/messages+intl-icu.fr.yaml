@@ -68,6 +68,7 @@ accounts:
       payment_type: Scolarité payé en {type}.
       payment_remain: Il reste {due} € à régler.
       reminded: Relancé.
+      view_documents: Voir les documents associés
     table:
       details: Détails
       firstname: Prénom
