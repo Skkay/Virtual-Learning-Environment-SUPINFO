@@ -32,27 +32,27 @@
                     
                     <ul class="nav" style="display:block">
                         {% if is_granted('ROLE_EDUCATIONAL_COORDINATOR') %}
-                            <li class="active">
-                                <a class="{{ route == 'app.educational_coordinator.index' ? 'active' }}" href="{{ path('app.educational_coordinator.index') }}"><i class="pe-7s-graph"></i><p>{{ 'navbar.dashboard'|trans }}</p></a>
+                            <li class="{{ route == 'app.educational_coordinator.index' ? 'active' }}">
+                                <a href="{{ path('app.educational_coordinator.index') }}"><i class="pe-7s-graph"></i><p>{{ 'navbar.dashboard'|trans }}</p></a>
                             </li>
                         {% elseif is_granted('ROLE_ACADEMIC_DIRECTOR') %}
-                            <li class="active">
-                                <a class="{{ route == 'app.academic_director.index' ? 'active' }}" href="{{ path('app.academic_director.index') }}"><i class="pe-7s-graph"></i><p>{{ 'navbar.dashboard'|trans }}</p></a>
+                            <li class="{{ route == 'app.academic_director.index' ? 'active' }}">
+                                <a href="{{ path('app.academic_director.index') }}"><i class="pe-7s-graph"></i><p>{{ 'navbar.dashboard'|trans }}</p></a>
                             </li>
                         {% elseif is_granted('ROLE_ACCOUNTS') %}
-                            <li class="active">
-                                <a class=" {{ route == 'app.accounts.index' ? 'active' }}" href="{{ path('app.accounts.index') }}"><i class="pe-7s-graph"></i><p>{{ 'navbar.dashboard'|trans }}</p></a>
+                            <li class="{{ route == 'app.accounts.index' ? 'active' }}">
+                                <a href="{{ path('app.accounts.index') }}"><i class="pe-7s-graph"></i><p>{{ 'navbar.dashboard'|trans }}</p></a>
                             </li>
                         {% elseif is_granted('ROLE_ADMIN') %}
-                            <li class="active">
-                                <a class=" {{ route == 'app.admin.index' ? 'active' }}" href="{{ path('app.admin.index') }}"><i class="pe-7s-graph"></i><p>{{ 'navbar.dashboard'|trans }}</p></a>
+                            <li class="{{ route == 'app.admin.index' ? 'active' }}">
+                                <a href="{{ path('app.admin.index') }}"><i class="pe-7s-graph"></i><p>{{ 'navbar.dashboard'|trans }}</p></a>
                             </li>
                         {% else %} {# Student #}
-                            <li class="active">
-                                <a class="{{ route == 'app.dashboard' ? 'active' }}" href="{{ path('app.dashboard.index') }}"><i class="pe-7s-graph"></i><p>{{ 'navbar.dashboard'|trans }}</p></a>
+                            <li class="{{ route == 'app.dashboard' ? 'active' }}">
+                                <a href="{{ path('app.dashboard.index') }}"><i class="pe-7s-graph"></i><p>{{ 'navbar.dashboard'|trans }}</p></a>
                             </li>
                         {% endif %}
-                        <li>
+                        <li class="{{ route == 'app.profile.index' ? 'active' }}">
                             <a href="{{ path('app.profile.index') }}">
                                 <i class="pe-7s-users"></i>
                                 <p>{{ 'navbar.my_profile'|trans }}</p>
