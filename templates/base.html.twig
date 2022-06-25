@@ -51,7 +51,7 @@
                                 <a href="{{ path('app.admin.index') }}"><i class="pe-7s-graph"></i><p>{{ 'navbar.dashboard'|trans }}</p></a>
                             </li>
                         {% else %} {# Student #}
-                            <li class="{{ route == 'app.dashboard' ? 'active' }}">
+                            <li class="{{ route == 'app.dashboard.index' ? 'active' }}">
                                 <a href="{{ path('app.dashboard.index') }}"><i class="pe-7s-graph"></i><p>{{ 'navbar.dashboard'|trans }}</p></a>
                             </li>
                         {% endif %}
