@@ -164,7 +164,7 @@ educational_coordinator:
       nb_student_training_contract: Nombre d'étudiant en alternance
       nb_student_hired: Nombre d'étudiant embauché
     misc:
-      student_hired: L'entreprise à embauché ces étudiants
+      student_hired: L'entreprise a embauché ces étudiants
       no_student_hired: L'entreprise n'a embauché aucun de nos étudiants.
       training_contract: Étudiants en contrat d'alternance
       no_training_contract: L'entreprise n'a aucun de nos étudiants en contrat d'alternance.
