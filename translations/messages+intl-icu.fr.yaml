@@ -445,6 +445,10 @@ admin:
         current_file_name: Nom du fichier en cours
         files_progress: Progression des fichiers
         current_file_progress: Progression du fichier actuel
+        import_n: Importation N°{id}
+        import_in_progress: Importation en cours...
+        started_at: Commencée le
+        ended_at: Terminée le
     export:
       title:
         index: Liste des exportations

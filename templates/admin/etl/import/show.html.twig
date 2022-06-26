@@ -15,15 +15,17 @@
 {% block body %}
 <div class="container">
     <header class="animated bounceInDown">
-        <h1><b>Importation N°{{ import.id }}</b></h1><br />
+        <h1><b>{{ 'admin.etl.import.misc.import_n'|trans({ 'id': import.id }) }}</b></h1><br />
     </header>      
     <div class="container">
-        <p>Importation créée le {{ import.createdAt ? import.createdAt|date('d/m/Y à h:i:s') : '' }} 
-            {{ import.updatedAt is not empty ? ' et mise à jour le ' ~ import.updatedAt|date('d/m/Y à h:i:s') : '' }}.
-        </p>
-        <p>
-            Commencée le {{ import.startedAt ? import.startedAt|date('Y-m-d à h:i:s') : '-' }}. {{ import.endedAt ? ' Terminée le ' ~ import.endedAt|date('d/m/Y à h:i:s') : '' }}.
-        </p>
+        {% if progress.overall != 100 %}
+            <p>{{ 'admin.etl.import.misc.import_in_progress'|trans }}</p>
+        {% else %}
+            <ul>
+                <li>{{ 'admin.etl.import.misc.started_at'|trans }}: {{ import.startedAt ? import.startedAt|date('d/m/Y H:i:s') : '-' }}.</li>
+                <li>{{ 'admin.etl.import.misc.ended_at'|trans }}: {{ import.endedAt ? import.endedAt|date('d/m/Y H:i:s') : '' }}</li>
+            </ul>
+        {% endif %}
 
         <h3>{{ 'admin.etl.import.misc.progress'|trans }}</h3>
 

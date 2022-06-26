@@ -238,6 +238,10 @@ admin.etl.import.misc.current_file_progress: 'Current file progress'
 admin.etl.import.misc.files_progress: 'Files progress'
 admin.etl.import.misc.overall_progress: 'Overall progress'
 admin.etl.import.misc.progress: Progress
+admin.etl.import.misc.import_n: Import N°{id}
+admin.etl.import.misc.import_in_progress: Import in progress...
+admin.etl.import.misc.started_at: Started at
+admin.etl.import.misc.ended_at: Ended at
 admin.etl.import.table.created_at: 'Creation date'
 admin.etl.import.table.ended_at: 'End date'
 admin.etl.import.table.id: ID
