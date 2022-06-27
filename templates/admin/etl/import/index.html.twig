@@ -3,32 +3,34 @@
 {% block title %}{{ 'admin.etl.import.title.index'|trans }}{% endblock %}
 
 {% block body %}
-<h1>{{ 'admin.etl.import.title.index'|trans }}</h1>
+<div class="container">
+    <h1>{{ 'admin.etl.import.title.index'|trans }}</h1>
 
-<table class="table table-sm table-hover">
-    <thead>
-        <tr>
-            <th scope="col">Détails</th>
-            <th scope="col">{{ 'admin.etl.import.table.created_at'|trans }}</th>
-            <th scope="col">{{ 'admin.etl.import.table.started_at'|trans }}</th>
-            <th scope="col">{{ 'admin.etl.import.table.ended_at'|trans }}</th>
-            <th scope="col">{{ 'admin.etl.import.table.nb_files'|trans }}</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for import in imports %}
-        <tr>
-            <td><a href="{{ path('app.admin.etl.import.show', {'id': import.id}) }}"><i class="pe-7s-plus" style="font-size:30px;margin-top:4px"></i></a></td>
-            <td>{{ import.createdAt|date('Y-m-d H:i:s') }}</td>
-            <td>{{ import.startedAt ? import.startedAt|date('Y-m-d H:i:s') : '-' }}</td>
-            <td>{{ import.endedAt ? import.endedAt|date('Y-m-d H:i:s') : '-' }}</td>
-            <td>{{ import.nbFiles ?? '-' }}</td>
-        </tr>
-        {% else %}
-        <tr>
-            <td colspan="5" class="text-center fst-italic">{{ 'admin.etl.import.table.no_imports'|trans }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+    <table class="table table-sm table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Détails</th>
+                <th scope="col">{{ 'admin.etl.import.table.created_at'|trans }}</th>
+                <th scope="col">{{ 'admin.etl.import.table.started_at'|trans }}</th>
+                <th scope="col">{{ 'admin.etl.import.table.ended_at'|trans }}</th>
+                <th scope="col">{{ 'admin.etl.import.table.nb_files'|trans }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for import in imports %}
+            <tr>
+                <td><a href="{{ path('app.admin.etl.import.show', {'id': import.id}) }}"><i class="pe-7s-plus" style="font-size:30px;margin-top:4px"></i></a></td>
+                <td>{{ import.createdAt|date('Y-m-d H:i:s') }}</td>
+                <td>{{ import.startedAt ? import.startedAt|date('Y-m-d H:i:s') : '-' }}</td>
+                <td>{{ import.endedAt ? import.endedAt|date('Y-m-d H:i:s') : '-' }}</td>
+                <td>{{ import.nbFiles ?? '-' }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="5" class="text-center fst-italic">{{ 'admin.etl.import.table.no_imports'|trans }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

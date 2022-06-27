@@ -3,38 +3,40 @@
 {% block title %}{{ 'admin.etl.export.title.index'|trans }}{% endblock %}
 
 {% block body %}
-<h1>{{ 'admin.etl.export.title.index'|trans }}</h1>
+<div class="container">
+    <h1>{{ 'admin.etl.export.title.index'|trans }}</h1>
 
-<a href="{{ path('app.admin.etl.export.export') }}">{{ 'admin.etl.export.misc.export_database'|trans }}</a>
+    <a href="{{ path('app.admin.etl.export.export') }}">{{ 'admin.etl.export.misc.export_database'|trans }}</a>
 
-{% for message in app.flashes('export_success') %}
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        {{ message.text|trans }}: <strong>{{ message.filePath }}</strong>.
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-{% endfor %}
+    {% for message in app.flashes('export_success') %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message.text|trans }}: <strong>{{ message.filePath }}</strong>.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
 
-<table class="table table-sm table-hover">
-    <thead>
-        <tr>
-            <th scope="col">{{ 'admin.etl.export.table.extension'|trans }}</th>
-            <th scope="col">{{ 'admin.etl.export.table.name'|trans }}</th>
-            <th scope="col">{{ 'admin.etl.export.table.ctime'|trans }}</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for export in exports %}
-        <tr>
-            <td>{{ export.extension }}</td>
-            <td>{{ export.filename }}</td>
-            <td>{{ export.ctime|date('Y-m-d H:i:s') }}</td>
-            <td><a href="{{ path('app.admin.etl.export.download_file', {'filename': export.filename}) }}">{{ 'admin.etl.export.misc.download'|trans }}</a></td>
-        </tr>
-        {% else %}
-        <tr>
-            <td colspan="4" class="text-center fst-italic">{{ 'admin.etl.export.table.no_exports'|trans }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+    <table class="table table-sm table-hover">
+        <thead>
+            <tr>
+                <th scope="col">{{ 'admin.etl.export.table.extension'|trans }}</th>
+                <th scope="col">{{ 'admin.etl.export.table.name'|trans }}</th>
+                <th scope="col">{{ 'admin.etl.export.table.ctime'|trans }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for export in exports %}
+            <tr>
+                <td>{{ export.extension }}</td>
+                <td>{{ export.filename }}</td>
+                <td>{{ export.ctime|date('Y-m-d H:i:s') }}</td>
+                <td><a href="{{ path('app.admin.etl.export.download_file', {'filename': export.filename}) }}">{{ 'admin.etl.export.misc.download'|trans }}</a></td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4" class="text-center fst-italic">{{ 'admin.etl.export.table.no_exports'|trans }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

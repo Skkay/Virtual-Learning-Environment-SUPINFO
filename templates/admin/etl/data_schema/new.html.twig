@@ -13,9 +13,11 @@
 {% endblock %}
 
 {% block body %}
+<div class="container">
     <h1>{{ 'admin.etl.data_schema.title.create'|trans }}</h1>
 
     {{ include('admin/etl/data_schema/_form.html.twig', {'submitButtonLabel': 'form.misc.create'|trans}) }}
+</div>
 {% endblock %}
 
 {% block toasts %}
