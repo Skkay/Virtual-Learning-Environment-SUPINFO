@@ -1,5 +1,5 @@
 # Virtual Learning Environment SUPINFO
-Shcool project for SUPINFO.
+School project for SUPINFO.
 
 ## Context
 
